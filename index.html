@@ -1,1500 +1,1246 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Private Events | The Bogey Club | Newmarket, Ontario</title>
-  <meta name="description" content="Host your next private event at The Bogey Club in Newmarket. Corporate nights, birthdays, team parties &amp; milestone celebrations — up to 60 guests, 6 simulator bays, full F&amp;B service.">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-
-  <style>
-  /* ============================================
-     THE BOGEY CLUB — PRIVATE EVENTS PAGE
-     Self-contained block for Elementor HTML widget
-     ============================================ */
-
-  #bc-page * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  #bc-page {
-    font-family: 'DM Sans', sans-serif;
-    background: #ffffff;
-    color: #1a2e22;
-    width: 100%;
-    overflow-x: hidden;
-    --gold: #225d38;
-    --gold-light: #2d7a4a;
-    --gold-dim: rgba(34,93,56,0.1);
-    --border: rgba(34,93,56,0.14);
-    --text-muted: #4a6b55;
-    --text-dim: #6b8f76;
-  }
-
-  /* ---- HERO ---- */
-  #bc-hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 120px 40px 80px;
-    overflow: hidden;
-    background: #1a2e22;
-  }
-
-  #bc-hero-bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.55;
-  }
-
-  #bc-hero-overlay {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(circle at center top, rgba(255,255,255,0.06) 0%, transparent 42%),
-      linear-gradient(to bottom, rgba(10,10,8,0.10) 0%, rgba(10,10,8,0.06) 36%, rgba(10,10,8,0.65) 100%);
-  }
-
-  #bc-hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 860px;
-    margin: 0 auto;
-  }
-
-  .bc-eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.88);
-    margin-bottom: 20px;
-    opacity: 0;
-    animation: bcFadeUp 0.8s ease 0.2s forwards;
-  }
-
-  /* Social proof badge above headline — new */
-  .bc-hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255,255,255,0.10);
-    border: 1px solid rgba(255,255,255,0.22);
-    border-radius: 999px;
-    padding: 6px 16px 6px 10px;
-    margin-bottom: 24px;
-    backdrop-filter: blur(10px);
-    opacity: 0;
-    animation: bcFadeUp 0.8s ease 0.3s forwards;
-  }
-
-  .bc-hero-badge-stars {
-    color: #f5c842;
-    font-size: 11px;
-    letter-spacing: 2px;
-  }
-
-  .bc-hero-badge-text {
-    font-size: 11px;
-    color: rgba(255,255,255,0.9);
-    letter-spacing: 0.04em;
-  }
-
-  #bc-hero h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(52px, 8vw, 92px);
-    font-weight: 500;
-    line-height: 1.0;
-    color: #ffffff;
-    margin-bottom: 22px;
-    letter-spacing: -0.01em;
-    opacity: 0;
-    animation: bcFadeUp 0.8s ease 0.45s forwards;
-  }
-
-  #bc-hero h1 em {
-    font-style: italic;
-    color: #c8e8d4;
-  }
-
-  #bc-hero-sub {
-    font-size: 17px;
-    color: rgba(255,255,255,0.88);
-    max-width: 600px;
-    margin: 0 auto 16px;
-    line-height: 1.65;
-    font-weight: 300;
-    opacity: 0;
-    animation: bcFadeUp 0.8s ease 0.6s forwards;
-  }
-
-  /* Location line — new */
-  .bc-hero-location {
-    font-size: 12px;
-    color: rgba(255,255,255,0.6);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 36px;
-    opacity: 0;
-    animation: bcFadeUp 0.8s ease 0.65s forwards;
-  }
-
-  .bc-cta-group {
-    display: flex;
-    gap: 14px;
-    justify-content: center;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: bcFadeUp 0.8s ease 0.8s forwards;
-  }
-
-  .bc-btn-primary {
-    background: linear-gradient(135deg, #2f7b4b 0%, #1c4d2e 100%);
-    color: #ffffff;
-    padding: 17px 34px;
-    border-radius: 999px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.10em;
-    text-transform: uppercase;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    min-width: 240px;
-    box-shadow: 0 16px 36px rgba(8,20,13,0.32);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
-    cursor: pointer;
-    border: 1px solid rgba(255,255,255,0.10);
-  }
-
-  .bc-btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 20px 44px rgba(8,20,13,0.38);
-    filter: brightness(1.08);
-  }
-
-  .bc-btn-ghost {
-    background: rgba(255,255,255,0.09);
-    color: #ffffff;
-    padding: 17px 34px;
-    border-radius: 999px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.10em;
-    text-transform: uppercase;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    min-width: 200px;
-    border: 1px solid rgba(255,255,255,0.28);
-    backdrop-filter: blur(14px);
-    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-    cursor: pointer;
-  }
-
-  .bc-btn-ghost:hover {
-    border-color: rgba(255,255,255,0.7);
-    background: rgba(255,255,255,0.15);
-    transform: translateY(-2px);
-  }
-
-  /* Guarantee line under CTAs */
-  .bc-hero-guarantee {
-    margin-top: 16px;
-    font-size: 11px;
-    color: rgba(255,255,255,0.55);
-    letter-spacing: 0.06em;
-    opacity: 0;
-    animation: bcFadeUp 0.8s ease 1.0s forwards;
-  }
-
-  #bc-hero-scroll {
-    position: absolute;
-    bottom: 28px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    opacity: 0;
-    animation: bcFadeUp 0.8s ease 1.3s forwards;
-  }
-
-  .bc-scroll-line {
-    width: 1px;
-    height: 36px;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.85), transparent);
-    animation: bcScrollPulse 2s ease-in-out infinite;
-  }
-
-  .bc-scroll-label {
-    font-size: 9px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.65);
-  }
-
-  /* ---- TRUST BAR ---- */
-  #bc-trust {
-    background: #f0f5f1;
-    border-top: 1px solid rgba(34,93,56,0.12);
-    border-bottom: 1px solid rgba(34,93,56,0.12);
-    padding: 0 24px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .bc-trust-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 18px 36px;
-    border-right: 1px solid rgba(34,93,56,0.12);
-  }
-
-  .bc-trust-item:last-child { border-right: none; }
-
-  .bc-trust-icon {
-    font-size: 18px;
-    line-height: 1;
-  }
-
-  .bc-trust-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 26px;
-    font-weight: 500;
-    color: var(--gold);
-    line-height: 1;
-  }
-
-  .bc-trust-label {
-    font-size: 11px;
-    color: var(--text-muted);
-    letter-spacing: 0.04em;
-    line-height: 1.45;
-  }
-
-  /* ---- SECTION SHARED ---- */
-  .bc-section {
-    padding: 96px 32px;
-  }
-
-  .bc-section-inner {
-    width: min(100%, 1140px);
-    margin: 0 auto;
-  }
-
-  .bc-section-header {
-    max-width: 760px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .bc-tag {
-    display: inline-block;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    padding: 4px 0;
-    margin-bottom: 14px;
-    border-bottom: 1px solid rgba(34,93,56,0.28);
-  }
-
-  .bc-headline {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(34px, 4vw, 52px);
-    font-weight: 500;
-    line-height: 1.1;
-    color: #1a2e22;
-    letter-spacing: -0.01em;
-    margin-bottom: 18px;
-  }
-
-  .bc-headline em {
-    font-style: italic;
-    color: var(--gold);
-  }
-
-  .bc-body {
-    font-size: 15px;
-    color: var(--text-muted);
-    line-height: 1.8;
-    font-weight: 300;
-    margin-bottom: 18px;
-  }
-
-  /* ---- HOW IT WORKS (new section) ---- */
-  #bc-how {
-    background: #1a2e22;
-    padding: 80px 32px;
-  }
-
-  #bc-how .bc-section-inner {
-    text-align: center;
-  }
-
-  #bc-how .bc-tag { color: rgba(255,255,255,0.5); border-color: rgba(255,255,255,0.18); }
-
-  #bc-how .bc-headline { color: #ffffff; margin-bottom: 8px; }
-
-  #bc-how .bc-headline em { color: #a0d4b4; }
-
-  #bc-how .bc-body { color: rgba(255,255,255,0.65); }
-
-  .bc-how-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    margin-top: 52px;
-    position: relative;
-  }
-
-  .bc-how-grid::before {
-    content: '';
-    position: absolute;
-    top: 32px;
-    left: calc(16.66% + 20px);
-    right: calc(16.66% + 20px);
-    height: 1px;
-    background: linear-gradient(to right, rgba(255,255,255,0.15), rgba(255,255,255,0.08), rgba(255,255,255,0.15));
-    pointer-events: none;
-  }
-
-  .bc-how-step {
-    padding: 36px 32px 28px;
-    text-align: center;
-  }
-
-  .bc-how-num {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.14);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 20px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    color: #a0d4b4;
-    font-weight: 500;
-  }
-
-  .bc-how-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 500;
-    color: #ffffff;
-    margin-bottom: 10px;
-  }
-
-  .bc-how-desc {
-    font-size: 13px;
-    color: rgba(255,255,255,0.58);
-    line-height: 1.7;
-    font-weight: 300;
-  }
-
-  /* ---- EXPERIENCE ---- */
-  #bc-experience {
-    background: #ffffff;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .bc-experience-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 72px;
-    align-items: center;
-  }
-
-  .bc-experience-img {
-    position: relative;
-    height: 500px;
-    border-radius: 3px;
-    overflow: hidden;
-  }
-
-  .bc-experience-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(0.85);
-  }
-
-  .bc-experience-img-placeholder {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #dde9e1 0%, #c8ddd0 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    font-size: 11px;
-    color: #88aa92;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  .bc-experience-img-placeholder span { font-size: 28px; }
-
-  .bc-img-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 48px 24px 20px;
-    background: linear-gradient(to top, rgba(10,10,8,0.85), transparent);
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.65);
-  }
-
-  .bc-pullquote {
-    margin-top: 28px;
-    padding: 20px 20px 20px 22px;
-    border-left: 2px solid var(--gold);
-    background: #f3f8f5;
-    border-radius: 0 3px 3px 0;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    font-style: italic;
-    color: rgba(26,46,34,0.6);
-    line-height: 1.5;
-  }
-
-  .bc-checklist {
-    margin-top: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .bc-check-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 13px;
-    color: var(--text-muted);
-  }
-
-  .bc-check-dot {
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: #e4f0ea;
-    border: 1px solid rgba(34,93,56,0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-size: 10px;
-    color: var(--gold);
-  }
-
-  /* ---- INLINE CTA BAR (new) ---- */
-  .bc-inline-cta {
-    background: #f3f8f5;
-    border: 1px solid rgba(34,93,56,0.14);
-    border-radius: 3px;
-    padding: 28px 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    margin-top: 56px;
-    flex-wrap: wrap;
-  }
-
-  .bc-inline-cta-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    color: #1a2e22;
-    font-weight: 500;
-    line-height: 1.2;
-  }
-
-  .bc-inline-cta-text em { font-style: italic; color: var(--gold); }
-
-  .bc-btn-green {
-    background: #225d38;
-    color: #ffffff;
-    padding: 14px 28px;
-    border-radius: 999px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.10em;
-    text-transform: uppercase;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    white-space: nowrap;
-    transition: background 0.2s, transform 0.2s;
-    cursor: pointer;
-    border: none;
-  }
-
-  .bc-btn-green:hover { background: #2d7a4a; transform: translateY(-1px); }
-
-  /* ---- EVENT TYPES ---- */
-  #bc-events {
-    background: #f0f4f1;
-    border-bottom: 1px solid var(--border);
-  }
-
-  #bc-events .bc-section-header { text-align: center; margin-bottom: 48px; }
-
-  .bc-events-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-  }
-
-  .bc-event-card {
-    background: #ffffff;
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    padding: 30px 26px 52px;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    transition: border-color 0.3s, box-shadow 0.3s;
-    text-decoration: none;
-    display: block;
-  }
-
-  .bc-event-card::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: #225d38;
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
-    transform-origin: left;
-  }
-
-  .bc-event-card:hover { border-color: rgba(34,93,56,0.22); box-shadow: 0 8px 24px rgba(34,93,56,0.07); }
-  .bc-event-card:hover::after { transform: scaleX(1); }
-
-  .bc-event-icon { font-size: 22px; margin-bottom: 14px; display: block; }
-
-  .bc-event-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 500;
-    color: #1a2e22;
-    margin-bottom: 8px;
-    line-height: 1.2;
-  }
-
-  .bc-event-desc {
-    font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.7;
-    font-weight: 300;
-  }
-
-  .bc-event-arrow {
-    position: absolute;
-    bottom: 22px;
-    right: 22px;
-    font-size: 11px;
-    color: var(--gold);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    opacity: 0;
-    transform: translateX(-6px);
-    transition: opacity 0.2s, transform 0.2s;
-  }
-
-  .bc-event-card:hover .bc-event-arrow { opacity: 1; transform: translateX(0); }
-
-  /* ---- INCLUDED ---- */
-  #bc-included {
-    background: #f3f7f4;
-    border-bottom: 1px solid var(--border);
-  }
-
-  #bc-included .bc-section-header { text-align: center; margin-bottom: 48px; }
-
-  .bc-included-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    overflow: hidden;
-  }
-
-  .bc-feature {
-    background: #ffffff;
-    padding: 36px 26px;
-    transition: background 0.2s;
-  }
-
-  .bc-feature:hover { background: #edf4ef; }
-
-  .bc-feature-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 34px;
-    color: var(--gold);
-    opacity: 0.35;
-    line-height: 1;
-    margin-bottom: 14px;
-  }
-
-  .bc-feature-title {
-    font-size: 14px;
-    font-weight: 500;
-    color: #2a4535;
-    margin-bottom: 8px;
-    letter-spacing: 0.02em;
-  }
-
-  .bc-feature-desc {
-    font-size: 12px;
-    color: var(--text-dim);
-    line-height: 1.7;
-    font-weight: 300;
-  }
-
-  /* ---- TESTIMONIALS ---- */
-  #bc-testimonials {
-    background: #ffffff;
-    border-bottom: 1px solid var(--border);
-  }
-
-  #bc-testimonials .bc-section-header { text-align: center; margin-bottom: 48px; }
-
-  .bc-testi-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-  }
-
-  .bc-testi-card {
-    background: #f3f7f4;
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    padding: 30px 26px;
-    position: relative;
-  }
-
-  .bc-testi-card::before {
-    content: '\201C';
-    position: absolute;
-    top: 16px; right: 22px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 56px;
-    color: var(--gold);
-    opacity: 0.12;
-    line-height: 1;
-  }
-
-  .bc-stars { color: #f5c842; font-size: 13px; letter-spacing: 2px; margin-bottom: 14px; }
-
-  .bc-testi-quote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px;
-    font-style: italic;
-    color: rgba(26,46,34,0.72);
-    line-height: 1.6;
-    margin-bottom: 22px;
-  }
-
-  .bc-testi-divider { width: 24px; height: 1px; background: #225d38; opacity: 0.35; margin-bottom: 12px; }
-
-  .bc-testi-name { font-size: 13px; font-weight: 500; color: var(--gold); margin-bottom: 2px; }
-
-  .bc-testi-event { font-size: 11px; color: var(--text-dim); letter-spacing: 0.03em; }
-
-  .bc-google-rating {
-    text-align: center;
-    margin-top: 44px;
-    padding-top: 28px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
-    flex-wrap: wrap;
-  }
-
-  .bc-google-stars { color: #f5c842; font-size: 16px; letter-spacing: 3px; }
-  .bc-google-text { font-size: 12px; color: var(--text-muted); }
-
-  /* ---- STATS BAR ---- */
-  #bc-stats {
-    background: #225d38;
-    padding: 40px 40px;
-  }
-
-  .bc-stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    max-width: 1100px;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .bc-stat {
-    padding: 0 20px;
-    border-right: 1px solid rgba(255,255,255,0.18);
-  }
-
-  .bc-stat:last-child { border-right: none; }
-
-  .bc-stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 44px;
-    font-weight: 500;
-    color: #ffffff;
-    line-height: 1;
-    margin-bottom: 6px;
-  }
-
-  .bc-stat-label {
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.6);
-  }
-
-  /* ---- GALLERY ---- */
-  #bc-gallery {
-    background: #f0f4f1;
-    border-bottom: 1px solid var(--border);
-  }
-
-  #bc-gallery .bc-section-header { text-align: center; margin-bottom: 36px; }
-
-  .bc-gallery-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    grid-template-rows: 220px 220px;
-    gap: 6px;
-    border-radius: 3px;
-    overflow: hidden;
-  }
-
-  .bc-gallery-cell {
-    overflow: hidden;
-    position: relative;
-    background: #d4e5db;
-  }
-
-  .bc-gallery-cell img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(0.75) saturate(0.9);
-    transition: transform 0.6s ease, filter 0.4s ease;
-  }
-
-  .bc-gallery-cell:hover img {
-    transform: scale(1.05);
-    filter: brightness(0.9) saturate(1.0);
-  }
-
-  .bc-gallery-cell:first-child { grid-row: span 2; }
-
-  .bc-gallery-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-size: 10px;
-    color: #88aa92;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  .bc-gallery-placeholder span { font-size: 24px; opacity: 0.5; }
-
-  .bc-gallery-ig {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 12px;
-    color: var(--text-dim);
-    letter-spacing: 0.04em;
-  }
-
-  .bc-gallery-ig a {
-    color: var(--gold);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(34,93,56,0.25);
-    padding-bottom: 1px;
-    transition: border-color 0.2s;
-  }
-
-  .bc-gallery-ig a:hover { border-color: var(--gold); }
-
-  /* ---- FAQ ---- */
-  #bc-faq {
-    background: #f5f8f5;
-    border-bottom: 1px solid var(--border);
-  }
-
-  #bc-faq .bc-section-header { text-align: center; margin-bottom: 48px; }
-
-  .bc-faq-list { max-width: 680px; margin: 0 auto; }
-
-  .bc-faq-item { border-bottom: 1px solid var(--border); }
-
-  .bc-faq-q {
-    width: 100%;
-    background: none;
-    border: none;
-    color: #2a4535;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    text-align: left;
-    padding: 20px 0;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    transition: color 0.2s;
-  }
-
-  .bc-faq-q:hover { color: var(--gold); }
-
-  .bc-faq-icon {
-    width: 22px;
-    height: 22px;
-    border: 1px solid rgba(34,93,56,0.18);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-size: 14px;
-    color: var(--gold);
-    transition: transform 0.3s;
-  }
-
-  .bc-faq-item.bc-open .bc-faq-icon { transform: rotate(45deg); }
-
-  .bc-faq-a {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
-  }
-
-  .bc-faq-a-inner {
-    padding: 0 0 20px;
-    font-size: 13px;
-    color: var(--text-muted);
-    line-height: 1.8;
-    font-weight: 300;
-  }
-
-  .bc-faq-item.bc-open .bc-faq-a { max-height: 220px; }
-
-  /* ---- FORM ---- */
-  #bc-form-section {
-    background: #ffffff;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .bc-form-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-    gap: 80px;
-    align-items: start;
-  }
-
-  .bc-form-promises {
-    margin-top: 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .bc-promise {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-  }
-
-  .bc-promise-dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: #225d38;
-    margin-top: 7px;
-    flex-shrink: 0;
-  }
-
-  .bc-promise-text {
-    font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.6;
-  }
-
-  /* Form social proof (new) */
-  .bc-form-social {
-    margin-top: 36px;
-    padding: 20px 22px;
-    background: #f3f8f5;
-    border: 1px solid var(--border);
-    border-radius: 3px;
-  }
-
-  .bc-form-social-stars { color: #f5c842; font-size: 13px; letter-spacing: 2px; margin-bottom: 8px; }
-
-  .bc-form-social-text {
-    font-size: 12px;
-    color: var(--text-dim);
-    line-height: 1.6;
-    font-style: italic;
-  }
-
-  .bc-form-social-name {
-    margin-top: 10px;
-    font-size: 11px;
-    color: var(--gold);
-    font-weight: 500;
-  }
-
-  /* Urgency indicator (new) */
-  .bc-urgency-note {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #fff5e6;
-    border: 1px solid rgba(200,120,0,0.18);
-    border-radius: 3px;
-    padding: 8px 14px;
-    margin-bottom: 24px;
-    font-size: 12px;
-    color: #8a5a00;
-    letter-spacing: 0.03em;
-  }
-
-  .bc-urgency-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #e08a00;
-    animation: bcPulse 1.8s ease-in-out infinite;
-    flex-shrink: 0;
-  }
-
-  @keyframes bcPulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.8); }
-  }
-
-  .bc-form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-
-  .bc-field { margin-bottom: 12px; }
-
-  .bc-field label {
-    display: block;
-    font-size: 9px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    margin-bottom: 7px;
-  }
-
-  .bc-field input,
-  .bc-field select,
-  .bc-field textarea {
-    width: 100%;
-    background: #f3f7f4;
-    border: 1px solid rgba(34,93,56,0.16);
-    border-radius: 3px;
-    padding: 12px 14px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 300;
-    color: #2a4535;
-    outline: none;
-    transition: border-color 0.2s, background 0.2s;
-    -webkit-appearance: none;
-  }
-
-  .bc-field input:focus,
-  .bc-field select:focus,
-  .bc-field textarea:focus {
-    border-color: rgba(34,93,56,0.4);
-    background: #edf4ef;
-  }
-
-  .bc-field input::placeholder,
-  .bc-field textarea::placeholder { color: var(--text-dim); }
-
-  .bc-field textarea { height: 88px; resize: none; line-height: 1.6; }
-
-  .bc-field select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23225d38' opacity='0.45'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 14px center;
-    cursor: pointer;
-  }
-
-  .bc-field select option { background: #f3f7f4; color: #2a4535; }
-
-  .bc-submit {
-    width: 100%;
-    padding: 16px;
-    background: #225d38;
-    color: #ffffff;
-    border: none;
-    border-radius: 3px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.15s;
-    margin-top: 4px;
-  }
-
-  .bc-submit:hover { background: #2d7a4a; transform: translateY(-1px); }
-  .bc-submit:disabled { background: #7ea990; cursor: not-allowed; transform: none; }
-
-  .bc-form-guarantee {
-    text-align: center;
-    margin-top: 10px;
-    font-size: 11px;
-    color: var(--text-dim);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-  }
-
-  .bc-form-alt {
-    text-align: center;
-    margin-top: 14px;
-    font-size: 12px;
-    color: var(--text-dim);
-  }
-
-  .bc-form-alt a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(34,93,56,0.22); padding-bottom: 1px; }
-
-  /* ---- CLOSING CTA ---- */
-  #bc-closing {
-    background: #1a2e22;
-    padding: 120px 40px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  #bc-closing::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 50%;
-    transform: translateX(-50%);
-    width: 600px; height: 1px;
-    background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
-  }
-
-  #bc-closing::after {
-    content: '';
-    position: absolute;
-    top: -200px; left: 50%;
-    transform: translateX(-50%);
-    width: 800px; height: 400px;
-    background: radial-gradient(ellipse at center, rgba(100,200,140,0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .bc-closing-eyebrow {
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.45);
-    margin-bottom: 18px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .bc-closing-headline {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(44px, 6vw, 76px);
-    font-weight: 500;
-    color: #ffffff;
-    margin-bottom: 12px;
-    line-height: 1.05;
-    letter-spacing: -0.01em;
-    position: relative;
-    z-index: 1;
-  }
-
-  .bc-closing-headline em { font-style: italic; color: #a0d4b4; }
-
-  .bc-closing-sub {
-    font-size: 15px;
-    color: rgba(255,255,255,0.65);
-    margin-bottom: 36px;
-    font-weight: 300;
-    position: relative;
-    z-index: 1;
-  }
-
-  .bc-closing-note {
-    margin-top: 18px;
-    font-size: 11px;
-    color: rgba(255,255,255,0.35);
-    letter-spacing: 0.08em;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* Closing trust row (new) */
-  .bc-closing-trust {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 28px;
-    margin-top: 36px;
-    flex-wrap: wrap;
-    position: relative;
-    z-index: 1;
-  }
-
-  .bc-closing-trust-item {
-    font-size: 11px;
-    color: rgba(255,255,255,0.45);
-    letter-spacing: 0.08em;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .bc-closing-trust-item::before {
-    content: '✓';
-    color: #a0d4b4;
-    font-size: 12px;
-  }
-
-  /* ---- STICKY MOBILE CTA (new) ---- */
-  #bc-sticky-cta {
-    display: none;
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
-    z-index: 9999;
-    background: #1a2e22;
-    border-top: 1px solid rgba(255,255,255,0.10);
-    padding: 12px 16px 14px;
-    box-shadow: 0 -8px 28px rgba(0,0,0,0.25);
-  }
-
-  .bc-sticky-inner {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .bc-sticky-text {
-    flex: 1;
-    font-size: 12px;
-    color: rgba(255,255,255,0.72);
-    line-height: 1.4;
-  }
-
-  .bc-sticky-text strong {
-    display: block;
-    font-size: 13px;
-    color: #ffffff;
-    font-weight: 500;
-  }
-
-  .bc-sticky-btn {
-    flex-shrink: 0;
-    background: #2f7b4b;
-    color: #ffffff;
-    padding: 11px 20px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    text-decoration: none;
-    white-space: nowrap;
-    border: none;
-    cursor: pointer;
-  }
-
-  /* ---- ANIMATIONS ---- */
-  @keyframes bcFadeUp {
-    from { opacity: 0; transform: translateY(18px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes bcScrollPulse {
-    0%, 100% { opacity: 0.4; transform: scaleY(1); }
-    50%       { opacity: 1;   transform: scaleY(1.12); }
-  }
-
-  .bc-reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-
-  .bc-reveal.bc-visible { opacity: 1; transform: translateY(0); }
-  .bc-reveal-delay-1 { transition-delay: 0.1s; }
-  .bc-reveal-delay-2 { transition-delay: 0.2s; }
-  .bc-reveal-delay-3 { transition-delay: 0.3s; }
-
-  /* ---- RESPONSIVE ---- */
-  @media (max-width: 900px) {
-    .bc-section { padding: 72px 24px; }
-    #bc-hero { padding: 100px 24px 80px; }
-
-    .bc-experience-grid,
-    .bc-form-grid { grid-template-columns: 1fr; gap: 40px; }
-
-    .bc-experience-img { height: 320px; }
-
-    .bc-events-grid { grid-template-columns: 1fr 1fr; }
-
-    .bc-included-grid { grid-template-columns: 1fr 1fr; }
-
-    .bc-gallery-grid {
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 180px 180px 180px;
-    }
-
-    .bc-gallery-cell:first-child { grid-row: span 1; }
-
-    .bc-testi-grid { grid-template-columns: 1fr; }
-
-    .bc-stats-grid { grid-template-columns: 1fr 1fr; }
-    .bc-stat { border-right: none; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.12); }
-    .bc-stat:nth-child(3), .bc-stat:nth-child(4) { border-bottom: none; }
-
-    .bc-how-grid { grid-template-columns: 1fr; }
-    .bc-how-grid::before { display: none; }
-
-    .bc-inline-cta { flex-direction: column; text-align: center; }
-
-    #bc-trust { padding: 0 16px; }
-    .bc-trust-item { padding: 14px 20px; }
-  }
-
-  @media (max-width: 600px) {
-    .bc-section { padding: 56px 20px; }
-    #bc-hero { padding: 80px 20px 80px; }
-
-    .bc-btn-primary,
-    .bc-btn-ghost { width: 100%; min-width: 0; }
-
-    .bc-events-grid { grid-template-columns: 1fr; }
-    .bc-included-grid { grid-template-columns: 1fr; }
-    .bc-form-row { grid-template-columns: 1fr; }
-
-    .bc-gallery-grid {
-      grid-template-columns: 1fr;
-      grid-template-rows: repeat(5, 160px);
-    }
-
-    .bc-trust-item {
-      padding: 10px 14px;
-      border-right: none;
-      border-bottom: 1px solid rgba(34,93,56,0.12);
-      width: 50%;
-    }
-
-    .bc-trust-item:last-child,
-    .bc-trust-item:nth-last-child(-n+1) { border-bottom: none; }
-
-    #bc-trust { flex-wrap: wrap; }
-
-    #bc-sticky-cta { display: block; }
-
-    #bc-page { padding-bottom: 72px; }
-
-    .bc-how-step { padding: 28px 20px 20px; }
-
-    .bc-stats-grid { grid-template-columns: 1fr 1fr; }
-
-    .bc-closing-trust { flex-direction: column; gap: 10px; }
-  }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Private Events — The Bogey Club</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #faf8f2; }
+</style>
 </head>
 <body>
 
+<!-- ============================================================
+     THE BOGEY CLUB — PRIVATE EVENTS PAGE  (v2)
+     Drop into Elementor HTML widget as-is.
+     Replace REPLACE-ME-* placeholders with real images / video.
+     ============================================================ -->
+
+<style>
+/* ============================================================
+   BRAND TOKENS + RESET
+   ============================================================ */
+#bc-page * { box-sizing: border-box; }
+#bc-page h1, #bc-page h2, #bc-page h3, #bc-page h4, #bc-page p, #bc-page ul, #bc-page li, #bc-page figure, #bc-page blockquote { margin: 0; padding: 0; }
+#bc-page button { font: inherit; }
+#bc-page img { display: block; max-width: 100%; }
+
+#bc-page {
+  --green:        #1f5a37;
+  --green-deep:   #143a23;
+  --green-soft:   #e7efe9;
+  --green-line:   rgba(20, 58, 35, 0.14);
+
+  --yellow:       #f1c63a;
+  --yellow-deep:  #d9a91a;
+  --yellow-soft:  #fdf3c7;
+
+  --ink:          #0f1a14;
+  --ink-muted:    #4a5a51;
+  --ink-dim:      #758378;
+
+  --cream:        #faf8f2;
+  --paper:        #ffffff;
+
+  --radius:       6px;
+  --radius-lg:    14px;
+
+  font-family: 'DM Sans', system-ui, -apple-system, Helvetica, sans-serif;
+  color: var(--ink);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#bc-page .bc-serif { font-family: 'Cormorant Garamond', 'Georgia', serif; }
+
+/* ============================================================
+   STICKY TOP CTA BAR (mobile + desktop)
+   ============================================================ */
+#bc-stickybar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  background: rgba(15, 26, 20, 0.94);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(241, 198, 58, 0.18);
+  transform: translateY(-110%);
+  transition: transform 0.35s ease;
+}
+#bc-stickybar.bc-show { transform: translateY(0); }
+.bc-sb-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 22px;
+  gap: 14px;
+}
+.bc-sb-left {
+  display: flex; align-items: center; gap: 12px;
+  min-width: 0;
+}
+.bc-sb-mark {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--yellow);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600; color: var(--green-deep);
+  font-size: 17px;
+  flex-shrink: 0;
+}
+.bc-sb-text {
+  color: #fff; font-size: 13px; font-weight: 400;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.bc-sb-text strong { color: var(--yellow); font-weight: 500; }
+.bc-sb-cta {
+  background: var(--yellow);
+  color: var(--green-deep);
+  padding: 10px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  transition: background .2s, transform .2s;
+}
+.bc-sb-cta:hover { background: #fff; transform: translateY(-1px); }
+@media (max-width: 600px) {
+  .bc-sb-text { display: none; }
+  .bc-sb-inner { padding: 10px 16px; }
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+#bc-hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 120px 28px 110px;
+  overflow: hidden;
+  background: #0f1a14;
+  color: #fff;
+  text-align: center;
+}
+#bc-hero-bg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+}
+#bc-hero-overlay {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(31,90,55,0.35) 0%, rgba(15,26,20,0) 55%),
+    linear-gradient(180deg, rgba(15,26,20,0.45) 0%, rgba(15,26,20,0.25) 40%, rgba(15,26,20,0.85) 100%);
+}
+#bc-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 920px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.bc-hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--yellow);
+  padding: 7px 16px;
+  border: 1px solid rgba(241, 198, 58, 0.45);
+  border-radius: 999px;
+  margin-bottom: 28px;
+  background: rgba(241, 198, 58, 0.08);
+}
+.bc-hero-eyebrow .bc-dot {
+  width: 6px; height: 6px; background: var(--yellow); border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(241, 198, 58, 0.2);
+}
+
+#bc-hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(46px, 7.4vw, 92px);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  margin-bottom: 24px;
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#bc-hero h1 .bc-h-yel { color: var(--yellow); font-style: italic; }
+
+#bc-hero-sub {
+  font-size: clamp(15px, 1.6vw, 18px);
+  color: rgba(255,255,255,0.86);
+  max-width: 670px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-weight: 300;
+  text-align: center;
+}
+
+.bc-cta-row {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: fit-content;
+  max-width: 100%;
+  margin: 34px auto 0;
+}
+
+.bc-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 16px 32px;
+  border-radius: 999px;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+  white-space: nowrap;
+  min-width: 220px;
+}
+.bc-btn-primary {
+  background: var(--yellow);
+  color: var(--green-deep);
+  box-shadow: 0 14px 34px rgba(241, 198, 58, 0.28);
+}
+.bc-btn-primary:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 18px 40px rgba(0,0,0,0.18); }
+
+.bc-btn-ghost {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  border-color: rgba(255,255,255,0.32);
+  backdrop-filter: blur(6px);
+}
+.bc-btn-ghost:hover { background: rgba(255,255,255,0.16); border-color: #fff; transform: translateY(-2px); }
+
+.bc-btn-dark {
+  background: var(--green-deep);
+  color: #fff;
+}
+.bc-btn-dark:hover { background: var(--ink); transform: translateY(-2px); }
+
+.bc-hero-meta {
+  margin-top: 38px;
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px;
+  font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(255,255,255,0.66);
+}
+.bc-hero-meta span { display: inline-flex; align-items: center; gap: 8px; }
+.bc-hero-meta i {
+  width: 4px; height: 4px; background: var(--yellow); border-radius: 50%;
+  display: inline-block;
+}
+
+/* ============================================================
+   TRUST STRIP (under hero)
+   ============================================================ */
+#bc-trust {
+  background: var(--ink);
+  color: #fff;
+  padding: 18px 24px;
+  border-bottom: 3px solid var(--yellow);
+}
+.bc-trust-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+.bc-trust-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 6px 14px;
+  border-right: 1px solid rgba(255,255,255,0.10);
+  min-width: 0;
+}
+.bc-trust-item:last-child { border-right: none; }
+.bc-trust-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px; font-weight: 500;
+  color: var(--yellow);
+  line-height: 1;
+}
+.bc-trust-label {
+  font-size: 11px; line-height: 1.35;
+  color: rgba(255,255,255,0.78);
+  letter-spacing: 0.03em;
+}
+
+/* ============================================================
+   SECTIONS — shared
+   ============================================================ */
+.bc-section { padding: 96px 28px; position: relative; }
+.bc-section-inner { width: min(100%, 1180px); margin: 0 auto; }
+
+.bc-tag {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--green);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.bc-tag::before {
+  content: ""; width: 22px; height: 1px; background: var(--green); display: inline-block;
+}
+
+.bc-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(34px, 4.4vw, 56px);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 20px;
+  text-wrap: balance;
+}
+.bc-h2 em { font-style: italic; color: var(--green); }
+.bc-h2 .bc-h-yel { color: var(--yellow-deep); font-style: italic; }
+
+.bc-lede {
+  font-size: 16px; color: var(--ink-muted); line-height: 1.7;
+  font-weight: 400;
+}
+.bc-center { text-align: center; }
+.bc-center .bc-tag { justify-content: center; }
+.bc-section-head { max-width: 720px; margin: 0 auto 56px; }
+
+/* ============================================================
+   WHY HOST HERE
+   ============================================================ */
+#bc-why { background: var(--cream); }
+.bc-why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.bc-why-card {
+  background: var(--paper);
+  border: 1px solid var(--green-line);
+  border-radius: var(--radius-lg);
+  padding: 30px 28px 28px;
+  position: relative;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.bc-why-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--green);
+  box-shadow: 0 18px 40px rgba(20, 58, 35, 0.10);
+}
+.bc-why-ico {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--yellow);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+}
+.bc-why-ico svg { width: 22px; height: 22px; }
+.bc-why-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.bc-why-card p {
+  font-size: 14px; color: var(--ink-muted); line-height: 1.6;
+}
+
+/* ============================================================
+   EVENT TYPES
+   ============================================================ */
+#bc-events { background: var(--green-deep); color: #fff; }
+#bc-events .bc-h2 { color: #fff; }
+#bc-events .bc-h2 em { color: var(--yellow); }
+#bc-events .bc-tag { color: var(--yellow); }
+#bc-events .bc-tag::before { background: var(--yellow); }
+#bc-events .bc-lede { color: rgba(255,255,255,0.78); }
+
+.bc-event-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.bc-event-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: var(--radius-lg);
+  padding: 26px 24px 24px;
+  text-decoration: none;
+  color: #fff;
+  display: flex; flex-direction: column; gap: 8px;
+  position: relative;
+  transition: background .25s, border-color .25s, transform .25s;
+}
+.bc-event-card:hover {
+  background: rgba(241, 198, 58, 0.10);
+  border-color: var(--yellow);
+  transform: translateY(-3px);
+}
+.bc-event-card .bc-event-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  color: var(--yellow);
+  letter-spacing: 0.2em;
+}
+.bc-event-card h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 22px;
+  color: #fff;
+}
+.bc-event-card p {
+  font-size: 13.5px;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.6;
+}
+.bc-event-card .bc-event-arrow {
+  position: absolute; top: 24px; right: 24px;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--yellow);
+  font-size: 14px;
+  transition: background .2s, transform .2s;
+}
+.bc-event-card:hover .bc-event-arrow { background: var(--yellow); color: var(--green-deep); transform: rotate(-45deg); }
+
+/* ============================================================
+   WHAT'S INCLUDED  (with image inset)
+   ============================================================ */
+#bc-included { background: var(--paper); }
+.bc-incl-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 64px;
+  align-items: center;
+}
+.bc-incl-img {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  background: var(--green-soft);
+  border: 1px solid var(--green-line);
+}
+.bc-incl-img .bc-ph {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font: 500 11px/1.3 'DM Sans', sans-serif;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--green);
+  background:
+    repeating-linear-gradient(135deg, rgba(31,90,55,0.06) 0 14px, rgba(31,90,55,0) 14px 28px);
+  text-align: center; padding: 24px;
+}
+.bc-incl-img-tag {
+  position: absolute; left: 20px; bottom: 20px;
+  background: var(--yellow);
+  color: var(--green-deep);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+}
+
+.bc-incl-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 28px; }
+.bc-incl-item {
+  background: var(--green-soft);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.bc-incl-item .bc-check {
+  flex: 0 0 22px;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--green);
+  color: var(--yellow);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+  margin-top: 1px;
+}
+.bc-incl-item h4 {
+  font-size: 13.5px; font-weight: 600; color: var(--ink); margin-bottom: 2px;
+}
+.bc-incl-item p {
+  font-size: 12.5px; color: var(--ink-muted); line-height: 1.5;
+}
+
+/* ============================================================
+   GALLERY
+   ============================================================ */
+#bc-gallery { background: var(--cream); }
+.bc-gallery-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 240px 240px;
+  gap: 10px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.bc-gallery-cell {
+  position: relative; overflow: hidden;
+  background: var(--green-soft);
+  border-radius: var(--radius);
+}
+.bc-gallery-cell:first-child { grid-row: span 2; }
+.bc-gallery-cell .bc-ph {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font: 500 10px/1.3 'DM Sans', sans-serif;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--green);
+  background:
+    repeating-linear-gradient(135deg, rgba(31,90,55,0.06) 0 12px, rgba(31,90,55,0) 12px 24px);
+  text-align: center; padding: 16px;
+}
+.bc-gallery-cell img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .6s ease;
+}
+.bc-gallery-cell:hover img { transform: scale(1.05); }
+.bc-gallery-ig {
+  margin-top: 22px; text-align: center;
+  font-size: 13px; color: var(--ink-muted);
+}
+.bc-gallery-ig a {
+  color: var(--green); font-weight: 500; text-decoration: none;
+  border-bottom: 1px solid var(--green-line); padding-bottom: 2px;
+}
+
+/* ============================================================
+   HOW IT WORKS
+   ============================================================ */
+#bc-how { background: var(--green); color: #fff; }
+#bc-how .bc-h2 { color: #fff; }
+#bc-how .bc-h2 em { color: var(--yellow); }
+#bc-how .bc-tag { color: var(--yellow); }
+#bc-how .bc-tag::before { background: var(--yellow); }
+#bc-how .bc-lede { color: rgba(255,255,255,0.85); }
+
+.bc-how-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  position: relative;
+}
+.bc-how-step {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: var(--radius-lg);
+  padding: 28px 26px;
+  position: relative;
+}
+.bc-how-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--yellow);
+  color: var(--green-deep);
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 18px;
+}
+.bc-how-step h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.bc-how-step p { font-size: 14px; color: rgba(255,255,255,0.78); line-height: 1.6; }
+
+.bc-how-cta-row {
+  margin-top: 52px; display: flex; justify-content: center;
+}
+
+/* ============================================================
+   TESTIMONIALS
+   ============================================================ */
+#bc-testi { background: var(--cream); }
+.bc-testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.bc-testi-card {
+  background: var(--paper);
+  border: 1px solid var(--green-line);
+  border-radius: var(--radius-lg);
+  padding: 30px 28px;
+  position: relative;
+  display: flex; flex-direction: column;
+}
+.bc-testi-stars {
+  color: var(--yellow-deep);
+  letter-spacing: 4px;
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+.bc-testi-q {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  line-height: 1.5;
+  color: var(--ink);
+  font-style: italic;
+  margin-bottom: 22px;
+  flex: 1;
+}
+.bc-testi-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green);
+  margin-bottom: 2px;
+}
+.bc-testi-meta { font-size: 12px; color: var(--ink-dim); letter-spacing: 0.04em; }
+
+.bc-google-row {
+  margin-top: 44px;
+  display: flex; justify-content: center; align-items: center; gap: 14px;
+  font-size: 13px;
+  color: var(--ink-muted);
+  padding-top: 32px;
+  border-top: 1px solid var(--green-line);
+}
+.bc-google-row strong { color: var(--ink); font-weight: 600; }
+.bc-google-row .bc-stars { color: var(--yellow-deep); letter-spacing: 3px; }
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+#bc-faq { background: var(--paper); }
+.bc-faq-wrap { max-width: 760px; margin: 0 auto; }
+.bc-faq-item {
+  border-bottom: 1px solid var(--green-line);
+}
+.bc-faq-item:first-child { border-top: 1px solid var(--green-line); }
+.bc-faq-q {
+  width: 100%; background: none; border: none;
+  text-align: left;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  padding: 22px 4px;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--ink);
+  font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+  transition: color .2s;
+}
+.bc-faq-q:hover { color: var(--green); }
+.bc-faq-toggle {
+  flex: 0 0 26px; width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--green-soft);
+  color: var(--green);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  transition: transform .3s ease, background .3s ease, color .3s ease;
+}
+.bc-faq-item.bc-open .bc-faq-toggle {
+  transform: rotate(45deg);
+  background: var(--yellow);
+  color: var(--green-deep);
+}
+.bc-faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .4s ease;
+}
+.bc-faq-item.bc-open .bc-faq-a { max-height: 280px; }
+.bc-faq-a-inner {
+  padding: 0 4px 22px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ink-muted);
+}
+
+/* ============================================================
+   FORM
+   ============================================================ */
+#bc-form { background: var(--green-deep); color: #fff; }
+#bc-form .bc-tag { color: var(--yellow); }
+#bc-form .bc-tag::before { background: var(--yellow); }
+#bc-form .bc-h2 { color: #fff; }
+#bc-form .bc-h2 em { color: var(--yellow); }
+#bc-form .bc-lede { color: rgba(255,255,255,0.82); }
+
+.bc-form-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 64px;
+  align-items: start;
+}
+
+.bc-form-promises { margin-top: 28px; display: flex; flex-direction: column; gap: 14px; }
+.bc-promise {
+  display: flex; gap: 14px; align-items: flex-start;
+  font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.5;
+}
+.bc-promise svg { flex-shrink: 0; margin-top: 2px; }
+
+.bc-form-alt-row {
+  margin-top: 28px; padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.10);
+  font-size: 13px; color: rgba(255,255,255,0.7);
+}
+.bc-form-alt-row a {
+  color: var(--yellow); text-decoration: none; font-weight: 500;
+  border-bottom: 1px solid rgba(241, 198, 58, 0.4); padding-bottom: 1px;
+}
+
+.bc-form-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 38px 36px;
+  color: var(--ink);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.18);
+}
+.bc-form-card .bc-form-step {
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--green); font-weight: 600;
+  margin-bottom: 6px;
+}
+.bc-form-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500; font-size: 28px;
+  margin-bottom: 22px;
+  line-height: 1.1;
+}
+
+.bc-form-tiny {
+  text-align: center;
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--ink-dim);
+}
+
+/* ============================================================
+   WPFORMS SKIN
+   ============================================================ */
+#bc-form .wpforms-container { margin: 0; }
+#bc-form .wpforms-container .wpforms-form { margin: 0; }
+
+/* Field label */
+#bc-form .wpforms-container .wpforms-field-label {
+  display: block;
+  margin: 0 0 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-muted);
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+}
+#bc-form .wpforms-container .wpforms-required-label { color: var(--yellow-deep); }
+
+/* All text inputs, selects, textareas */
+#bc-form .wpforms-container input[type="text"],
+#bc-form .wpforms-container input[type="email"],
+#bc-form .wpforms-container input[type="tel"],
+#bc-form .wpforms-container input[type="number"],
+#bc-form .wpforms-container input[type="date"],
+#bc-form .wpforms-container select,
+#bc-form .wpforms-container textarea {
+  width: 100%;
+  min-height: 50px;
+  background: #fafaf6;
+  border: 1.5px solid var(--green-line);
+  border-radius: var(--radius);
+  padding: 13px 14px;
+  font: 400 14px/1.4 'DM Sans', sans-serif;
+  color: var(--ink);
+  outline: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+  transition: border-color .2s, background .2s, box-shadow .2s;
+  box-sizing: border-box;
+}
+#bc-form .wpforms-container input::placeholder,
+#bc-form .wpforms-container textarea::placeholder { color: #9aa39e; opacity: 1; }
+#bc-form .wpforms-container input:focus,
+#bc-form .wpforms-container select:focus,
+#bc-form .wpforms-container textarea:focus {
+  border-color: var(--green);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(31,90,55,0.08);
+}
+#bc-form .wpforms-container select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%231f5a37'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 38px;
+  cursor: pointer;
+}
+#bc-form .wpforms-container textarea { min-height: 112px; resize: vertical; }
+
+/* ============================================================
+   WPFORMS FIELD CONTAINER — clean 2-col grid
+   ============================================================ */
+#bc-form .wpforms-container .wpforms-field-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 12px;
+  row-gap: 14px;
+  align-items: start;
+}
+
+/* Every direct field child fills its grid cell */
+#bc-form .wpforms-container .wpforms-field-container > .wpforms-field {
+  margin: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Textarea and submit span both columns */
+#bc-form .wpforms-container .wpforms-field-textarea,
+#bc-form .wpforms-container .wpforms-submit-container {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+/* ============================================================
+   WPFORMS LAYOUT ROWS (used for col-spanning date+guests row)
+   ============================================================ */
+#bc-form .wpforms-container .wpforms-layout-row,
+#bc-form .wpforms-container .wpforms-field-row {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 12px;
+  row-gap: 0;
+  margin: 0 !important;
+  align-items: start;
+  width: 100%;
+}
+
+/* When a layout row wraps a date+guests combo, span both columns in the outer grid */
+#bc-form .wpforms-container .wpforms-field-container > .wpforms-field:has(.wpforms-layout-row) {
+  grid-column: 1 / -1;
+}
+
+/* Column blocks inside layout rows */
+#bc-form .wpforms-container .wpforms-layout-column,
+#bc-form .wpforms-container .wpforms-column,
+#bc-form .wpforms-container .wpforms-field-row-block,
+#bc-form .wpforms-container .wpforms-one-half,
+#bc-form .wpforms-container .wpforms-first,
+#bc-form .wpforms-container .wpforms-last {
+  width: auto !important;
+  max-width: none !important;
+  min-width: 0;
+  padding: 0 !important;
+  margin: 0 !important;
+  float: none !important;
+  clear: none !important;
+  display: flex;
+  flex-direction: column;
+}
+
+#bc-form .wpforms-container .wpforms-layout-column .wpforms-field,
+#bc-form .wpforms-container .wpforms-column .wpforms-field,
+#bc-form .wpforms-container .wpforms-field-row-block .wpforms-field {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================================
+   DATE-TIME FIELD — stack date + time inputs vertically
+   ============================================================ */
+#bc-form .wpforms-container .wpforms-field-date-time .wpforms-field-sublabel {
+  display: none;
+}
+
+/* Override WPForms' internal row to be a single column stack */
+#bc-form .wpforms-container .wpforms-field-date-time .wpforms-field-row {
+  display: flex !important;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  margin: 0 !important;
+}
+
+#bc-form .wpforms-container .wpforms-field-date-time .wpforms-field-row-block,
+#bc-form .wpforms-container .wpforms-field-date-time .wpforms-datepicker-wrap,
+#bc-form .wpforms-container .wpforms-field-date-time .flatpickr-wrapper,
+#bc-form .wpforms-container .wpforms-field-date-time .wpforms-field-time,
+#bc-form .wpforms-container .wpforms-field-date-time .wpforms-date-time-date,
+#bc-form .wpforms-container .wpforms-field-date-time .wpforms-date-time-time {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0;
+  display: block;
+  box-sizing: border-box;
+  padding: 0 !important;
+  margin: 0 !important;
+  float: none !important;
+}
+
+#bc-form .wpforms-container .wpforms-field-date-time input,
+#bc-form .wpforms-container .wpforms-field-date-time select {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 50px;
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   GUEST COUNT PILLS (radio / checkbox)
+   ============================================================ */
+#bc-form .wpforms-container .wpforms-field-radio,
+#bc-form .wpforms-container .wpforms-field-checkbox {
+  display: flex;
+  flex-direction: column;
+}
+
+#bc-form .wpforms-container .wpforms-field-radio ul,
+#bc-form .wpforms-container .wpforms-field-checkbox ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#bc-form .wpforms-container .wpforms-field-radio li,
+#bc-form .wpforms-container .wpforms-field-checkbox li {
+  list-style: none;
+  margin: 0 !important;
+  min-width: 0;
+}
+
+/* Hide the actual radio/checkbox input */
+#bc-form .wpforms-container .wpforms-field-radio input,
+#bc-form .wpforms-container .wpforms-field-checkbox input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Style the label as a pill — matches the 50px min-height of text inputs */
+#bc-form .wpforms-container .wpforms-field-radio label,
+#bc-form .wpforms-container .wpforms-field-checkbox label {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  width: 100%;
+  padding: 10px 14px;
+  margin: 0 !important;
+  background: #fafaf6;
+  border: 1.5px solid var(--green-line);
+  border-radius: 999px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  transition: all .2s ease;
+  box-sizing: border-box;
+}
+
+#bc-form .wpforms-container .wpforms-field-radio label:hover,
+#bc-form .wpforms-container .wpforms-field-checkbox label:hover {
+  border-color: var(--green);
+}
+
+#bc-form .wpforms-container .wpforms-field-radio input:checked + label,
+#bc-form .wpforms-container .wpforms-field-checkbox input:checked + label {
+  background: var(--green-deep);
+  color: var(--yellow);
+  border-color: var(--green-deep);
+}
+
+/* ============================================================
+   SUBMIT BUTTON — full width across both columns
+   ============================================================ */
+#bc-form .wpforms-container .wpforms-submit-container {
+  padding: 8px 0 0;
+  margin: 0;
+}
+
+#bc-form .wpforms-container button[type="submit"] {
+  width: 100%;
+  padding: 17px;
+  background: var(--yellow);
+  color: var(--green-deep);
+  border: none;
+  border-radius: var(--radius);
+  font: 600 0/1 'DM Sans', sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .2s, transform .2s, box-shadow .2s;
+  box-shadow: 0 12px 30px rgba(241, 198, 58, 0.32);
+  position: relative;
+}
+#bc-form .wpforms-container button[type="submit"]::after {
+  content: "Plan Your Party";
+  font: 600 14.5px/1 'DM Sans', sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+#bc-form .wpforms-container button[type="submit"]:hover {
+  background: var(--green-deep);
+  color: var(--yellow);
+  transform: translateY(-2px);
+}
+#bc-form .wpforms-container button[type="submit"]:disabled { opacity: 0.7; cursor: wait; }
+
+/* Error + description helpers */
+#bc-form .wpforms-container .wpforms-error { font-size: 12px; margin-top: 6px; }
+#bc-form .wpforms-container .wpforms-field-description { font-size: 12px; color: var(--ink-dim); margin-top: 6px; }
+#bc-form .wpforms-container .wpforms-field { padding: 0; margin-bottom: 0; }
+
+/* ============================================================
+   FINAL CTA
+   ============================================================ */
+#bc-final {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(241,198,58,0.10) 0%, rgba(15,26,20,0) 60%),
+    var(--ink);
+  color: #fff;
+  text-align: center;
+  padding: 110px 28px;
+  position: relative;
+  overflow: hidden;
+}
+#bc-final::before {
+  content: ""; position: absolute; top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 540px; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--yellow), transparent);
+}
+#bc-final .bc-final-eyebrow {
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--yellow);
+  margin-bottom: 22px;
+}
+#bc-final h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: clamp(40px, 6vw, 72px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
+  color: #fff;
+  text-wrap: balance;
+}
+#bc-final h2 em { color: var(--yellow); font-style: italic; }
+#bc-final p {
+  font-size: 16px; color: rgba(255,255,255,0.78);
+  max-width: 540px; margin: 0 auto 34px;
+  line-height: 1.6;
+}
+#bc-final .bc-final-meta {
+  margin-top: 22px;
+  font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+
+/* ============================================================
+   REVEAL
+   ============================================================ */
+.bc-reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+.bc-reveal.bc-visible { opacity: 1; transform: translateY(0); }
+.bc-d1 { transition-delay: .08s; } .bc-d2 { transition-delay: .16s; } .bc-d3 { transition-delay: .24s; } .bc-d4 { transition-delay: .32s; } .bc-d5 { transition-delay: .40s; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 980px) {
+  .bc-section { padding: 76px 24px; }
+  .bc-why-grid,
+  .bc-event-grid,
+  .bc-how-grid,
+  .bc-testi-grid { grid-template-columns: 1fr 1fr; }
+  .bc-incl-grid,
+  .bc-form-grid { grid-template-columns: 1fr; gap: 40px; }
+  .bc-incl-img { aspect-ratio: 16/10; }
+  .bc-trust-inner { grid-template-columns: repeat(3, 1fr); }
+  .bc-trust-item:nth-child(3) { border-right: none; }
+  .bc-gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px 200px; }
+  .bc-gallery-cell:first-child { grid-row: span 1; grid-column: span 2; }
+}
+
+@media (max-width: 600px) {
+  .bc-section { padding: 64px 20px; }
+  #bc-hero { padding: 110px 20px 80px; min-height: 90vh; }
+  .bc-why-grid,
+  .bc-event-grid,
+  .bc-how-grid,
+  .bc-testi-grid { grid-template-columns: 1fr; }
+  .bc-incl-list { grid-template-columns: 1fr; }
+  .bc-form-card { padding: 28px 22px; }
+  .bc-trust-inner { grid-template-columns: 1fr 1fr; row-gap: 14px; }
+  .bc-trust-item { border-right: none; }
+  .bc-trust-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.10); }
+  .bc-btn { width: 100%; }
+  .bc-cta-row { width: 100%; flex-direction: column; align-items: center; }
+  .bc-gallery-grid { grid-template-columns: 1fr; grid-template-rows: repeat(4, 200px); }
+  .bc-gallery-cell:first-child { grid-column: span 1; }
+  .bc-google-row { flex-direction: column; gap: 6px; text-align: center; }
+
+  /* Mobile: everything full width */
+  #bc-form .wpforms-container .wpforms-field-container,
+  #bc-form .wpforms-container .wpforms-layout-row,
+  #bc-form .wpforms-container .wpforms-field-row {
+    grid-template-columns: 1fr !important;
+    display: grid !important;
+  }
+
+  #bc-form .wpforms-container .wpforms-field-radio ul,
+  #bc-form .wpforms-container .wpforms-field-checkbox ul {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #bc-form .wpforms-container .wpforms-field-date-time .wpforms-field-row {
+    flex-direction: column;
+  }
+}
+</style>
+
 <div id="bc-page">
+
+  <!-- ===== STICKY CTA BAR ===== -->
+  <div id="bc-stickybar" role="region" aria-label="Inquire">
+    <div class="bc-sb-inner">
+      <div class="bc-sb-left">
+        <div class="bc-sb-mark bc-serif">B</div>
+        <div class="bc-sb-text">Private Events at The Bogey Club <strong>· 24 hr reply</strong></div>
+      </div>
+      <a href="#bc-form" class="bc-sb-cta">Inquire Now &rarr;</a>
+    </div>
+  </div>
 
   <!-- ===== HERO ===== -->
   <section id="bc-hero">
-    <video autoplay muted loop playsinline id="bc-hero-bg" aria-hidden="true">
+    <!-- REPLACE-ME-VIDEO: swap src for your venue b-roll -->
+    <video id="bc-hero-bg" autoplay muted loop playsinline aria-hidden="true">
       <source src="https://thebogeyclub.com/wp-content/uploads/2026/03/copy_3F21AE01-DA66-4AB0-9274-9102F711D792.mov" type="video/mp4">
     </video>
     <div id="bc-hero-overlay"></div>
 
     <div id="bc-hero-content">
-      <div class="bc-eyebrow">Private Events · The Bogey Club · Newmarket, Ontario</div>
-
-      <!-- Social proof badge — visible immediately above headline -->
-      <div class="bc-hero-badge">
-        <span class="bc-hero-badge-stars">★★★★★</span>
-        <span class="bc-hero-badge-text">4.9 Google Rating · 140+ Reviews · 200+ Events Hosted</span>
+      <div class="bc-hero-eyebrow">
+        <span class="bc-dot"></span>
+        Private Events · Newmarket, Ontario
       </div>
-
-      <h1>Newmarket's Most<br><em>Unforgettable</em> Events.</h1>
-
-      <p id="bc-hero-sub">Golf simulators. Craft cocktails. A team that handles everything. From corporate nights to milestone birthdays — we make your event the one nobody forgets.</p>
-
-      <p class="bc-hero-location">📍 Newmarket, Ontario · Groups of 10–60 · 6 Private Simulator Bays</p>
-
-      <div class="bc-cta-group">
-        <a href="#bc-form-section" class="bc-btn-primary">Check Availability &rarr;</a>
-        <a href="tel:+19055550000" class="bc-btn-ghost">📞 Call Us Now</a>
+      <h1>
+        Host Your Next Event<br>
+        <span class="bc-h-yel">on the Greens.</span>
+      </h1>
+      <p id="bc-hero-sub">
+        Newmarket's best private venue for birthdays, corporate nights, holiday parties, and team celebrations. Golf simulators, full bar, easy planning, and a room your guests will actually remember.
+      </p>
+      <div class="bc-cta-row">
+        <a href="#bc-form" class="bc-btn bc-btn-primary">Request Event Info &rarr;</a>
+        <a href="#bc-why" class="bc-btn bc-btn-ghost">Why Book Here</a>
       </div>
-
-      <p class="bc-hero-guarantee">No commitment required &nbsp;·&nbsp; Response within 24 hours</p>
-    </div>
-
-    <div id="bc-hero-scroll">
-      <div class="bc-scroll-line"></div>
-      <div class="bc-scroll-label">Scroll</div>
+      <div class="bc-hero-meta">
+        <span><i></i> Groups of 10 to 60</span>
+        <span><i></i> 24 hr response</span>
+        <span><i></i> All skill levels welcome</span>
+      </div>
     </div>
   </section>
 
-  <!-- ===== TRUST BAR ===== -->
+  <!-- ===== TRUST STRIP ===== -->
   <div id="bc-trust">
-    <div class="bc-trust-item">
-      <div class="bc-trust-icon">🏆</div>
-      <div>
-        <div class="bc-trust-num">200+</div>
-        <div class="bc-trust-label">Events Hosted</div>
+    <div class="bc-trust-inner">
+      <div class="bc-trust-item">
+        <div class="bc-trust-num bc-serif">200+</div>
+        <div class="bc-trust-label">Events<br>hosted</div>
       </div>
-    </div>
-    <div class="bc-trust-item">
-      <div class="bc-trust-icon">⛳</div>
-      <div>
-        <div class="bc-trust-num">6</div>
-        <div class="bc-trust-label">Simulator Bays</div>
+      <div class="bc-trust-item">
+        <div class="bc-trust-num bc-serif">6</div>
+        <div class="bc-trust-label">Simulator<br>bays</div>
       </div>
-    </div>
-    <div class="bc-trust-item">
-      <div class="bc-trust-icon">👥</div>
-      <div>
-        <div class="bc-trust-num">60</div>
-        <div class="bc-trust-label">Max Guests</div>
+      <div class="bc-trust-item">
+        <div class="bc-trust-num bc-serif">60</div>
+        <div class="bc-trust-label">Max<br>guests</div>
       </div>
-    </div>
-    <div class="bc-trust-item">
-      <div class="bc-trust-icon">⭐</div>
-      <div>
-        <div class="bc-trust-num">4.9★</div>
-        <div class="bc-trust-label">Google Rating</div>
+      <div class="bc-trust-item">
+        <div class="bc-trust-num bc-serif">4.9★</div>
+        <div class="bc-trust-label">Google<br>rating</div>
       </div>
-    </div>
-    <div class="bc-trust-item">
-      <div class="bc-trust-icon">⚡</div>
-      <div>
-        <div class="bc-trust-num">24hr</div>
-        <div class="bc-trust-label">Response Guarantee</div>
+      <div class="bc-trust-item">
+        <div class="bc-trust-num bc-serif">24h</div>
+        <div class="bc-trust-label">Reply<br>guaranteed</div>
       </div>
     </div>
   </div>
 
-  <!-- ===== HOW IT WORKS (new) ===== -->
-  <div id="bc-how">
+  <!-- ===== WHY HOST HERE ===== -->
+  <section id="bc-why" class="bc-section">
     <div class="bc-section-inner">
-      <div class="bc-tag">Simple Process</div>
-      <h2 class="bc-headline">Three Steps to <em>Your Perfect Event.</em></h2>
-      <p class="bc-body" style="max-width:520px;margin:0 auto;">No phone tag. No generic packages. Just a fast, personal experience from first inquiry to final round.</p>
-
-      <div class="bc-how-grid">
-        <div class="bc-how-step bc-reveal">
-          <div class="bc-how-num">1</div>
-          <div class="bc-how-title">Submit Your Inquiry</div>
-          <div class="bc-how-desc">Fill out the quick form with your date, guest count, and event type. Takes 60 seconds.</div>
-        </div>
-        <div class="bc-how-step bc-reveal bc-reveal-delay-1">
-          <div class="bc-how-num">2</div>
-          <div class="bc-how-title">We Build Your Package</div>
-          <div class="bc-how-desc">Our events team contacts you within 24 hours with availability, pricing, and a tailored package.</div>
-        </div>
-        <div class="bc-how-step bc-reveal bc-reveal-delay-2">
-          <div class="bc-how-num">3</div>
-          <div class="bc-how-title">Lock In Your Date</div>
-          <div class="bc-how-desc">Confirm with a deposit, then show up and enjoy. We handle everything else.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== EXPERIENCE ===== -->
-  <section id="bc-experience" class="bc-section">
-    <div class="bc-section-inner">
-      <div class="bc-experience-grid">
-        <div class="bc-experience-img bc-reveal">
-          <div class="bc-experience-img-placeholder">
-            <span>🏌️</span>
-            Replace with event photo
-          </div>
-          <div class="bc-img-caption">The Bogey Club · Newmarket</div>
-        </div>
-
-        <div class="bc-reveal bc-reveal-delay-1">
-          <div class="bc-tag">The Experience</div>
-          <h2 class="bc-headline">This Isn't Your <em>Average</em> Venue.</h2>
-          <p class="bc-body">The Bogey Club was built for nights that feel completely different. State-of-the-art golf simulators. Craft cocktails. A dedicated event team that makes everything effortless — from first inquiry to last round.</p>
-          <p class="bc-body">Whether it's 10 people or 60, we handle every detail. The only thing you have to do is show up and enjoy it.</p>
-
-          <div class="bc-checklist">
-            <div class="bc-check-item"><div class="bc-check-dot">✓</div>6 private simulator bays, all skill levels welcome</div>
-            <div class="bc-check-item"><div class="bc-check-dot">✓</div>Full food &amp; beverage service included</div>
-            <div class="bc-check-item"><div class="bc-check-dot">✓</div>Dedicated event host assigned to your group</div>
-            <div class="bc-check-item"><div class="bc-check-dot">✓</div>Fully private — no sharing with other guests</div>
-            <div class="bc-check-item"><div class="bc-check-dot">✓</div>Customisable packages for every budget</div>
-          </div>
-
-          <div class="bc-pullquote">
-            No awkward banquet halls. No generic packages. Just great vibes, real golf, and a space your guests won't stop talking about.
-          </div>
-        </div>
+      <div class="bc-section-head bc-center bc-reveal">
+        <div class="bc-tag">Why Book With Us</div>
+        <h2 class="bc-h2">A real venue people <em>actually want</em> to be in.</h2>
+        <p class="bc-lede">Skip the banquet hall. The Bogey Club is built for groups who want to do something different, eat well, and have fun together. No matter what they shoot.</p>
       </div>
 
-      <!-- Mid-page CTA (new) -->
-      <div class="bc-inline-cta bc-reveal">
-        <div class="bc-inline-cta-text">Ready to check your date? <em>Takes 60 seconds.</em></div>
-        <a href="#bc-form-section" class="bc-btn-green">Get Availability &amp; Pricing &rarr;</a>
+      <div class="bc-why-grid">
+        <div class="bc-why-card bc-reveal">
+          <div class="bc-why-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#143a23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </div>
+          <h3>Easy to plan</h3>
+          <p>One inquiry, one coordinator, one invoice. We handle the food, bar, setup, and tech so you can stay out of the spreadsheets.</p>
+        </div>
+        <div class="bc-why-card bc-reveal bc-d1">
+          <div class="bc-why-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#143a23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18M5 18V8l7-4 7 4v10M9 18v-6h6v6"/></svg>
+          </div>
+          <h3>Indoor and weather proof</h3>
+          <p>Rain, snow, or sun, your event is on. The room is climate controlled, comfortable, and ready year round.</p>
+        </div>
+        <div class="bc-why-card bc-reveal bc-d2">
+          <div class="bc-why-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#143a23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19c4-1 6-3 8-7 2 4 4 6 8 7"/><circle cx="12" cy="6" r="2"/></svg>
+          </div>
+          <h3>Great for everyone</h3>
+          <p>Total beginners and scratch golfers feel right at home. Our simulators make it easy and our team coaches when needed.</p>
+        </div>
+        <div class="bc-why-card bc-reveal">
+          <div class="bc-why-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#143a23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11h14l-1 9H6z"/><path d="M9 11V7a3 3 0 0 1 6 0v4"/></svg>
+          </div>
+          <h3>Bar and lounge vibe</h3>
+          <p>Full bar, craft cocktails, shareable food, and music that actually plays. Less corporate dinner, more night out.</p>
+        </div>
+        <div class="bc-why-card bc-reveal bc-d1">
+          <div class="bc-why-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#143a23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M2 20c0-3 3-5 6-5s6 2 6 5M14 20c0-2 2-4 5-4s3 2 3 4"/></svg>
+          </div>
+          <h3>Truly private</h3>
+          <p>Your group, your bays, your bar staff. No mixing with walk ins. The space is yours for the evening.</p>
+        </div>
+        <div class="bc-why-card bc-reveal bc-d2">
+          <div class="bc-why-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#143a23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 6 1-4 5 1 7-6-3-6 3 1-7-4-5 6-1z"/></svg>
+          </div>
+          <h3>Packages for every budget</h3>
+          <p>Flexible food and drink packages built around your group size. We will work backward from your number to make it fit.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -1502,46 +1248,48 @@
   <!-- ===== EVENT TYPES ===== -->
   <section id="bc-events" class="bc-section">
     <div class="bc-section-inner">
-      <div class="bc-section-header bc-reveal">
-        <div class="bc-tag">Perfect For</div>
-        <h2 class="bc-headline" style="text-align:center;">Every Occasion.<br><em>Perfectly Executed.</em></h2>
+      <div class="bc-section-head bc-center bc-reveal">
+        <div class="bc-tag">Built For</div>
+        <h2 class="bc-h2">Every kind of <em>group night.</em></h2>
+        <p class="bc-lede">Whatever you are planning, we have hosted it before. Pick the vibe and we will tailor the night around it.</p>
       </div>
-      <div class="bc-events-grid">
-        <a href="#bc-form-section" class="bc-event-card bc-reveal">
-          <span class="bc-event-icon">🎂</span>
-          <div class="bc-event-title">Birthday Parties</div>
-          <div class="bc-event-desc">Make them feel like the main character all night. We set the scene — you just celebrate.</div>
-          <div class="bc-event-arrow">Inquire →</div>
+
+      <div class="bc-event-grid">
+        <a href="#bc-form" class="bc-event-card bc-reveal">
+          <div class="bc-event-num">01</div>
+          <h4>Birthday Parties</h4>
+          <p>Make the birthday person the main character. Bring the crew, we will bring the drinks.</p>
+          <div class="bc-event-arrow">↗</div>
         </a>
-        <a href="#bc-form-section" class="bc-event-card bc-reveal bc-reveal-delay-1">
-          <span class="bc-event-icon">💼</span>
-          <div class="bc-event-title">Corporate Events</div>
-          <div class="bc-event-desc">Impress your team or clients. We handle logistics so you can focus on the relationships.</div>
-          <div class="bc-event-arrow">Inquire →</div>
+        <a href="#bc-form" class="bc-event-card bc-reveal bc-d1">
+          <div class="bc-event-num">02</div>
+          <h4>Corporate Events</h4>
+          <p>Team offsites and client nights that do not feel like work. Easy logistics, real food, real fun.</p>
+          <div class="bc-event-arrow">↗</div>
         </a>
-        <a href="#bc-form-section" class="bc-event-card bc-reveal bc-reveal-delay-2">
-          <span class="bc-event-icon">🏆</span>
-          <div class="bc-event-title">Team Celebrations</div>
-          <div class="bc-event-desc">Celebrate wins the right way — together, on the course, with drinks in hand.</div>
-          <div class="bc-event-arrow">Inquire →</div>
+        <a href="#bc-form" class="bc-event-card bc-reveal bc-d2">
+          <div class="bc-event-num">03</div>
+          <h4>Holiday Parties</h4>
+          <p>The company Christmas party people actually want to come to. Lock your December date early.</p>
+          <div class="bc-event-arrow">↗</div>
         </a>
-        <a href="#bc-form-section" class="bc-event-card bc-reveal">
-          <span class="bc-event-icon">🥂</span>
-          <div class="bc-event-title">Client Entertainment</div>
-          <div class="bc-event-desc">Close deals in the most memorable room in Newmarket. First impressions that actually last.</div>
-          <div class="bc-event-arrow">Inquire →</div>
+        <a href="#bc-form" class="bc-event-card bc-reveal">
+          <div class="bc-event-num">04</div>
+          <h4>Bachelor Parties</h4>
+          <p>One spot, all night. Golf, drinks, food, and zero coordination headaches for the best man.</p>
+          <div class="bc-event-arrow">↗</div>
         </a>
-        <a href="#bc-form-section" class="bc-event-card bc-reveal bc-reveal-delay-1">
-          <span class="bc-event-icon">🎄</span>
-          <div class="bc-event-title">Holiday Parties</div>
-          <div class="bc-event-desc">Your Christmas party — finally one people actually want to attend.</div>
-          <div class="bc-event-arrow">Inquire →</div>
+        <a href="#bc-form" class="bc-event-card bc-reveal bc-d1">
+          <div class="bc-event-num">05</div>
+          <h4>Client Appreciation</h4>
+          <p>Take care of the people who take care of you. The kind of night they will text about on Monday.</p>
+          <div class="bc-event-arrow">↗</div>
         </a>
-        <a href="#bc-form-section" class="bc-event-card bc-reveal bc-reveal-delay-2">
-          <span class="bc-event-icon">🎊</span>
-          <div class="bc-event-title">Milestone Celebrations</div>
-          <div class="bc-event-desc">Anniversaries, retirements, promotions. Every milestone deserves a night worth remembering.</div>
-          <div class="bc-event-arrow">Inquire →</div>
+        <a href="#bc-form" class="bc-event-card bc-reveal bc-d2">
+          <div class="bc-event-num">06</div>
+          <h4>Social Golf Nights</h4>
+          <p>Tournaments, leagues, and group hangs. Bring the league or build one with us.</p>
+          <div class="bc-event-arrow">↗</div>
         </a>
       </div>
     </div>
@@ -1550,438 +1298,327 @@
   <!-- ===== WHAT'S INCLUDED ===== -->
   <section id="bc-included" class="bc-section">
     <div class="bc-section-inner">
-      <div class="bc-section-header bc-reveal" style="text-align:center;margin-bottom:48px;">
-        <div class="bc-tag">The Package</div>
-        <h2 class="bc-headline" style="text-align:center;">Everything Included<br><em>When You Book.</em></h2>
-      </div>
-      <div class="bc-included-grid">
-        <div class="bc-feature bc-reveal">
-          <div class="bc-feature-num">01</div>
-          <div class="bc-feature-title">Private Simulator Bays</div>
-          <div class="bc-feature-desc">Exclusive use of our state-of-the-art golf simulators. Your group, your game, zero interruptions.</div>
+      <div class="bc-incl-grid">
+        <div class="bc-incl-img bc-reveal">
+          <!-- REPLACE-ME-IMG: a wide shot of guests at the bays with drinks in hand -->
+          <div class="bc-ph">REPLACE WITH HERO EVENT PHOTO<br>(landscape, guests + simulators)</div>
+          <div class="bc-incl-img-tag">Your private space</div>
         </div>
-        <div class="bc-feature bc-reveal bc-reveal-delay-1">
-          <div class="bc-feature-num">02</div>
-          <div class="bc-feature-title">Dedicated Event Host</div>
-          <div class="bc-feature-desc">A team member assigned to your event from arrival to last call — so nothing falls through the cracks.</div>
-        </div>
-        <div class="bc-feature bc-reveal bc-reveal-delay-2">
-          <div class="bc-feature-num">03</div>
-          <div class="bc-feature-title">Curated F&amp;B Packages</div>
-          <div class="bc-feature-desc">Premium bar service and food packages tailored to your group size, preferences, and budget.</div>
-        </div>
-        <div class="bc-feature bc-reveal bc-reveal-delay-3">
-          <div class="bc-feature-num">04</div>
-          <div class="bc-feature-title">Full Flexibility</div>
-          <div class="bc-feature-desc">Custom timing, layout, and options built around your vision — not a template.</div>
+
+        <div class="bc-reveal bc-d1">
+          <div class="bc-tag">What's Included</div>
+          <h2 class="bc-h2">Everything in <em>one package.</em></h2>
+          <p class="bc-lede">You pick the date and the headcount. We take care of the rest so the night runs itself.</p>
+
+          <div class="bc-incl-list">
+            <div class="bc-incl-item">
+              <div class="bc-check">✓</div>
+              <div>
+                <h4>Private simulator bays</h4>
+                <p>Reserved for your group. No walk ins.</p>
+              </div>
+            </div>
+            <div class="bc-incl-item">
+              <div class="bc-check">✓</div>
+              <div>
+                <h4>Dedicated event host</h4>
+                <p>One point of contact, start to finish.</p>
+              </div>
+            </div>
+            <div class="bc-incl-item">
+              <div class="bc-check">✓</div>
+              <div>
+                <h4>Food + bar packages</h4>
+                <p>Shareables, mains, and a full drink list.</p>
+              </div>
+            </div>
+            <div class="bc-incl-item">
+              <div class="bc-check">✓</div>
+              <div>
+                <h4>Golfzon simulators</h4>
+                <p>The same tech the pros train on.</p>
+              </div>
+            </div>
+            <div class="bc-incl-item">
+              <div class="bc-check">✓</div>
+              <div>
+                <h4>Coaching on request</h4>
+                <p>For total beginners or birthday VIPs.</p>
+              </div>
+            </div>
+            <div class="bc-incl-item">
+              <div class="bc-check">✓</div>
+              <div>
+                <h4>Custom timing + layout</h4>
+                <p>Built around your night, not a template.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- ===== TESTIMONIALS (moved earlier) ===== -->
-  <section id="bc-testimonials" class="bc-section">
-    <div class="bc-section-inner">
-      <div class="bc-section-header bc-reveal" style="text-align:center;margin-bottom:48px;">
-        <div class="bc-tag">What Guests Say</div>
-        <h2 class="bc-headline" style="text-align:center;">Don't Take Our <em>Word For It.</em></h2>
-      </div>
-      <div class="bc-testi-grid">
-        <div class="bc-testi-card bc-reveal">
-          <div class="bc-stars">★★★★★</div>
-          <div class="bc-testi-quote">"Hands down the best company holiday party we have ever done. Every single person on our team said they want to come back next year."</div>
-          <div class="bc-testi-divider"></div>
-          <div class="bc-testi-name">Sarah M.</div>
-          <div class="bc-testi-event">Marketing Director · Corporate Holiday Party</div>
-        </div>
-        <div class="bc-testi-card bc-reveal bc-reveal-delay-1">
-          <div class="bc-stars">★★★★★</div>
-          <div class="bc-testi-quote">"The staff made everything completely effortless. We showed up, played golf, had incredible drinks. Genuinely the perfect night."</div>
-          <div class="bc-testi-divider"></div>
-          <div class="bc-testi-name">James K.</div>
-          <div class="bc-testi-event">Birthday Party · Group of 22</div>
-        </div>
-        <div class="bc-testi-card bc-reveal bc-reveal-delay-2">
-          <div class="bc-stars">★★★★★</div>
-          <div class="bc-testi-quote">"Our clients could not stop talking about it. The Bogey Club is now our go-to for client entertainment. Nowhere else in Newmarket compares."</div>
-          <div class="bc-testi-divider"></div>
-          <div class="bc-testi-name">Priya D.</div>
-          <div class="bc-testi-event">Client Entertainment · Sales Team</div>
-        </div>
-      </div>
-      <div class="bc-google-rating bc-reveal">
-        <div class="bc-google-stars">★★★★★</div>
-        <div class="bc-google-text">4.9 stars &middot; 140+ verified reviews on Google</div>
-      </div>
-
-      <!-- Mid-page repeat CTA (new) -->
-      <div class="bc-inline-cta bc-reveal" style="margin-top:52px;">
-        <div class="bc-inline-cta-text">Join 200+ groups who've made us their <em>first call.</em></div>
-        <a href="#bc-form-section" class="bc-btn-green">Inquire About Your Date &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== STATS BAR ===== -->
-  <div id="bc-stats">
-    <div class="bc-stats-grid">
-      <div class="bc-stat">
-        <div class="bc-stat-num">200+</div>
-        <div class="bc-stat-label">Events Hosted</div>
-      </div>
-      <div class="bc-stat">
-        <div class="bc-stat-num">6</div>
-        <div class="bc-stat-label">Simulator Bays</div>
-      </div>
-      <div class="bc-stat">
-        <div class="bc-stat-num">60</div>
-        <div class="bc-stat-label">Max Guests</div>
-      </div>
-      <div class="bc-stat">
-        <div class="bc-stat-num">4.9★</div>
-        <div class="bc-stat-label">Google Rated</div>
-      </div>
-    </div>
-  </div>
 
   <!-- ===== GALLERY ===== -->
   <section id="bc-gallery" class="bc-section">
     <div class="bc-section-inner">
-      <div class="bc-section-header bc-reveal" style="text-align:center;margin-bottom:36px;">
-        <div class="bc-tag">Inside The Bogey Club</div>
-        <h2 class="bc-headline" style="text-align:center;">See the <em>Space.</em></h2>
+      <div class="bc-section-head bc-center bc-reveal">
+        <div class="bc-tag">Inside The Club</div>
+        <h2 class="bc-h2">See the <em>room.</em></h2>
+        <p class="bc-lede">A look at the space, the simulators, and a few nights we have hosted recently.</p>
       </div>
+
       <div class="bc-gallery-grid">
-        <div class="bc-gallery-cell bc-reveal">
-          <div class="bc-gallery-placeholder"><span>📸</span>Event photo (tall)</div>
+        <!-- REPLACE-ME-IMG: 5 event photos. Tall photo first works best. -->
+        <div class="bc-gallery-cell bc-reveal"><div class="bc-ph">Event photo · tall<br>(group + simulator)</div></div>
+        <div class="bc-gallery-cell bc-reveal bc-d1"><div class="bc-ph">Simulator close up</div></div>
+        <div class="bc-gallery-cell bc-reveal bc-d2"><div class="bc-ph">Cocktail or food shot</div></div>
+        <div class="bc-gallery-cell bc-reveal bc-d1"><div class="bc-ph">Group shot</div></div>
+        <div class="bc-gallery-cell bc-reveal bc-d2"><div class="bc-ph">Bar / lounge ambiance</div></div>
+      </div>
+
+      <p class="bc-gallery-ig bc-reveal">More on Instagram &nbsp;<a href="https://instagram.com/thebogeyclub" target="_blank" rel="noopener noreferrer">@TheBogeyClub &rarr;</a></p>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section id="bc-how" class="bc-section">
+    <div class="bc-section-inner">
+      <div class="bc-section-head bc-center bc-reveal">
+        <div class="bc-tag">How It Works</div>
+        <h2 class="bc-h2">Three steps to a <em>locked in date.</em></h2>
+        <p class="bc-lede">Booking your event takes less time than picking the playlist.</p>
+      </div>
+
+      <div class="bc-how-grid">
+        <div class="bc-how-step bc-reveal">
+          <div class="bc-how-num bc-serif">1</div>
+          <h4>Send a quick inquiry</h4>
+          <p>Drop your date, guest count, and event type below. Takes about 60 seconds.</p>
         </div>
-        <div class="bc-gallery-cell bc-reveal bc-reveal-delay-1">
-          <div class="bc-gallery-placeholder"><span>⛳</span>Simulator bay</div>
+        <div class="bc-how-step bc-reveal bc-d1">
+          <div class="bc-how-num bc-serif">2</div>
+          <h4>Get a tailored plan</h4>
+          <p>We reply within 24 hours with availability, package options, and pricing built for your group.</p>
         </div>
-        <div class="bc-gallery-cell bc-reveal bc-reveal-delay-2">
-          <div class="bc-gallery-placeholder"><span>🍸</span>Cocktails</div>
-        </div>
-        <div class="bc-gallery-cell bc-reveal bc-reveal-delay-1">
-          <div class="bc-gallery-placeholder"><span>👥</span>Group shot</div>
-        </div>
-        <div class="bc-gallery-cell bc-reveal bc-reveal-delay-2">
-          <div class="bc-gallery-placeholder"><span>✨</span>Room ambiance</div>
+        <div class="bc-how-step bc-reveal bc-d2">
+          <div class="bc-how-num bc-serif">3</div>
+          <h4>Show up and enjoy</h4>
+          <p>We handle setup, service, and golf. You handle showing up and looking like a hero.</p>
         </div>
       </div>
-      <p class="bc-gallery-ig bc-reveal">Follow the action on Instagram: <a href="https://instagram.com/thebogeyclub" target="_blank" rel="noopener noreferrer">@TheBogeyClub</a> &rarr;</p>
+
+      <div class="bc-how-cta-row bc-reveal">
+        <a href="#bc-form" class="bc-btn bc-btn-primary">Start Step 1 &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section id="bc-testi" class="bc-section">
+    <div class="bc-section-inner">
+      <div class="bc-section-head bc-center bc-reveal">
+        <div class="bc-tag">What Guests Say</div>
+        <h2 class="bc-h2">The nights people <em>keep talking about.</em></h2>
+      </div>
+
+      <div class="bc-testi-grid">
+        <div class="bc-testi-card bc-reveal">
+          <div class="bc-testi-stars">★★★★★</div>
+          <div class="bc-testi-q">"Hands down the best company holiday party we have ever done. Every person on the team said they want to come back next year."</div>
+          <div class="bc-testi-name">Sarah M.</div>
+          <div class="bc-testi-meta">Marketing Director · Corporate Holiday Party</div>
+        </div>
+        <div class="bc-testi-card bc-reveal bc-d1">
+          <div class="bc-testi-stars">★★★★★</div>
+          <div class="bc-testi-q">"The staff made everything effortless. We showed up, played golf, had incredible drinks. Genuinely the perfect night for the crew."</div>
+          <div class="bc-testi-name">James K.</div>
+          <div class="bc-testi-meta">Birthday Party · Group of 22</div>
+        </div>
+        <div class="bc-testi-card bc-reveal bc-d2">
+          <div class="bc-testi-stars">★★★★★</div>
+          <div class="bc-testi-q">"Our clients could not stop talking about it. The Bogey Club is now our go to for client entertainment. Nothing in Newmarket compares."</div>
+          <div class="bc-testi-name">Priya D.</div>
+          <div class="bc-testi-meta">Client Entertainment · Sales Team</div>
+        </div>
+      </div>
+
+      <div class="bc-google-row bc-reveal">
+        <span class="bc-stars">★★★★★</span>
+        <span><strong>4.9</strong> from 140+ reviews on Google</span>
+      </div>
     </div>
   </section>
 
   <!-- ===== FAQ ===== -->
   <section id="bc-faq" class="bc-section">
     <div class="bc-section-inner">
-      <div class="bc-section-header bc-reveal" style="text-align:center;margin-bottom:48px;">
+      <div class="bc-section-head bc-center bc-reveal">
         <div class="bc-tag">Common Questions</div>
-        <h2 class="bc-headline" style="text-align:center;">Everything You <em>Need to Know.</em></h2>
+        <h2 class="bc-h2">Quick answers before <em>you ask.</em></h2>
       </div>
-      <div class="bc-faq-list">
 
-        <!-- Lead with welcoming question, not scary spend question -->
+      <div class="bc-faq-wrap">
         <div class="bc-faq-item bc-open bc-reveal">
           <button class="bc-faq-q" type="button">
-            Do guests need to know how to play golf?
-            <span class="bc-faq-icon">+</span>
+            <span>What is the minimum spend for a private event?</span>
+            <span class="bc-faq-toggle">+</span>
           </button>
-          <div class="bc-faq-a">
-            <div class="bc-faq-a-inner">Not at all. Our simulators are designed for every skill level — complete beginners to seasoned players. Our staff will get your group set up and comfortable immediately. Most guests say the simulator is the highlight of the night, whether they've played golf before or not.</div>
-          </div>
+          <div class="bc-faq-a"><div class="bc-faq-a-inner">It depends on group size, day, and time of year. We have a package that fits most budgets. Send a quick inquiry and we will share the exact numbers for your date.</div></div>
         </div>
 
         <div class="bc-faq-item bc-reveal">
           <button class="bc-faq-q" type="button">
-            How far in advance should I book?
-            <span class="bc-faq-icon">+</span>
+            <span>How far in advance should I book?</span>
+            <span class="bc-faq-toggle">+</span>
           </button>
-          <div class="bc-faq-a">
-            <div class="bc-faq-a-inner">We recommend booking 4–6 weeks in advance for Friday and Saturday evenings, which tend to fill up fast. That said, we always do our best to accommodate last-minute requests — reach out and we'll see what we can do.</div>
-          </div>
+          <div class="bc-faq-a"><div class="bc-faq-a-inner">Four to six weeks ahead is ideal, especially for Friday and Saturday nights. December and holiday slots fill up fastest. Last minute is still worth a try, we will always do our best.</div></div>
         </div>
 
         <div class="bc-faq-item bc-reveal">
           <button class="bc-faq-q" type="button">
-            Is the space fully private for my group?
-            <span class="bc-faq-icon">+</span>
+            <span>Is the space fully private for my group?</span>
+            <span class="bc-faq-toggle">+</span>
           </button>
-          <div class="bc-faq-a">
-            <div class="bc-faq-a-inner">Yes. When you book a private event at The Bogey Club, your group has exclusive use of the reserved bays and dedicated service staff. Your event is fully separated from general play — it's your space for the entire evening.</div>
-          </div>
+          <div class="bc-faq-a"><div class="bc-faq-a-inner">Yes. Your booked bays and dedicated staff are reserved just for your group. You are not mixed in with general play.</div></div>
         </div>
 
         <div class="bc-faq-item bc-reveal">
           <button class="bc-faq-q" type="button">
-            Can we customize the food and drink menu?
-            <span class="bc-faq-icon">+</span>
+            <span>Can we customize the food and drink menu?</span>
+            <span class="bc-faq-toggle">+</span>
           </button>
-          <div class="bc-faq-a">
-            <div class="bc-faq-a-inner">Absolutely. We offer curated packages and can work with you to build something that fits your group perfectly. Once you submit your inquiry, our team will follow up with a full breakdown of food and beverage options for your event size and budget.</div>
-          </div>
+          <div class="bc-faq-a"><div class="bc-faq-a-inner">Absolutely. We have curated packages and can adapt for dietary needs, themes, and budget. You will get the full breakdown when you inquire.</div></div>
         </div>
 
         <div class="bc-faq-item bc-reveal">
           <button class="bc-faq-q" type="button">
-            What is the minimum spend for a private event?
-            <span class="bc-faq-icon">+</span>
+            <span>What is the maximum group size?</span>
+            <span class="bc-faq-toggle">+</span>
           </button>
-          <div class="bc-faq-a">
-            <div class="bc-faq-a-inner">We offer flexible F&amp;B minimums depending on group size and day of the week. Our team will walk you through all the options when you inquire — there is a package that works for every budget and occasion. No surprises.</div>
-          </div>
+          <div class="bc-faq-a"><div class="bc-faq-a-inner">We comfortably host up to 60 guests. Bigger groups, ask us, we will figure it out.</div></div>
         </div>
 
         <div class="bc-faq-item bc-reveal">
           <button class="bc-faq-q" type="button">
-            What's the maximum group size?
-            <span class="bc-faq-icon">+</span>
+            <span>Do guests need to know how to play golf?</span>
+            <span class="bc-faq-toggle">+</span>
           </button>
-          <div class="bc-faq-a">
-            <div class="bc-faq-a-inner">We comfortably host groups of up to 60 guests. For larger events or multi-bay bookings, reach out directly and our team will discuss what's possible for your date and setup.</div>
-          </div>
+          <div class="bc-faq-a"><div class="bc-faq-a-inner">Not at all. The simulators are built for every skill level. Total beginners always have the best time. Our team will get everyone set up in a couple of swings.</div></div>
         </div>
 
+        <div class="bc-faq-item bc-reveal">
+          <button class="bc-faq-q" type="button">
+            <span>Is there parking and is the venue accessible?</span>
+            <span class="bc-faq-toggle">+</span>
+          </button>
+          <div class="bc-faq-a"><div class="bc-faq-a-inner">Yes, free parking on site and the venue is ground level and accessible.</div></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== INQUIRY FORM ===== -->
-  <section id="bc-form-section" class="bc-section">
+  <!-- ===== FORM ===== -->
+  <section id="bc-form" class="bc-section">
     <div class="bc-section-inner">
       <div class="bc-form-grid">
-
-        <!-- Left: context + social proof -->
-        <div class="bc-form-left bc-reveal">
-          <div class="bc-tag">Book Your Event</div>
-          <h2 class="bc-headline">Let's Plan <em>Your Night.</em></h2>
-
-          <!-- Urgency indicator (new) -->
-          <div class="bc-urgency-note">
-            <div class="bc-urgency-dot"></div>
-            Friday &amp; Saturday dates are filling up fast
-          </div>
-
-          <p class="bc-body">Fill out the form and one of our event coordinators will be in touch within 24 hours with availability, pricing, and custom package options. No commitment required.</p>
+        <div class="bc-reveal">
+          <div class="bc-tag">Inquire</div>
+          <h2 class="bc-h2">Let's plan <em>your event.</em></h2>
+          <p class="bc-lede">Fill out the form. We will reply within 24 hours with availability, pricing, and package options for your date. No commitment.</p>
 
           <div class="bc-form-promises">
             <div class="bc-promise">
-              <div class="bc-promise-dot"></div>
-              <div class="bc-promise-text">Response guaranteed within 24 hours — usually much sooner.</div>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f1c63a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Reply within 24 hours, usually a lot sooner.</span>
             </div>
             <div class="bc-promise">
-              <div class="bc-promise-dot"></div>
-              <div class="bc-promise-text">No commitment required — we'll send everything you need to decide.</div>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f1c63a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>No commitment. We send pricing, you decide.</span>
             </div>
             <div class="bc-promise">
-              <div class="bc-promise-dot"></div>
-              <div class="bc-promise-text">Prefer to talk? Call or DM <strong style="color:var(--gold);font-weight:400;">@TheBogeyClub</strong> on Instagram.</div>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f1c63a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Real humans, not an inbox. We answer DMs too.</span>
             </div>
           </div>
 
-          <!-- Social proof block next to form (new) -->
-          <div class="bc-form-social">
-            <div class="bc-form-social-stars">★★★★★</div>
-            <div class="bc-form-social-text">"The staff made everything effortless. We showed up, played golf, had incredible drinks. The perfect night."</div>
-            <div class="bc-form-social-name">James K. · Birthday Party</div>
+          <div class="bc-form-alt-row">
+            Prefer to talk?<br>
+            Call <a href="tel:+19055550000">(905) 000 0000</a> &nbsp;·&nbsp;
+            DM <a href="https://instagram.com/thebogeyclub" target="_blank" rel="noopener noreferrer">@TheBogeyClub</a>
           </div>
         </div>
 
-        <!-- Right: form -->
-        <div class="bc-form-right bc-reveal bc-reveal-delay-1">
-          <form id="bc-inquiry-form" onsubmit="bcSubmit(event)" novalidate>
-            <div class="bc-form-row">
-              <div class="bc-field">
-                <label for="bc-name">Your Name *</label>
-                <input type="text" id="bc-name" name="name" placeholder="Full name" required autocomplete="name">
-              </div>
-              <div class="bc-field">
-                <label for="bc-email">Email Address *</label>
-                <input type="email" id="bc-email" name="email" placeholder="you@email.com" required autocomplete="email">
-              </div>
-            </div>
-            <div class="bc-form-row">
-              <div class="bc-field">
-                <label for="bc-phone">Phone Number</label>
-                <input type="tel" id="bc-phone" name="phone" placeholder="+1 (xxx) xxx-xxxx" autocomplete="tel">
-              </div>
-              <div class="bc-field">
-                <label for="bc-type">Type of Event *</label>
-                <select id="bc-type" name="event_type" required>
-                  <option value="" disabled selected>Select event type</option>
-                  <option>Birthday Party</option>
-                  <option>Corporate Event</option>
-                  <option>Team Celebration</option>
-                  <option>Client Entertainment</option>
-                  <option>Holiday Party</option>
-                  <option>Milestone Celebration</option>
-                  <option>Other</option>
-                </select>
-              </div>
-            </div>
-            <div class="bc-form-row">
-              <div class="bc-field">
-                <label for="bc-date">Preferred Date</label>
-                <input type="text" id="bc-date" name="date" placeholder="e.g. June 14, 2026">
-              </div>
-              <div class="bc-field">
-                <label for="bc-guests">Guest Count</label>
-                <input type="text" id="bc-guests" name="guests" placeholder="e.g. 25 people">
-              </div>
-            </div>
-            <div class="bc-field">
-              <label for="bc-message">Anything else we should know? (optional)</label>
-              <textarea id="bc-message" name="message" placeholder="Theme, special requests, dietary needs, etc."></textarea>
-            </div>
-
-            <button type="submit" class="bc-submit" id="bc-submit-btn">Get Availability &amp; Pricing &rarr;</button>
-
-            <div id="bc-form-feedback" style="display:none;text-align:center;margin-top:16px;padding:16px;background:#f0f8f3;border:1px solid rgba(34,93,56,0.2);border-radius:3px;font-size:13px;color:var(--gold);line-height:1.6;"></div>
-
-            <div class="bc-form-guarantee">
-              <span>🔒</span> Your info is private. We'll never share or spam you.
-            </div>
-
-            <p class="bc-form-alt">Or call <a href="tel:+19055550000">(905) 000-0000</a> &nbsp;·&nbsp; DM <a href="https://instagram.com/thebogeyclub" target="_blank" rel="noopener noreferrer">@TheBogeyClub</a> on Instagram</p>
-          </form>
+        <div class="bc-form-card bc-reveal bc-d1">
+          <div class="bc-form-step">Step 1 of 1 · about 60 seconds</div>
+          <h3>Tell us about your night.</h3>
+          [wpforms id="3129"]
+          <p class="bc-form-tiny">We reply within 24 hours · Your info stays with us</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== CLOSING CTA ===== -->
-  <section id="bc-closing">
-    <div class="bc-closing-eyebrow bc-reveal">The Bogey Club · Newmarket, Ontario</div>
-    <h2 class="bc-closing-headline bc-reveal">Saturdays Are <em>Going Fast.</em></h2>
-    <p class="bc-closing-sub bc-reveal">Inquire today to lock in your date — our team handles everything from there.</p>
+  <!-- ===== FINAL CTA ===== -->
+  <section id="bc-final">
+    <div class="bc-final-eyebrow bc-reveal">The Bogey Club · Newmarket, Ontario</div>
+    <h2 class="bc-reveal">Saturdays book out <em>fast.</em></h2>
+    <p class="bc-reveal">Lock in your date before someone else does. One quick inquiry and we handle the rest.</p>
     <div class="bc-reveal">
-      <a href="#bc-form-section" class="bc-btn-primary" style="font-size:14px;padding:18px 44px;">Check Your Date &rarr;</a>
+      <a href="#bc-form" class="bc-btn bc-btn-primary">Check My Date &rarr;</a>
     </div>
-    <div class="bc-closing-trust bc-reveal">
-      <span class="bc-closing-trust-item">No commitment to inquire</span>
-      <span class="bc-closing-trust-item">Response within 24 hours</span>
-      <span class="bc-closing-trust-item">4.9 stars · 140+ Google reviews</span>
-      <span class="bc-closing-trust-item">200+ events hosted</span>
-    </div>
-    <p class="bc-closing-note bc-reveal">Private events for groups of 10–60 · Corporate, birthdays, team events &amp; more</p>
+    <div class="bc-final-meta bc-reveal">Groups of 10 to 60 · Corporate · Birthdays · Holidays · Teams</div>
   </section>
 
-</div><!-- /#bc-page -->
-
-<!-- ===== STICKY MOBILE CTA (new) ===== -->
-<div id="bc-sticky-cta">
-  <div class="bc-sticky-inner">
-    <div class="bc-sticky-text">
-      <strong>The Bogey Club — Private Events</strong>
-      Dates filling up fast
-    </div>
-    <a href="#bc-form-section" class="bc-sticky-btn">Inquire Now</a>
-  </div>
 </div>
 
 <script>
 (function() {
-  /* ---- Scroll reveal ---- */
-  var reveals = document.querySelectorAll('#bc-page .bc-reveal');
-  if ('IntersectionObserver' in window) {
-    var revealObs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('bc-visible');
-          revealObs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.10, rootMargin: '0px 0px -36px 0px' });
-    reveals.forEach(function(el) { revealObs.observe(el); });
-  } else {
-    reveals.forEach(function(el) { el.classList.add('bc-visible'); });
-  }
+  // ---- reveal on scroll ----
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('bc-visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('#bc-page .bc-reveal').forEach(function(el) { io.observe(el); });
 
-  /* ---- FAQ accordion ---- */
+  // ---- FAQ accordion ----
   document.querySelectorAll('#bc-page .bc-faq-q').forEach(function(btn) {
     btn.addEventListener('click', function() {
       var item = this.closest('.bc-faq-item');
-      var isOpen = item.classList.contains('bc-open');
+      var open = item.classList.contains('bc-open');
       document.querySelectorAll('#bc-page .bc-faq-item').forEach(function(i) { i.classList.remove('bc-open'); });
-      if (!isOpen) item.classList.add('bc-open');
+      if (!open) item.classList.add('bc-open');
     });
   });
 
-  /* ---- Smooth scroll for anchor links ---- */
+  // ---- smooth scroll for in-page anchors ----
   document.querySelectorAll('#bc-page a[href^="#"]').forEach(function(a) {
     a.addEventListener('click', function(e) {
-      var target = document.querySelector(this.getAttribute('href'));
-      if (target) {
+      var t = document.querySelector(this.getAttribute('href'));
+      if (t) {
         e.preventDefault();
-        var offset = 20;
-        var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        var top = t.getBoundingClientRect().top + window.pageYOffset - 64;
         window.scrollTo({ top: top, behavior: 'smooth' });
       }
     });
   });
 
-  /* ---- Sticky CTA smooth scroll ---- */
-  var stickyCta = document.querySelector('#bc-sticky-cta a');
-  if (stickyCta) {
-    stickyCta.addEventListener('click', function(e) {
-      var target = document.querySelector('#bc-form-section');
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
+  // ---- sticky CTA bar shows after hero ----
+  var bar = document.getElementById('bc-stickybar');
+  var hero = document.getElementById('bc-hero');
+  function onScroll() {
+    if (!hero || !bar) return;
+    var threshold = hero.offsetHeight * 0.6;
+    if (window.scrollY > threshold) bar.classList.add('bc-show');
+    else bar.classList.remove('bc-show');
   }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
-  /* ---- Sticky CTA hide/show (hide when form is visible) ---- */
-  var stickyCTAEl = document.getElementById('bc-sticky-cta');
-  if (stickyCTAEl && 'IntersectionObserver' in window) {
-    var formSection = document.getElementById('bc-form-section');
-    if (formSection) {
-      var formObs = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          stickyCTAEl.style.transform = entry.isIntersecting ? 'translateY(100%)' : 'translateY(0)';
-          stickyCTAEl.style.transition = 'transform 0.3s ease';
-        });
-      }, { threshold: 0.1 });
-      formObs.observe(formSection);
-    }
-  }
-
-  /* ---- Form submit ---- */
-  window.bcSubmit = function(e) {
-    e.preventDefault();
-    var form = document.getElementById('bc-inquiry-form');
-    var btn = document.getElementById('bc-submit-btn');
-    var feedback = document.getElementById('bc-form-feedback');
-
-    /* Basic validation */
-    var name = document.getElementById('bc-name').value.trim();
-    var email = document.getElementById('bc-email').value.trim();
-    var type = document.getElementById('bc-type').value;
-
-    if (!name || !email || !type) {
-      feedback.style.display = 'block';
-      feedback.style.background = '#fff5f5';
-      feedback.style.borderColor = 'rgba(200,0,0,0.18)';
-      feedback.style.color = '#c00';
-      feedback.innerHTML = 'Please fill in your name, email, and event type to continue.';
-      return;
-    }
-
-    btn.textContent = 'Sending your inquiry...';
-    btn.disabled = true;
-
-    /* Replace setTimeout with your real form submission endpoint */
-    setTimeout(function() {
-      btn.style.display = 'none';
-      feedback.style.display = 'block';
-      feedback.style.background = '#f0f8f3';
-      feedback.style.borderColor = 'rgba(34,93,56,0.2)';
-      feedback.style.color = 'var(--gold)';
-      feedback.innerHTML = '<strong>Thank you — we\'ve received your inquiry!</strong><br>One of our event coordinators will be in touch within 24 hours with availability and pricing. We can\'t wait to hear about your event.';
-      if (stickyCTAEl) stickyCTAEl.style.display = 'none';
-    }, 1000);
-  };
 })();
 </script>
 
