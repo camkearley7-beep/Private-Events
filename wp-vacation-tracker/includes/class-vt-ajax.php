@@ -20,6 +20,7 @@ class VT_Ajax {
 			'vt_decide',
 			'vt_decide_cancellation',
 			'vt_set_delegation',
+			'vt_mark_notifications_read',
 		);
 		foreach ( $actions as $action ) {
 			add_action( 'wp_ajax_' . $action, array( __CLASS__, $action ) );
@@ -173,5 +174,11 @@ class VT_Ajax {
 		);
 		VT_Audit::log( 'Delegation', $employee->employee_id, 'Created', null, array( 'delegate' => $delegate->employee_id ), null );
 		wp_send_json_success( array( 'message' => 'Delegation saved.' ) );
+	}
+
+	public static function vt_mark_notifications_read() {
+		self::verify();
+		VT_Notifications::mark_all_read( get_current_user_id() );
+		wp_send_json_success();
 	}
 }

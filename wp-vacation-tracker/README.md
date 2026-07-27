@@ -25,13 +25,18 @@ This maps the original blueprint's structure directly onto WordPress:
    - Alternative: upload the `wp-vacation-tracker` folder directly into `wp-content/plugins/` via FTP or your host's file manager, then activate it from the Plugins list.
 3. Activation automatically creates the plugin's database tables and three new roles (`Vacation Employee`, `Vacation Manager`, `Vacation HR Admin`). Nothing else is touched in your existing site.
 
-## 2. Set up outgoing email (do this before relying on the system)
+## 2. Notifications work without email - email is optional
 
-By default WordPress sends mail through PHP's built-in `mail()` function, which is unreliable on most hosting (frequently marked as spam, sometimes silently dropped). Since this whole system is built around email notifications, install a free SMTP plugin and connect it to a real mailbox before go-live:
+**If you don't currently have any mailbox/SMTP access to send from, you don't need one to use this system.** Every notification (submission confirmation, approval needed, decision, reminders, etc.) is always recorded as an **in-app notification**, visible under the "Notifications" tab in the `[vt_app]` portal, with an unread-count badge on the tab itself. This works out of the box with zero configuration - employees and managers just need to check that tab (or you can remind people to check it as part of your rollout).
 
-1. Install **WP Mail SMTP** (or similar) from Plugins → Add New.
-2. Connect it to a mailbox you control - Gmail/Google Workspace, Microsoft 365, or a transactional provider (Brevo, SendGrid, Mailgun all have free tiers that comfortably cover ~100 employees' worth of notifications).
+Real email sending is a separate, optional layer on top of that, controlled by one setting (**Vacation Tracker → Settings → `email_notifications_enabled`**, off by default). If you get access to a mailbox later, turn that on and follow these steps - nothing else in the system needs to change:
+
+1. Install a free SMTP plugin, e.g. **WP Mail SMTP**, from Plugins → Add New.
+2. Connect it to a mailbox you control - a free Gmail/Outlook.com account created just for this is enough (it does not need to be your organization's real mail server); or Microsoft 365/Google Workspace if you have it; or a transactional provider (Brevo, SendGrid, Mailgun all have free tiers that comfortably cover ~100 employees' worth of notifications).
 3. Send a test email from that plugin's settings page to confirm delivery.
+4. Flip `email_notifications_enabled` to `yes` in Vacation Tracker → Settings.
+
+Until then, leave it set to `no` (the default) - the system will simply skip attempting to send email and rely entirely on in-app notifications, so nothing errors out or clutters the System Log with failed-send attempts.
 
 ## 3. Make sure the scheduled jobs actually run
 

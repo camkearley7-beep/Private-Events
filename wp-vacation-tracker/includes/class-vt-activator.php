@@ -215,6 +215,17 @@ class VT_Activator {
 			KEY resolved (resolved)
 		) $charset_collate;";
 
+		$sql[] = "CREATE TABLE " . VT_DB::notifications() . " (
+			notification_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+			wp_user_id BIGINT UNSIGNED NOT NULL,
+			subject VARCHAR(255) NOT NULL,
+			message TEXT NULL,
+			is_read TINYINT(1) NOT NULL DEFAULT 0,
+			created_at DATETIME NOT NULL,
+			PRIMARY KEY  (notification_id),
+			KEY wp_user_id (wp_user_id, is_read)
+		) $charset_collate;";
+
 		foreach ( $sql as $statement ) {
 			dbDelta( $statement );
 		}
@@ -274,6 +285,7 @@ class VT_Activator {
 			'hr_notification_email'           => array( get_option( 'admin_email' ), 'email', 'HR notification address' ),
 			'system_admin_notification_email' => array( get_option( 'admin_email' ), 'email', 'Technical/system admin notification address' ),
 			'email_sender_name'               => array( get_bloginfo( 'name' ) . ' Vacation Tracker', 'text', 'Email "From" display name' ),
+			'email_notifications_enabled'     => array( 'no', 'boolean', 'Also send real emails (requires a working SMTP/mail setup). In-app notifications work either way.' ),
 			'allow_over_balance_requests'     => array( 'yes', 'boolean', 'Allow submission over balance, routed to HR' ),
 			'long_request_threshold_days'     => array( '5', 'number', 'Working days at/above which Department Manager approval is required' ),
 			'staffing_conflict_check_enabled' => array( 'yes', 'boolean', 'Warn on department staffing conflicts' ),

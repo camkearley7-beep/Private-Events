@@ -62,4 +62,9 @@ class VT_DB {
 		global $wpdb;
 		return $wpdb->prefix . 'vt_error_log';
 	}
+
+	public static function notifications() {
+		global $wpdb;
+		return $wpdb->prefix . 'vt_notifications';
+	}
 }

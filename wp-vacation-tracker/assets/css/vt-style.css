@@ -121,6 +121,48 @@
 .vt-badge-pending_team_lead, .vt-badge-pending_department, .vt-badge-pending_hr, .vt-badge-submitted, .vt-badge-cancellation_pending, .vt-badge-cancellation_requested { background: #fff6dd; color: #8a6a12; }
 .vt-badge-more_info_required { background: #e6f0fb; color: #1a5599; }
 
+.vt-badge-count {
+	display: inline-block;
+	background: #c0392b;
+	color: #fff;
+	border-radius: 100px;
+	font-size: 11px;
+	font-weight: 700;
+	padding: 1px 7px;
+	margin-left: 4px;
+}
+
+.vt-notification-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.vt-notification {
+	background: #f7f9f8;
+	border: 1px solid #e5e9e7;
+	border-radius: 8px;
+	padding: 12px 14px;
+}
+
+.vt-notification-unread {
+	border-left: 4px solid #225d38;
+}
+
+.vt-notification p {
+	margin: 6px 0 4px;
+	font-size: 14px;
+	color: #444;
+}
+
+.vt-notification-date {
+	font-size: 12px;
+	color: #888;
+}
+
 .vt-form {
 	max-width: 520px;
 	display: flex;
@@ -235,4 +277,6 @@
 	.vt-form input, .vt-form select, .vt-form textarea { background: #1a1a1a; border-color: #444; color: #eee; }
 	.vt-btn-secondary { background: #333; color: #eee; }
 	.vt-preview { background: #1e2622; }
+	.vt-notification { background: #1e2622; border-color: #2c352f; }
+	.vt-notification p { color: #ccc; }
 }

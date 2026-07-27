@@ -34,7 +34,8 @@ class VT_Shortcodes {
 			update_option( 'vt_portal_page_recorded', 1 );
 		}
 
-		$is_manager = current_user_can( 'vt_manage_team' ) || current_user_can( 'vt_manage_all' );
+		$is_manager     = current_user_can( 'vt_manage_team' ) || current_user_can( 'vt_manage_all' );
+		$unread_count   = VT_Notifications::unread_count( get_current_user_id() );
 
 		ob_start();
 		?>
@@ -46,6 +47,9 @@ class VT_Shortcodes {
 				<?php if ( $is_manager ) : ?>
 					<button type="button" class="vt-tab" data-tab="approvals">Approvals</button>
 				<?php endif; ?>
+				<button type="button" class="vt-tab" data-tab="notifications" id="vt-notifications-tab">
+					Notifications<?php if ( $unread_count ) : ?> <span class="vt-badge-count"><?php echo esc_html( $unread_count ); ?></span><?php endif; ?>
+				</button>
 			</nav>
 
 			<section class="vt-panel active" data-panel="dashboard">
@@ -65,6 +69,10 @@ class VT_Shortcodes {
 				<?php self::render_approvals( $employee ); ?>
 			</section>
 			<?php endif; ?>
+
+			<section class="vt-panel" data-panel="notifications">
+				<?php self::render_notifications(); ?>
+			</section>
 
 			<div class="vt-toast" id="vt-toast" role="status" aria-live="polite"></div>
 		</div>
@@ -243,6 +251,27 @@ class VT_Shortcodes {
 				<?php endforeach; ?>
 				</tbody>
 			</table>
+		<?php endif; ?>
+		<?php
+	}
+
+	private static function render_notifications() {
+		$notifications = VT_Notifications::get_for_user( get_current_user_id(), 40 );
+		?>
+		<h2>Notifications</h2>
+		<p class="vt-hint">Since email isn't set up yet, this is where approvals, decisions, and reminders show up. Check back here (or bookmark this tab).</p>
+		<?php if ( empty( $notifications ) ) : ?>
+			<p class="vt-empty">No notifications yet.</p>
+		<?php else : ?>
+			<ul class="vt-notification-list">
+				<?php foreach ( $notifications as $n ) : ?>
+					<li class="vt-notification <?php echo $n->is_read ? '' : 'vt-notification-unread'; ?>">
+						<strong><?php echo esc_html( $n->subject ); ?></strong>
+						<p><?php echo esc_html( $n->message ); ?></p>
+						<span class="vt-notification-date"><?php echo esc_html( mysql2date( get_option( 'date_format' ) . ' g:ia', $n->created_at ) ); ?></span>
+					</li>
+				<?php endforeach; ?>
+			</ul>
 		<?php endif; ?>
 		<?php
 	}

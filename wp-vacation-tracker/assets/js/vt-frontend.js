@@ -43,6 +43,12 @@
 				tab.classList.add('active');
 				var panel = document.querySelector('.vt-panel[data-panel="' + tab.getAttribute('data-tab') + '"]');
 				if (panel) panel.classList.add('active');
+
+				if (tab.getAttribute('data-tab') === 'notifications') {
+					var badge = tab.querySelector('.vt-badge-count');
+					if (badge) badge.remove();
+					post('vt_mark_notifications_read', {});
+				}
 			});
 		});
 	}
