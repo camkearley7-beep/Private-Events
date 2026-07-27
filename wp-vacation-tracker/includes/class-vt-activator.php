@@ -280,6 +280,7 @@ class VT_Activator {
 			'cancellation_after_start_needs_hr' => array( 'yes', 'boolean', 'Cancellations after the vacation has started require HR' ),
 			'date_format'                     => array( 'd M Y', 'text', 'Display date format (PHP date() format)' ),
 			'timezone'                        => array( wp_timezone_string(), 'text', 'Timezone identifier' ),
+			'executive_approver_employee_id'  => array( '', 'number', 'Employee ID routed to for any employee flagged Executive (leave blank to fall back to their Primary Team Lead)' ),
 		);
 
 		foreach ( $defaults as $key => $data ) {

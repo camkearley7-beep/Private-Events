@@ -262,7 +262,11 @@ class VT_Requests {
 		$candidate_id = null;
 
 		if ( 'team_lead' === $stage ) {
-			$candidate_id = $employee->primary_team_lead_id;
+			if ( ! empty( $employee->is_executive ) && VT_Settings::get( 'executive_approver_employee_id' ) ) {
+				$candidate_id = (int) VT_Settings::get( 'executive_approver_employee_id' );
+			} else {
+				$candidate_id = $employee->primary_team_lead_id;
+			}
 		} elseif ( 'department' === $stage ) {
 			$dept = $employee->department_id ? $wpdb->get_row( $wpdb->prepare( "SELECT * FROM " . VT_DB::departments() . " WHERE department_id = %d", $employee->department_id ) ) : null;
 			$candidate_id = $dept ? $dept->manager_employee_id : null;
