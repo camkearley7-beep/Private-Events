@@ -83,7 +83,7 @@ class VT_Activator {
 			total_hours DECIMAL(6,2) NOT NULL DEFAULT 0,
 			employee_comments TEXT NULL,
 			status VARCHAR(30) NOT NULL DEFAULT 'draft',
-			flags VARCHAR(255) NULL,
+			flags TEXT NULL,
 			date_submitted DATETIME NULL,
 			current_stage VARCHAR(20) NULL,
 			stage_entered_at DATETIME NULL,
