@@ -114,15 +114,24 @@ class VT_Admin {
 		}
 
 		$existing_user_id = absint( $_POST['existing_user_id'] ?? 0 );
+		$new_login = '';
+		$new_password = '';
 		if ( $existing_user_id ) {
 			$wp_user_id = $existing_user_id;
 		} else {
-			$login = sanitize_user( current( explode( '@', $email ) ) . '.' . wp_generate_password( 4, false ) );
+			// No email is sent - HR sets or generates a password here and hands it to the
+			// employee directly (in person, by phone, on a slip of paper, etc).
+			$new_password = trim( wp_unslash( $_POST['initial_password'] ?? '' ) );
+			if ( strlen( $new_password ) < 8 ) {
+				self::redirect( 'vt-employees', 'Please set a password of at least 8 characters (or use "Generate").', 'error' );
+			}
+
+			$new_login = sanitize_user( current( explode( '@', $email ) ) . '.' . wp_generate_password( 4, false ) );
 			$wp_user_id = wp_insert_user(
 				array(
-					'user_login' => $login,
+					'user_login' => $new_login,
 					'user_email' => $email,
-					'user_pass'  => wp_generate_password( 20 ),
+					'user_pass'  => $new_password,
 					'first_name' => sanitize_text_field( $_POST['first_name'] ),
 					'last_name'  => sanitize_text_field( $_POST['last_name'] ),
 					'role'       => 'vt_employee',
@@ -131,7 +140,6 @@ class VT_Admin {
 			if ( is_wp_error( $wp_user_id ) ) {
 				self::redirect( 'vt-employees', 'Could not create account: ' . $wp_user_id->get_error_message(), 'error' );
 			}
-			wp_new_user_notification( $wp_user_id, null, 'user' ); // Emails the employee a "set your password" link.
 		}
 
 		$user = get_userdata( $wp_user_id );
@@ -176,6 +184,22 @@ class VT_Admin {
 		);
 
 		VT_Audit::log( 'Employee', $wpdb->insert_id, 'Created', null, array( 'email' => $email ), null );
+
+		if ( $new_login ) {
+			// Shown exactly once on the next page load, then discarded - so the password
+			// never sits in the URL or gets logged anywhere. Copy it down and hand it to
+			// the employee directly (no email is sent).
+			set_transient(
+				'vt_new_creds_' . get_current_user_id(),
+				array(
+					'name'     => sanitize_text_field( $_POST['first_name'] ) . ' ' . sanitize_text_field( $_POST['last_name'] ),
+					'login'    => $new_login,
+					'password' => $new_password,
+				),
+				5 * MINUTE_IN_SECONDS
+			);
+		}
+
 		self::redirect( 'vt-employees', 'Employee added.' );
 	}
 
@@ -253,6 +277,7 @@ class VT_Admin {
 		<div class="wrap">
 			<h1>Employees</h1>
 			<?php self::notice(); ?>
+			<?php self::render_new_credentials_notice(); ?>
 
 			<h2><?php echo $editing ? 'Edit Employee' : 'Add Employee'; ?></h2>
 			<form method="post" style="max-width:640px;">
@@ -265,6 +290,11 @@ class VT_Admin {
 					<tr><th>Last Name</th><td><input type="text" name="last_name" required></td></tr>
 					<tr><th>Work Email</th><td><input type="email" name="work_email" required></td></tr>
 					<tr><th>Existing WP User ID (optional)</th><td><input type="number" name="existing_user_id" placeholder="Leave blank to create a new login"></td></tr>
+					<tr><th>Password for new login</th><td>
+						<input type="text" name="initial_password" id="vt-initial-password" style="width:220px;" placeholder="At least 8 characters" autocomplete="off">
+						<button type="button" class="button" id="vt-generate-password">Generate</button>
+						<p class="description">No email is sent. Write this down and give it to the employee directly - they can log in with either this password or their WP username. Ignored if you filled in an Existing WP User ID above.</p>
+					</td></tr>
 					<tr><th>Hire Date</th><td><input type="date" name="hire_date"></td></tr>
 					<tr><th>Roles</th><td>
 						<label><input type="checkbox" name="role_manager" value="1"> Manager (can approve their team's requests)</label><br>
@@ -345,6 +375,34 @@ class VT_Admin {
 				<?php endforeach; ?>
 				</tbody>
 			</table>
+		</div>
+		<script>
+		document.getElementById('vt-generate-password').addEventListener('click', function () {
+			var chars = 'ABCDEFGHJKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
+			var pw = '';
+			for (var i = 0; i < 10; i++) { pw += chars.charAt(Math.floor(Math.random() * chars.length)); }
+			document.getElementById('vt-initial-password').value = pw;
+		});
+		</script>
+		<?php
+	}
+
+	/** Show a newly-created login's username/password exactly once, then discard it. */
+	private static function render_new_credentials_notice() {
+		$key = 'vt_new_creds_' . get_current_user_id();
+		$creds = get_transient( $key );
+		if ( ! $creds ) {
+			return;
+		}
+		delete_transient( $key );
+		?>
+		<div class="notice notice-warning" style="padding:14px;">
+			<p><strong>Login created for <?php echo esc_html( $creds['name'] ); ?> - write this down now, it will not be shown again:</strong></p>
+			<p style="font-size:15px;">
+				Username: <code style="font-size:15px;"><?php echo esc_html( $creds['login'] ); ?></code>
+				&nbsp;&nbsp; Password: <code style="font-size:15px;"><?php echo esc_html( $creds['password'] ); ?></code>
+			</p>
+			<p>Give this to <?php echo esc_html( $creds['name'] ); ?> directly (in person, by phone, on paper). No email was sent. They can change their password anytime under their WordPress profile.</p>
 		</div>
 		<?php
 	}

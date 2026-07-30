@@ -61,7 +61,8 @@ The first time this page loads, the plugin remembers its Page ID so email links 
 Go to **wp-admin → Vacation Tracker → Employees → Add Employee**. For each person:
 
 - Enter their name, work email, department, entitlement, work schedule, etc.
-- Leave "Existing WP User ID" blank to have the plugin create a brand-new WordPress account for them - they'll immediately receive WordPress's standard "set your password" email, so nobody's password is ever sent in plain text.
+- Leave "Existing WP User ID" blank to have the plugin create a brand-new WordPress account for them. **No email is sent** (since there's no mailbox to send from right now) - instead, type a password in the "Password for new login" field, or click "Generate" for a random one. After you save, the username and password are shown once at the top of the page in a yellow box - write it down immediately, because it will not be shown again. Hand that username/password to the employee yourself (in person, by phone, on a slip of paper - anything except email).
+- Employees can change their password anytime by visiting `yoursite.com/wp-admin/profile.php` while logged in and using the "Set New Password" button near the bottom - this is a standard WordPress feature, no extra setup needed.
 - Check "Manager" if they should approve their team's requests, and/or "HR Admin" if they need full back-end access.
 - Set **Primary Team Lead** to the *Employee ID* (shown in the Employees list) of their approver - this is what drives routing, so get this right for everyone before go-live.
 
