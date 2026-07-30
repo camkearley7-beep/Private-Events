@@ -1,0 +1,104 @@
+# Vacation Tracker (WordPress plugin)
+
+A self-contained WordPress plugin implementing employee vacation requests,
+approval routing, balances, notifications, and a privacy-safe team calendar,
+built to run on your existing WordPress site (e.g. bkifg.com) with no new
+hosting or licensing required.
+
+This maps the original blueprint's structure directly onto WordPress:
+
+| Blueprint concept | This plugin |
+|---|---|
+| Administrative back end (HR) | `wp-admin` → **Vacation Tracker** menu |
+| Employee/Manager front-end portal | The `[vt_app]` shortcode on any page |
+| Employee accounts | Native WordPress users, admin-created, roles `vt_employee` / `vt_manager` / `vt_hr_admin` |
+| System Administrator | Whoever manages the WordPress site itself (the `Administrator` role already gets full Vacation Tracker access automatically) |
+| SharePoint Lists / Dataverse | Custom MySQL tables in your WordPress database (`wp_vt_*`) |
+| Power Automate | WP-Cron scheduled tasks + PHP business logic in `includes/` |
+| Outlook/Teams notifications | `wp_mail()` (see the SMTP note below - this is the one step you shouldn't skip) |
+| Outlook shared calendar | The in-portal "Team Calendar" tab (privacy-safe: name + dates only) |
+
+## 1. Install
+
+1. Zip the `wp-vacation-tracker` folder (the folder itself, so the zip contains `wp-vacation-tracker/vacation-tracker.php` etc.).
+2. In WordPress: **Plugins → Add New → Upload Plugin**, choose the zip, install, then **Activate**.
+   - Alternative: upload the `wp-vacation-tracker` folder directly into `wp-content/plugins/` via FTP or your host's file manager, then activate it from the Plugins list.
+3. Activation automatically creates the plugin's database tables and three new roles (`Vacation Employee`, `Vacation Manager`, `Vacation HR Admin`). Nothing else is touched in your existing site.
+
+## 2. Notifications work without email - email is optional
+
+**If you don't currently have any mailbox/SMTP access to send from, you don't need one to use this system.** Every notification (submission confirmation, approval needed, decision, reminders, etc.) is always recorded as an **in-app notification**, visible under the "Notifications" tab in the `[vt_app]` portal, with an unread-count badge on the tab itself. This works out of the box with zero configuration - employees and managers just need to check that tab (or you can remind people to check it as part of your rollout).
+
+Real email sending is a separate, optional layer on top of that, controlled by one setting (**Vacation Tracker → Settings → `email_notifications_enabled`**, off by default). If you get access to a mailbox later, turn that on and follow these steps - nothing else in the system needs to change:
+
+1. Install a free SMTP plugin, e.g. **WP Mail SMTP**, from Plugins → Add New.
+2. Connect it to a mailbox you control - a free Gmail/Outlook.com account created just for this is enough (it does not need to be your organization's real mail server); or Microsoft 365/Google Workspace if you have it; or a transactional provider (Brevo, SendGrid, Mailgun all have free tiers that comfortably cover ~100 employees' worth of notifications).
+3. Send a test email from that plugin's settings page to confirm delivery.
+4. Flip `email_notifications_enabled` to `yes` in Vacation Tracker → Settings.
+
+Until then, leave it set to `no` (the default) - the system will simply skip attempting to send email and rely entirely on in-app notifications, so nothing errors out or clutters the System Log with failed-send attempts.
+
+## 3. Make sure the scheduled jobs actually run
+
+WordPress's default "cron" only fires when someone visits the site, which is fine for a busy public site but unreliable for a job that must run every day regardless of traffic (reminders, escalations, nightly balance reconciliation). Ask your host to add a real server-side cron job hitting:
+
+```
+wget -q -O /dev/null "https://your-site.com/wp-cron.php?doing_wp_cron" >/dev/null 2>&1
+```
+
+...once every 15–60 minutes. Most hosts have a "Cron Jobs" panel for this. (If you're not sure how, ask your host's support - this is a very standard request.)
+
+## 4. Create the employee/manager portal page
+
+1. Create a new WordPress Page (e.g. titled "Vacation Tracker" or "My Vacation").
+2. Add the shortcode `[vt_app]` as the page content.
+3. Publish it, and add it to your site's navigation menu so employees can find it.
+
+The first time this page loads, the plugin remembers its Page ID so email links point back to it correctly.
+
+## 5. Add your employees
+
+Go to **wp-admin → Vacation Tracker → Employees → Add Employee**. For each person:
+
+- Enter their name, work email, department, entitlement, work schedule, etc.
+- Leave "Existing WP User ID" blank to have the plugin create a brand-new WordPress account for them. **No email is sent** (since there's no mailbox to send from right now) - instead, type a password in the "Password for new login" field, or click "Generate" for a random one. After you save, the username and password are shown once at the top of the page in a yellow box - write it down immediately, because it will not be shown again. Hand that username/password to the employee yourself (in person, by phone, on a slip of paper - anything except email).
+- Employees can change their password anytime by visiting `yoursite.com/wp-admin/profile.php` while logged in and using the "Set New Password" button near the bottom - this is a standard WordPress feature, no extra setup needed.
+- Check "Manager" if they should approve their team's requests, and/or "HR Admin" if they need full back-end access.
+- Set **Primary Team Lead** to the *Employee ID* (shown in the Employees list) of their approver - this is what drives routing, so get this right for everyone before go-live.
+
+Also set up, in this order, before employees start submitting requests:
+
+1. **Departments** (Vacation Tracker → Departments) - name, manager, backup approver, max-employees-away.
+2. **Holidays** (Vacation Tracker → Holidays) - your company holiday list, so those days aren't charged against vacation.
+3. **Settings** (Vacation Tracker → Settings) - reminder/escalation timing, long-request threshold, whether over-balance requests are allowed, etc. Sensible defaults are pre-filled.
+
+## 6. What employees/managers see
+
+The `[vt_app]` page shows tabs based on the logged-in user's role:
+
+- **My Vacation** - balance tiles, pending requests, upcoming approved vacation, request history.
+- **New Request** - date pickers with a live working-days/balance preview, submit or save as draft.
+- **Team Calendar** - privacy-safe "Name - Away" entries only (no leave type, no comments, no balances).
+- **Approvals** (Managers/HR only) - pending approvals with Approve/Reject/Request-Info, plus a self-service delegation form for when they're away.
+
+## 7. Simplifications vs. the original design blueprint
+
+This is a genuine, working implementation of the core system, but a few things were deliberately simplified to keep the first version buildable in one pass. None of these are hard to add later - flag them if you need them sooner:
+
+- **Half-day granularity only** - no hourly leave requests yet.
+- **Escalation reassigns rather than "expires"** - an unresponsive approval reassigns to a backup/department manager/HR after the configured window, rather than the request separately expiring.
+- **One shared calendar view**, not per-department calendars.
+- **Executive-approver routing** works (set the "Executive" checkbox on an employee and the Employee ID of the designated approver in Settings → `executive_approver_employee_id`), but a few of the rarer combined-condition routing edge cases from the blueprint are simplified to the core rules (long request → department, over-balance/blackout → HR, a manager's own request → their department manager). The routing engine (`includes/class-vt-requests.php`) is centralized in one place, so refining these rules later is a contained change.
+- **No calendar-event ID / external calendar sync** - since the calendar is rendered live from the requests table itself, there's no separate event object to keep in sync or clean up (this removes an entire class of bugs the Outlook-calendar version of this design had to guard against).
+
+## 8. Where things live (for future changes)
+
+- `includes/class-vt-activator.php` - database schema, roles, default settings.
+- `includes/class-vt-calc.php` - chargeable-day calculation (weekends, holidays, half-days, cross-year splitting).
+- `includes/class-vt-balances.php` - stored balances, idempotent updates, nightly reconciliation, annual rollover.
+- `includes/class-vt-requests.php` - the request state machine and approval-routing engine. Start here for any routing-rule change.
+- `includes/class-vt-notifications.php` - every email template.
+- `includes/class-vt-cron.php` - reminders, escalation, reconciliation scheduling.
+- `includes/class-vt-ajax.php` - front-end actions.
+- `includes/class-vt-shortcodes.php` - the `[vt_app]` portal markup.
+- `includes/class-vt-admin.php` - the wp-admin HR/back-end console.
