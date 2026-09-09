@@ -22,6 +22,16 @@
   img{-ms-interpolation-mode:bicubic;border:0;height:auto;line-height:100%;outline:none;text-decoration:none;display:block;}
   a{color:#7A5A10;}
   a:hover{color:#5C440B;}
+  /* Neutralize auto-linked dates/phone numbers/addresses (Apple Mail, Outlook.com) so they keep the surrounding text's styling instead of turning blue and underlined. */
+  a[x-apple-data-detectors] {
+    color: inherit !important;
+    text-decoration: none !important;
+    font-size: inherit !important;
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit !important;
+  }
+  #MessageViewBody a, #MessageViewBody a span { color: inherit !important; text-decoration: none !important; }
   .wrap{width:640px;max-width:640px;}
   .pad{padding-left:42px;padding-right:42px;}
   @media only screen and (max-width:640px){
