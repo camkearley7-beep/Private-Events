@@ -99,6 +99,22 @@
     display: grid; grid-template-columns: 1.05fr .95fr; align-items: center;
     padding: 120px clamp(16px, 5vw, 80px) 140px;
   }
+  /* background video — colour-graded so it sits under the neon look */
+  #bk-hero .bk-hero-video { position: absolute; inset: 0; z-index: -3; overflow: hidden; background: var(--ink); }
+  #bk-hero .bk-hero-video video { width: 100%; height: 100%; object-fit: cover; opacity: 0; filter: saturate(1.15) contrast(1.1); transform: scale(1.06); transition: opacity 1.4s ease, transform 8s ease-out; }
+  #bk-hero .bk-hero-video.bk-ready video { opacity: .62; transform: scale(1); }
+  #bk-hero .bk-hero-video::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(120deg, #6B35FF, #FF2D8D 70%, #FF7139); mix-blend-mode: color; opacity: .55; }
+  #bk-hero .bk-hero-video::after {
+    content: ''; position: absolute; inset: 0; z-index: 2;
+    background:
+      linear-gradient(90deg, rgba(16,9,31,.94) 0%, rgba(16,9,31,.72) 38%, rgba(16,9,31,.3) 70%, rgba(16,9,31,.55) 100%),
+      linear-gradient(to top, rgba(16,9,31,1) 0%, rgba(16,9,31,0) 30%),
+      radial-gradient(60% 50% at var(--mx, 70%) var(--my, 40%), rgba(107,53,255,.35), transparent 70%);
+  }
+  #bk-hero .bk-video-tag { position: absolute; z-index: 4; top: 26px; right: clamp(16px, 5vw, 80px); display: none; align-items: center; gap: 8px; font-family: var(--cond); font-weight: 800; letter-spacing: .24em; font-size: 12px; text-transform: uppercase; color: rgba(247,243,236,.75); }
+  #bk-hero .bk-video-tag i { width: 8px; height: 8px; border-radius: 50%; background: #ff3b3b; animation: bk-ping 1.6s infinite; }
+  #bk-hero .bk-hero-video.bk-ready ~ .bk-video-tag { display: inline-flex; }
+
   /* giant background word */
   #bk-hero .bk-bgword {
     position: absolute; left: 0; top: 50%; z-index: -1; white-space: nowrap; pointer-events: none;
@@ -470,6 +486,25 @@
   #bk-nights .bk-panel:not(.bk-active) .bk-art svg { opacity: 0; }
 
   /* ==========================================================
+     6b. GALLERY — your photos
+     ========================================================== */
+  #bk-gallery { position: relative; overflow: hidden; background: var(--pink); color: var(--ink); padding: clamp(90px, 12vw, 160px) clamp(16px, 5vw, 80px); }
+  #bk-gallery[hidden] { display: none; }
+  #bk-gallery .bk-gal-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; flex-wrap: wrap; margin-bottom: 56px; }
+  #bk-gallery .bk-kicker { margin-bottom: 22px; }
+  #bk-gallery h2 { font-size: clamp(60px, 9vw, 156px); color: var(--cream); }
+  #bk-gallery h2 .bk-outline { -webkit-text-stroke-color: var(--ink); }
+  #bk-gallery .bk-gal-head p { max-width: 360px; font-size: 18px; font-weight: 500; }
+  #bk-gallery .bk-gal-grid { columns: 3; column-gap: 22px; }
+  #bk-gallery .bk-gal-item {
+    break-inside: avoid; margin: 0 0 26px; background: var(--cream); padding: 12px 12px 14px; border-radius: 6px;
+    box-shadow: 0 24px 50px -18px rgba(16,9,31,.55); transform: rotate(var(--rot, 0deg)); transition: transform .4s cubic-bezier(.2,.9,.25,1.3);
+  }
+  #bk-gallery .bk-gal-item:hover { transform: rotate(0) scale(1.03); position: relative; z-index: 2; }
+  #bk-gallery .bk-gal-item img { width: 100%; height: auto; border-radius: 3px; background: var(--ink); }
+  #bk-gallery .bk-gal-item figcaption { font-family: var(--cond); font-weight: 800; font-style: italic; letter-spacing: .04em; font-size: 18px; text-transform: uppercase; padding-top: 10px; }
+
+  /* ==========================================================
      7. HOW IT WORKS
      ========================================================== */
   #bk-how { position: relative; background: var(--lime); color: var(--ink); padding: clamp(90px, 12vw, 160px) clamp(16px, 5vw, 80px); overflow: hidden; }
@@ -495,31 +530,36 @@
   #bk-book h2 .bk-row2 { color: transparent; -webkit-text-stroke: 2px var(--cream); display: block; }
   #bk-book h2 .bk-row3 { color: var(--lime); display: block; transform: rotate(-3deg); }
   #bk-book .bk-book-lede { max-width: 600px; margin: 34px auto 0; font-size: 19px; color: rgba(247,243,236,.8); text-align: center; }
-  #bk-book .bk-form-wrap { position: relative; z-index: 2; max-width: 880px; margin: 64px auto 0; background: var(--cream); color: var(--ink); border-radius: 30px; padding: clamp(24px, 4vw, 52px); box-shadow: 0 50px 120px -30px rgba(255,45,141,.45); }
-  #bk-book .bk-form-wrap::before { content: 'BOOK IT'; position: absolute; top: -26px; right: 30px; background: var(--pink); color: #fff; font-family: var(--display); font-size: 30px; padding: 6px 18px 2px; transform: rotate(6deg); border-radius: 8px; }
-  #bk-book form { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-  #bk-book .bk-field { display: flex; flex-direction: column; gap: 8px; }
-  #bk-book .bk-field.bk-full { grid-column: 1 / -1; }
-  #bk-book label { font-family: var(--cond); font-weight: 800; letter-spacing: .16em; font-size: 13px; text-transform: uppercase; }
-  #bk-book input, #bk-book select, #bk-book textarea {
-    font: inherit; font-size: 16px; color: var(--ink); background: #fff; border: 2px solid rgba(16,9,31,.14); border-radius: 14px; padding: 15px 16px; width: 100%;
-    transition: border-color .2s, box-shadow .2s;
+  /* ticket-style booking card */
+  #bk-book .bk-ticket {
+    position: relative; z-index: 2; max-width: 1040px; margin: 64px auto 0; display: grid; grid-template-columns: 1.5fr 1fr;
+    background: var(--cream); color: var(--ink); border-radius: 30px; box-shadow: 0 50px 120px -30px rgba(255,45,141,.5);
+    transform: rotate(-1.2deg); transition: transform .5s cubic-bezier(.2,.9,.25,1.3);
   }
-  #bk-book textarea { min-height: 110px; resize: vertical; }
-  #bk-book input:focus, #bk-book select:focus, #bk-book textarea:focus { outline: none; border-color: var(--violet); box-shadow: 0 0 0 4px rgba(107,53,255,.18); }
-  #bk-book .bk-occasions { border: 0; min-width: 0; }
-  #bk-book .bk-chips { display: flex; flex-wrap: wrap; gap: 8px; }
-  #bk-book .bk-occasions legend { font-family: var(--cond); font-weight: 800; letter-spacing: .16em; font-size: 13px; text-transform: uppercase; margin-bottom: 10px; }
-  #bk-book .bk-chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-  #bk-book .bk-chip span { display: inline-block; padding: 10px 16px; border-radius: 999px; border: 2px solid var(--ink); font-family: var(--cond); font-weight: 800; letter-spacing: .06em; font-size: 15px; text-transform: uppercase; cursor: pointer; transition: background .2s, color .2s, transform .2s; }
-  #bk-book .bk-chip input:checked + span { background: var(--ink); color: var(--lime); transform: rotate(-2deg); }
-  #bk-book .bk-chip input:focus-visible + span { outline: 3px solid var(--violet); outline-offset: 3px; }
-  #bk-book .bk-submit-row { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between; margin-top: 6px; }
-  #bk-book .bk-submit-row p { font-size: 14px; color: rgba(16,9,31,.62); }
-  #bk-book .bk-feedback { grid-column: 1 / -1; display: none; padding: 18px 20px; border-radius: 16px; font-size: 16px; line-height: 1.5; }
-  #bk-book .bk-feedback.bk-ok { display: block; background: var(--ink); color: var(--cream); }
-  #bk-book .bk-feedback.bk-ok strong { color: var(--lime); font-family: var(--display); font-weight: 400; font-size: 26px; display: block; text-transform: uppercase; }
-  #bk-book .bk-feedback.bk-err { display: block; background: #ffe3ef; color: #9b0045; }
+  #bk-book .bk-ticket:hover { transform: rotate(0) scale(1.01); }
+  #bk-book .bk-ticket::before { content: 'BOOK IT'; position: absolute; top: -26px; left: 30px; background: var(--pink); color: #fff; font-family: var(--display); font-size: 30px; padding: 6px 18px 2px; transform: rotate(-6deg); border-radius: 8px; z-index: 2; }
+  #bk-book .bk-ticket-main { padding: clamp(30px, 4.5vw, 60px); position: relative; }
+  #bk-book .bk-ticket-main small { font-family: var(--cond); font-weight: 800; letter-spacing: .24em; font-size: 13px; text-transform: uppercase; color: var(--violet); }
+  #bk-book .bk-ticket-main h3 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(44px, 5.4vw, 84px); line-height: .88; margin: 12px 0 18px; }
+  #bk-book .bk-ticket-main h3 span { color: var(--pink); }
+  #bk-book .bk-ticket-main p { font-size: 17px; color: rgba(16,9,31,.75); max-width: 460px; }
+  #bk-book .bk-ticket-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; list-style: none; }
+  #bk-book .bk-ticket-tags li { padding: 8px 14px; border-radius: 999px; border: 2px solid var(--ink); font-family: var(--cond); font-weight: 800; letter-spacing: .06em; font-size: 14px; text-transform: uppercase; }
+  #bk-book .bk-ticket-tags li:nth-child(2n) { background: var(--ink); color: var(--lime); }
+  #bk-book .bk-ticket-stub {
+    position: relative; padding: clamp(30px, 4vw, 50px); display: flex; flex-direction: column; justify-content: center; gap: 18px;
+    border-left: 3px dashed rgba(16,9,31,.25); background: var(--lime); border-radius: 0 30px 30px 0;
+  }
+  #bk-book .bk-ticket-stub::before, #bk-book .bk-ticket-stub::after { content: ''; position: absolute; left: -20px; width: 36px; height: 36px; border-radius: 50%; background: #1a0d33; }
+  #bk-book .bk-ticket-stub::before { top: -18px; }
+  #bk-book .bk-ticket-stub::after { bottom: -18px; }
+  #bk-book .bk-admit { font-family: var(--display); text-transform: uppercase; font-size: clamp(30px, 3vw, 44px); line-height: .9; }
+  #bk-book .bk-as { font-family: var(--cond); font-weight: 800; letter-spacing: .14em; font-size: 13px; text-transform: uppercase; display: none; }
+  #bk-book .bk-as.bk-on { display: block; }
+  #bk-book .bk-as b { background: var(--ink); color: var(--lime); padding: 3px 8px; border-radius: 6px; margin-left: 4px; }
+  #bk-book .bk-ticket-stub .bk-btn { justify-content: center; white-space: normal; text-align: center; }
+  #bk-book .bk-ticket-note { font-size: 13px; color: rgba(16,9,31,.65); }
+  #bk-book .bk-barcode { height: 38px; background: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 4px, var(--ink) 4px 7px, transparent 7px 9px, var(--ink) 9px 10px, transparent 10px 14px); opacity: .85; }
 
   #bk-page .bk-foot-line { background: var(--ink); color: rgba(247,243,236,.5); text-align: center; padding: 26px 16px 96px; font-size: 13px; border-top: 1px solid rgba(247,243,236,.08); }
   #bk-page .bk-foot-line a { color: var(--cream); text-decoration: underline; text-underline-offset: 3px; }
@@ -571,6 +611,11 @@
     #bk-nights .bk-panel h3 { white-space: normal; }
     #bk-legend .bk-result { grid-template-columns: 1fr; text-align: left; }
     #bk-legend .bk-result-actions { align-items: flex-start; }
+    #bk-book .bk-ticket { grid-template-columns: 1fr; transform: none; }
+    #bk-book .bk-ticket-stub { border-left: 0; border-top: 3px dashed rgba(16,9,31,.25); border-radius: 0 0 30px 30px; }
+    #bk-book .bk-ticket-stub::before { left: -18px; top: -18px; }
+    #bk-book .bk-ticket-stub::after { left: auto; right: -18px; top: -18px; bottom: auto; }
+    #bk-gallery .bk-gal-grid { columns: 2; }
   }
   @media (max-width: 600px) {
     #bk-page .bk-btn { font-size: 16px; padding: 17px 22px; white-space: normal; }
@@ -587,8 +632,7 @@
     #bk-legend .bk-cards.bk-chosen .bk-card[aria-pressed="true"] { animation: none; }
     #bk-songs .bk-features { grid-template-columns: 1fr; }
     #bk-how .bk-steps { grid-template-columns: 1fr; }
-    #bk-book form { grid-template-columns: 1fr; }
-    #bk-book .bk-form-wrap::before { font-size: 22px; top: -20px; right: 16px; }
+    #bk-book .bk-ticket::before { font-size: 22px; top: -20px; left: 16px; }
     #bk-collage .bk-board { grid-auto-rows: 34px; }
     #bk-page .bk-cap { font-size: 10px; left: 8px; bottom: 8px; }
     #bk-page .bk-tape { width: 70px; height: 22px; }
@@ -633,6 +677,14 @@
        1. HERO
        ====================================================== -->
   <section id="bk-hero" class="bk-grain" aria-labelledby="bk-hero-title">
+    <!-- HERO VIDEO: swap the src below for any MP4 (ideally ~10–20s, muted, under ~8 MB).
+         Optional: add poster="your-image.jpg" to the <video> tag for a still frame while it loads. -->
+    <div class="bk-hero-video" aria-hidden="true">
+      <video id="bk-hero-video" autoplay muted loop playsinline preload="auto">
+        <source src="https://thebogeyclub.com/wp-content/uploads/2026/03/copy_3F21AE01-DA66-4AB0-9274-9102F711D792.mov" type="video/mp4">
+      </video>
+    </div>
+    <span class="bk-video-tag" aria-hidden="true"><i></i>Live from the lounge</span>
     <div class="bk-bgword" aria-hidden="true">Karaoke <span>Karaoke</span> Karaoke <span>Karaoke</span> </div>
     <div class="bk-beams" aria-hidden="true">
       <div class="bk-beam bk-beam-1"></div>
@@ -650,7 +702,7 @@
       <p class="bk-hero-sub bk-slant">Your stage. Your rules.</p>
       <p class="bk-hero-body">Grab the mic. Pick your anthem. Bring your crew. From legendary singalongs to gloriously questionable vocals, your next unforgettable night starts at The Bogey Club.</p>
       <div class="bk-hero-ctas">
-        <a href="#bk-book" class="bk-btn bk-btn-primary">Book your karaoke experience <svg class="bk-arrow" width="22" height="22" aria-hidden="true"><use href="#bk-i-arrow"/></svg></a>
+        <a href="https://thebogeyclub.golfbooking.ca/calendar.php" target="_blank" rel="noopener" class="bk-btn bk-btn-primary bk-book-link">Book your karaoke experience <svg class="bk-arrow" width="22" height="22" aria-hidden="true"><use href="#bk-i-arrow"/></svg></a>
         <a href="#bk-how" class="bk-btn bk-btn-ghost">See how it works ↓</a>
       </div>
     </div>
@@ -942,7 +994,7 @@
         <p class="bk-anthem" id="bk-result-anthem"></p>
       </div>
       <div class="bk-result-actions">
-        <a href="#bk-book" class="bk-btn bk-btn-primary" id="bk-result-cta" tabindex="-1">Now go prove it. Book your stage. <svg class="bk-arrow" width="22" height="22" aria-hidden="true"><use href="#bk-i-arrow"/></svg></a>
+        <a href="https://thebogeyclub.golfbooking.ca/calendar.php" target="_blank" rel="noopener" class="bk-btn bk-btn-primary bk-book-link" id="bk-result-cta" tabindex="-1">Now go prove it. Book your stage. <svg class="bk-arrow" width="22" height="22" aria-hidden="true"><use href="#bk-i-arrow"/></svg></a>
         <button type="button" class="bk-reset" id="bk-reset" tabindex="-1">Pick again</button>
       </div>
     </div>
@@ -985,6 +1037,21 @@
   </section>
 
   <!-- ======================================================
+       6b. GALLERY — filled from BK_GALLERY in the script below.
+       Stays hidden until at least one photo loads.
+       ====================================================== -->
+  <section id="bk-gallery" aria-labelledby="bk-gallery-title" hidden>
+    <div class="bk-gal-head">
+      <div>
+        <p class="bk-kicker">Scenes from the stage</p>
+        <h2 id="bk-gallery-title" class="bk-display">Proof it <span class="bk-outline">happened.</span></h2>
+      </div>
+      <p>Real nights, real crews, really questionable high notes. You could be next.</p>
+    </div>
+    <div class="bk-gal-grid" id="bk-gal-grid"></div>
+  </section>
+
+  <!-- ======================================================
        7. HOW IT WORKS
        ====================================================== -->
   <section id="bk-how" aria-labelledby="bk-how-title">
@@ -992,8 +1059,8 @@
     <p class="bk-kicker bk-reveal">How it works</p>
     <h2 id="bk-how-title" class="bk-display bk-reveal">Four steps <span class="bk-outline">to the mic.</span></h2>
     <ol class="bk-steps">
-      <li class="bk-step bk-reveal"><div class="bk-step-no" aria-hidden="true">01</div><h3>Send a request</h3><p>Tell us your date, your group size and what you're celebrating using the form below.</p></li>
-      <li class="bk-step bk-reveal"><div class="bk-step-no" aria-hidden="true">02</div><h3>We lock it in</h3><p>Our team gets back to you with availability, pricing and food &amp; drink options.</p></li>
+      <li class="bk-step bk-reveal"><div class="bk-step-no" aria-hidden="true">01</div><h3>Pick your night</h3><p>Open our online booking calendar and choose the date and time that works for your crew.</p></li>
+      <li class="bk-step bk-reveal"><div class="bk-step-no" aria-hidden="true">02</div><h3>Lock it in</h3><p>Reserve your spot online. Planning something big? Let us know and we'll help you make it a night.</p></li>
       <li class="bk-step bk-reveal"><div class="bk-step-no" aria-hidden="true">03</div><h3>Build your setlist</h3><p>Browse the KaraFun catalogue ahead of time, or decide on the night. Both are valid.</p></li>
       <li class="bk-step bk-reveal"><div class="bk-step-no" aria-hidden="true">04</div><h3>Take the stage</h3><p>Show up, grab the mic, and make some memories (and some questionable recordings).</p></li>
     </ol>
@@ -1006,40 +1073,31 @@
     <div class="bk-book-title">
       <p class="bk-kicker">Ready when you are</p>
       <h2 id="bk-book-title" class="bk-display">Your stage.<span class="bk-row2">Your rules.</span><span class="bk-row3">Your night.</span></h2>
-      <p class="bk-book-lede">Tell us a little about your night and we'll take it from there. No talent required. Enthusiasm strongly encouraged.</p>
+      <p class="bk-book-lede">Pick your night, round up your people, and we'll take care of the rest. No talent required. Enthusiasm strongly encouraged.</p>
     </div>
 
-    <div class="bk-form-wrap bk-reveal">
-      <form id="bk-form" novalidate>
-        <div class="bk-field"><label for="bk-name">Name *</label><input id="bk-name" name="name" type="text" autocomplete="name" required placeholder="Your name"></div>
-        <div class="bk-field"><label for="bk-email">Email *</label><input id="bk-email" name="email" type="email" autocomplete="email" required placeholder="you@email.com"></div>
-        <div class="bk-field"><label for="bk-phone">Phone</label><input id="bk-phone" name="phone" type="tel" autocomplete="tel" placeholder="Best number to reach you"></div>
-        <div class="bk-field"><label for="bk-guests">Group size</label><input id="bk-guests" name="guests" type="text" inputmode="numeric" placeholder="e.g. 12"></div>
-        <div class="bk-field"><label for="bk-date">Preferred date</label><input id="bk-date" name="date" type="date"></div>
-        <div class="bk-field"><label for="bk-time">Preferred time</label><input id="bk-time" name="time" type="text" placeholder="e.g. 8pm onwards"></div>
-        <fieldset class="bk-field bk-full bk-occasions">
-          <legend>What's the occasion? *</legend><div class="bk-chips">
-          <label class="bk-chip"><input type="radio" name="occasion" value="Birthday" required><span>Birthday</span></label>
-          <label class="bk-chip"><input type="radio" name="occasion" value="Friends night"><span>Friends night</span></label>
-          <label class="bk-chip"><input type="radio" name="occasion" value="Corporate party"><span>Corporate party</span></label>
-          <label class="bk-chip"><input type="radio" name="occasion" value="Date night"><span>Date night</span></label>
-          <label class="bk-chip"><input type="radio" name="occasion" value="Special celebration"><span>Celebration</span></label>
-          <label class="bk-chip"><input type="radio" name="occasion" value="Other"><span>Other</span></label></div>
-        </fieldset>
-        <div class="bk-field bk-full"><label for="bk-msg">Anything else?</label><textarea id="bk-msg" name="message" placeholder="Song requests, surprises, dietary needs, the friend who absolutely will not sing…"></textarea></div>
-        <input type="hidden" name="legend" id="bk-legend-field" value="">
-        <div class="bk-feedback" id="bk-feedback" role="status" aria-live="polite"></div>
-        <div class="bk-submit-row">
-          <p>We'll reply with availability and pricing.</p>
-          <button type="submit" class="bk-btn bk-btn-primary" id="bk-submit">Request my stage <svg class="bk-arrow" width="22" height="22" aria-hidden="true"><use href="#bk-i-arrow"/></svg></button>
-        </div>
-      </form>
+    <div class="bk-ticket bk-reveal">
+      <div class="bk-ticket-main">
+        <small>The Bogey Club · Newmarket · After Dark</small>
+        <h3>Your crew. <span>Your setlist.</span> Your stage.</h3>
+        <p>Check availability on our online booking calendar, pick your night, and lock in your karaoke experience in a couple of minutes.</p>
+        <ul class="bk-ticket-tags" aria-label="Perfect for">
+          <li>Birthdays</li><li>Friend nights</li><li>Work parties</li><li>Date nights</li><li>Celebrations</li>
+        </ul>
+      </div>
+      <div class="bk-ticket-stub">
+        <div class="bk-admit">Admit:<br>the whole crew</div>
+        <p class="bk-as" id="bk-as">Booking as <b id="bk-as-name"></b></p>
+        <a href="https://thebogeyclub.golfbooking.ca/calendar.php" target="_blank" rel="noopener" class="bk-btn bk-btn-ink bk-book-link">Check availability &amp; book <svg width="22" height="22" aria-hidden="true"><use href="#bk-i-arrow"/></svg></a>
+        <p class="bk-ticket-note">Opens our online booking calendar in a new tab.</p>
+        <div class="bk-barcode" aria-hidden="true"></div>
+      </div>
     </div>
   </section>
 
   <p class="bk-foot-line">The Bogey Club · Newmarket, Ontario · <a href="https://thebogeyclub.com/">thebogeyclub.com</a> · Karaoke song library provided by KaraFun. KaraFun is a trademark of its respective owner.</p>
 
-  <div id="bk-sticky"><a href="#bk-book">Book karaoke <i><svg aria-hidden="true"><use href="#bk-i-arrow"/></svg></i></a></div>
+  <div id="bk-sticky"><a href="https://thebogeyclub.golfbooking.ca/calendar.php" target="_blank" rel="noopener" class="bk-book-link">Book karaoke <i><svg aria-hidden="true"><use href="#bk-i-arrow"/></svg></i></a></div>
 </div>
 
 <script>
@@ -1050,19 +1108,28 @@
      CONFIG — edit these
      ========================================================== */
 
-  /* Photo slots. Paste a URL (e.g. from the WordPress Media Library) to
-     replace a poster graphic with a real photo. Empty = keep the graphic.
-     If a URL fails to load, the graphic stays, so nothing ever looks broken. */
+  /* Online booking calendar (every "Book" button already links here in the HTML). */
+  var BK_BOOKING_URL = 'https://thebogeyclub.golfbooking.ca/calendar.php';
+
+  /* YOUR PHOTOS — 1) COLLAGE + OCCASION PANELS
+     Paste an image URL (e.g. from the WordPress Media Library) into any slot.
+     Empty = the slot keeps its designed poster graphic. If a URL fails to
+     load, the graphic stays, so nothing ever looks broken.
+       Collage ("Some nights deserve a soundtrack"):
+         crew = big pink frame · duet = violet frame · lounge = tall dark frame
+         laugh = cyan frame · solo = orange frame
+       Occasion panels: birthday · friends · corporate · date · celebration */
   var BK_PHOTOS = {
     crew: '', duet: '', lounge: '', laugh: '', solo: '',
     birthday: '', friends: '', corporate: '', date: '', celebration: ''
   };
 
-  /* Where the booking form sends its data. Use a form service or webhook
-     that accepts a JSON POST (Formspree, Make, Zapier, HubSpot forms, etc.).
-     While this is empty the form will NOT send anything: it shows visitors
-     a message asking them to contact the venue instead. */
-  var BK_FORM_ENDPOINT = '';
+  /* YOUR PHOTOS — 2) "PROOF IT HAPPENED" GALLERY
+     Add as many as you like; the section appears once at least one loads.
+     Portrait, landscape and square photos all work (it's a masonry layout). */
+  var BK_GALLERY = [
+    // { src: 'https://thebogeyclub.com/wp-content/uploads/....jpg', alt: 'Friends singing at The Bogey Club', caption: 'Birthday encore' },
+  ];
 
   var root = document.getElementById('bk-page');
   if (!root) return;
@@ -1074,11 +1141,45 @@
     if (!src) return;
     var img = new Image();
     img.alt = '';
-    img.loading = 'lazy';
     img.decoding = 'async';
     img.onload = function () { fig.classList.add('bk-has-photo'); };
     img.src = src;
     fig.insertBefore(img, fig.firstChild);
+  });
+
+  /* ---------- Hero video: fade in once it can play; stay graded backdrop if it can't ---------- */
+  var heroVid = document.getElementById('bk-hero-video');
+  if (heroVid) {
+    var vidBox = heroVid.parentNode;
+    var markReady = function () { vidBox.classList.add('bk-ready'); };
+    if (heroVid.readyState >= 3) markReady();
+    heroVid.addEventListener('canplay', markReady);
+    heroVid.addEventListener('error', function () { vidBox.classList.remove('bk-ready'); }, true);
+    if (reduceMotion) { heroVid.removeAttribute('autoplay'); heroVid.pause(); }
+  }
+
+  /* ---------- Gallery ---------- */
+  var galSec = document.getElementById('bk-gallery');
+  var galGrid = document.getElementById('bk-gal-grid');
+  BK_GALLERY.forEach(function (item, n) {
+    if (!item || !item.src) return;
+    var fig = document.createElement('figure');
+    fig.className = 'bk-gal-item';
+    fig.style.setProperty('--rot', ([-2.5, 1.8, -1.2, 2.4, -1.8, 1.2][n % 6]) + 'deg');
+    var img = new Image();
+    img.alt = item.alt || '';
+    img.decoding = 'async';
+    fig.style.display = 'none';
+    galGrid.appendChild(fig);  // keep the order you list them in
+    img.onload = function () { fig.style.display = ''; galSec.hidden = false; };
+    img.onerror = function () { fig.remove(); };
+    img.src = item.src;
+    fig.appendChild(img);
+    if (item.caption) {
+      var cap = document.createElement('figcaption');
+      cap.textContent = item.caption;
+      fig.appendChild(cap);
+    }
   });
 
   /* ---------- Hero: equalizer bars ---------- */
@@ -1266,7 +1367,8 @@
   var result = document.getElementById('bk-result');
   var resultCta = document.getElementById('bk-result-cta');
   var resetBtn = document.getElementById('bk-reset');
-  var legendField = document.getElementById('bk-legend-field');
+  var asBox = document.getElementById('bk-as');
+  var asName = document.getElementById('bk-as-name');
 
   function confetti(x, y, colors) {
     if (reduceMotion) return;
@@ -1298,7 +1400,8 @@
       document.getElementById('bk-result-title').textContent = "You're " + L.title + '.';
       document.getElementById('bk-result-text').textContent = L.text;
       document.getElementById('bk-result-anthem').textContent = L.anthem;
-      legendField.value = L.title;
+      asName.textContent = L.title;
+      asBox.classList.add('bk-on');
       result.classList.add('bk-open');
       result.setAttribute('aria-hidden', 'false');
       resultCta.tabIndex = 0;
@@ -1319,7 +1422,7 @@
     result.setAttribute('aria-hidden', 'true');
     resultCta.tabIndex = -1;
     resetBtn.tabIndex = -1;
-    legendField.value = '';
+    asBox.classList.remove('bk-on');
     cards[0].focus();
   });
 
@@ -1352,44 +1455,8 @@
     new IntersectionObserver(function (en) { bookIn = en[0].isIntersecting; upd(); }, { threshold: 0.05 }).observe(book);
   }
 
-  /* ---------- Booking form ---------- */
-  var form = document.getElementById('bk-form');
-  var fb = document.getElementById('bk-feedback');
-  var submit = document.getElementById('bk-submit');
-  function say(cls, html) { fb.className = 'bk-feedback ' + cls; fb.innerHTML = html; }
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var data = {};
-    new FormData(form).forEach(function (v, k) { data[k] = v; });
-    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email || '');
-    if (!data.name || !emailOk || !data.occasion) {
-      say('bk-err', 'Almost there. Please add your name, a valid email and the occasion.');
-      return;
-    }
-    if (!BK_FORM_ENDPOINT) {
-      say('bk-err', 'Online booking requests aren’t switched on yet. Please contact The Bogey Club directly at <a href="https://thebogeyclub.com/" style="text-decoration:underline">thebogeyclub.com</a> to book your karaoke night.');
-      return;
-    }
-    submit.disabled = true;
-    submit.firstChild.textContent = 'Warming up the mic… ';
-    fetch(BK_FORM_ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(Object.assign({ source: 'karaoke-landing-page' }, data))
-    }).then(function (res) {
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      submit.style.display = 'none';
-      say('bk-ok', '<strong>You’re on the setlist!</strong>Thanks, ' + escapeHtml(data.name.split(' ')[0]) + '. Our team will be in touch with availability and pricing. Start warming up those vocal cords.');
-      sticky.style.display = 'none';
-      var r = submit.getBoundingClientRect();
-      confetti(window.innerWidth / 2, r.top, ['#FF2D8D', '#D7FF3F', '#00E5FF', '#6B35FF']);
-    }).catch(function () {
-      submit.disabled = false;
-      submit.firstChild.textContent = 'Request my stage ';
-      say('bk-err', 'Something went wrong sending your request. Please try again, or contact us through <a href="https://thebogeyclub.com/" style="text-decoration:underline">thebogeyclub.com</a>.');
-    });
-  });
+  /* keep every booking link in sync with BK_BOOKING_URL */
+  root.querySelectorAll('.bk-book-link').forEach(function (a) { a.href = BK_BOOKING_URL; });
 })();
 </script>
 
