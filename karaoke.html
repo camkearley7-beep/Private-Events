@@ -227,7 +227,8 @@
   #bk-marquee .bk-band-b { background: var(--pink); color: var(--cream); transform: rotate(1.8deg) scale(1.04); margin-top: -10px; }
   #bk-marquee .bk-track { display: flex; flex-shrink: 0; will-change: transform; }
   #bk-marquee .bk-item { font-family: var(--display); text-transform: uppercase; font-size: clamp(40px, 6vw, 92px); line-height: 1; display: inline-flex; align-items: center; gap: .35em; padding-right: .35em; }
-  #bk-marquee .bk-item em { font-style: normal; color: transparent; -webkit-text-stroke: 2px currentColor; }
+  #bk-marquee .bk-item em { font-style: normal; color: transparent; -webkit-text-stroke: 2px var(--ink); }
+  #bk-marquee .bk-band-b .bk-item em { -webkit-text-stroke-color: var(--cream); }
   #bk-marquee .bk-star { display: inline-block; width: .6em; height: .6em; }
   #bk-marquee .bk-band-a .bk-star { color: var(--pink); }
   #bk-marquee .bk-band-b .bk-star { color: var(--lime); }
@@ -812,15 +813,15 @@
   <!-- ======================================================
        2. MARQUEE
        ====================================================== -->
-  <section id="bk-marquee" aria-label="No talent required. Good vibes only. Sing it loud. Make it a night.">
+  <section id="bk-marquee" aria-label="No talent required. Good vibes. Sing it loud. Steal the mic. Crowd goes wild. One more song. Key change incoming. Zero shame. Encore please.">
     <div class="bk-band bk-band-a" aria-hidden="true">
       <div class="bk-track" data-dir="-1">
-        <span class="bk-item">🎤 No talent required <svg class="bk-star"><use href="#bk-i-star"/></svg> Good vibes <em>only</em> <svg class="bk-star"><use href="#bk-i-star"/></svg> Sing it loud <svg class="bk-star"><use href="#bk-i-star"/></svg> Make it <em>a night</em> <svg class="bk-star"><use href="#bk-i-star"/></svg></span>
+        <span class="bk-item">No talent required <svg class="bk-star"><use href="#bk-i-star"/></svg> <em>Good vibes</em> <svg class="bk-star"><use href="#bk-i-star"/></svg> Sing it loud <svg class="bk-star"><use href="#bk-i-star"/></svg> <em>Steal the mic</em> <svg class="bk-star"><use href="#bk-i-star"/></svg> Crowd goes wild <svg class="bk-star"><use href="#bk-i-star"/></svg></span>
       </div>
     </div>
     <div class="bk-band bk-band-b" aria-hidden="true">
       <div class="bk-track" data-dir="1">
-        <span class="bk-item">One more song <svg class="bk-star"><use href="#bk-i-star"/></svg> <em>Pass the mic</em> <svg class="bk-star"><use href="#bk-i-star"/></svg> Key change incoming <svg class="bk-star"><use href="#bk-i-star"/></svg> <em>Encore!</em> <svg class="bk-star"><use href="#bk-i-star"/></svg></span>
+        <span class="bk-item">One more song <svg class="bk-star"><use href="#bk-i-star"/></svg> <em>Key change incoming</em> <svg class="bk-star"><use href="#bk-i-star"/></svg> Zero shame <svg class="bk-star"><use href="#bk-i-star"/></svg> <em>Encore please</em> <svg class="bk-star"><use href="#bk-i-star"/></svg></span>
       </div>
     </div>
   </section>
