@@ -244,7 +244,7 @@
     box-shadow: 0 30px 60px -20px rgba(16,9,31,.45);
     transition: transform .5s cubic-bezier(.2,.8,.2,1);
   }
-  #bk-page .bk-shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .6s; z-index: 2; }
+  #bk-page .bk-shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.04); opacity: 0; transition: opacity .6s; z-index: 2; }
   #bk-page .bk-shot.bk-has-photo img { opacity: 1; }
   #bk-page .bk-shot.bk-has-photo .bk-art { opacity: 0; }
   #bk-page .bk-shot .bk-tint { position: absolute; inset: 0; z-index: 3; mix-blend-mode: color; opacity: 0; pointer-events: none; }
@@ -1116,8 +1116,8 @@
        Occasion panels: birthday · friends · corporate · date · celebration */
   var BK_PHOTOS = {
     // Each slot takes a URL, or { src: URL, pos: 'x% y%' } to choose which part of the photo stays in frame.
-    crew:   { src: 'https://thebogeyclub.com/wp-content/uploads/2026/10/ChatGPT-Image-Oct-16-2026-10_49_54-AM.png', pos: '50% 28%', alt: 'Guest performing on stage at The Bogey Club karaoke while friends cheer' },
-    duet:   { src: 'https://thebogeyclub.com/wp-content/uploads/2026/10/Karaoke.png', pos: '50% 46%', alt: 'Two friends sharing a microphone in front of the karaoke lyrics screen' },
+    crew:   { src: 'https://thebogeyclub.com/wp-content/uploads/2026/10/Karaoke.png', pos: '50% 28%', alt: 'Guest performing on stage at The Bogey Club karaoke while friends cheer' },
+    duet:   { src: 'https://thebogeyclub.com/wp-content/uploads/2026/10/ChatGPT-Image-Oct-16-2026-10_49_54-AM.png', pos: '50% 46%', alt: 'Two friends sharing a microphone in front of the karaoke lyrics screen' },
     lounge: { src: 'https://thebogeyclub.com/wp-content/uploads/2026/10/1.png', pos: '45% 40%', alt: 'Friends singing and laughing together under neon lights' },
     laugh:  { src: 'https://thebogeyclub.com/wp-content/uploads/2026/10/ChatGPT-Image-Oct-16-2026-10_49_46-AM.png', pos: '50% 62%', alt: 'Two friends belting out a song together on the karaoke stage' },
     solo:   { src: 'https://thebogeyclub.com/wp-content/uploads/2026/10/2.png', pos: '55% 52%', alt: 'Guest singing with her arm raised in front of the karaoke screen' },
