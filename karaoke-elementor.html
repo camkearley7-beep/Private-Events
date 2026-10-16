@@ -248,7 +248,7 @@
   #bk-page .bk-shot.bk-has-photo img { opacity: 1; }
   #bk-page .bk-shot.bk-has-photo .bk-art { opacity: 0; }
   #bk-page .bk-shot .bk-tint { position: absolute; inset: 0; z-index: 3; mix-blend-mode: color; opacity: 0; pointer-events: none; }
-  #bk-page .bk-shot.bk-has-photo .bk-tint { opacity: .45; }
+  #bk-page .bk-shot.bk-has-photo .bk-tint { opacity: .12; }
   #bk-page .bk-art { position: absolute; inset: 0; display: grid; place-items: center; transition: opacity .6s; }
   #bk-page .bk-art::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(rgba(16,9,31,.28) 1.4px, transparent 1.6px); background-size: 9px 9px; mix-blend-mode: multiply; opacity: .55; }
   #bk-page .bk-art svg { position: relative; width: 62%; height: 62%; }
@@ -1115,7 +1115,12 @@
          laugh = cyan frame · solo = orange frame
        Occasion panels: birthday · friends · corporate · date · celebration */
   var BK_PHOTOS = {
-    crew: '', duet: '', lounge: '', laugh: '', solo: '',
+    // Each slot takes a URL, or { src: URL, pos: 'x% y%' } to choose which part of the photo stays in frame.
+    crew:   { src: 'https://thebogeyclub.com/wp-content/uploads/2026/10/ChatGPT-Image-Oct-16-2026-10_49_54-AM.png', pos: '50% 28%', alt: 'Guest performing on stage at The Bogey Club karaoke while friends cheer' },
+    duet:   { src: 'https://thebogeyclub.com/wp-content/uploads/2026/10/Karaoke.png', pos: '50% 46%', alt: 'Two friends sharing a microphone in front of the karaoke lyrics screen' },
+    lounge: { src: 'https://thebogeyclub.com/wp-content/uploads/2026/10/1.png', pos: '45% 40%', alt: 'Friends singing and laughing together under neon lights' },
+    laugh:  { src: 'https://thebogeyclub.com/wp-content/uploads/2026/10/ChatGPT-Image-Oct-16-2026-10_49_46-AM.png', pos: '50% 62%', alt: 'Two friends belting out a song together on the karaoke stage' },
+    solo:   { src: 'https://thebogeyclub.com/wp-content/uploads/2026/10/2.png', pos: '55% 52%', alt: 'Guest singing with her arm raised in front of the karaoke screen' },
     birthday: '', friends: '', corporate: '', date: '', celebration: ''
   };
 
@@ -1132,10 +1137,12 @@
 
   /* ---------- Photos ---------- */
   root.querySelectorAll('.bk-shot[data-photo]').forEach(function (fig) {
-    var src = BK_PHOTOS[fig.getAttribute('data-photo')];
+    var slot = BK_PHOTOS[fig.getAttribute('data-photo')];
+    var src = slot && (slot.src || (typeof slot === 'string' ? slot : ''));
     if (!src) return;
     var img = new Image();
-    img.alt = '';
+    img.alt = slot.alt || '';
+    if (slot.pos) img.style.objectPosition = slot.pos;
     img.decoding = 'async';
     img.onload = function () { fig.classList.add('bk-has-photo'); };
     img.src = src;
