@@ -515,7 +515,7 @@
   #bk-how .bk-kicker { margin-bottom: 22px; }
   #bk-how h2 { font-size: clamp(60px, 9vw, 160px); margin-bottom: 64px; }
   #bk-how h2 .bk-outline { -webkit-text-stroke-color: var(--ink); }
-  #bk-how .bk-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; list-style: none; position: relative; z-index: 1; }
+  #bk-how .bk-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; list-style: none; position: relative; z-index: 1; }
   #bk-how .bk-step { padding: 0 28px 0 0; border-left: 3px solid var(--ink); padding-left: 22px; }
   #bk-how .bk-step-no { font-family: var(--display); font-size: clamp(90px, 9vw, 150px); line-height: .85; color: transparent; -webkit-text-stroke: 2px var(--ink); margin-bottom: 18px; transition: color .3s; }
   #bk-how .bk-step:hover .bk-step-no { color: var(--pink); -webkit-text-stroke-color: var(--pink); }
@@ -584,7 +584,6 @@
     #bk-legend .bk-cards { grid-template-columns: repeat(2, 1fr); }
     #bk-legend .bk-card { min-height: 340px; }
     #bk-songs .bk-features { grid-template-columns: repeat(2, 1fr); }
-    #bk-how .bk-steps { grid-template-columns: repeat(2, 1fr); row-gap: 50px; }
   }
   @media (max-width: 900px) {
     #bk-hero { grid-template-columns: 1fr; padding-top: 96px; padding-bottom: 130px; }
@@ -634,7 +633,7 @@
     #bk-legend .bk-card-icon { width: 90px; margin: 8px 0; }
     #bk-legend .bk-cards.bk-chosen .bk-card[aria-pressed="true"] { animation: none; }
     #bk-songs .bk-features { grid-template-columns: 1fr; }
-    #bk-how .bk-steps { grid-template-columns: 1fr; }
+    #bk-how .bk-steps { grid-template-columns: 1fr; row-gap: 44px; }
     #bk-book .bk-ticket::before { font-size: 22px; top: -20px; left: 16px; }
     #bk-collage .bk-board { grid-auto-rows: 34px; }
     #bk-page .bk-cap { font-size: 10px; left: 8px; bottom: 8px; }
@@ -1061,12 +1060,11 @@
   <section id="bk-how" aria-labelledby="bk-how-title">
     <div class="bk-how-bg" aria-hidden="true">ENCORE</div>
     <p class="bk-kicker bk-reveal">How it works</p>
-    <h2 id="bk-how-title" class="bk-display bk-reveal">Four steps <span class="bk-outline">to the mic.</span></h2>
+    <h2 id="bk-how-title" class="bk-display bk-reveal">Three steps <span class="bk-outline">to the mic.</span></h2>
     <ol class="bk-steps">
       <li class="bk-step bk-reveal"><div class="bk-step-no" aria-hidden="true">01</div><h3>Pick your night</h3><p>Open our online booking calendar and choose the date and time that works for your crew.</p></li>
       <li class="bk-step bk-reveal"><div class="bk-step-no" aria-hidden="true">02</div><h3>Lock it in</h3><p>Reserve your spot online. Planning something big? Let us know and we'll help you make it a night.</p></li>
-      <li class="bk-step bk-reveal"><div class="bk-step-no" aria-hidden="true">03</div><h3>Build your setlist</h3><p>Browse the KaraFun catalogue ahead of time, or decide on the night. Both are valid.</p></li>
-      <li class="bk-step bk-reveal"><div class="bk-step-no" aria-hidden="true">04</div><h3>Take the stage</h3><p>Show up, grab the mic, and make some memories (and some questionable recordings).</p></li>
+      <li class="bk-step bk-reveal"><div class="bk-step-no" aria-hidden="true">03</div><h3>Take the stage</h3><p>Show up, grab the mic, and make some memories (and some questionable recordings).</p></li>
     </ol>
   </section>
 
