@@ -267,16 +267,20 @@
     position: relative; overflow: hidden; isolation: isolate;
     background: radial-gradient(60% 70% at 85% 30%, rgba(255,45,141,.28), transparent 65%), radial-gradient(50% 60% at 0% 100%, rgba(0,229,255,.16), transparent 60%), var(--ink);
     padding: clamp(90px, 12vw, 160px) clamp(16px, 5vw, 80px);
-    display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(40px, 6vw, 90px); align-items: center;
+    display: grid; grid-template-columns: .95fr 1.05fr; gap: clamp(40px, 6vw, 90px); align-items: center;
   }
   #bk-bar h2 { font-size: clamp(56px, 8.4vw, 144px); margin-bottom: 28px; }
   #bk-bar h2 .bk-outline { display: block; -webkit-text-stroke-color: var(--pink); }
   #bk-bar .bk-bar-lede { font-size: 19px; color: rgba(247,243,236,.82); max-width: 560px; margin-bottom: 8px; }
   #bk-bar .bk-bar-note { margin-top: 18px; font-size: 13px; color: rgba(247,243,236,.5); }
-  #bk-bar .bk-bar-visual { position: relative; }
-  #bk-bar .bk-bar-shot { aspect-ratio: 4 / 5; border: 12px solid var(--pink); transform: rotate(3deg); box-shadow: 0 40px 90px -30px rgba(255,45,141,.6); }
+  #bk-bar .bk-bar-visual { position: relative; display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: 40px; gap: 12px; }
+  #bk-bar .bk-bar-shot { box-shadow: 0 40px 90px -30px rgba(0,0,0,.7); }
+  #bk-bar .bk-bar-shot:hover { transform: rotate(0) scale(1.03); z-index: 7; }
+  #bk-bar .bk-bar-w1 { grid-column: 1 / 9; grid-row: 1 / 8; border: 10px solid var(--pink); transform: rotate(-2.5deg); z-index: 2; }
+  #bk-bar .bk-bar-tall { grid-column: 7 / 13; grid-row: 4 / 15; border: 10px solid var(--violet); transform: rotate(3deg); z-index: 3; }
+  #bk-bar .bk-bar-w2 { grid-column: 1 / 8; grid-row: 9 / 15; border: 10px solid var(--cyan); transform: rotate(2deg); z-index: 1; }
   #bk-bar .bk-neon {
-    position: absolute; left: -8%; bottom: 8%; z-index: 8; pointer-events: none;
+    position: absolute; left: -6%; bottom: -4%; z-index: 8; pointer-events: none;
     font-family: var(--cond); font-style: italic; font-weight: 900; text-transform: uppercase; font-size: clamp(54px, 6vw, 100px); line-height: 1; color: #fff;
     text-shadow: 0 0 6px #fff, 0 0 18px var(--pink), 0 0 40px var(--pink), 0 0 80px var(--pink);
     transform: rotate(-8deg); animation: bk-flicker 5s infinite;
@@ -597,8 +601,8 @@
     #bk-nights .bk-panel .bk-art svg, #bk-nights .bk-panel.bk-active .bk-art svg, #bk-nights .bk-panel:not(.bk-active) .bk-art svg { width: 34%; height: 34%; transform: translateY(-62%); }
     #bk-collage .bk-collage-head, #bk-nights .bk-nights-head, #bk-legend .bk-legend-head { grid-template-columns: 1fr; }
     #bk-bar { grid-template-columns: 1fr; }
-    #bk-bar .bk-bar-visual { max-width: 420px; width: 88%; margin: 0 auto; }
-    #bk-bar .bk-neon { left: -4%; }
+    #bk-bar .bk-bar-visual { max-width: 640px; width: 100%; margin: 0 auto; grid-auto-rows: 30px; gap: 8px; }
+    #bk-bar .bk-neon { left: -2%; }
     #bk-collage .bk-board { grid-auto-rows: 44px; gap: 12px; }
     #bk-collage .bk-s1 { grid-column: 1 / 8; grid-row: 1 / 7; }
     #bk-collage .bk-s2 { grid-column: 7 / 13; grid-row: 3 / 7; }
@@ -641,6 +645,7 @@
     #bk-how .bk-steps { grid-template-columns: 1fr; row-gap: 44px; }
     #bk-book .bk-ticket::before { font-size: 22px; top: -20px; left: 16px; }
     #bk-collage .bk-board { grid-auto-rows: 34px; }
+    #bk-bar .bk-bar-visual { grid-auto-rows: 22px; gap: 6px; }
     #bk-page .bk-cap { font-size: 10px; left: 8px; bottom: 8px; }
     #bk-page .bk-tape { width: 70px; height: 22px; }
   }
@@ -798,15 +803,27 @@
   <section id="bk-bar" class="bk-grain" aria-labelledby="bk-bar-title">
     <div class="bk-bar-copy bk-reveal">
       <h2 id="bk-bar-title" class="bk-display">Liquid courage. <span class="bk-outline">Fully stocked.</span></h2>
-      <p class="bk-bar-lede">Every great performance starts with a little liquid courage. Our full bar keeps the drinks flowing all night, so you can toast the duet of the year, cheer on the brave, and order one more round before one more song.</p>
+      <p class="bk-bar-lede">Every great performance starts with a little liquid courage. Our full bar keeps the drinks flowing all night, so you can toast the duet of the year, cheer on the brave, and order one more round before one more song. Settle into the lounge, pull up a stool at the bar, and take your turn on the stage.</p>
       <p class="bk-bar-note">19+ with valid ID to be served. Please enjoy responsibly.</p>
     </div>
+    <!-- Bar & lounge photos: set in BK_BAR_PHOTOS (script below). The tall (portrait) photo goes in the tall frame automatically. -->
     <div class="bk-bar-visual bk-reveal">
-      <figure class="bk-shot bk-bar-shot" data-photo="bar">
-        <div class="bk-art" style="background:linear-gradient(160deg,#FF2D8D,#6B35FF 70%,#10091F)"><svg style="color:#F7F3EC" aria-hidden="true"><use href="#bk-i-cheers"/></svg><span class="bk-art-word" aria-hidden="true">Full<br>bar</span></div>
+      <figure class="bk-shot bk-bar-shot bk-bar-w1" data-bar-slot="wide">
+        <div class="bk-art" style="background:linear-gradient(160deg,#FF7139,#FF2D8D)"><svg style="color:#F7F3EC" aria-hidden="true"><use href="#bk-i-cheers"/></svg><span class="bk-art-word" aria-hidden="true">Full<br>bar</span></div>
         <div class="bk-tint" style="background:#FF2D8D"></div>
-        <figcaption class="bk-cap" style="left:auto;right:14px;bottom:auto;top:14px">One more round</figcaption>
-        <span class="bk-tape" style="top:-8px;left:28%;transform:rotate(-6deg)" aria-hidden="true"></span>
+        <figcaption class="bk-cap">Your crew's HQ</figcaption>
+        <span class="bk-tape" style="top:-8px;left:30%;transform:rotate(-6deg)" aria-hidden="true"></span>
+      </figure>
+      <figure class="bk-shot bk-bar-shot bk-bar-tall" data-bar-slot="tall">
+        <div class="bk-art" style="background:linear-gradient(160deg,#6B35FF,#10091F)"><svg style="color:#00E5FF" aria-hidden="true"><use href="#bk-i-mic"/></svg></div>
+        <div class="bk-tint" style="background:#6B35FF"></div>
+        <figcaption class="bk-cap" style="left:auto;right:14px;bottom:auto;top:14px">The stage</figcaption>
+      </figure>
+      <figure class="bk-shot bk-bar-shot bk-bar-w2" data-bar-slot="wide">
+        <div class="bk-art" style="background:linear-gradient(160deg,#00E5FF,#6B35FF)"><svg style="color:#F7F3EC" aria-hidden="true"><use href="#bk-i-team"/></svg></div>
+        <div class="bk-tint" style="background:#00E5FF"></div>
+        <figcaption class="bk-cap" style="bottom:auto;top:14px">One more round</figcaption>
+        <span class="bk-tape" style="bottom:-6px;right:24%;transform:rotate(5deg)" aria-hidden="true"></span>
       </figure>
       <div class="bk-neon" aria-hidden="true">Cheers!</div>
     </div>
@@ -1050,7 +1067,7 @@
          crew = big pink frame · duet = violet frame · lounge = tall dark frame
          laugh = cyan frame · solo = orange frame
        Occasion panels: birthday · friends · corporate · date · celebration
-       Bar section: bar (a portrait photo of your bar or drinks works best) */
+       (Bar section photos are set in BK_BAR_PHOTOS below.) */
   var BK_PHOTOS = {
     // Each slot takes a URL, or { src: URL, pos: 'x% y%' } to choose which part of the photo stays in frame.
     crew:   { src: 'https://thebogeyclub.com/wp-content/uploads/2026/10/Karaoke.png', pos: '50% 28%', alt: 'Guest performing on stage at The Bogey Club karaoke while friends cheer' },
@@ -1058,11 +1075,18 @@
     lounge: { src: 'https://thebogeyclub.com/wp-content/uploads/2026/10/1.png', pos: '45% 40%', alt: 'Friends singing and laughing together under neon lights' },
     laugh:  { src: 'https://thebogeyclub.com/wp-content/uploads/2026/10/ChatGPT-Image-Oct-16-2026-10_49_46-AM.png', pos: '50% 62%', alt: 'Two friends belting out a song together on the karaoke stage' },
     solo:   { src: 'https://thebogeyclub.com/wp-content/uploads/2026/10/2.png', pos: '55% 52%', alt: 'Guest singing with her arm raised in front of the karaoke screen' },
-    bar: '',
     birthday: '', friends: '', corporate: '', date: '', celebration: ''
   };
 
-  /* YOUR PHOTOS — 2) "PROOF IT HAPPENED" GALLERY
+  /* YOUR PHOTOS — 2) BAR & LOUNGE ("Liquid courage") — up to 3 photos, any order.
+     A portrait (tall) photo is placed in the tall frame; landscape photos fill the two wide frames. */
+  var BK_BAR_PHOTOS = [
+    'https://thebogeyclub.com/wp-content/uploads/2026/10/ChatGPT-Image-Oct-19-2026-02_24_43-PM.png',
+    'https://thebogeyclub.com/wp-content/uploads/2026/10/ChatGPT-Image-Oct-19-2026-02_24_31-PM.png',
+    'https://thebogeyclub.com/wp-content/uploads/2026/10/ChatGPT-Image-Oct-19-2026-02_24_35-PM.png'
+  ];
+
+  /* YOUR PHOTOS — 3) "PROOF IT HAPPENED" GALLERY
      Add as many as you like; the section appears once at least one loads.
      Portrait, landscape and square photos all work (it's a masonry layout). */
   var BK_GALLERY = [
@@ -1086,6 +1110,39 @@
     img.src = src;
     fig.insertBefore(img, fig.firstChild);
   });
+
+  /* ---------- Bar & lounge photos: portrait -> tall frame, landscape -> wide frames ---------- */
+  (function () {
+    var tallSlot = root.querySelector('[data-bar-slot="tall"]');
+    var wideSlots = Array.prototype.slice.call(root.querySelectorAll('[data-bar-slot="wide"]'));
+    var srcs = BK_BAR_PHOTOS.filter(Boolean);
+    if (!srcs.length) return;
+    var loaded = [], pending = srcs.length;
+    function place() {
+      var portrait = loaded.filter(function (im) { return im.naturalHeight > im.naturalWidth; });
+      var landscape = loaded.filter(function (im) { return im.naturalHeight <= im.naturalWidth; });
+      var queue = [];
+      if (portrait.length) queue.push([tallSlot, portrait.shift()]);
+      landscape.concat(portrait).forEach(function (im) {
+        var fig = wideSlots.length ? wideSlots.shift() : (queue.some(function (q) { return q[0] === tallSlot; }) ? null : tallSlot);
+        if (fig) queue.push([fig, im]);
+      });
+      queue.forEach(function (q) {
+        var fig = q[0], im = q[1];
+        im.alt = fig === tallSlot ? 'The karaoke stage at The Bogey Club' : 'The full bar and lounge at The Bogey Club';
+        im.style.objectPosition = fig === tallSlot ? '50% 55%' : '50% 62%';
+        fig.insertBefore(im, fig.firstChild);
+        fig.classList.add('bk-has-photo');
+      });
+    }
+    srcs.forEach(function (src) {
+      var im = new Image();
+      im.decoding = 'async';
+      im.onload = function () { loaded.push(im); if (--pending === 0) place(); };
+      im.onerror = function () { if (--pending === 0) place(); };
+      im.src = src;
+    });
+  })();
 
   /* ---------- Logo fallback (only used if the WordPress logo file can't load) ---------- */
   var logoImg = document.getElementById('bk-logo-img');
