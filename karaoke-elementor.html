@@ -89,7 +89,7 @@
       radial-gradient(80% 60% at 85% 110%, rgba(255,45,141,.45), transparent 60%),
       radial-gradient(50% 40% at 0% 0%, rgba(0,229,255,.12), transparent 70%),
       var(--ink);
-    display: grid; grid-template-columns: 1.05fr .95fr; align-items: center;
+    display: grid; grid-template-columns: minmax(0, 1fr); align-items: center;
     padding: clamp(76px, 11vh, 120px) clamp(16px, 5vw, 80px) clamp(110px, 15vh, 140px);
   }
   /* background video — colour-graded so it sits under the neon look */
@@ -134,16 +134,17 @@
   /* logo file has empty space around it: this box crops to the artwork (1820×1456 of the 2000×2000 canvas) */
   #bk-hero .bk-hero-logo { display: block; width: clamp(120px, min(13vw, 19vh), 200px); aspect-ratio: 1820 / 1456; overflow: hidden; margin-bottom: clamp(16px, 3vh, 30px); filter: drop-shadow(0 0 18px rgba(255,45,141,.35)); opacity: 0; animation: bk-fade .9s .05s forwards; }
   #bk-hero .bk-hero-logo img { display: block; width: 109.89%; max-width: none; height: auto; margin: -14.505% 0 0 -5%; }
-  #bk-hero h1 { font-size: clamp(56px, min(10.6vw, 13vh), 188px); margin-bottom: clamp(14px, 2.6vh, 26px); position: relative; }
+  #bk-hero .bk-hero-copy { max-width: 1100px; }
+  #bk-hero h1 { font-size: clamp(52px, min(11vw, 15vh), 200px); white-space: nowrap; margin-bottom: clamp(14px, 2.6vh, 26px); position: relative; }
   /* clip only the bottom edge (for the rise-in), so tall letters and outlines never get cropped at the top */
   #bk-hero h1 .bk-line { display: block; padding-bottom: .04em; clip-path: inset(-0.5em -0.5em 0 -0.5em); }
   #bk-hero h1 .bk-line > span { display: inline-block; transform: translateY(105%); animation: bk-rise 1.1s cubic-bezier(.2,.9,.2,1) forwards; }
   #bk-hero h1 .bk-line:nth-child(2) > span { animation-delay: .14s; }
   #bk-hero h1 .bk-line:nth-child(3) > span { animation-delay: .28s; }
   #bk-hero h1 .bk-line:nth-child(4) > span { animation-delay: .42s; }
-  #bk-hero h1 .bk-l2 { color: var(--pink); text-shadow: 0 0 40px rgba(255,45,141,.55); }
-  #bk-hero h1 .bk-l3 { padding-left: .9em; }
-  #bk-hero h1 .bk-l3 > span { color: transparent; -webkit-text-stroke: 2px var(--cream); }
+  #bk-hero h1 .bk-l-out > span { color: transparent; -webkit-text-stroke: 2px var(--cream); }
+  #bk-hero h1 .bk-l-lime { padding-bottom: .12em; }
+  #bk-hero h1 .bk-l-lime > span { color: var(--lime); rotate: -3deg; text-shadow: 0 0 40px rgba(215,255,63,.35); }
   @keyframes bk-rise { to { transform: none; } }
   #bk-hero .bk-hero-sub {
     font-size: clamp(24px, min(3.2vw, 5vh), 44px); line-height: 1; margin-bottom: clamp(12px, 2.2vh, 22px);
@@ -154,29 +155,6 @@
   #bk-hero .bk-hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin: clamp(6px, 1.4vh, 14px) 0 clamp(18px, 3vh, 30px); opacity: 0; animation: bk-fade .9s .75s forwards; }
   @keyframes bk-fade { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
 
-  /* mic stage */
-  #bk-hero .bk-stage { position: relative; z-index: 2; height: min(86vh, 820px); display: grid; place-items: center; perspective: 1200px; }
-  #bk-hero .bk-ring {
-    position: absolute; left: 50%; top: 42%; border-radius: 50%; pointer-events: none;
-    transform: translate(-50%,-50%) rotateX(68deg);
-  }
-  #bk-hero .bk-ring-1 { width: 78%; aspect-ratio: 1; border: 2px solid rgba(255,45,141,.8); box-shadow: 0 0 30px rgba(255,45,141,.8), inset 0 0 30px rgba(255,45,141,.6); animation: bk-spin 14s linear infinite; }
-  #bk-hero .bk-ring-2 { width: 58%; aspect-ratio: 1; border: 2px dashed rgba(0,229,255,.7); box-shadow: 0 0 20px rgba(0,229,255,.5); animation: bk-spin 22s linear infinite reverse; }
-  #bk-hero .bk-ring-3 { width: 40%; aspect-ratio: 1; border: 1px solid rgba(215,255,63,.7); box-shadow: 0 0 24px rgba(215,255,63,.4); top: 30%; transform: translate(-50%,-50%) rotateX(72deg) rotateY(18deg); animation: bk-pulse 3.2s ease-in-out infinite; }
-  @keyframes bk-spin { to { transform: translate(-50%,-50%) rotateX(68deg) rotateZ(360deg); } }
-  @keyframes bk-pulse { 50% { opacity: .35; } }
-  #bk-hero .bk-mic-wrap {
-    position: relative; width: min(62%, 270px); height: 100%; display: grid; place-items: center;
-    transform-style: preserve-3d; transition: transform .35s cubic-bezier(.2,.8,.2,1);
-    animation: bk-mic-in 1.6s .2s cubic-bezier(.2,.9,.2,1) both;
-  }
-  @keyframes bk-mic-in { from { opacity: 0; transform: translateY(120px) scale(.85) rotate(12deg); filter: blur(10px); } to { opacity: 1; transform: none; filter: none; } }
-  #bk-hero .bk-mic { width: 100%; height: auto; max-height: 100%; filter: drop-shadow(0 40px 60px rgba(0,0,0,.6)) drop-shadow(0 0 60px rgba(255,45,141,.25)); animation: bk-bob 6s ease-in-out infinite; }
-  @keyframes bk-bob { 0%,100% { transform: translateY(0) rotate(-14deg); } 50% { transform: translateY(-18px) rotate(-11deg); } }
-
-  /* floating bits */
-  #bk-hero .bk-float { position: absolute; pointer-events: none; z-index: 3; animation: bk-floaty 7s ease-in-out infinite; }
-  #bk-hero .bk-float svg { width: 100%; height: auto; }
   @keyframes bk-floaty { 0%,100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-22px) rotate(12deg); } }
 
   /* sticker */
@@ -581,8 +559,7 @@
     #bk-songs .bk-features { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 900px) {
-    #bk-hero { grid-template-columns: 1fr; padding-top: 96px; padding-bottom: 130px; }
-    #bk-hero .bk-stage { position: absolute; right: -18%; top: 4%; width: 78%; height: 62vh; opacity: .55; z-index: 1; }
+    #bk-hero { padding-top: 96px; padding-bottom: 130px; }
     #bk-hero .bk-sticker { width: 92px; height: 92px; top: 74px; bottom: auto; right: 14px; font-size: 10px; }
     #bk-hero .bk-sticker b { font-size: 26px; }
     #bk-hero .bk-scroll-hint { display: none; }
@@ -619,8 +596,8 @@
     #bk-sticky { left: 16px; right: 16px; bottom: 14px; }
     #bk-sticky a { width: 100%; justify-content: space-between; }
     #bk-hero .bk-hero-ctas .bk-btn { width: 100%; justify-content: center; }
+    #bk-hero h1 { font-size: 17.5vw; }
     #bk-hero .bk-sticker { display: none; }
-    #bk-hero h1 .bk-l3 { padding-left: .4em; }
     #bk-hero .bk-eq { height: 36px; }
     #bk-hero .bk-eq span:nth-child(n+14) { display: none; }
     #bk-legend .bk-cards { grid-template-columns: 1fr; }
@@ -690,104 +667,15 @@
     <div class="bk-hero-copy">
       <span class="bk-hero-logo"><img id="bk-logo-img" src="https://thebogeyclub.com/wp-content/uploads/2026/10/Full-Logo-White-Bogey-Club.png" width="2000" height="2000" alt="The Bogey Club — Golf Simulator Lounge &amp; Bar"></span>
       <h1 id="bk-hero-title" class="bk-display">
-        <span class="bk-line"><span>This is</span></span>
-        <span class="bk-line bk-l2"><span>not a</span></span>
-        <span class="bk-line"><span>sound</span></span>
-        <span class="bk-line bk-l3"><span>check.</span></span>
+        <span class="bk-line"><span>Your stage.</span></span>
+        <span class="bk-line bk-l-out"><span>Your rules.</span></span>
+        <span class="bk-line bk-l-lime"><span>Your night.</span></span>
       </h1>
-      <p class="bk-hero-sub bk-slant">Your stage. Your rules.</p>
       <div class="bk-hero-ctas">
         <a href="https://thebogeyclub.golfbooking.ca/calendar.php" target="_blank" rel="noopener" class="bk-btn bk-btn-primary bk-book-link">Book your karaoke experience <svg class="bk-arrow" width="22" height="22" aria-hidden="true"><use href="#bk-i-arrow"/></svg></a>
         <a href="#bk-how" class="bk-btn bk-btn-ghost">See how it works ↓</a>
       </div>
       <p class="bk-hero-body">Grab the mic. Pick your anthem. Bring your crew. From legendary singalongs to gloriously questionable vocals, your next unforgettable night starts at The Bogey Club.</p>
-    </div>
-
-    <div class="bk-stage" aria-hidden="true">
-      <div class="bk-ring bk-ring-1"></div>
-      <div class="bk-ring bk-ring-2"></div>
-      <div class="bk-ring bk-ring-3"></div>
-      <div class="bk-mic-wrap" id="bk-mic-wrap">
-        <!-- Chrome microphone (hand-built SVG, no external assets) -->
-        <svg class="bk-mic" viewBox="0 0 400 780" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <radialGradient id="bk-g-head" cx="38%" cy="32%" r="75%">
-              <stop offset="0" stop-color="#ffffff"/>
-              <stop offset=".18" stop-color="#e9e3f7"/>
-              <stop offset=".42" stop-color="#7a6ca8"/>
-              <stop offset=".62" stop-color="#2a1d4d"/>
-              <stop offset=".8" stop-color="#ff2d8d" stop-opacity=".85"/>
-              <stop offset="1" stop-color="#160c2c"/>
-            </radialGradient>
-            <linearGradient id="bk-g-chrome" x1="0" x2="1" y1="0" y2="0">
-              <stop offset="0" stop-color="#1a1030"/>
-              <stop offset=".1" stop-color="#6b35ff"/>
-              <stop offset=".22" stop-color="#f7f3ec"/>
-              <stop offset=".3" stop-color="#ffffff"/>
-              <stop offset=".42" stop-color="#8f86ad"/>
-              <stop offset=".55" stop-color="#2a2140"/>
-              <stop offset=".7" stop-color="#cfc8e2"/>
-              <stop offset=".82" stop-color="#ff2d8d"/>
-              <stop offset="1" stop-color="#120a24"/>
-            </linearGradient>
-            <linearGradient id="bk-g-band" x1="0" x2="1">
-              <stop offset="0" stop-color="#3b0f2a"/>
-              <stop offset=".25" stop-color="#ff2d8d"/>
-              <stop offset=".35" stop-color="#ffd1e6"/>
-              <stop offset=".5" stop-color="#ff2d8d"/>
-              <stop offset="1" stop-color="#2b0820"/>
-            </linearGradient>
-            <pattern id="bk-p-mesh" width="11" height="11" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-              <rect width="11" height="11" fill="none"/>
-              <path d="M0 0h11M0 0v11" stroke="#10091f" stroke-opacity=".55" stroke-width="2.2"/>
-            </pattern>
-            <radialGradient id="bk-g-shade" cx="50%" cy="50%" r="50%">
-              <stop offset=".55" stop-color="#000" stop-opacity="0"/>
-              <stop offset="1" stop-color="#000" stop-opacity=".65"/>
-            </radialGradient>
-            <clipPath id="bk-c-head"><circle cx="200" cy="170" r="140"/></clipPath>
-            <filter id="bk-f-soft"><feGaussianBlur stdDeviation="6"/></filter>
-            <filter id="bk-f-glow"><feGaussianBlur stdDeviation="10"/></filter>
-          </defs>
-          <!-- glow halo -->
-          <circle cx="200" cy="170" r="150" fill="#ff2d8d" opacity=".35" filter="url(#bk-f-glow)"/>
-          <!-- handle -->
-          <path d="M128 318 L272 318 L238 730 Q200 752 162 730 Z" fill="url(#bk-g-chrome)"/>
-          <path d="M150 330 L166 724" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".7" filter="url(#bk-f-soft)"/>
-          <path d="M248 330 L232 720" stroke="#00e5ff" stroke-width="4" stroke-linecap="round" opacity=".55" filter="url(#bk-f-soft)"/>
-          <!-- grip rings -->
-          <g opacity=".5">
-            <path d="M140 470 Q200 482 260 470" stroke="#10091f" stroke-width="3" fill="none"/>
-            <path d="M143 490 Q200 502 257 490" stroke="#10091f" stroke-width="3" fill="none"/>
-            <path d="M146 510 Q200 522 254 510" stroke="#10091f" stroke-width="3" fill="none"/>
-          </g>
-          <!-- switch -->
-          <rect x="186" y="380" width="28" height="56" rx="10" fill="#10091f"/>
-          <rect x="191" y="386" width="18" height="24" rx="6" fill="#d7ff3f"/>
-          <circle cx="200" cy="452" r="4" fill="#ff2d8d"><animate attributeName="opacity" values="1;.2;1" dur="1.4s" repeatCount="indefinite"/></circle>
-          <!-- bottom cap -->
-          <ellipse cx="200" cy="732" rx="38" ry="12" fill="#10091f"/>
-          <!-- band -->
-          <path d="M110 290 Q200 312 290 290 L284 330 Q200 350 116 330 Z" fill="url(#bk-g-band)"/>
-          <path d="M116 330 Q200 350 284 330" stroke="#fff" stroke-opacity=".45" stroke-width="2" fill="none"/>
-          <!-- head -->
-          <circle cx="200" cy="170" r="140" fill="url(#bk-g-head)"/>
-          <g clip-path="url(#bk-c-head)">
-            <rect x="40" y="20" width="320" height="320" fill="url(#bk-p-mesh)"/>
-            <circle cx="200" cy="170" r="140" fill="url(#bk-g-shade)"/>
-            <path d="M60 170 Q200 205 340 170" stroke="#f7f3ec" stroke-opacity=".5" stroke-width="5" fill="none"/>
-            <path d="M60 172 Q200 207 340 172" stroke="#10091f" stroke-opacity=".6" stroke-width="3" fill="none" transform="translate(0 6)"/>
-            <ellipse cx="148" cy="104" rx="56" ry="34" fill="#fff" opacity=".75" filter="url(#bk-f-soft)" transform="rotate(-30 148 104)"/>
-            <ellipse cx="270" cy="250" rx="60" ry="20" fill="#6b35ff" opacity=".6" filter="url(#bk-f-soft)" transform="rotate(-30 270 250)"/>
-            <circle cx="132" cy="92" r="9" fill="#fff"/>
-          </g>
-          <circle cx="200" cy="170" r="139" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="2"/>
-        </svg>
-      </div>
-      <div class="bk-float" style="left:6%;top:18%;width:46px;color:var(--lime);animation-delay:-1s"><svg aria-hidden="true"><use href="#bk-i-note"/></svg></div>
-      <div class="bk-float" style="right:8%;top:58%;width:34px;color:var(--cyan);animation-delay:-3s"><svg aria-hidden="true"><use href="#bk-i-star"/></svg></div>
-      <div class="bk-float" style="left:14%;bottom:20%;width:28px;color:var(--pink);animation-delay:-2s"><svg aria-hidden="true"><use href="#bk-i-star"/></svg></div>
-      <div class="bk-float" style="right:22%;top:6%;width:30px;color:var(--orange);animation-delay:-4s"><svg aria-hidden="true"><use href="#bk-i-note"/></svg></div>
     </div>
 
     <div class="bk-sticker" aria-hidden="true">
@@ -824,7 +712,6 @@
   <section id="bk-collage" aria-labelledby="bk-collage-title">
     <div class="bk-collage-head">
       <div class="bk-reveal">
-        <p class="bk-kicker">This is not your average night out</p>
         <h2 id="bk-collage-title" class="bk-display">Some nights <span class="bk-pinkline">deserve</span> <span class="bk-outline">a soundtrack.</span></h2>
       </div>
       <p class="bk-collage-lede bk-reveal">Forget the same old night out. Get your favourite people together, grab a microphone, and turn an ordinary night into a story you'll be telling for years.</p>
@@ -876,7 +763,6 @@
   <section id="bk-songs" class="bk-grain" aria-labelledby="bk-songs-title">
     <div class="bk-songs-head">
       <div class="bk-reveal">
-        <p class="bk-kicker">Powered by KaraFun</p>
         <h2 id="bk-songs-title" class="bk-display">Every hit.<br><span class="bk-outline">Every era.</span><br><span class="bk-c">Every voice.</span></h2>
       </div>
       <div class="bk-reveal">
@@ -936,7 +822,6 @@
   <section id="bk-legend" aria-labelledby="bk-legend-title">
     <div class="bk-legend-head">
       <div class="bk-reveal">
-        <p class="bk-kicker">Choose your character</p>
         <h2 id="bk-legend-title" class="bk-display"><span class="bk-so">So…</span>What kind of <span class="bk-hl">karaoke legend</span> <span class="bk-outline">are you?</span></h2>
       </div>
       <p class="bk-legend-hint bk-reveal">Tap a card <svg viewBox="0 0 40 24" aria-hidden="true"><path d="M2 12h32M26 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
@@ -1002,7 +887,6 @@
   <section id="bk-nights" class="bk-grain" aria-labelledby="bk-nights-title">
     <div class="bk-nights-head">
       <div class="bk-reveal">
-        <p class="bk-kicker">Made for the nights you'll remember</p>
         <h2 id="bk-nights-title" class="bk-display">Bring your people. <span class="bk-p">We'll bring</span> <span class="bk-outline">the vibe.</span></h2>
       </div>
       <p class="bk-nights-lede bk-reveal">Whatever you're celebrating (or avoiding), there's a stage-sized version of it here.</p>
@@ -1039,7 +923,6 @@
   <section id="bk-gallery" aria-labelledby="bk-gallery-title" hidden>
     <div class="bk-gal-head">
       <div>
-        <p class="bk-kicker">Scenes from the stage</p>
         <h2 id="bk-gallery-title" class="bk-display">Proof it <span class="bk-outline">happened.</span></h2>
       </div>
       <p>Real nights, real crews, really questionable high notes. You could be next.</p>
@@ -1052,7 +935,6 @@
        ====================================================== -->
   <section id="bk-how" aria-labelledby="bk-how-title">
     <div class="bk-how-bg" aria-hidden="true">ENCORE</div>
-    <p class="bk-kicker bk-reveal">How it works</p>
     <h2 id="bk-how-title" class="bk-display bk-reveal">Three steps <span class="bk-outline">to the mic.</span></h2>
     <ol class="bk-steps">
       <li class="bk-step bk-reveal"><div class="bk-step-no" aria-hidden="true">01</div><h3>Pick your night</h3><p>Open our online booking calendar and choose the date and time that works for your crew.</p></li>
@@ -1066,7 +948,6 @@
        ====================================================== -->
   <section id="bk-book" class="bk-grain" aria-labelledby="bk-book-title">
     <div class="bk-book-title">
-      <p class="bk-kicker">Ready when you are</p>
       <h2 id="bk-book-title" class="bk-display">Your stage.<span class="bk-row2">Your rules.</span><span class="bk-row3">Your night.</span></h2>
       <p class="bk-book-lede">Pick your night, round up your people, and we'll take care of the rest. No talent required. Enthusiasm strongly encouraged.</p>
     </div>
@@ -1213,9 +1094,8 @@
     eq.appendChild(b);
   }
 
-  /* ---------- Hero: mouse-reactive mic + spotlight ---------- */
+  /* ---------- Hero: mouse-reactive spotlight ---------- */
   var hero = document.getElementById('bk-hero');
-  var mic = document.getElementById('bk-mic-wrap');
   if (!reduceMotion && window.matchMedia('(pointer: fine)').matches) {
     hero.addEventListener('pointermove', function (e) {
       var r = hero.getBoundingClientRect();
@@ -1223,9 +1103,7 @@
       var y = (e.clientY - r.top) / r.height;
       hero.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
       hero.style.setProperty('--my', (y * 100).toFixed(1) + '%');
-      mic.style.transform = 'rotateY(' + ((x - 0.5) * 24).toFixed(2) + 'deg) rotateX(' + ((0.5 - y) * 14).toFixed(2) + 'deg) translateX(' + ((x - 0.5) * 20).toFixed(1) + 'px)';
     });
-    hero.addEventListener('pointerleave', function () { mic.style.transform = ''; });
   }
 
   /* ---------- Marquee: scroll-velocity driven ---------- */
