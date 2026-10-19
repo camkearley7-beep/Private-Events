@@ -102,12 +102,12 @@
   /* background video — colour-graded so it sits under the neon look */
   #bk-hero .bk-hero-video { position: absolute; inset: 0; z-index: -3; overflow: hidden; background: var(--ink); }
   #bk-hero .bk-hero-video video { width: 100%; height: 100%; object-fit: cover; opacity: 0; filter: saturate(1.15) contrast(1.1); transform: scale(1.06); transition: opacity 1.4s ease, transform 8s ease-out; }
-  #bk-hero .bk-hero-video.bk-ready video { opacity: .62; transform: scale(1); }
-  #bk-hero .bk-hero-video::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(120deg, #6B35FF, #FF2D8D 70%, #FF7139); mix-blend-mode: color; opacity: .55; }
+  #bk-hero .bk-hero-video.bk-ready video { opacity: .9; transform: scale(1); }
+  #bk-hero .bk-hero-video::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(120deg, #6B35FF, #FF2D8D 70%, #FF7139); mix-blend-mode: color; opacity: .18; }
   #bk-hero .bk-hero-video::after {
     content: ''; position: absolute; inset: 0; z-index: 2;
     background:
-      linear-gradient(90deg, rgba(16,9,31,.94) 0%, rgba(16,9,31,.72) 38%, rgba(16,9,31,.3) 70%, rgba(16,9,31,.55) 100%),
+      linear-gradient(90deg, rgba(16,9,31,.9) 0%, rgba(16,9,31,.62) 36%, rgba(16,9,31,.14) 68%, rgba(16,9,31,.32) 100%),
       linear-gradient(to top, rgba(16,9,31,1) 0%, rgba(16,9,31,0) 30%),
       radial-gradient(60% 50% at var(--mx, 70%) var(--my, 40%), rgba(107,53,255,.35), transparent 70%);
   }
@@ -685,7 +685,7 @@
          Optional: add poster="your-image.jpg" to the <video> tag for a still frame while it loads. -->
     <div class="bk-hero-video" aria-hidden="true">
       <video id="bk-hero-video" autoplay muted loop playsinline preload="auto">
-        <source src="https://thebogeyclub.com/wp-content/uploads/2026/03/copy_3F21AE01-DA66-4AB0-9274-9102F711D792.mov" type="video/mp4">
+        <source src="https://thebogeyclub.com/wp-content/uploads/2026/10/The_Bogey_Club_Karaoke_Hero_Vibrant.mp4" type="video/mp4">
       </video>
     </div>
     <span class="bk-video-tag" aria-hidden="true"><i></i>Live from the lounge</span>
@@ -1179,6 +1179,14 @@
     heroVid.addEventListener('canplay', markReady);
     heroVid.addEventListener('error', function () { vidBox.classList.remove('bk-ready'); }, true);
     if (reduceMotion) { heroVid.removeAttribute('autoplay'); heroVid.pause(); }
+    /* The video ends on a logo card (from ~10.75s); loop the singing footage before it.
+       If you upload a version without the end card, this does nothing. */
+    var BK_HERO_VIDEO_LOOP_END = 10.4;
+    var loopCheck = function () {
+      if (heroVid.duration > BK_HERO_VIDEO_LOOP_END + 0.5 && heroVid.currentTime >= BK_HERO_VIDEO_LOOP_END) heroVid.currentTime = 0;
+      requestAnimationFrame(loopCheck);
+    };
+    if (!reduceMotion) requestAnimationFrame(loopCheck);
   }
 
   /* ---------- Gallery ---------- */
