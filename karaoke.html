@@ -276,6 +276,33 @@
   #bk-bar .bk-bar-visual { position: relative; display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: 40px; gap: 12px; }
   #bk-bar .bk-bar-shot { box-shadow: 0 40px 90px -30px rgba(0,0,0,.7); }
   #bk-bar .bk-bar-shot:hover { transform: rotate(0) scale(1.03); z-index: 7; }
+  #bk-bar .bk-bar-shot.bk-has-photo { cursor: zoom-in; }
+  #bk-bar .bk-bar-shot .bk-zoom { position: absolute; z-index: 5; right: 12px; bottom: 12px; width: 40px; height: 40px; border-radius: 50%; background: rgba(16,9,31,.75); color: var(--cream); display: none; place-items: center; transition: transform .25s, background .25s; }
+  #bk-bar .bk-bar-shot.bk-has-photo .bk-zoom { display: grid; }
+  #bk-bar .bk-bar-shot:hover .bk-zoom, #bk-bar .bk-bar-shot:focus-visible .bk-zoom { transform: scale(1.12); background: var(--pink); }
+  #bk-bar .bk-bar-shot .bk-zoom svg { width: 18px; height: 18px; }
+
+  /* photo viewer (lightbox) */
+  #bk-page .bk-lightbox { position: fixed; inset: 0; z-index: 10000; display: none; align-items: center; justify-content: center; background: rgba(10,6,20,.94); backdrop-filter: blur(8px); opacity: 0; transition: opacity .3s; touch-action: pan-y; }
+  #bk-page .bk-lightbox.bk-open { display: flex; }
+  #bk-page .bk-lightbox.bk-show { opacity: 1; }
+  #bk-page .bk-lb-stage { position: relative; width: min(92vw, 1400px); height: min(80vh, 900px); display: flex; align-items: center; justify-content: center; }
+  #bk-page .bk-lb-img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 10px; box-shadow: 0 40px 120px rgba(0,0,0,.7), 0 0 0 4px rgba(255,45,141,.6); transition: opacity .25s, transform .35s cubic-bezier(.2,.8,.2,1); user-select: none; -webkit-user-drag: none; }
+  #bk-page .bk-lb-img.bk-swap { opacity: 0; transform: scale(.97); }
+  #bk-page .bk-lb-btn { position: absolute; top: 50%; z-index: 2; width: 58px; height: 58px; margin-top: -29px; border-radius: 50%; background: var(--pink); color: #fff; display: grid; place-items: center; box-shadow: 0 10px 30px rgba(255,45,141,.45); transition: transform .2s, background .2s, color .2s; }
+  #bk-page .bk-lb-btn:hover { transform: scale(1.08); background: var(--lime); color: var(--ink); }
+  #bk-page .bk-lb-btn svg { width: 24px; height: 24px; }
+  #bk-page .bk-lb-prev { left: max(12px, 2vw); }
+  #bk-page .bk-lb-prev svg { transform: rotate(180deg); }
+  #bk-page .bk-lb-next { right: max(12px, 2vw); }
+  #bk-page .bk-lb-close { position: absolute; top: max(14px, 2vw); right: max(14px, 2vw); z-index: 2; width: 50px; height: 50px; border-radius: 50%; border: 2px solid rgba(247,243,236,.4); color: var(--cream); font-size: 28px; line-height: 1; display: grid; place-items: center; transition: border-color .2s, color .2s, transform .2s; }
+  #bk-page .bk-lb-close:hover { border-color: var(--lime); color: var(--lime); transform: rotate(90deg); }
+  #bk-page .bk-lb-bar { position: absolute; left: 0; right: 0; bottom: max(16px, 3vh); display: flex; flex-direction: column; align-items: center; gap: 12px; pointer-events: none; }
+  #bk-page .bk-lb-cap { font-family: var(--cond); font-weight: 800; letter-spacing: .2em; font-size: 14px; text-transform: uppercase; color: var(--cream); }
+  #bk-page .bk-lb-cap b { color: var(--lime); margin-right: 10px; }
+  #bk-page .bk-lb-dots { display: flex; gap: 10px; pointer-events: auto; }
+  #bk-page .bk-lb-dots button { width: 12px; height: 12px; border-radius: 50%; background: rgba(247,243,236,.3); transition: background .2s, transform .2s; }
+  #bk-page .bk-lb-dots button[aria-current="true"] { background: var(--pink); transform: scale(1.3); }
   #bk-bar .bk-bar-w1 { grid-column: 1 / 9; grid-row: 1 / 8; border: 10px solid var(--pink); transform: rotate(-2.5deg); z-index: 2; }
   #bk-bar .bk-bar-tall { grid-column: 7 / 13; grid-row: 4 / 15; border: 10px solid var(--violet); transform: rotate(3deg); z-index: 3; }
   #bk-bar .bk-bar-w2 { grid-column: 1 / 8; grid-row: 9 / 15; border: 10px solid var(--cyan); transform: rotate(2deg); z-index: 1; }
@@ -648,6 +675,10 @@
     #bk-bar .bk-bar-visual { grid-auto-rows: 22px; gap: 6px; }
     #bk-page .bk-cap { font-size: 10px; left: 8px; bottom: 8px; }
     #bk-page .bk-tape { width: 70px; height: 22px; }
+    #bk-page .bk-lb-stage { width: 100vw; height: 70vh; }
+    #bk-page .bk-lb-img { border-radius: 0; }
+    #bk-page .bk-lb-btn { width: 46px; height: 46px; margin-top: -23px; top: auto; bottom: max(16px, 3vh); }
+    #bk-page .bk-lb-bar { bottom: max(28px, 4.5vh); }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -812,17 +843,20 @@
         <div class="bk-art" style="background:linear-gradient(160deg,#FF7139,#FF2D8D)"><svg style="color:#F7F3EC" aria-hidden="true"><use href="#bk-i-cheers"/></svg><span class="bk-art-word" aria-hidden="true">Full<br>bar</span></div>
         <div class="bk-tint" style="background:#FF2D8D"></div>
         <figcaption class="bk-cap">Your crew's HQ</figcaption>
+        <span class="bk-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg></span>
         <span class="bk-tape" style="top:-8px;left:30%;transform:rotate(-6deg)" aria-hidden="true"></span>
       </figure>
       <figure class="bk-shot bk-bar-shot bk-bar-tall" data-bar-slot="tall">
         <div class="bk-art" style="background:linear-gradient(160deg,#6B35FF,#10091F)"><svg style="color:#00E5FF" aria-hidden="true"><use href="#bk-i-mic"/></svg></div>
         <div class="bk-tint" style="background:#6B35FF"></div>
         <figcaption class="bk-cap" style="left:auto;right:14px;bottom:auto;top:14px">The stage</figcaption>
+        <span class="bk-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg></span>
       </figure>
       <figure class="bk-shot bk-bar-shot bk-bar-w2" data-bar-slot="wide">
         <div class="bk-art" style="background:linear-gradient(160deg,#00E5FF,#6B35FF)"><svg style="color:#F7F3EC" aria-hidden="true"><use href="#bk-i-team"/></svg></div>
         <div class="bk-tint" style="background:#00E5FF"></div>
         <figcaption class="bk-cap" style="bottom:auto;top:14px">One more round</figcaption>
+        <span class="bk-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg></span>
         <span class="bk-tape" style="bottom:-6px;right:24%;transform:rotate(5deg)" aria-hidden="true"></span>
       </figure>
       <div class="bk-neon" aria-hidden="true">Cheers!</div>
@@ -1045,6 +1079,15 @@
 
   <p class="bk-foot-line">The Bogey Club · Newmarket, Ontario · <a href="https://thebogeyclub.com/">thebogeyclub.com</a> · Karaoke song library provided by KaraFun. KaraFun is a trademark of its respective owner.</p>
 
+  <!-- Photo viewer (opened by clicking a bar & lounge photo) -->
+  <div class="bk-lightbox" id="bk-lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" aria-hidden="true">
+    <button type="button" class="bk-lb-close" id="bk-lb-close" aria-label="Close photo viewer">&times;</button>
+    <button type="button" class="bk-lb-btn bk-lb-prev" id="bk-lb-prev" aria-label="Previous photo"><svg aria-hidden="true"><use href="#bk-i-arrow"/></svg></button>
+    <div class="bk-lb-stage"><img class="bk-lb-img" id="bk-lb-img" alt=""></div>
+    <button type="button" class="bk-lb-btn bk-lb-next" id="bk-lb-next" aria-label="Next photo"><svg aria-hidden="true"><use href="#bk-i-arrow"/></svg></button>
+    <div class="bk-lb-bar"><p class="bk-lb-cap" id="bk-lb-cap" aria-live="polite"></p><div class="bk-lb-dots" id="bk-lb-dots"></div></div>
+  </div>
+
   <div id="bk-sticky"><a href="https://thebogeyclub.golfbooking.ca/calendar.php" target="_blank" rel="noopener" class="bk-book-link">Book karaoke <i><svg aria-hidden="true"><use href="#bk-i-arrow"/></svg></i></a></div>
 </div>
 
@@ -1129,10 +1172,13 @@
       });
       queue.forEach(function (q) {
         var fig = q[0], im = q[1];
+        fig.tabIndex = 0;
+        fig.setAttribute('role', 'button');
         im.alt = fig === tallSlot ? 'The karaoke stage at The Bogey Club' : 'The full bar and lounge at The Bogey Club';
         im.style.objectPosition = fig === tallSlot ? '50% 55%' : '50% 62%';
         fig.insertBefore(im, fig.firstChild);
         fig.classList.add('bk-has-photo');
+        fig.setAttribute('aria-label', 'View photo: ' + fig.querySelector('.bk-cap').textContent);
       });
     }
     srcs.forEach(function (src) {
@@ -1141,6 +1187,92 @@
       im.onload = function () { loaded.push(im); if (--pending === 0) place(); };
       im.onerror = function () { if (--pending === 0) place(); };
       im.src = src;
+    });
+  })();
+
+  /* ---------- Photo viewer: click a bar photo, then arrows / swipe / keys to browse ---------- */
+  (function () {
+    var lb = document.getElementById('bk-lightbox');
+    var lbImg = document.getElementById('bk-lb-img');
+    var lbCap = document.getElementById('bk-lb-cap');
+    var lbDots = document.getElementById('bk-lb-dots');
+    var shots = Array.prototype.slice.call(root.querySelectorAll('#bk-bar .bk-bar-shot'));
+    var items = [], cur = 0, lastFocus = null;
+
+    function collect() {
+      items = shots.filter(function (f) { return f.classList.contains('bk-has-photo'); }).map(function (f) {
+        var im = f.querySelector('img');
+        return { fig: f, src: im.currentSrc || im.src, alt: im.alt, cap: f.querySelector('.bk-cap').textContent };
+      });
+    }
+    function show(i, instant) {
+      cur = (i + items.length) % items.length;
+      var it = items[cur];
+      var apply = function () {
+        lbImg.src = it.src; lbImg.alt = it.alt;
+        lbCap.innerHTML = '<b>' + (cur + 1) + ' / ' + items.length + '</b>' + escapeHtml(it.cap);
+        lbDots.querySelectorAll('button').forEach(function (d, k) { d.setAttribute('aria-current', k === cur ? 'true' : 'false'); });
+        lbImg.classList.remove('bk-swap');
+      };
+      if (instant || reduceMotion) { apply(); return; }
+      lbImg.classList.add('bk-swap');
+      setTimeout(apply, 180);
+    }
+    function open(fig) {
+      collect();
+      var i = items.map(function (it) { return it.fig; }).indexOf(fig);
+      if (i < 0) return;
+      lbDots.innerHTML = items.map(function (it, k) { return '<button type="button" aria-label="Show photo ' + (k + 1) + '"></button>'; }).join('');
+      lbDots.querySelectorAll('button').forEach(function (d, k) { d.addEventListener('click', function () { show(k); }); });
+      var single = items.length < 2;
+      document.getElementById('bk-lb-prev').style.display = single ? 'none' : '';
+      document.getElementById('bk-lb-next').style.display = single ? 'none' : '';
+      lastFocus = document.activeElement;
+      show(i, true);
+      lb.classList.add('bk-open');
+      lb.setAttribute('aria-hidden', 'false');
+      document.documentElement.style.overflow = 'hidden';
+      requestAnimationFrame(function () { lb.classList.add('bk-show'); });
+      document.getElementById('bk-lb-close').focus();
+    }
+    function close() {
+      lb.classList.remove('bk-show');
+      lb.setAttribute('aria-hidden', 'true');
+      document.documentElement.style.overflow = '';
+      setTimeout(function () { lb.classList.remove('bk-open'); }, reduceMotion ? 0 : 300);
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    shots.forEach(function (f) {
+      f.addEventListener('click', function () { if (f.classList.contains('bk-has-photo')) open(f); });
+      f.addEventListener('keydown', function (e) {
+        if ((e.key === 'Enter' || e.key === ' ') && f.classList.contains('bk-has-photo')) { e.preventDefault(); open(f); }
+      });
+    });
+    document.getElementById('bk-lb-prev').addEventListener('click', function (e) { e.stopPropagation(); show(cur - 1); });
+    document.getElementById('bk-lb-next').addEventListener('click', function (e) { e.stopPropagation(); show(cur + 1); });
+    document.getElementById('bk-lb-close').addEventListener('click', close);
+    lb.addEventListener('click', function (e) { if (e.target === lb || e.target.classList.contains('bk-lb-stage')) close(); });
+    document.addEventListener('keydown', function (e) {
+      if (!lb.classList.contains('bk-open')) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowRight') show(cur + 1);
+      else if (e.key === 'ArrowLeft') show(cur - 1);
+      else if (e.key === 'Tab') {  // keep focus inside the viewer
+        var f = Array.prototype.slice.call(lb.querySelectorAll('button')).filter(function (b) { return b.offsetParent !== null; });
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+    // swipe
+    var sx = null, sy = null;
+    lb.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+    lb.addEventListener('touchend', function (e) {
+      if (sx === null) return;
+      var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) show(cur + (dx < 0 ? 1 : -1));
+      sx = sy = null;
     });
   })();
 
