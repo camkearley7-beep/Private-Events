@@ -743,7 +743,7 @@
         <span class="bk-line bk-l-lime"><span>Your night.</span></span>
       </h1>
       <div class="bk-hero-ctas">
-        <a href="https://thebogeyclub.golfbooking.ca/bookingsheet.php?date=2026-10-20&amp;bayfilter=4&amp;templateId=50&amp;lang=en" target="_blank" rel="noopener" class="bk-btn bk-btn-primary bk-book-link">Book your karaoke experience <svg class="bk-arrow" width="22" height="22" aria-hidden="true"><use href="#bk-i-arrow"/></svg></a>
+        <a href="https://thebogeyclub.golfbooking.ca/calendar.php?date=2026-10&amp;bayfilter=4&amp;templateId=50&amp;lang=en" target="_blank" rel="noopener" class="bk-btn bk-btn-primary bk-book-link">Book your karaoke experience <svg class="bk-arrow" width="22" height="22" aria-hidden="true"><use href="#bk-i-arrow"/></svg></a>
         <a href="#bk-how" class="bk-btn bk-btn-ghost">See how it works ↓</a>
       </div>
       <p class="bk-hero-body">Grab the mic. Pick your anthem. Bring your crew. Order a round from the full bar. From legendary singalongs to gloriously questionable vocals, your next unforgettable night starts at The Bogey Club.</p>
@@ -981,7 +981,7 @@
         <p class="bk-anthem" id="bk-result-anthem"></p>
       </div>
       <div class="bk-result-actions">
-        <a href="https://thebogeyclub.golfbooking.ca/bookingsheet.php?date=2026-10-20&amp;bayfilter=4&amp;templateId=50&amp;lang=en" target="_blank" rel="noopener" class="bk-btn bk-btn-primary bk-book-link" id="bk-result-cta" tabindex="-1">Now go prove it. Book your stage. <svg class="bk-arrow" width="22" height="22" aria-hidden="true"><use href="#bk-i-arrow"/></svg></a>
+        <a href="https://thebogeyclub.golfbooking.ca/calendar.php?date=2026-10&amp;bayfilter=4&amp;templateId=50&amp;lang=en" target="_blank" rel="noopener" class="bk-btn bk-btn-primary bk-book-link" id="bk-result-cta" tabindex="-1">Now go prove it. Book your stage. <svg class="bk-arrow" width="22" height="22" aria-hidden="true"><use href="#bk-i-arrow"/></svg></a>
         <button type="button" class="bk-reset" id="bk-reset" tabindex="-1">Pick again</button>
       </div>
     </div>
@@ -1070,8 +1070,8 @@
       <div class="bk-ticket-stub">
         <div class="bk-admit">Admit:<br>the whole crew</div>
         <p class="bk-as" id="bk-as">Booking as <b id="bk-as-name"></b></p>
-        <a href="https://thebogeyclub.golfbooking.ca/bookingsheet.php?date=2026-10-20&amp;bayfilter=4&amp;templateId=50&amp;lang=en" target="_blank" rel="noopener" class="bk-btn bk-btn-ink bk-book-link">Check availability &amp; book <svg width="22" height="22" aria-hidden="true"><use href="#bk-i-arrow"/></svg></a>
-        <p class="bk-ticket-note">Opens karaoke booking in a new tab.</p>
+        <a href="https://thebogeyclub.golfbooking.ca/calendar.php?date=2026-10&amp;bayfilter=4&amp;templateId=50&amp;lang=en" target="_blank" rel="noopener" class="bk-btn bk-btn-ink bk-book-link">Check availability &amp; book <svg width="22" height="22" aria-hidden="true"><use href="#bk-i-arrow"/></svg></a>
+        <p class="bk-ticket-note">Opens our karaoke booking calendar in a new tab.</p>
         <div class="bk-barcode" aria-hidden="true"></div>
       </div>
     </div>
@@ -1088,7 +1088,7 @@
     <div class="bk-lb-bar"><p class="bk-lb-cap" id="bk-lb-cap" aria-live="polite"></p><div class="bk-lb-dots" id="bk-lb-dots"></div></div>
   </div>
 
-  <div id="bk-sticky"><a href="https://thebogeyclub.golfbooking.ca/bookingsheet.php?date=2026-10-20&amp;bayfilter=4&amp;templateId=50&amp;lang=en" target="_blank" rel="noopener" class="bk-book-link">Book karaoke <i><svg aria-hidden="true"><use href="#bk-i-arrow"/></svg></i></a></div>
+  <div id="bk-sticky"><a href="https://thebogeyclub.golfbooking.ca/calendar.php?date=2026-10&amp;bayfilter=4&amp;templateId=50&amp;lang=en" target="_blank" rel="noopener" class="bk-book-link">Book karaoke <i><svg aria-hidden="true"><use href="#bk-i-arrow"/></svg></i></a></div>
 </div>
 
 <script>
@@ -1099,9 +1099,10 @@
      CONFIG — edit these
      ========================================================== */
 
-  /* Karaoke booking page. {DATE} is replaced with today's date (YYYY-MM-DD) when the page loads,
-     so the booking sheet always opens on the current day. */
-  var BK_BOOKING_URL = 'https://thebogeyclub.golfbooking.ca/bookingsheet.php?date={DATE}&bayfilter=4&templateId=50&lang=en';
+  /* Karaoke booking calendar (filtered to karaoke). {MONTH} is replaced with the current month
+     (YYYY-MM) when the page loads, so the calendar always opens on this month.
+     ({DATE} also works, for links that need a full YYYY-MM-DD day.) */
+  var BK_BOOKING_URL = 'https://thebogeyclub.golfbooking.ca/calendar.php?date={MONTH}&bayfilter=4&templateId=50&lang=en';
 
   /* YOUR PHOTOS — 1) COLLAGE + OCCASION PANELS
      Paste an image URL (e.g. from the WordPress Media Library) into any slot.
@@ -1605,7 +1606,8 @@
   /* keep every booking link in sync with BK_BOOKING_URL */
   var bkToday = new Date();
   var bkDate = bkToday.getFullYear() + '-' + ('0' + (bkToday.getMonth() + 1)).slice(-2) + '-' + ('0' + bkToday.getDate()).slice(-2);
-  root.querySelectorAll('.bk-book-link').forEach(function (a) { a.href = BK_BOOKING_URL.replace('{DATE}', bkDate); });
+  var bkMonth = bkDate.slice(0, 7);
+  root.querySelectorAll('.bk-book-link').forEach(function (a) { a.href = BK_BOOKING_URL.replace('{DATE}', bkDate).replace('{MONTH}', bkMonth); });
 })();
 </script>
 
