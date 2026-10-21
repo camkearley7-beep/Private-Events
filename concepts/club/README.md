@@ -1,4 +1,4 @@
-# "Tee to Tap": homepage concept (round 5: type and colour refinement)
+# "Tee to Tap": homepage concept (round 6: Satoshi + new hero headline)
 
 This is one original concept for the homepage. It shares nothing with the karaoke page's layout, type, colour or interactions. What ties the two together is the logo and the brand's personality.
 
@@ -32,3 +32,13 @@ This is one original concept for the homepage. It shares nothing with the karaok
 - Every image labelled "Concept render" was drawn procedurally for this preview (`render/scenes.html`) and must be replaced with Bogey Club photography before launch.
 - The karaoke stills are real frames from the club's own karaoke hero video.
 - The logo is the real white logo.
+
+**Round 6.**
+- **Font:** Satoshi replaces General Sans throughout.
+  - Bold 700: hero and section headings.
+  - Semibold 600: subheadings and buttons.
+  - Medium 500: navigation and labels.
+  - Regular 400: body text.
+- **Hero:** the headline is now "YOUR HANDICAP IS WELCOME HERE." The supporting copy is "Good golf, bad golf, and everything in between…"
+- **Font loading:** self-hosted from `assets/fonts/Satoshi-Variable.woff2`, which comes from the official Fontshare download. The Fontshare CDN is a second source. The preview shows a banner if Satoshi fails to load, so a fallback can't be mistaken for it.
+- **Renders:** the PNGs in `renders/` are still from round 5. They will be regenerated once the Satoshi file is in `assets/fonts/` or Fontshare is reachable from the build environment.
