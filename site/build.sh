@@ -15,12 +15,12 @@ FONTS_LIVE = 'https://thebogeyclub.com/wp-content/uploads/fonts'
 # Only declare the Satoshi weights we actually have files for.
 have = {p.name for p in (ROOT / 'fonts').glob('*.woff2')}
 head = src('head.html')
-for f in ('Satoshi-Regular.woff2', 'Satoshi-Medium.woff2', 'Satoshi-Bold.woff2'):
+for f in ('Satoshi-Variable.woff2',):
     if f not in have:
         head = re.sub(r'@font-face [^\n]*' + re.escape(f) + r'[^\n]*\n', '', head)
         head = re.sub(r'<link rel="preload"[^>]*' + re.escape(f) + r'[^>]*>\n', '', head)
 
-if 'Satoshi-Regular.woff2' not in have or 'Satoshi-Medium.woff2' not in have:
+if 'Satoshi-Variable.woff2' not in have:
     # Without Regular/Medium, keep body text on the system font rather than faking it with Bold.
     head = head.replace('</style>', "html .tt { --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; }\n</style>", 1)
 schema = json.loads(src('schema.jsonld'))

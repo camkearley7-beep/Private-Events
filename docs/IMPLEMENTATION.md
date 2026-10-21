@@ -140,7 +140,7 @@ Every CTA carries `data-tt-cta="…"`, so the site's existing Google Tag Manager
 
 **Already run on `site/preview.html`** with `node site/tools/test-preview.mjs` (Playwright, Chromium, axe-core 4.10), at 1440px and 390px. All checks pass:
 
-- Satoshi Bold loads and renders the H1 (verified with `document.fonts.check`, not just the CSS name)
+- Satoshi loads at 400, 500, 600 and 700, and both the headings and the body text render in it (verified with `document.fonts.check`, not just the CSS name)
 - No horizontal overflow, exactly one H1, no empty or `#` links
 - All karaoke links open the karaoke calendar on the current month
 - Desktop: the tee-to-tap section moves sideways as you scroll
@@ -164,7 +164,7 @@ Every CTA carries `data-tt-cta="…"`, so the site's existing Google Tag Manager
 
 | Item | Status |
 |---|---|
-| Satoshi Regular & Medium | **Needed.** Only Bold was supplied. Body text uses the system font until `Satoshi-Regular.otf` and `Satoshi-Medium.otf` (or `Satoshi-Variable.ttf`) are added to `site/fonts/` (as WOFF2) and `site/build.sh` is re-run. Satoshi has no Semibold; 600 maps to Bold. |
+| Satoshi | Done: `Satoshi-Variable.woff2` covers every weight (400 body, 500 nav/labels, 600 subheadings/buttons, 700 headings). |
 | Real photos | 3 golf photos listed in §1 (bar, event and karaoke photos are in) |
 | Golf hours "Daily 9 AM – 12 AM" | Confirm. Listings conflict. |
 | Staffed bar hours | Shown as "See posted hours". Add real hours when confirmed. |

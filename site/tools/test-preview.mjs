@@ -13,7 +13,8 @@ for (const [w, h] of [[1440, 900], [390, 844]]) {
   const errs = []; p.on('pageerror', e => errs.push(e.message));
   await p.goto(url, { waitUntil: 'networkidle' }); await p.evaluate(() => document.fonts.ready); await p.waitForTimeout(600);
   const r = await p.evaluate(() => ({
-    bold: document.fonts.check('700 20px Satoshi'),
+    bold: ['400', '500', '600', '700'].every(w => document.fonts.check(w + ' 20px Satoshi')) && [...document.fonts].some(f => f.family.replace(/"/g, '') === 'Satoshi' && f.status === 'loaded'),
+    bodyFont: getComputedStyle(document.querySelector('.tt .lede')).fontFamily,
     h1Font: getComputedStyle(document.querySelector('h1 .ln')).fontFamily,
     h1Weight: getComputedStyle(document.querySelector('h1 .ln')).fontWeight,
     overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
@@ -23,7 +24,7 @@ for (const [w, h] of [[1440, 900], [390, 844]]) {
     brokenImgs: [...document.querySelectorAll('img')].filter(i => i.complete && i.naturalWidth === 0 && !i.loading === 'lazy').length,
   }));
   const tag = `[${w}px]`;
-  ok(r.bold, `${tag} Satoshi Bold loaded and rendering (h1: ${r.h1Font} ${r.h1Weight})`);
+  ok(r.bold && r.bodyFont.startsWith('Satoshi'), `${tag} Satoshi 400/500/600/700 loaded; headings and body both use it (body: ${r.bodyFont.split(',')[0]})`);
   ok(r.overflow === 0, `${tag} no horizontal overflow`);
   ok(r.h1s === 1, `${tag} exactly one H1`);
   ok(r.deadLinks === 0, `${tag} no empty or "#" links`);

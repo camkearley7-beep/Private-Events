@@ -10,4 +10,4 @@ The production build of the approved homepage, plus the site-wide header and foo
   PLAYWRIGHT_MODULE=… AXE=…/axe.min.js node tools/test-preview.mjs
   tools/check-links.sh
   ```
-- **Fonts:** Satoshi WOFF2 files live in `fonts/`. To add a weight, convert the OTF with `fonttools` (`TTFont(path).flavor = 'woff2'`), name it `Satoshi-Regular.woff2` / `Satoshi-Medium.woff2`, and rebuild.
+- **Fonts:** `fonts/Satoshi-Variable.woff2` (converted from the supplied `Satoshi-Variable.ttf`) covers weights 300–900. The build uploads it from `dist/uploads/fonts/`.
