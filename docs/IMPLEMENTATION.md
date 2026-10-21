@@ -23,18 +23,25 @@ Install everything on a **staging copy first**. Most hosts offer one-click stagi
    - Or add them in Elementor → Custom Fonts with the family name `Satoshi`. If you use Custom Fonts, delete the `<style>` block from `00-head.html`.
 2. **Images.** Upload `site/dist/uploads/bogey-home/` to `/wp-content/uploads/bogey-home/`. That folder contains:
    - `bogey-club-logo.png`: your logo, unchanged apart from trimming the empty margin (header, and footer on a white tile)
-   - `karaoke-the-bogey-club-newmarket.jpg`: a real frame from the club's karaoke video
-3. **Photos still needed.** Add these real photos to the same folder using exactly these filenames (JPG, sRGB, about 200–400 KB each):
+3. **Photos already on WordPress (used directly, nothing to upload):**
+
+| Where | Photo |
+|---|---|
+| Tee-to-tap stop 02 (The bars) | `/wp-content/uploads/2026/08/Main-Area.png` |
+| Tee-to-tap stop 03 (Karaoke) | `/wp-content/uploads/2026/10/ChatGPT-Image-Oct-19-2026-02_24_43-PM.png` |
+| Tee-to-tap stop 04 (The upstairs) | `/wp-content/uploads/2026/08/Party-Room-1-edit-2.png` |
+| Two full bars section | `/wp-content/uploads/2026/08/Main-Bar.png` |
+| Private events section | `/wp-content/uploads/2026/08/Party-room-2-edit-2.png` |
+
+   Not used yet: `Party-room-2.png` (the unedited version), `Hallway.png`, and karaoke images `…02_24_35-PM.png` and `…02_24_31-PM.png`.
+
+   **Photos still needed** (golf). Upload these to `/wp-content/uploads/bogey-home/` with exactly these filenames:
 
 | Filename | Shot | Size |
 |---|---|---|
-| `golf-simulator-bay-the-bogey-club-newmarket.jpg` | A bay from behind the golfer, screen glowing, ball on the mat | 1920×1080 |
+| `golf-simulator-bay-the-bogey-club-newmarket.jpg` | A bay from behind the golfer, screen glowing, ball on the mat (hero) | 1920×1080 |
 | `golf-simulator-bay-the-bogey-club-newmarket-mobile.jpg` | Same scene, portrait crop | 1080×1500 |
-| `golfzon-simulator-screen-the-bogey-club.jpg` | The Golfzon screen filling the frame | 1920×1080 |
-| `draft-beer-bar-the-bogey-club-newmarket.jpg` | Main bar, taps and a fresh pour | 1600×1100 |
-| `draft-beer-bar-the-bogey-club-newmarket-mobile.jpg` | Same, portrait | 1000×1400 |
-| `private-event-space-the-bogey-club-newmarket.jpg` | Upstairs event space with its bar, set for a party | 1920×1100 |
-| `private-event-space-the-bogey-club-newmarket-mobile.jpg` | Same, portrait | 1000×1300 |
+| `golfzon-simulator-screen-the-bogey-club.jpg` | The Golfzon screen filling the frame (tee-to-tap stop 01) | 1920×1080 |
 
 Until a photo is uploaded, its frame shows a clean deep-pine panel instead of a broken image. The concept renders in `concepts/club/assets/` are for review only and must never be uploaded.
 
@@ -153,7 +160,7 @@ Every CTA carries `data-tt-cta="…"`, so the site's existing Google Tag Manager
 | Item | Status |
 |---|---|
 | Satoshi Regular & Medium | **Needed.** Only Bold was supplied. Body text uses the system font until `Satoshi-Regular.otf` and `Satoshi-Medium.otf` (or `Satoshi-Variable.ttf`) are added to `site/fonts/` (as WOFF2) and `site/build.sh` is re-run. Satoshi has no Semibold; 600 maps to Bold. |
-| Real photos | 7 files listed in §1 |
+| Real photos | 3 golf photos listed in §1 (bar, event and karaoke photos are in) |
 | Golf hours "Daily 9 AM – 12 AM" | Confirm. Listings conflict. |
 | Staffed bar hours | Shown as "See posted hours". Add real hours when confirmed. |
 | $60/bay/hour + HST, up to 4 players | Confirm. Used in the structured data. |

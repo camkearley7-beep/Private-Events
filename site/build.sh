@@ -44,8 +44,7 @@ for n, body in files.items(): (dist / n).write_text(body)
 # Files to upload to WordPress (real assets only; concept renders are never shipped).
 up = dist / 'uploads'; (up / 'bogey-home').mkdir(parents=True, exist_ok=True); (up / 'fonts').mkdir(exist_ok=True)
 A = ROOT.parent / 'concepts' / 'club' / 'assets'
-for s, d in [('bogey-club-logo.png', 'bogey-club-logo.png'),
-             ('karaoke-real-duet.jpg', 'karaoke-the-bogey-club-newmarket.jpg')]:
+for s, d in [('bogey-club-logo.png', 'bogey-club-logo.png')]:
     shutil.copy(A / s, up / 'bogey-home' / d)
 for f in have: shutil.copy(ROOT / 'fonts' / f, up / 'fonts' / f)
 
@@ -54,10 +53,7 @@ pa = ROOT / 'preview-assets'; pa.mkdir(exist_ok=True)
 for s, d in [('render-bay-close.jpg', 'golf-simulator-bay-the-bogey-club-newmarket.jpg'),
              ('render-bay-tall.jpg', 'golf-simulator-bay-the-bogey-club-newmarket-mobile.jpg'),
              ('render-course.jpg', 'golfzon-simulator-screen-the-bogey-club.jpg'),
-             ('render-pour.jpg', 'draft-beer-bar-the-bogey-club-newmarket.jpg'),
-             ('render-pour-tall.jpg', 'draft-beer-bar-the-bogey-club-newmarket-mobile.jpg'),
-             ('render-upstairs.jpg', 'private-event-space-the-bogey-club-newmarket.jpg'),
-             ('render-upstairs-tall.jpg', 'private-event-space-the-bogey-club-newmarket-mobile.jpg')]:
+             ]:
     shutil.copy(A / s, pa / d)
 for f in (up / 'bogey-home').iterdir(): shutil.copy(f, pa / f.name)
 prev = lambda s: s.replace('{{IMG}}', 'preview-assets').replace('{{FONTS}}', 'fonts')
