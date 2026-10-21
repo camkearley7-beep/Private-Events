@@ -22,7 +22,7 @@ Install everything on a **staging copy first**. Most hosts offer one-click stagi
 1. **Fonts.** Upload the contents of `site/dist/uploads/fonts/` to `/wp-content/uploads/fonts/`, using SFTP or the host's file manager.
    - Or add them in Elementor → Custom Fonts with the family name `Satoshi`. If you use Custom Fonts, delete the `<style>` block from `00-head.html`.
 2. **Images.** Upload `site/dist/uploads/bogey-home/` to `/wp-content/uploads/bogey-home/`. That folder contains:
-   - `bogey-club-logo-pine.png`: header logo, a one-colour version of the real logo
+   - `bogey-club-logo-green.png`: header logo, your logo in rich golf green (#0D5B3B)
    - `bogey-club-logo-white.png`: footer logo
    - `karaoke-the-bogey-club-newmarket.jpg`: a real frame from the club's karaoke video
 3. **Photos still needed.** Add these real photos to the same folder using exactly these filenames (JPG, sRGB, about 200–400 KB each):
