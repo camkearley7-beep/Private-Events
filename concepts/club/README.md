@@ -1,4 +1,4 @@
-# "Tee to Tap": homepage concept (round 4)
+# "Tee to Tap": homepage concept (round 5: type and colour refinement)
 
 This is one original concept for the homepage. It shares nothing with the karaoke page's layout, type, colour or interactions. What ties the two together is the logo and the brand's personality.
 
@@ -8,6 +8,12 @@ This is one original concept for the homepage. It shares nothing with the karaok
   - The simulator's shot-data screen: precise mono readouts and aim lines.
   - The clubhouse: walnut, deep course green, warm white, and pin-flag red.
 - **Neon:** none anywhere. No glow effects either.
+
+**Round 5 (type and colour).** The layout, content and interactions are unchanged. Two things changed:
+- **Palette:** the exact five colours: White #FFFFFF, Soft off-white #F3F6EF, Rich golf green #0D5B3B, Deep pine #233E31, Muted sand #D7C9A4. The page is roughly two-thirds white and off-white. Green is used for booking buttons, the private events section, the bay planner and the footer.
+- **Type:** one family, General Sans. Medium 500 is used for body text and Semibold 600 for headings. Headings are sentence case with tight tracking. The page loads General Sans from Fontshare (free for commercial use under the ITF Free Font License). Hanken Grotesk is only a fallback; the PNG renders in this repo show it because Fontshare was not reachable from the build environment.
+- **Logo:** the header uses `assets/bogey-club-logo-pine.png`, a single-colour pine version of the real white logo, so it reads on the white header.
+- **Accessibility:** all text passes WCAG 2.1 AA contrast (axe-core, desktop and mobile).
 
 **The two interactions:**
 1. **Tee to Tap.** As you scroll on desktop, the camera dollies sideways through Bays, Bars, Stage and Upstairs. On a phone, it becomes a native swipe.
@@ -20,7 +26,7 @@ This is one original concept for the homepage. It shares nothing with the karaok
 | `renders/desktop-hero.png`, `renders/mobile-hero.png` | First screen on desktop and mobile |
 | `renders/desktop-tee-to-tap.png`, `renders/desktop-plan-your-bay.png` | The two interactions |
 | `renders/motion-desktop.mp4`, `renders/motion-mobile.mp4` | Screen recordings of the motion and interactions |
-| `renders/compare-karaoke-vs-new.png` | Side by side with the existing karaoke page |
+| `renders/type-and-colour.png` | Type scale and palette in use |
 
 **Imagery**
 - Every image labelled "Concept render" was drawn procedurally for this preview (`render/scenes.html`) and must be replaced with Bogey Club photography before launch.

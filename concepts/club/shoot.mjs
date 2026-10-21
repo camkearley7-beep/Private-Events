@@ -10,7 +10,7 @@ await p.evaluate(() => document.fonts.ready); await p.waitForTimeout(2800);
 if (extra) await p.evaluate(extra);
 if (mode === 'full') {
   // flatten the pinned dolly for a single tall capture
-  await p.addStyleTag({ content: '.walk{height:auto!important}.walk-pin{position:relative!important}.dock{display:none!important}' });
+  await p.addStyleTag({ content: '.walk{height:auto!important}.walk-pin{position:relative!important;top:0!important}.track{transform:none!important}.dock{display:none!important}' });
   await p.evaluate(() => { document.getElementById('track').style.transform = ''; });
   await p.waitForTimeout(400);
   await p.screenshot({ path: out, fullPage: true });
