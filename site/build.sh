@@ -44,7 +44,7 @@ for n, body in files.items(): (dist / n).write_text(body)
 # Files to upload to WordPress (real assets only; concept renders are never shipped).
 up = dist / 'uploads'; (up / 'bogey-home').mkdir(parents=True, exist_ok=True); (up / 'fonts').mkdir(exist_ok=True)
 A = ROOT.parent / 'concepts' / 'club' / 'assets'
-for s, d in [('bogey-club-logo-green.png', 'bogey-club-logo-green.png'), ('bogey-club-logo-white.png', 'bogey-club-logo-white.png'),
+for s, d in [('bogey-club-logo.png', 'bogey-club-logo.png'),
              ('karaoke-real-duet.jpg', 'karaoke-the-bogey-club-newmarket.jpg')]:
     shutil.copy(A / s, up / 'bogey-home' / d)
 for f in have: shutil.copy(ROOT / 'fonts' / f, up / 'fonts' / f)
