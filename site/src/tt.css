@@ -271,6 +271,13 @@ body.admin-bar .tt .hdr { top: 32px; }
 /* photo frames: a clean pine panel shows if a photo is missing, never a broken icon */
 .tt .hero picture, .tt .stop, .tt .bars-photo, .tt .events-photo { background-color: var(--pine); }
 .tt img.tt-missing { visibility: hidden; }
+/* hero video: fades in over the still once it is actually playing */
+.tt .hero-video { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .8s ease; pointer-events: none; }
+.tt .hero.is-playing .hero-video { opacity: 1; }
+.tt .hero.is-playing .aim { display: none; }
+@media (max-width: 860px) {
+  .tt .hero-video { inset: 0 0 auto 0; height: 52svh; min-height: 360px; }
+}
 /* mobile menu sheet */
 .tt .menu[aria-expanded="true"] { color: var(--green); }
 .tt .mnav { display: none; }

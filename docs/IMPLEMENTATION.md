@@ -35,6 +35,11 @@ Install everything on a **staging copy first**. Most hosts offer one-click stagi
 
    Not used yet: `Party-room-2.png` (the unedited version), `Hallway.png`, and karaoke images `…02_24_35-PM.png` and `…02_24_31-PM.png`.
 
+4. **Hero video.** The hero plays `/wp-content/uploads/2026/10/copy_DACCDB79-A1F6-4B0D-801B-D09CF8530201.mov`, muted and looping, over the hero still. It fades in only once it is actually playing. If a browser can't play it, if the visitor prefers reduced motion, or if autoplay is blocked, the still image stays, so nothing ever looks broken.
+   - **Strongly recommended:** `.mov` reliably plays only in Safari. Chrome, Edge and many Android phones often can't play it, especially iPhone HEVC recordings.
+     - Export the clip as **MP4 (H.264)**: 1920×1080, 10–20 seconds, no audio, ideally under 8 MB. HandBrake (free) "Fast 1080p30" works.
+     - Upload it, then add `<source src="…/your-video.mp4" type="video/mp4">` as the **first** source inside `<video class="hero-video">` in `04-home.html`.
+
    **Photos still needed** (golf). Upload these to `/wp-content/uploads/bogey-home/` with exactly these filenames:
 
 | Filename | Shot | Size |

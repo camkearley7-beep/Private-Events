@@ -25,6 +25,21 @@
       else img.addEventListener("error", miss, { once: true });
     });
 
+    /* Hero video: reveal it only once frames are playing; otherwise keep the still. */
+    var hero = document.querySelector(".tt .hero"), vid = hero && hero.querySelector(".hero-video");
+    if (vid) {
+      var drop = function () { vid.remove(); };
+      if (reduce || window.matchMedia("(prefers-reduced-data: reduce)").matches) drop();
+      else {
+        vid.addEventListener("playing", function () { hero.classList.add("is-playing"); }, { once: true });
+        var srcs = vid.querySelectorAll("source");
+        if (srcs.length) srcs[srcs.length - 1].addEventListener("error", drop);
+        vid.addEventListener("error", drop);
+        var p = vid.play && vid.play();
+        if (p && p.catch) p.catch(function () { /* autoplay blocked: the still stays */ });
+      }
+    }
+
     /* Mobile menu */
     var btn = document.querySelector(".tt .menu"), sheet = document.getElementById("tt-mnav");
     if (btn && sheet) {

@@ -296,6 +296,13 @@ body.admin-bar .tt .hdr { top: 32px; }
 /* photo frames: a clean pine panel shows if a photo is missing, never a broken icon */
 .tt .hero picture, .tt .stop, .tt .bars-photo, .tt .events-photo { background-color: var(--pine); }
 .tt img.tt-missing { visibility: hidden; }
+/* hero video: fades in over the still once it is actually playing */
+.tt .hero-video { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .8s ease; pointer-events: none; }
+.tt .hero.is-playing .hero-video { opacity: 1; }
+.tt .hero.is-playing .aim { display: none; }
+@media (max-width: 860px) {
+  .tt .hero-video { inset: 0 0 auto 0; height: 52svh; min-height: 360px; }
+}
 /* mobile menu sheet */
 .tt .menu[aria-expanded="true"] { color: var(--green); }
 .tt .mnav { display: none; }
@@ -553,12 +560,18 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
 <div class="tt" id="tt-home">
 
 <!-- 1. HERO -->
-<section class="hero" aria-labelledby="tt-h1" data-photo="Concept render · replace with a Bogey Club bay photo">
+<section class="hero" aria-labelledby="tt-h1">
+  <!-- Fallback still: shows until the video plays, and wherever it can't (reduced motion, unsupported format). -->
   <picture>
     <source media="(max-width: 860px)" srcset="preview-assets/golf-simulator-bay-the-bogey-club-newmarket-mobile.jpg">
     <img src="preview-assets/golf-simulator-bay-the-bogey-club-newmarket.jpg" width="1920" height="1080" fetchpriority="high" decoding="async"
          alt="A Golfzon golf simulator bay at The Bogey Club in Newmarket, ball teed up facing the course on screen">
   </picture>
+  <!-- Hero video. Best: also upload an H.264 .mp4 export and list it first (see docs §1). -->
+  <video class="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1" disablepictureinpicture>
+    <source src="https://thebogeyclub.com/wp-content/uploads/2026/10/copy_DACCDB79-A1F6-4B0D-801B-D09CF8530201.mov" type="video/mp4">
+    <source src="https://thebogeyclub.com/wp-content/uploads/2026/10/copy_DACCDB79-A1F6-4B0D-801B-D09CF8530201.mov" type="video/quicktime">
+  </video>
   <svg class="aim" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
     <path class="draw" pathLength="1" d="M960 1040 C 990 860, 1042 600, 1061 462"/>
     <text x="1080" y="456">TARGET · 412 YD</text>
@@ -755,6 +768,21 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
       if (img.complete && img.naturalWidth === 0 && img.currentSrc) miss();
       else img.addEventListener("error", miss, { once: true });
     });
+
+    /* Hero video: reveal it only once frames are playing; otherwise keep the still. */
+    var hero = document.querySelector(".tt .hero"), vid = hero && hero.querySelector(".hero-video");
+    if (vid) {
+      var drop = function () { vid.remove(); };
+      if (reduce || window.matchMedia("(prefers-reduced-data: reduce)").matches) drop();
+      else {
+        vid.addEventListener("playing", function () { hero.classList.add("is-playing"); }, { once: true });
+        var srcs = vid.querySelectorAll("source");
+        if (srcs.length) srcs[srcs.length - 1].addEventListener("error", drop);
+        vid.addEventListener("error", drop);
+        var p = vid.play && vid.play();
+        if (p && p.catch) p.catch(function () { /* autoplay blocked: the still stays */ });
+      }
+    }
 
     /* Mobile menu */
     var btn = document.querySelector(".tt .menu"), sheet = document.getElementById("tt-mnav");

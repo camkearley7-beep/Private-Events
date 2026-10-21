@@ -6,12 +6,18 @@
 <div class="tt" id="tt-home">
 
 <!-- 1. HERO -->
-<section class="hero" aria-labelledby="tt-h1" data-photo="Concept render · replace with a Bogey Club bay photo">
+<section class="hero" aria-labelledby="tt-h1">
+  <!-- Fallback still: shows until the video plays, and wherever it can't (reduced motion, unsupported format). -->
   <picture>
     <source media="(max-width: 860px)" srcset="https://thebogeyclub.com/wp-content/uploads/bogey-home/golf-simulator-bay-the-bogey-club-newmarket-mobile.jpg">
     <img src="https://thebogeyclub.com/wp-content/uploads/bogey-home/golf-simulator-bay-the-bogey-club-newmarket.jpg" width="1920" height="1080" fetchpriority="high" decoding="async"
          alt="A Golfzon golf simulator bay at The Bogey Club in Newmarket, ball teed up facing the course on screen">
   </picture>
+  <!-- Hero video. Best: also upload an H.264 .mp4 export and list it first (see docs §1). -->
+  <video class="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1" disablepictureinpicture>
+    <source src="https://thebogeyclub.com/wp-content/uploads/2026/10/copy_DACCDB79-A1F6-4B0D-801B-D09CF8530201.mov" type="video/mp4">
+    <source src="https://thebogeyclub.com/wp-content/uploads/2026/10/copy_DACCDB79-A1F6-4B0D-801B-D09CF8530201.mov" type="video/quicktime">
+  </video>
   <svg class="aim" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
     <path class="draw" pathLength="1" d="M960 1040 C 990 860, 1042 600, 1061 462"/>
     <text x="1080" y="456">TARGET · 412 YD</text>
