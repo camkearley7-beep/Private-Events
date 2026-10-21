@@ -1,0 +1,1627 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Bogey Club | Indoor Golf, Bar, Karaoke &amp; Events in Newmarket</title>
+<meta name="description" content="Four Golfzon simulators, two full bars, cold beer on tap, karaoke and private event space in Newmarket, Ontario. Book golf or plan your party.">
+<link rel="canonical" href="https://thebogeyclub.com/">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#103B2D">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,600..800&family=Instrument+Serif:ital@1&family=Manrope:wght@400..800&display=swap">
+<style>
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #F8F8F0; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+/* =====================================================================
+   THE BOGEY CLUB — HOMEPAGE "FRONT NINE / BACK NINE"
+   Namespaced stylesheet. Every selector starts with .bch so it cannot
+   collide with the theme, Elementor kit, or other pages.
+   Install: Elementor > Site Settings > Custom CSS (Pro), or WPCode
+   (site-wide CSS snippet), or Appearance > Customize > Additional CSS.
+   ===================================================================== */
+
+.bch {
+  --bch-green: #103B2D;      /* Deep Clubhouse Green */
+  --bch-fairway: #287A4B;    /* Fairway Green */
+  --bch-white: #F8F8F0;      /* Golf Ball White */
+  --bch-cream: #EAE5D6;      /* Scorecard Cream */
+  --bch-lime: #D6F36A;       /* Electric Lime */
+  --bch-ink: #142019;        /* Midnight Charcoal */
+  --bch-sand: #CCBB93;       /* Sandstone */
+  --bch-line: rgba(20, 32, 25, .16);
+  --bch-line-inv: rgba(248, 248, 240, .18);
+  --bch-display: "Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
+  --bch-body: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --bch-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --bch-gutter: 20px;
+  --bch-radius: 14px;
+  --bch-header-h: 64px;
+
+  font-family: var(--bch-body);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--bch-ink);
+  background: var(--bch-white);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+.bch *, .bch *::before, .bch *::after { box-sizing: border-box; }
+.bch :where(h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote, table) { margin: 0; padding: 0; }
+.bch :where(ul, ol) { list-style: none; }
+.bch img { display: block; max-width: 100%; height: auto; }
+.bch :where(a) { color: inherit; }
+.bch :focus-visible { outline: 3px solid var(--bch-lime); outline-offset: 3px; border-radius: 4px; }
+.bch-light :focus-visible, .bch-sec--cream :focus-visible, .bch-sec--white :focus-visible { outline-color: var(--bch-fairway); }
+
+.bch-wrap { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 var(--bch-gutter); }
+.bch-sr { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.bch-skip { position: absolute; left: 12px; top: -60px; z-index: 1000; background: var(--bch-lime); color: var(--bch-ink); padding: 12px 18px; border-radius: 8px; font-weight: 800; text-decoration: none; }
+.bch-skip:focus { top: 12px; }
+
+/* ---------- Type ---------- */
+.bch-display {
+  font-family: var(--bch-display);
+  font-weight: 800;
+  font-stretch: 85%;
+  text-transform: uppercase;
+  letter-spacing: -.02em;
+  line-height: .9;
+}
+.bch-h2 { font-size: clamp(40px, 9vw, 88px); }
+.bch-h3 { font-family: var(--bch-display); font-weight: 800; font-size: 22px; line-height: 1.1; letter-spacing: -.01em; }
+.bch-serif { font-family: var(--bch-serif); font-style: italic; font-weight: 400; text-transform: none; letter-spacing: 0; }
+.bch-lede { font-size: clamp(17px, 2.2vw, 20px); line-height: 1.55; max-width: 60ch; }
+.bch-kicker {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 12px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase;
+}
+.bch-kicker::before { content: ""; width: 22px; height: 2px; background: currentColor; }
+.bch-hole {
+  display: inline-grid; grid-auto-flow: column; gap: 0; justify-self: start;
+  border: 1.5px solid currentColor; border-radius: 6px; overflow: hidden;
+  font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; line-height: 1;
+}
+.bch-hole span { padding: 7px 10px; }
+.bch-hole span + span { border-left: 1.5px solid currentColor; }
+.bch-head { display: grid; gap: 18px; margin-bottom: 40px; }
+.bch-head .bch-lede { opacity: .9; }
+
+/* ---------- Buttons ---------- */
+.bch-btn {
+  --b-bg: var(--bch-lime); --b-fg: var(--bch-ink); --b-bd: var(--bch-lime);
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 52px; padding: 14px 22px;
+  background: var(--b-bg); color: var(--b-fg); border: 2px solid var(--b-bd); border-radius: 10px;
+  font-family: var(--bch-body); font-size: 14px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+  text-decoration: none; line-height: 1.1; text-align: center; cursor: pointer;
+  transition: transform .18s ease, background-color .18s ease, color .18s ease, box-shadow .18s ease;
+}
+.bch-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(16, 59, 45, .22); }
+.bch-btn:active { transform: translateY(0); }
+.bch-btn svg { width: 18px; height: 18px; flex: none; }
+.bch-btn--green { --b-bg: var(--bch-green); --b-fg: var(--bch-white); --b-bd: var(--bch-green); }
+.bch-btn--cream { --b-bg: var(--bch-cream); --b-fg: var(--bch-ink); --b-bd: var(--bch-cream); }
+.bch-btn--ghost { --b-bg: transparent; --b-fg: currentColor; --b-bd: currentColor; }
+.bch-btn--ghost:hover { --b-bg: rgba(248, 248, 240, .08); }
+.bch-light .bch-btn--ghost:hover { --b-bg: rgba(16, 59, 45, .06); }
+.bch-btns { display: flex; flex-wrap: wrap; gap: 12px; }
+.bch-link {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px;
+  font-weight: 800; font-size: 14px; letter-spacing: .1em; text-transform: uppercase; text-decoration: none;
+  border-bottom: 2px solid currentColor; padding-bottom: 2px;
+}
+.bch-link::after { content: "→"; transition: transform .18s ease; }
+.bch-link:hover::after { transform: translateX(4px); }
+
+/* ---------- Photo slots (real venue photography only) ----------
+   If a photo is missing, JS adds .is-missing and a designed fairway
+   pattern shows instead, so the layout never breaks or shifts. */
+.bch-ph {
+  position: relative; overflow: hidden; border-radius: var(--bch-radius);
+  background:
+    repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 28px, transparent 28px 56px),
+    radial-gradient(120% 90% at 20% 0%, var(--bch-fairway), var(--bch-green) 70%);
+  aspect-ratio: var(--ar, 4 / 3);
+}
+.bch-ph img { width: 100%; height: 100%; object-fit: cover; }
+.bch-ph.is-missing img { visibility: hidden; }
+.bch-ph.is-missing::after {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(circle at 78% 70%, var(--bch-white) 0 7px, transparent 8px),
+              radial-gradient(circle at 78% 70%, rgba(20,32,25,.35) 0 22px, transparent 23px);
+  opacity: .55;
+}
+.bch-ph figcaption {
+  position: absolute; left: 12px; bottom: 12px; z-index: 2;
+  background: var(--bch-ink); color: var(--bch-white);
+  font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase;
+  padding: 7px 10px; border-radius: 6px;
+}
+
+/* ---------- Sections ---------- */
+.bch-sec { position: relative; padding: 72px 0; }
+.bch-sec--green { background: var(--bch-green); color: var(--bch-white); }
+.bch-sec--ink { background: var(--bch-ink); color: var(--bch-white); }
+.bch-sec--cream { background: var(--bch-cream); color: var(--bch-ink); }
+.bch-sec--white { background: var(--bch-white); color: var(--bch-ink); }
+.bch-sec--green .bch-kicker, .bch-sec--ink .bch-kicker { color: var(--bch-lime); }
+.bch-sec--white .bch-kicker { color: var(--bch-fairway); }
+.bch-sec--cream .bch-kicker { color: var(--bch-green); }
+.bch-accent { color: var(--bch-lime); }
+.bch-light .bch-accent, .bch-sec--cream .bch-accent, .bch-sec--white .bch-accent { color: var(--bch-fairway); }
+
+/* Scorecard perforation divider */
+.bch-perf { height: 14px; background: radial-gradient(circle at 7px 7px, var(--bch-white) 4px, transparent 4.5px) 0 0 / 22px 14px repeat-x; }
+.bch-perf--on-green { background-color: var(--bch-green); }
+.bch-perf--on-cream { background-color: var(--bch-cream); }
+.bch-perf--on-ink { background-color: var(--bch-ink); }
+
+/* =====================================================================
+   HEADER (global — use as the Elementor Theme Builder header)
+   ===================================================================== */
+.bch-hdr {
+  position: sticky; top: 0; z-index: 900;
+  background: rgba(16, 59, 45, .97); color: var(--bch-white);
+  border-bottom: 1px solid var(--bch-line-inv);
+  transition: box-shadow .2s ease;
+}
+.bch-hdr.is-scrolled { box-shadow: 0 8px 28px rgba(0, 0, 0, .25); }
+.bch-hdr__bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: var(--bch-header-h); }
+.bch-logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--bch-white); min-height: 44px; }
+.bch-logo img { height: 40px; width: auto; }
+.bch-logo__mark { width: 34px; height: 34px; flex: none; }
+.bch-logo__word { white-space: nowrap; font-family: var(--bch-display); font-weight: 800; font-stretch: 85%; text-transform: uppercase; line-height: .9; font-size: 17px; letter-spacing: .02em; }
+.bch-logo__word small { display: block; font-size: 10px; letter-spacing: .26em; color: var(--bch-sand); margin-bottom: 2px; }
+.bch-hdr__actions { display: flex; align-items: center; gap: 8px; }
+.bch-hdr .bch-btn { min-height: 44px; padding: 10px 14px; font-size: 13px; white-space: nowrap; }
+.bch-burger {
+  display: inline-grid; place-items: center; width: 48px; height: 48px; padding: 0;
+  background: transparent; color: var(--bch-white); border: 2px solid var(--bch-line-inv); border-radius: 10px; cursor: pointer;
+}
+.bch-burger span, .bch-burger span::before, .bch-burger span::after {
+  display: block; width: 20px; height: 2px; background: currentColor; border-radius: 2px; position: relative; transition: transform .2s ease, opacity .2s ease;
+}
+.bch-burger span::before, .bch-burger span::after { content: ""; position: absolute; left: 0; }
+.bch-burger span::before { top: -6px; }
+.bch-burger span::after { top: 6px; }
+.bch-burger[aria-expanded="true"] span { background: transparent; }
+.bch-burger[aria-expanded="true"] span::before { transform: translateY(6px) rotate(45deg); }
+.bch-burger[aria-expanded="true"] span::after { transform: translateY(-6px) rotate(-45deg); }
+
+.bch-nav { display: none; }
+.bch-nav.is-open {
+  display: block; position: fixed; inset: var(--bch-header-h) 0 0 0; z-index: 899;
+  background: var(--bch-green); overflow-y: auto; padding: 8px 0 120px;
+  border-top: 1px solid var(--bch-line-inv);
+}
+.bch-nav__list { display: grid; }
+.bch-nav__list a {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  min-height: 58px; padding: 0 var(--bch-gutter);
+  font-family: var(--bch-display); font-weight: 800; font-stretch: 85%; font-size: 26px; text-transform: uppercase; letter-spacing: -.01em;
+  text-decoration: none; border-bottom: 1px solid var(--bch-line-inv);
+}
+.bch-nav__list a::after { content: "→"; order: 3; font-family: var(--bch-body); font-size: 18px; color: var(--bch-lime); }
+.bch-nav__list a[aria-current="page"] { color: var(--bch-lime); }
+.bch-nav__num { font-family: var(--bch-body); font-size: 11px; letter-spacing: .16em; color: var(--bch-sand); margin-right: auto; padding-left: 12px; order: 2; }
+.bch-nav__label { order: 1; }
+.bch-nav__extra { padding: 24px var(--bch-gutter) 0; display: grid; gap: 14px; }
+.bch-nav__extra .bch-btns > * { flex: 1 1 140px; }
+.bch-nav__contact { font-size: 15px; color: var(--bch-cream); display: grid; gap: 4px; }
+.bch-nav__contact a { text-decoration: none; font-weight: 700; min-height: 44px; display: inline-flex; align-items: center; }
+html.bch-lock, html.bch-lock body { overflow: hidden; }
+
+@media (min-width: 1240px) {
+  .bch-burger, .bch-nav__extra, .bch-nav__num { display: none; }
+  .bch-hdr__bar { height: 76px; }
+  .bch { --bch-header-h: 76px; }
+  .bch-nav, .bch-nav.is-open { display: block; position: static; background: none; padding: 0; overflow: visible; border: 0; }
+  .bch-nav__list { display: flex; gap: 2px; }
+  .bch-nav__list a {
+    min-height: 44px; padding: 0 11px; border: 0; border-radius: 8px;
+    font-family: var(--bch-body); font-size: 12.5px; font-weight: 800; letter-spacing: .07em; font-stretch: 100%; white-space: nowrap;
+  }
+  .bch-nav__list a::after { display: none; }
+  .bch-nav__list a:hover { background: rgba(248, 248, 240, .08); color: var(--bch-lime); }
+  .bch-hdr__bar { justify-content: flex-start; }
+  .bch-nav { margin-left: auto; }
+  .bch-hdr__actions { margin-left: 8px; }
+}
+
+/* =====================================================================
+   A — HERO
+   ===================================================================== */
+.bch-hero { position: relative; background: var(--bch-green); color: var(--bch-white); overflow: hidden; isolation: isolate; }
+.bch-hero__media { position: absolute; inset: 0; z-index: -2; border-radius: 0; aspect-ratio: auto; }
+.bch-hero__media img { opacity: .5; }
+.bch-hero::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(16,59,45,.35) 0%, rgba(16,59,45,.85) 62%, var(--bch-green) 100%),
+    repeating-linear-gradient(100deg, rgba(214,243,106,.035) 0 60px, transparent 60px 120px);
+}
+.bch-hero__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 36px; padding-block: 56px 48px; }
+.bch-hero h1 { display: grid; gap: 16px; }
+.bch-hero__kicker { font-family: var(--bch-body); font-size: 12px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: var(--bch-lime); line-height: 1.4; }
+.bch-hero__title { font-size: clamp(56px, 15.5vw, 132px); }
+.bch-hero__title .bch-serif { display: block; font-size: .62em; color: var(--bch-sand); line-height: 1; margin-top: .08em; }
+.bch-hero__copy { display: grid; gap: 14px; max-width: 56ch; }
+.bch-hero__copy p:first-child { font-size: clamp(18px, 2.4vw, 21px); font-weight: 600; color: var(--bch-white); }
+.bch-hero__copy p + p { color: var(--bch-cream); }
+.bch-hero__ctas { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; }
+.bch-hero__ctas .bch-btn:first-child { grid-column: 1 / -1; min-height: 58px; font-size: 15px; }
+.bch-hero__event {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 52px;
+  margin-top: 4px; padding: 12px 16px; border-radius: 10px;
+  background: rgba(248, 248, 240, .08); border: 1px dashed rgba(204, 187, 147, .6);
+  text-decoration: none; font-size: 15px; color: var(--bch-cream);
+}
+.bch-hero__event strong { color: var(--bch-white); letter-spacing: .08em; text-transform: uppercase; font-size: 13px; }
+.bch-hero__event::after { content: "→"; color: var(--bch-lime); font-weight: 800; }
+.bch-hero__meta { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; color: var(--bch-sand); margin-top: 6px; }
+.bch-hero__meta a { text-decoration: none; font-weight: 700; color: var(--bch-cream); }
+
+/* The Card — scorecard summary of the venue */
+.bch-card {
+  background: var(--bch-cream); color: var(--bch-ink); border-radius: var(--bch-radius);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .35); overflow: hidden; transform: rotate(-1.2deg);
+}
+.bch-card__top { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 18px; background: var(--bch-ink); color: var(--bch-cream); font-size: 11px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+.bch-card__top b { color: var(--bch-lime); }
+.bch-card table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.bch-card th, .bch-card td { padding: 11px 14px; border-bottom: 1px solid var(--bch-line); text-align: left; vertical-align: middle; }
+.bch-card thead th { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: #3f5247; background: rgba(20,32,25,.04); }
+.bch-card td:first-child { width: 44px; font-weight: 800; color: var(--bch-fairway); font-variant-numeric: tabular-nums; }
+.bch-card td:last-child { text-align: right; font-family: var(--bch-display); font-weight: 800; font-size: 22px; font-stretch: 85%; }
+.bch-card tfoot td, .bch-card tfoot td:first-child { border: 0; background: var(--bch-green); color: var(--bch-white); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 800; }
+.bch-card tfoot td:last-child { color: var(--bch-lime); font-size: 14px; font-family: var(--bch-body); letter-spacing: .1em; }
+
+@media (min-width: 900px) {
+  .bch-hero__grid { grid-template-columns: 1.25fr .75fr; align-items: center; padding-block: 96px 104px; gap: 56px; }
+  .bch-hero__ctas { display: flex; flex-wrap: wrap; }
+  .bch-hero__ctas .bch-btn:first-child { min-height: 52px; font-size: 14px; }
+  .bch-hero__ctas .bch-btn { padding-inline: 26px; }
+}
+
+/* Ticker */
+.bch-ticker { background: var(--bch-lime); color: var(--bch-ink); overflow: hidden; border-block: 2px solid var(--bch-ink); }
+.bch-ticker__track { display: flex; width: max-content; animation: bch-tick 38s linear infinite; }
+.bch-ticker ul { display: flex; flex: none; }
+.bch-ticker li {
+  display: flex; align-items: center; gap: 22px; padding: 12px 11px;
+  font-family: var(--bch-display); font-weight: 800; font-stretch: 85%; font-size: 20px; text-transform: uppercase; white-space: nowrap;
+}
+.bch-ticker li::after { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--bch-ink); }
+@keyframes bch-tick { to { transform: translateX(-50%); } }
+
+/* =====================================================================
+   B — CHOOSE YOUR EXPERIENCE
+   ===================================================================== */
+.bch-exp { display: grid; gap: 12px; counter-reset: exp; }
+.bch-exp__item {
+  position: relative; display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; align-items: start;
+  padding: 20px 18px; border-radius: var(--bch-radius); background: var(--bch-white); border: 1.5px solid var(--bch-ink);
+  text-decoration: none; color: var(--bch-ink);
+  transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease;
+}
+.bch-exp__item:hover { transform: translateY(-3px); box-shadow: 6px 6px 0 var(--bch-ink); }
+.bch-exp__item > :not(.bch-exp__num) { grid-column: 2; }
+.bch-exp__num { grid-column: 1; grid-row: 1 / span 3; font-family: var(--bch-display); font-weight: 800; font-size: 34px; line-height: 1; color: var(--bch-fairway); font-stretch: 85%; }
+.bch-exp__title { font-family: var(--bch-display); font-weight: 800; font-stretch: 85%; font-size: 30px; line-height: .95; text-transform: uppercase; }
+.bch-exp__desc { font-size: 15px; line-height: 1.5; color: #33453a; }
+.bch-exp__cta { font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--bch-green); margin-top: 6px; }
+.bch-exp__cta::after { content: " →"; }
+.bch-exp__ph { display: none; }
+.bch-exp__item--golf { background: var(--bch-lime); }
+.bch-exp__item--golf .bch-exp__num { color: var(--bch-green); }
+.bch-exp__item--events { background: var(--bch-green); color: var(--bch-white); border-color: var(--bch-green); }
+.bch-exp__item--events .bch-exp__num, .bch-exp__item--events .bch-exp__cta { color: var(--bch-lime); }
+.bch-exp__item--events .bch-exp__desc { color: var(--bch-cream); }
+.bch-exp__item--events:hover { box-shadow: 6px 6px 0 var(--bch-fairway); }
+
+@media (min-width: 680px) {
+  .bch-exp { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .bch-exp__item { grid-template-columns: 1fr; padding: 14px 14px 22px; gap: 8px; }
+  .bch-exp__ph { display: block; --ar: 16 / 10; margin-bottom: 10px; border-radius: 10px; }
+  .bch-exp__item > * { grid-column: 1 !important; }
+  .bch-exp__num { grid-row: auto; font-size: 14px; letter-spacing: .14em; font-family: var(--bch-body); }
+  .bch-exp__num::before { content: "Hole "; }
+  .bch-exp__item > :not(.bch-exp__ph) { padding-inline: 6px; }
+}
+@media (min-width: 1100px) { .bch-exp { grid-template-columns: repeat(4, 1fr); } }
+
+/* =====================================================================
+   C — THE GOLF EXPERIENCE
+   ===================================================================== */
+.bch-golf { display: grid; gap: 40px; }
+.bch-golf__media { display: grid; grid-template-columns: 1.3fr 1fr; gap: 12px; align-items: end; }
+.bch-golf__media .bch-ph:first-child { --ar: 3 / 4; }
+.bch-golf__media .bch-ph:last-child { --ar: 1 / 1; margin-bottom: 28px; }
+.bch-golf__body { display: grid; gap: 22px; align-content: start; }
+.bch-lineup { border: 1.5px solid var(--bch-line-inv); border-radius: var(--bch-radius); overflow: hidden; }
+.bch-lineup__row { display: grid; grid-template-columns: 56px 1fr; gap: 14px; align-items: center; padding: 16px; }
+.bch-lineup__row + .bch-lineup__row { border-top: 1.5px solid var(--bch-line-inv); }
+.bch-lineup__qty { font-family: var(--bch-display); font-weight: 800; font-stretch: 85%; font-size: 44px; line-height: 1; color: var(--bch-lime); }
+.bch-lineup__name { font-weight: 800; font-size: 18px; line-height: 1.2; }
+.bch-lineup__name small { display: block; font-weight: 500; font-size: 14px; color: var(--bch-cream); margin-top: 2px; }
+.bch-ticks { display: grid; gap: 10px; }
+.bch-ticks li { position: relative; padding-left: 30px; }
+.bch-ticks li::before {
+  content: ""; position: absolute; left: 0; top: .32em; width: 18px; height: 18px; border-radius: 50%;
+  background: var(--bch-lime); box-shadow: inset 0 0 0 5px var(--bch-green);
+}
+.bch-sec--cream .bch-ticks li::before, .bch-sec--white .bch-ticks li::before { background: var(--bch-fairway); box-shadow: inset 0 0 0 5px var(--bch-cream); }
+@media (min-width: 900px) {
+  .bch-golf { grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+}
+
+/* =====================================================================
+   D — THE TURN: TWO BARS
+   ===================================================================== */
+.bch-turn { background: var(--bch-ink); color: var(--bch-white); overflow: hidden; }
+.bch-turn__sky {
+  height: 120px;
+  background: linear-gradient(180deg, var(--bch-green) 0%, #1a3a2b 30%, #22302a 60%, var(--bch-ink) 100%);
+  position: relative;
+}
+.bch-turn__sky::after {
+  content: "THE TURN"; position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%);
+  font-size: 11px; font-weight: 800; letter-spacing: .4em; color: var(--bch-sand); white-space: nowrap;
+}
+.bch-turn__title { font-size: clamp(48px, 12vw, 128px); }
+.bch-turn__title .bch-accent { display: block; }
+.bch-bars { display: grid; gap: 16px; margin-top: 40px; }
+.bch-bar { display: grid; gap: 14px; }
+.bch-bar .bch-ph { --ar: 4 / 3; }
+.bch-bar__label { display: flex; align-items: baseline; gap: 12px; }
+.bch-bar__no { font-family: var(--bch-display); font-weight: 800; font-stretch: 85%; font-size: 56px; line-height: .8; color: var(--bch-lime); }
+.bch-bar__label p { font-size: 15px; color: var(--bch-cream); line-height: 1.4; }
+.bch-bar__label strong { display: block; color: var(--bch-white); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; }
+.bch-pour {
+  display: grid; gap: 20px; margin-top: 40px; padding: 24px; border-radius: var(--bch-radius);
+  background: linear-gradient(135deg, rgba(204,187,147,.14), rgba(204,187,147,.04)); border: 1px solid rgba(204,187,147,.3);
+}
+.bch-pour__ph { --ar: 1 / 1; max-width: 220px; border-radius: 50%; }
+.bch-pour h3 { font-family: var(--bch-display); font-weight: 800; font-stretch: 85%; font-size: 34px; line-height: .95; text-transform: uppercase; color: var(--bch-sand); }
+.bch-pour p { color: var(--bch-cream); }
+.bch-note {
+  display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start;
+  font-size: 14px; line-height: 1.5; padding: 14px 16px; border-radius: 10px;
+  background: rgba(248, 248, 240, .06); border-left: 3px solid var(--bch-lime); color: var(--bch-cream);
+}
+.bch-note::before { content: "i"; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--bch-lime); color: var(--bch-ink); font-weight: 800; font-family: var(--bch-serif); font-style: italic; font-size: 15px; }
+.bch-sec--cream .bch-note, .bch-sec--white .bch-note { background: rgba(16,59,45,.06); color: var(--bch-ink); border-left-color: var(--bch-fairway); }
+.bch-sec--cream .bch-note::before, .bch-sec--white .bch-note::before { background: var(--bch-fairway); color: var(--bch-white); }
+@media (min-width: 760px) {
+  .bch-bars { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .bch-bar:nth-child(2) { margin-top: 72px; }
+  .bch-pour { grid-template-columns: 200px 1fr; align-items: center; gap: 32px; padding: 32px; }
+}
+
+/* =====================================================================
+   E — PRIVATE EVENTS
+   ===================================================================== */
+.bch-events { display: grid; gap: 36px; }
+.bch-events__title { font-size: clamp(52px, 13vw, 132px); }
+.bch-events__hero { --ar: 16 / 10; }
+.bch-occasions { display: flex; flex-wrap: wrap; gap: 8px; }
+.bch-occasions li {
+  padding: 9px 14px; border-radius: 999px; border: 1.5px solid var(--bch-ink);
+  font-size: 14px; font-weight: 700; background: var(--bch-white);
+}
+.bch-occasions li:nth-child(3n+1) { background: var(--bch-lime); }
+.bch-why { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; background: var(--bch-ink); border: 1.5px solid var(--bch-ink); border-radius: var(--bch-radius); overflow: hidden; }
+.bch-why li { background: var(--bch-cream); padding: 18px 16px; display: grid; gap: 4px; }
+.bch-why b { font-family: var(--bch-display); font-weight: 800; font-stretch: 85%; font-size: 40px; line-height: .9; color: var(--bch-green); }
+.bch-why span { font-size: 14px; line-height: 1.35; font-weight: 600; }
+@media (min-width: 900px) {
+  .bch-events { grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: start; }
+  .bch-events__media { position: sticky; top: calc(var(--bch-header-h) + 24px); }
+}
+
+/* Inquiry host — wraps the EXISTING Elementor / plugin form (see docs). */
+.bch-form-host { background: var(--bch-green); color: var(--bch-white); padding: 56px 0 64px; scroll-margin-top: 80px; }
+.bch-form-host__grid { display: grid; gap: 28px; }
+.bch-form-host__intro { display: grid; gap: 14px; }
+.bch-form-host__intro h2 { font-size: clamp(40px, 8vw, 72px); }
+.bch-form-host__intro p { color: var(--bch-cream); }
+.bch-form-host__alt { font-size: 15px; color: var(--bch-cream); }
+.bch-form-host__alt a { color: var(--bch-lime); font-weight: 700; }
+.bch-form-panel { background: var(--bch-white); color: var(--bch-ink); border-radius: var(--bch-radius); padding: 22px 18px; box-shadow: 10px 10px 0 var(--bch-lime); }
+@media (min-width: 900px) {
+  .bch-form-host__grid { grid-template-columns: .85fr 1.15fr; gap: 56px; align-items: start; }
+  .bch-form-panel { padding: 32px; }
+}
+/* Preview / fallback form styling — also gently styles Elementor Pro forms
+   placed inside .bch-form-panel. */
+.bch-form { display: grid; gap: 14px; }
+.bch-form__row { display: grid; gap: 14px; }
+@media (min-width: 560px) { .bch-form__row { grid-template-columns: 1fr 1fr; } }
+.bch-field { display: grid; gap: 6px; }
+.bch-field label, .bch-form-panel .elementor-field-label { font-size: 13px; font-weight: 800; letter-spacing: .06em; }
+.bch-field label i { font-style: normal; font-weight: 500; color: #4b5d52; }
+.bch-field input, .bch-field select, .bch-field textarea,
+.bch-form-panel .elementor-field-textual, .bch-form-panel select {
+  width: 100%; min-height: 50px; padding: 12px 14px; font: 500 16px/1.4 var(--bch-body); color: var(--bch-ink);
+  background: #fff; border: 1.5px solid #8a978f; border-radius: 10px;
+}
+.bch-field textarea { min-height: 96px; resize: vertical; }
+.bch-field input:focus, .bch-field select:focus, .bch-field textarea:focus { outline: 3px solid var(--bch-fairway); outline-offset: 1px; border-color: var(--bch-fairway); }
+.bch-form-panel .elementor-button { min-height: 52px; background: var(--bch-green); border-radius: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.bch-form__note { font-size: 13px; color: #4b5d52; }
+.bch-form__status { font-size: 14px; font-weight: 700; padding: 12px 14px; border-radius: 10px; background: var(--bch-cream); }
+.bch-form__status[hidden] { display: none; }
+
+/* =====================================================================
+   F — KARAOKE
+   ===================================================================== */
+.bch-kar { display: grid; gap: 36px; }
+.bch-kar__title { font-size: clamp(48px, 12vw, 116px); }
+.bch-kar__title .bch-serif { display: block; font-size: .6em; color: var(--bch-lime); text-transform: none; }
+.bch-kar__ph { --ar: 4 / 5; }
+.bch-wave { display: flex; align-items: flex-end; gap: 5px; height: 42px; }
+.bch-wave i { flex: 1; max-width: 8px; background: var(--bch-lime); border-radius: 4px; height: 30%; animation: bch-eq 1.1s ease-in-out infinite alternate; }
+.bch-wave i:nth-child(2n) { animation-delay: -.3s; }
+.bch-wave i:nth-child(3n) { animation-delay: -.6s; height: 60%; }
+.bch-wave i:nth-child(5n) { animation-delay: -.9s; }
+@keyframes bch-eq { from { height: 18%; } to { height: 100%; } }
+@media (min-width: 900px) {
+  .bch-kar { grid-template-columns: 1.1fr .9fr; gap: 64px; align-items: center; }
+}
+
+/* =====================================================================
+   G — LEAGUES / TOURNAMENTS / LESSONS: SCORECARD
+   ===================================================================== */
+.bch-sc { background: var(--bch-white); border: 2px solid var(--bch-ink); border-radius: var(--bch-radius); overflow: hidden; }
+.bch-sc__top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; padding: 14px 18px; background: var(--bch-green); color: var(--bch-cream); font-size: 11px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+.bch-sc__top b { color: var(--bch-lime); }
+.bch-sc table { width: 100%; border-collapse: collapse; }
+.bch-sc thead { display: none; }
+.bch-sc tr { display: grid; grid-template-columns: 44px 1fr; gap: 4px 12px; padding: 18px; border-top: 1.5px solid var(--bch-line); }
+.bch-sc tbody tr:first-child { border-top: 0; }
+.bch-sc td { display: block; font-size: 15px; }
+.bch-sc td[data-l]::before { content: attr(data-l); display: block; font-size: 10px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: #4b5d52; }
+.bch-sc .bch-sc__no { grid-row: span 4; font-family: var(--bch-display); font-weight: 800; font-stretch: 85%; font-size: 34px; line-height: 1; color: var(--bch-fairway); }
+.bch-sc .bch-sc__ev { font-weight: 800; font-size: 19px; line-height: 1.2; }
+.bch-sc .bch-sc__ev small { display: block; font-weight: 500; font-size: 14px; color: #33453a; margin-top: 2px; }
+.bch-sc__go a { margin-top: 4px; }
+.bch-tag { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; padding: 4px 8px; border-radius: 5px; background: var(--bch-lime); color: var(--bch-ink); vertical-align: middle; margin-left: 6px; }
+.bch-tag--past { background: var(--bch-sand); }
+@media (min-width: 900px) {
+  .bch-sc thead { display: table-header-group; }
+  .bch-sc tr { display: table-row; padding: 0; }
+  .bch-sc th, .bch-sc td { display: table-cell; padding: 16px 18px; text-align: left; vertical-align: middle; border-top: 1.5px solid var(--bch-line); }
+  .bch-sc thead th { font-size: 10px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: #4b5d52; background: rgba(20,32,25,.04); border-top: 0; }
+  .bch-sc td[data-l]::before { display: none; }
+  .bch-sc .bch-sc__no { width: 70px; text-align: center; border-right: 1.5px solid var(--bch-line); }
+  .bch-sc__go { text-align: right; white-space: nowrap; }
+}
+
+/* =====================================================================
+   H — HOW IT WORKS + PRICING
+   ===================================================================== */
+.bch-how { display: grid; gap: 28px; }
+.bch-price {
+  position: relative; background: var(--bch-green); color: var(--bch-white); border-radius: var(--bch-radius); padding: 28px 22px;
+  display: grid; gap: 14px; overflow: hidden;
+}
+.bch-price::after { content: ""; position: absolute; right: -40px; top: -40px; width: 160px; height: 160px; border-radius: 50%; border: 22px solid rgba(214,243,106,.12); }
+.bch-price__amt { display: flex; align-items: flex-end; gap: 10px; }
+.bch-price__amt b { font-family: var(--bch-display); font-weight: 800; font-stretch: 85%; font-size: 96px; line-height: .8; color: var(--bch-lime); }
+.bch-price__amt span { font-size: 14px; font-weight: 700; line-height: 1.3; color: var(--bch-cream); padding-bottom: 6px; }
+.bch-price ul { display: grid; gap: 8px; font-size: 15px; }
+.bch-price li { display: flex; justify-content: space-between; gap: 12px; padding-top: 8px; border-top: 1px solid var(--bch-line-inv); }
+.bch-price li b { color: var(--bch-lime); text-align: right; }
+.bch-steps { display: grid; gap: 10px; counter-reset: st; }
+.bch-steps li { counter-increment: st; display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: start; padding: 16px; background: var(--bch-white); border-radius: var(--bch-radius); border: 1.5px solid var(--bch-line); }
+.bch-steps li::before { content: counter(st, decimal-leading-zero); font-family: var(--bch-display); font-weight: 800; font-size: 28px; line-height: 1; color: var(--bch-fairway); font-stretch: 85%; }
+.bch-steps h3 { font-size: 17px; font-weight: 800; line-height: 1.3; }
+.bch-steps p { font-size: 15px; color: #33453a; line-height: 1.5; margin-top: 2px; }
+.bch-qa { display: grid; gap: 0; margin-top: 8px; border-top: 1.5px solid var(--bch-ink); }
+.bch-qa > div { display: grid; gap: 4px; padding: 16px 0; border-bottom: 1.5px solid var(--bch-line); }
+.bch-qa dt { font-weight: 800; }
+.bch-qa dd { color: #33453a; font-size: 15px; }
+@media (min-width: 900px) {
+  .bch-how { grid-template-columns: .8fr 1.2fr; gap: 48px; align-items: start; }
+  .bch-price { position: sticky; top: calc(var(--bch-header-h) + 24px); padding: 36px 32px; }
+  .bch-qa { grid-template-columns: 1fr 1fr; column-gap: 32px; }
+}
+
+/* =====================================================================
+   I — REVIEWS
+   ===================================================================== */
+.bch-reviews { display: grid; gap: 14px; }
+.bch-review { display: grid; gap: 16px; align-content: space-between; padding: 26px 22px; border-radius: var(--bch-radius); background: var(--bch-white); color: var(--bch-ink); border: 1.5px solid var(--bch-ink); }
+.bch-review:nth-child(2) { background: var(--bch-lime); }
+.bch-review blockquote { font-family: var(--bch-serif); font-size: 24px; line-height: 1.25; }
+.bch-review blockquote::before { content: "“"; display: block; font-size: 64px; line-height: .6; color: var(--bch-fairway); margin-bottom: 4px; }
+.bch-review figcaption { font-size: 13px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.bch-review figcaption span { display: block; font-weight: 600; letter-spacing: .04em; text-transform: none; color: #33453a; }
+@media (min-width: 900px) { .bch-reviews { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+
+/* =====================================================================
+   J — SHOP
+   ===================================================================== */
+.bch-shop { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.bch-prod { display: grid; gap: 10px; text-decoration: none; color: var(--bch-ink); }
+.bch-prod .bch-ph { --ar: 1 / 1; background: #fff; border: 1.5px solid var(--bch-line); }
+.bch-prod .bch-ph img { object-fit: contain; padding: 6%; transition: transform .3s ease; }
+.bch-prod:hover .bch-ph img { transform: scale(1.04); }
+.bch-prod__name { font-weight: 800; font-size: 15px; line-height: 1.25; }
+.bch-prod__type { display: block; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #4b5d52; }
+@media (min-width: 900px) { .bch-shop { grid-template-columns: repeat(4, 1fr); gap: 20px; } }
+
+/* =====================================================================
+   K — VISIT
+   ===================================================================== */
+.bch-visit { display: grid; gap: 20px; }
+.bch-visit__card { background: var(--bch-white); color: var(--bch-ink); border-radius: var(--bch-radius); padding: 24px 20px; display: grid; gap: 16px; }
+.bch-visit__card address { font-style: normal; font-size: 20px; font-weight: 700; line-height: 1.4; }
+.bch-contact { display: grid; gap: 8px; }
+.bch-contact a { display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 0 14px; border-radius: 10px; background: var(--bch-cream); text-decoration: none; font-weight: 800; }
+.bch-contact a span { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: #4b5d52; min-width: 54px; }
+.bch-hours { width: 100%; border-collapse: collapse; font-size: 15px; }
+.bch-hours caption { text-align: left; font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; padding-bottom: 8px; color: var(--bch-lime); }
+.bch-hours th, .bch-hours td { padding: 10px 0; border-bottom: 1px solid var(--bch-line-inv); text-align: left; font-weight: 500; }
+.bch-hours td { text-align: right; font-weight: 800; }
+.bch-visit__hours { display: grid; gap: 24px; align-content: start; }
+@media (min-width: 900px) { .bch-visit { grid-template-columns: 1fr 1fr; gap: 40px; } .bch-visit__card { padding: 32px; } }
+
+/* =====================================================================
+   L — FAQ
+   ===================================================================== */
+.bch-faq { display: grid; gap: 10px; }
+.bch-faq details { background: var(--bch-white); border: 1.5px solid var(--bch-line); border-radius: 12px; }
+.bch-faq details[open] { border-color: var(--bch-ink); }
+.bch-faq summary {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  min-height: 60px; padding: 14px 18px; cursor: pointer; list-style: none; font-weight: 800; font-size: 17px; line-height: 1.3;
+}
+.bch-faq summary::-webkit-details-marker { display: none; }
+.bch-faq summary::after { content: "+"; flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--bch-cream); font-size: 20px; transition: transform .2s ease; }
+.bch-faq details[open] summary::after { transform: rotate(45deg); background: var(--bch-lime); }
+.bch-faq details > div { padding: 0 18px 18px; color: #33453a; font-size: 16px; }
+.bch-faq details > div a { color: var(--bch-green); font-weight: 700; }
+@media (min-width: 900px) { .bch-faq { grid-template-columns: 1fr 1fr; align-items: start; } }
+
+/* =====================================================================
+   FOOTER (global — use as the Elementor Theme Builder footer)
+   ===================================================================== */
+.bch-ftr { background: var(--bch-ink); color: var(--bch-cream); padding: 64px 0 120px; font-size: 15px; }
+.bch-ftr__top { display: grid; gap: 36px; padding-bottom: 40px; border-bottom: 1px solid var(--bch-line-inv); }
+.bch-ftr__brand { display: grid; gap: 16px; max-width: 42ch; }
+.bch-ftr__tag { font-family: var(--bch-display); font-weight: 800; font-stretch: 85%; font-size: 40px; line-height: .9; text-transform: uppercase; color: var(--bch-white); }
+.bch-ftr__tag .bch-accent { display: block; }
+.bch-ftr__cols { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 20px; }
+.bch-ftr h2 { font-size: 11px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: var(--bch-lime); margin-bottom: 10px; }
+.bch-ftr ul a { display: inline-flex; align-items: center; min-height: 40px; text-decoration: none; }
+.bch-ftr ul a:hover { color: var(--bch-lime); }
+.bch-ftr address { font-style: normal; line-height: 1.6; }
+.bch-ftr address a { text-decoration: none; font-weight: 700; color: var(--bch-white); display: inline-block; padding: 6px 0; }
+.bch-news { display: grid; gap: 12px; }
+.bch-news__title { font-family: var(--bch-display); font-weight: 800; font-stretch: 85%; font-size: 28px; line-height: 1; text-transform: uppercase; color: var(--bch-white); }
+.bch-news__form { display: flex; gap: 8px; flex-wrap: wrap; }
+.bch-news__form input { flex: 1 1 200px; min-height: 52px; padding: 0 14px; border-radius: 10px; border: 1.5px solid var(--bch-line-inv); background: rgba(248,248,240,.06); color: var(--bch-white); font: 500 16px var(--bch-body); }
+.bch-news__form input::placeholder { color: #b9c2bc; }
+.bch-ftr__base { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; padding-top: 24px; font-size: 13px; color: #b9c2bc; }
+.bch-ftr__base ul { display: flex; flex-wrap: wrap; gap: 0 18px; }
+.bch-social { display: flex; gap: 8px; }
+.bch-social a { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 10px; border: 1.5px solid var(--bch-line-inv); }
+.bch-social svg { width: 20px; height: 20px; }
+@media (min-width: 900px) {
+  .bch-ftr { padding-bottom: 48px; }
+  .bch-ftr__top { grid-template-columns: 1fr 1.6fr; gap: 56px; }
+  .bch-ftr__cols { grid-template-columns: repeat(3, 1fr) 1.4fr; }
+}
+
+/* =====================================================================
+   MOBILE BOOKING BAR
+   ===================================================================== */
+.bch-bookbar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 880;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+  padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+  background: rgba(20, 32, 25, .97); border-top: 1px solid var(--bch-line-inv);
+  transform: translateY(110%); transition: transform .25s ease;
+}
+.bch-bookbar.is-visible { transform: translateY(0); }
+.bch-bookbar .bch-btn { min-height: 50px; font-size: 13px; padding: 10px; }
+@media (min-width: 900px) { .bch-bookbar { display: none; } }
+
+/* =====================================================================
+   Desktop spacing, motion preferences
+   ===================================================================== */
+@media (min-width: 900px) {
+  .bch { --bch-gutter: 40px; font-size: 18px; }
+  .bch-sec { padding: 120px 0; }
+  .bch-head { margin-bottom: 56px; }
+  .bch-head--split { grid-template-columns: 1fr 1fr; align-items: end; gap: 40px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bch *, .bch *::before, .bch *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .bch-ticker__track { width: auto; flex-wrap: wrap; }
+  .bch-ticker ul[aria-hidden="true"] { display: none; }
+  .bch-ticker ul { flex-wrap: wrap; justify-content: center; }
+  .bch-wave i { height: 60%; }
+}
+
+/* Preview-only aids (never rendered on the live site; class only exists in preview.html) */
+.bch-preview-flag { outline: 2px dashed var(--bch-lime); outline-offset: 4px; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "SportsActivityLocation",
+        "BarOrPub",
+        "EntertainmentBusiness"
+      ],
+      "@id": "https://thebogeyclub.com/#business",
+      "name": "The Bogey Club",
+      "description": "Indoor golf, bar and entertainment venue in Newmarket, Ontario with four Golfzon golf simulators (two TwoVision NX and two Vision Plus), two full bars with draft beer, karaoke, and a dedicated private event space for birthday parties, corporate events and group celebrations.",
+      "url": "https://thebogeyclub.com/",
+      "telephone": "+1-905-235-4653",
+      "email": "golf@thebogeyclub.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "17705 Leslie Street, Unit 5",
+        "addressLocality": "Newmarket",
+        "addressRegion": "ON",
+        "postalCode": "L3Y 3E3",
+        "addressCountry": "CA"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Newmarket"
+        },
+        {
+          "@type": "City",
+          "name": "Aurora"
+        },
+        {
+          "@type": "City",
+          "name": "East Gwillimbury"
+        }
+      ],
+      "sameAs": [
+        "https://instagram.com/thebogeyclub",
+        "https://shop.thebogeyclub.com/"
+      ],
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Golfzon golf simulators (4)",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Two full bars",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Draft beer on tap",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Karaoke",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Private event space",
+          "value": true
+        }
+      ],
+      "potentialAction": {
+        "@type": "ReserveAction",
+        "name": "Book a golf simulator",
+        "target": "https://thebogeyclub.golfbooking.ca/calendar.php"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "The Bogey Club experiences",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "url": "https://thebogeyclub.golfbooking.ca/calendar.php",
+            "price": "60.00",
+            "priceCurrency": "CAD",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "60.00",
+              "priceCurrency": "CAD",
+              "unitCode": "HUR",
+              "valueAddedTaxIncluded": false
+            },
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://thebogeyclub.com/our-simulators/#service",
+              "name": "Indoor golf simulator rental",
+              "serviceType": "Indoor golf simulator",
+              "description": "Hourly rental of a Golfzon TwoVision NX or Vision Plus simulator bay for up to four players.",
+              "url": "https://thebogeyclub.com/our-simulators/",
+              "provider": {
+                "@id": "https://thebogeyclub.com/#business"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://thebogeyclub.com/karaoke/#service",
+              "name": "Karaoke",
+              "serviceType": "Karaoke",
+              "url": "https://thebogeyclub.com/karaoke/",
+              "provider": {
+                "@id": "https://thebogeyclub.com/#business"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://thebogeyclub.com/private-events/#service",
+              "name": "Private event space",
+              "serviceType": "Event venue",
+              "description": "Dedicated upstairs event space with its own full bar for birthday parties, corporate events, holiday parties, team building and group celebrations, with golf simulators and karaoke available.",
+              "url": "https://thebogeyclub.com/private-events/",
+              "provider": {
+                "@id": "https://thebogeyclub.com/#business"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://thebogeyclub.com/meet-our-pro/#service",
+              "name": "Private golf lessons",
+              "serviceType": "Golf instruction",
+              "url": "https://thebogeyclub.com/meet-our-pro/",
+              "provider": {
+                "@id": "https://thebogeyclub.com/#business"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://thebogeyclub.com/leagues-and-events/#service",
+              "name": "Golf leagues and tournaments",
+              "serviceType": "Golf league",
+              "url": "https://thebogeyclub.com/leagues-and-events/",
+              "provider": {
+                "@id": "https://thebogeyclub.com/#business"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://thebogeyclub.com/#webpage",
+      "url": "https://thebogeyclub.com/",
+      "name": "The Bogey Club | Indoor Golf, Bar, Karaoke & Events in Newmarket",
+      "description": "Four Golfzon simulators, two full bars, cold beer on tap, karaoke and private event space in Newmarket, Ontario. Book golf or plan your party.",
+      "inLanguage": "en-CA",
+      "about": {
+        "@id": "https://thebogeyclub.com/#business"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<!-- PREVIEW BUILD — generated by build.sh from src/. Do not edit by hand. -->
+<!-- =====================================================================
+     GLOBAL HEADER — Elementor Theme Builder > Header (display: Entire Site)
+     The menu below mirrors the WordPress "Primary" menu exactly. Keep the
+     two in sync (see docs/REDESIGN.md §6). Replace the wordmark <span>s
+     with the real logo <img> from the Media Library.
+     ===================================================================== -->
+<header class="bch bch-hdr" id="bch-hdr">
+  <a class="bch-skip" href="#bch-main">Skip to content</a>
+  <div class="bch-wrap bch-hdr__bar">
+    <a class="bch-logo" href="https://thebogeyclub.com/" aria-label="The Bogey Club — home">
+      <svg class="bch-logo__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+        <circle cx="20" cy="20" r="18.5" fill="none" stroke="#D6F36A" stroke-width="2.5"/>
+        <path d="M14 29V11h8.2c3.6 0 5.6 1.8 5.6 4.5 0 1.9-1 3.2-2.6 3.8 2 .5 3.4 2 3.4 4.3 0 3.2-2.4 5.4-6.2 5.4H14Zm4.2-10.6h3.4c1.5 0 2.2-.8 2.2-2s-.8-1.9-2.2-1.9h-3.4v3.9Zm0 7.1h3.9c1.6 0 2.5-.8 2.5-2.1s-.9-2.1-2.5-2.1h-3.9v4.2Z" fill="#F8F8F0"/>
+      </svg>
+      <span class="bch-logo__word"><small>Newmarket · ON</small>The Bogey Club</span>
+    </a>
+
+    <nav class="bch-nav" id="bch-nav" aria-label="Main">
+      <ul class="bch-nav__list">
+        <li><a href="https://thebogeyclub.com/our-simulators/"><span class="bch-nav__label">Golf Simulators</span><span class="bch-nav__num">01</span></a></li>
+        <li><a href="https://thebogeyclub.com/karaoke/"><span class="bch-nav__label">Karaoke</span><span class="bch-nav__num">02</span></a></li>
+        <li><a href="https://thebogeyclub.com/private-events/"><span class="bch-nav__label">Private Events</span><span class="bch-nav__num">03</span></a></li>
+        <li><a href="https://thebogeyclub.com/leagues-and-events/"><span class="bch-nav__label">Leagues &amp; Events</span><span class="bch-nav__num">04</span></a></li>
+        <li><a href="https://thebogeyclub.com/meet-our-pro/"><span class="bch-nav__label">Private Lessons</span><span class="bch-nav__num">05</span></a></li>
+        <li><a href="https://shop.thebogeyclub.com/"><span class="bch-nav__label">Shop</span><span class="bch-nav__num">06</span></a></li>
+        <li><a href="https://thebogeyclub.com/faqs/"><span class="bch-nav__label">Contact / FAQs</span><span class="bch-nav__num">07</span></a></li>
+      </ul>
+      <div class="bch-nav__extra">
+        <div class="bch-btns">
+          <a class="bch-btn" href="https://thebogeyclub.golfbooking.ca/calendar.php">Book Golf</a>
+          <a class="bch-btn bch-btn--cream" href="https://thebogeyclub.com/karaoke/" data-bch-link="karaoke-booking">Book Karaoke</a>
+        </div>
+        <a class="bch-btn bch-btn--ghost" href="https://thebogeyclub.com/private-events/">Plan an Event</a>
+        <div class="bch-nav__contact">
+          <a href="tel:+19052354653">(905) 235-4653</a>
+          <a href="mailto:golf@thebogeyclub.com">golf@thebogeyclub.com</a>
+          <span>17705 Leslie St, Unit 5, Newmarket</span>
+        </div>
+      </div>
+    </nav>
+
+    <div class="bch-hdr__actions">
+      <a class="bch-btn" href="https://thebogeyclub.golfbooking.ca/calendar.php">Book Golf</a>
+      <button class="bch-burger" type="button" aria-controls="bch-nav" aria-expanded="false" aria-label="Open menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- =====================================================================
+     HOMEPAGE — PART 1 (Elementor HTML widget #1, full-width container,
+     zero padding). Sections A–E. The event inquiry FORM is NOT in here:
+     it is the existing form widget, placed between part 1 and part 2.
+     Photos: replace every src under /wp-content/uploads/bogey-home/
+     with the matching real venue photo (see docs/REDESIGN.md §2.4).
+     ===================================================================== -->
+<div class="bch" id="bch-main">
+
+  <!-- A — HERO ========================================================= -->
+  <section class="bch-hero" aria-labelledby="bch-h1">
+    <figure class="bch-ph bch-hero__media">
+      <img src="https://thebogeyclub.com/wp-content/uploads/bogey-home/the-bogey-club-indoor-golf-bar-newmarket.webp"
+           alt="Golfers and friends at the bar beside the Golfzon simulator bays at The Bogey Club in Newmarket"
+           width="1920" height="1280" fetchpriority="high" decoding="async">
+    </figure>
+    <div class="bch-wrap bch-hero__grid">
+      <div>
+        <h1 id="bch-h1">
+          <span class="bch-hero__kicker">Indoor golf, bar, karaoke &amp; private events · Newmarket, Ontario</span>
+          <span class="bch-display bch-hero__title">Good golf.<br>Cold beer.<span class="bch-serif">Great nights.</span></span>
+        </h1>
+        <div class="bch-hero__copy">
+          <p>Indoor golf, karaoke, two full bars and private events — all under one roof in Newmarket.</p>
+          <p>Four premium Golfzon simulators. Cold beer on tap. A dedicated party space. Your next great night starts here.</p>
+        </div>
+        <div class="bch-hero__ctas">
+          <a class="bch-btn" href="https://thebogeyclub.golfbooking.ca/calendar.php" data-bch-cta="hero-book-golf">Book Golf</a>
+          <a class="bch-btn bch-btn--ghost" href="https://thebogeyclub.com/karaoke/" data-bch-cta="hero-karaoke">Explore Karaoke</a>
+          <a class="bch-btn bch-btn--ghost" href="#bch-events" data-bch-cta="hero-events">Plan an Event</a>
+        </div>
+        <p class="bch-hero__meta">
+          <span>17705 Leslie St, Unit 5, Newmarket</span>
+          <a href="tel:+19052354653">(905) 235-4653</a>
+          <a href="#bch-visit">Hours &amp; directions</a>
+        </p>
+      </div>
+
+      <div class="bch-card" aria-label="The Bogey Club at a glance">
+        <div class="bch-card__top"><span>Official card</span><b>Newmarket</b></div>
+        <table>
+          <thead><tr><th scope="col">Hole</th><th scope="col">What's on</th><th scope="col">Count</th></tr></thead>
+          <tbody>
+            <tr><td>01</td><td>Golfzon simulators</td><td>4</td></tr>
+            <tr><td>02</td><td>Full bars</td><td>2</td></tr>
+            <tr><td>03</td><td>Cold beer on tap</td><td>✓</td></tr>
+            <tr><td>04</td><td>Karaoke</td><td>✓</td></tr>
+            <tr><td>05</td><td>Dedicated event space</td><td>✓</td></tr>
+          </tbody>
+          <tfoot><tr><td colspan="2">Reasons to leave early</td><td>0</td></tr></tfoot>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <div class="bch-ticker" aria-label="Highlights">
+    <div class="bch-ticker__track">
+      <ul>
+        <li>Four Golfzon bays</li><li>Two full bars</li><li>Cold beer on tap</li><li>Karaoke</li><li>Private events</li><li>Leagues &amp; tournaments</li><li>Newmarket, Ontario</li>
+      </ul>
+      <ul aria-hidden="true">
+        <li>Four Golfzon bays</li><li>Two full bars</li><li>Cold beer on tap</li><li>Karaoke</li><li>Private events</li><li>Leagues &amp; tournaments</li><li>Newmarket, Ontario</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- B — CHOOSE YOUR EXPERIENCE ====================================== -->
+  <section class="bch-sec bch-sec--cream bch-light" aria-labelledby="bch-exp-h">
+    <div class="bch-wrap">
+      <div class="bch-head bch-head--split">
+        <div>
+          <p class="bch-kicker">Pick your tee box</p>
+          <h2 class="bch-display bch-h2" id="bch-exp-h">One club.<br><span class="bch-accent">Four ways</span> to play.</h2>
+        </div>
+        <p class="bch-lede">Come for a round, stay for a pint, grab the mic, or bring the whole crew. Start wherever you like — it all happens under one roof.</p>
+      </div>
+
+      <ul class="bch-exp">
+        <li>
+          <a class="bch-exp__item bch-exp__item--golf" href="https://thebogeyclub.golfbooking.ca/calendar.php">
+            <figure class="bch-ph bch-exp__ph"><img src="https://thebogeyclub.com/wp-content/uploads/bogey-home/golfzon-twovision-nx-simulator-bay-newmarket.webp" alt="" width="800" height="500" loading="lazy" decoding="async"></figure>
+            <span class="bch-exp__num">01</span>
+            <h3 class="bch-exp__title">Play golf</h3>
+            <p class="bch-exp__desc">Four premium Golfzon simulators. Play, practise, compete and enjoy golf year-round.</p>
+            <span class="bch-exp__cta">Book a bay</span>
+          </a>
+        </li>
+        <li>
+          <a class="bch-exp__item" href="https://thebogeyclub.com/karaoke/">
+            <figure class="bch-ph bch-exp__ph"><img src="https://thebogeyclub.com/wp-content/uploads/bogey-home/karaoke-night-the-bogey-club-newmarket.webp" alt="" width="800" height="500" loading="lazy" decoding="async"></figure>
+            <span class="bch-exp__num">02</span>
+            <h3 class="bch-exp__title">Grab the mic</h3>
+            <p class="bch-exp__desc">Karaoke, your favourite songs, and performances your friends won't let you forget.</p>
+            <span class="bch-exp__cta">Explore karaoke</span>
+          </a>
+        </li>
+        <li>
+          <a class="bch-exp__item bch-exp__item--events" href="#bch-events">
+            <figure class="bch-ph bch-exp__ph"><img src="https://thebogeyclub.com/wp-content/uploads/bogey-home/private-event-space-the-bogey-club-newmarket.webp" alt="" width="800" height="500" loading="lazy" decoding="async"></figure>
+            <span class="bch-exp__num">03</span>
+            <h3 class="bch-exp__title">Host your event</h3>
+            <p class="bch-exp__desc">Birthdays, corporate events, private celebrations and group nights. Make the next one memorable.</p>
+            <span class="bch-exp__cta">Plan your event</span>
+          </a>
+        </li>
+        <li>
+          <a class="bch-exp__item" href="https://thebogeyclub.com/leagues-and-events/">
+            <figure class="bch-ph bch-exp__ph"><img src="https://thebogeyclub.com/wp-content/uploads/bogey-home/golf-league-night-the-bogey-club.webp" alt="" width="800" height="500" loading="lazy" decoding="async"></figure>
+            <span class="bch-exp__num">04</span>
+            <h3 class="bch-exp__title">Join the fun</h3>
+            <p class="bch-exp__desc">Golf leagues, competitions, tournaments and community events all season long.</p>
+            <span class="bch-exp__cta">View leagues &amp; events</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- C — THE GOLF EXPERIENCE (FRONT NINE) ============================= -->
+  <section class="bch-sec bch-sec--green" aria-labelledby="bch-golf-h">
+    <div class="bch-wrap bch-golf">
+      <div class="bch-golf__media">
+        <figure class="bch-ph">
+          <img src="https://thebogeyclub.com/wp-content/uploads/bogey-home/golfzon-twovision-nx-bays-the-bogey-club.webp"
+               alt="Golfzon TwoVision NX indoor golf simulator bay at The Bogey Club, Newmarket" width="900" height="1200" loading="lazy" decoding="async">
+          <figcaption>TwoVision NX</figcaption>
+        </figure>
+        <figure class="bch-ph">
+          <img src="https://thebogeyclub.com/wp-content/uploads/bogey-home/golfzon-vision-plus-simulator-newmarket.webp"
+               alt="Golfzon Vision Plus golf simulator at The Bogey Club" width="800" height="800" loading="lazy" decoding="async">
+          <figcaption>Vision Plus</figcaption>
+        </figure>
+      </div>
+
+      <div class="bch-golf__body">
+        <span class="bch-hole"><span>Front nine</span><span>The golf</span></span>
+        <h2 class="bch-display bch-h2" id="bch-golf-h">Four bays.<br><span class="bch-accent">Real golf.</span> No weather.</h2>
+        <p class="bch-lede">Golfzon is one of the most trusted names in simulator golf, and we run four of them. Tee it up on famous courses, grind on the range, or settle a long-running bet — January or July.</p>
+
+        <div class="bch-lineup" role="list" aria-label="Our simulators">
+          <div class="bch-lineup__row" role="listitem">
+            <span class="bch-lineup__qty">×2</span>
+            <p class="bch-lineup__name">Golfzon TwoVision NX<small>Golfzon's flagship system for serious, realistic play.</small></p>
+          </div>
+          <div class="bch-lineup__row" role="listitem">
+            <span class="bch-lineup__qty">×2</span>
+            <p class="bch-lineup__name">Golfzon Vision Plus<small>Accurate, easy-to-play simulation for every skill level.</small></p>
+          </div>
+        </div>
+
+        <ul class="bch-ticks">
+          <li>Detailed ball and club data on every swing</li>
+          <li>Full rounds, practice range and skill games</li>
+          <li>Up to four players per bay — great for a group</li>
+          <li>Beginners welcome. Scratch golfers, too.</li>
+        </ul>
+
+        <div class="bch-btns">
+          <a class="bch-btn" href="https://thebogeyclub.golfbooking.ca/calendar.php">Book a bay</a>
+          <a class="bch-btn bch-btn--ghost" href="https://thebogeyclub.com/our-simulators/">Explore our simulators</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- D — THE TURN: TWO BARS =========================================== -->
+  <section class="bch-turn" aria-labelledby="bch-bar-h">
+    <div class="bch-turn__sky" aria-hidden="true"></div>
+    <div class="bch-sec bch-sec--ink" style="padding-top:24px">
+      <div class="bch-wrap">
+        <div class="bch-head bch-head--split">
+          <div>
+            <p class="bch-kicker">The 19th hole starts here</p>
+            <h2 class="bch-display bch-turn__title" id="bch-bar-h">Two bars.<span class="bch-accent">Zero reason to leave early.</span></h2>
+          </div>
+          <p class="bch-lede">Four golf simulators. Two full bars. Cold beer on tap. Whether you're toasting a great round, catching up with friends or hosting a big night out, there's always room for one more at The Bogey Club.</p>
+        </div>
+
+        <div class="bch-bars">
+          <div class="bch-bar">
+            <figure class="bch-ph">
+              <img src="https://thebogeyclub.com/wp-content/uploads/bogey-home/bar-one-the-bogey-club-newmarket.webp"
+                   alt="The main bar at The Bogey Club golf simulator lounge in Newmarket" width="1200" height="900" loading="lazy" decoding="async">
+            </figure>
+            <div class="bch-bar__label">
+              <span class="bch-bar__no">01</span>
+              <p><strong>The clubhouse bar</strong>Pull up a stool between rounds, before karaoke, or long after the last putt drops.</p>
+            </div>
+          </div>
+          <div class="bch-bar">
+            <figure class="bch-ph">
+              <img src="https://thebogeyclub.com/wp-content/uploads/bogey-home/bar-two-event-space-the-bogey-club.webp"
+                   alt="The second full bar in The Bogey Club's upstairs private event space" width="1200" height="900" loading="lazy" decoding="async">
+            </figure>
+            <div class="bch-bar__label">
+              <span class="bch-bar__no">02</span>
+              <p><strong>The event-space bar</strong>A full bar of its own, upstairs in our dedicated party space — so your celebration never has to share.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bch-pour">
+          <figure class="bch-ph bch-pour__ph">
+            <img src="https://thebogeyclub.com/wp-content/uploads/bogey-home/draft-beer-on-tap-the-bogey-club-newmarket.webp"
+                 alt="A cold draft beer poured at The Bogey Club bar" width="600" height="600" loading="lazy" decoding="async">
+          </figure>
+          <div style="display:grid;gap:14px">
+            <h3>Cold beer on tap.<br>Good company on call.</h3>
+            <p>A licensed bar and lounge built for socializing — before you tee off, while you play, and after the scorecard's been quietly thrown away.</p>
+            <p class="bch-note"><span>Golf bays can be booked online during golf hours. Drinks are served only by our licensed staff during staffed bar hours — see <a href="#bch-visit" style="color:inherit;font-weight:800">today's bar hours</a>. 19+ with valid ID to be served. Please drink responsibly.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- E — PRIVATE EVENTS (BACK NINE) =================================== -->
+  <section class="bch-sec bch-sec--cream bch-light" id="bch-events" aria-labelledby="bch-ev-h">
+    <div class="bch-wrap bch-events">
+      <div style="display:grid;gap:24px">
+        <span class="bch-hole"><span>Back nine</span><span>Private events</span></span>
+        <h2 class="bch-display bch-events__title" id="bch-ev-h">Your party.<br><span class="bch-accent">Our clubhouse.</span></h2>
+        <p class="bch-lede">Take your next celebration beyond the ordinary. With four premium golf simulators, two full bars, cold beer on tap, karaoke and dedicated event space, The Bogey Club brings the perfect mix of entertainment and atmosphere to your next big event in Newmarket.</p>
+
+        <ul class="bch-occasions" aria-label="Events we host">
+          <li>Birthday parties</li>
+          <li>Corporate events</li>
+          <li>Holiday &amp; Christmas parties</li>
+          <li>Team building</li>
+          <li>Bachelor parties</li>
+          <li>Group celebrations</li>
+          <li>Private get-togethers</li>
+          <li>Golf-themed socials</li>
+        </ul>
+
+        <ul class="bch-why" aria-label="Why groups choose The Bogey Club">
+          <li><b>4</b><span>Golfzon simulators to keep every guest playing</span></li>
+          <li><b>2</b><span>Full bars, including one in the event space</span></li>
+          <li><b>♪</b><span>Karaoke for when the party needs a soundtrack</span></li>
+          <li><b>1</b><span>Dedicated upstairs space to call your own</span></li>
+        </ul>
+
+        <div class="bch-btns">
+          <a class="bch-btn bch-btn--green" href="#bch-plan" data-bch-cta="events-plan">Plan your event</a>
+          <a class="bch-btn bch-btn--ghost" href="https://thebogeyclub.com/private-events/">Explore our event space</a>
+        </div>
+      </div>
+
+      <div class="bch-events__media">
+        <figure class="bch-ph bch-events__hero">
+          <img src="https://thebogeyclub.com/wp-content/uploads/bogey-home/birthday-party-venue-newmarket-the-bogey-club.webp"
+               alt="Private event space with a full bar at The Bogey Club, a party venue in Newmarket, Ontario" width="1600" height="1000" loading="lazy" decoding="async">
+          <figcaption>Upstairs event space</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- =====================================================================
+     HOMEPAGE — EVENT INQUIRY (between part 1 and part 2)
+     Live site: build this as an Elementor container with
+       CSS Classes: bch bch-form-host      CSS ID: bch-plan
+     containing (1) an HTML widget with the intro below and (2) the
+     EXISTING private-events inquiry form widget/shortcode, wrapped in a
+     container with CSS class "bch-form-panel". Do NOT rebuild the form's
+     backend: reuse the current widget so its email routing, spam
+     protection, and integrations keep working. Recommended fields are
+     listed in docs/REDESIGN.md §6.3.
+     ===================================================================== -->
+<section class="bch bch-form-host" id="bch-plan" aria-labelledby="bch-plan-h">
+  <div class="bch-wrap bch-form-host__grid">
+    <!-- EVENT INQUIRY — intro HTML widget (left column of the #bch-plan container). -->
+<div class="bch-form-host__intro">
+  <p class="bch-kicker">Event inquiry · takes about a minute</p>
+  <h2 class="bch-display" id="bch-plan-h">Put your party<br><span class="bch-accent">on the tee sheet.</span></h2>
+  <p>Tell us the date, the headcount and what you're celebrating. We'll come back to you to confirm availability and talk through the details — no obligation.</p>
+  <p class="bch-form-host__alt">Rather talk it through? Call <a href="tel:+19052354653">(905) 235-4653</a> or email <a href="mailto:golf@thebogeyclub.com">golf@thebogeyclub.com</a>.</p>
+</div>
+
+    <div class="bch-form-panel">
+      <!-- PREVIEW ONLY — stands in for the existing WordPress form widget.
+     It never submits anywhere. -->
+<form class="bch-form" data-bch-preview-form novalidate>
+  <div class="bch-form__row">
+    <div class="bch-field"><label for="bch-f-name">Name</label><input id="bch-f-name" name="name" autocomplete="name" required></div>
+    <div class="bch-field"><label for="bch-f-email">Email</label><input id="bch-f-email" name="email" type="email" autocomplete="email" required></div>
+  </div>
+  <div class="bch-form__row">
+    <div class="bch-field"><label for="bch-f-phone">Phone</label><input id="bch-f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required></div>
+    <div class="bch-field"><label for="bch-f-date">Preferred date</label><input id="bch-f-date" name="date" type="date" required></div>
+  </div>
+  <div class="bch-form__row">
+    <div class="bch-field"><label for="bch-f-guests">Estimated guests</label><input id="bch-f-guests" name="guests" type="number" inputmode="numeric" min="1" required></div>
+    <div class="bch-field"><label for="bch-f-type">Type of event</label>
+      <select id="bch-f-type" name="type" required>
+        <option value="">Choose one</option>
+        <option>Birthday party</option><option>Corporate event</option><option>Holiday / Christmas party</option>
+        <option>Team building</option><option>Bachelor / bachelorette</option><option>Group celebration</option><option>Other</option>
+      </select>
+    </div>
+  </div>
+  <div class="bch-field"><label for="bch-f-notes">Anything else? <i>(optional)</i></label><textarea id="bch-f-notes" name="notes" rows="3"></textarea></div>
+  <button class="bch-btn bch-btn--green" type="submit">Send my event inquiry</button>
+  <p class="bch-form__status" role="status" hidden></p>
+  <p class="bch-form__note">Preview only: on the live site this panel holds the existing inquiry form, so submissions keep going to the current inbox.</p>
+</form>
+
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     HOMEPAGE — PART 2 (Elementor HTML widget #2, full-width container,
+     zero padding). Sections F–L.
+     ===================================================================== -->
+<div class="bch">
+
+  <!-- F — KARAOKE ====================================================== -->
+  <section class="bch-sec bch-sec--ink" id="bch-karaoke" aria-labelledby="bch-kar-h">
+    <div class="bch-wrap bch-kar">
+      <div style="display:grid;gap:24px">
+        <p class="bch-kicker">After dark</p>
+        <h2 class="bch-display bch-kar__title" id="bch-kar-h">The course is quiet.<span class="bch-serif">The crowd isn't.</span></h2>
+        <div class="bch-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <p class="bch-lede">Grab the mic and make it a night to remember. Karaoke at The Bogey Club brings the music, the laughs and the moments your group will be talking about for weeks — with the bar a few steps away during staffed hours.</p>
+        <ul class="bch-ticks">
+          <li>Perfect for birthdays, group nights and work parties</li>
+          <li>Pair it with a round of golf for the full night out</li>
+          <li>Booked through its own karaoke booking — not the golf calendar</li>
+        </ul>
+        <div class="bch-btns">
+          <a class="bch-btn" href="https://thebogeyclub.com/karaoke/" data-bch-link="karaoke-booking" data-bch-cta="karaoke-book">Book karaoke</a>
+          <a class="bch-btn bch-btn--ghost" href="https://thebogeyclub.com/karaoke/">Explore karaoke</a>
+        </div>
+      </div>
+      <figure class="bch-ph bch-kar__ph">
+        <img src="https://thebogeyclub.com/wp-content/uploads/bogey-home/karaoke-setup-the-bogey-club-newmarket.webp"
+             alt="Karaoke setup with microphones and screen at The Bogey Club in Newmarket" width="960" height="1200" loading="lazy" decoding="async">
+        <figcaption>Karaoke at The Bogey Club</figcaption>
+      </figure>
+    </div>
+  </section>
+  <div class="bch-perf bch-perf--on-ink" aria-hidden="true"></div>
+
+  <!-- G — LEAGUES, TOURNAMENTS & LESSONS =============================== -->
+  <section class="bch-sec bch-sec--white bch-light" aria-labelledby="bch-lg-h">
+    <div class="bch-wrap">
+      <div class="bch-head bch-head--split">
+        <div>
+          <p class="bch-kicker">Leagues · Tournaments · Lessons</p>
+          <h2 class="bch-display bch-h2" id="bch-lg-h">Keep score.<br><span class="bch-accent">Or don't.</span></h2>
+        </div>
+        <p class="bch-lede">Whether you want a reason to play every week, a trophy to chase or a few lessons before the season opens, there's a spot on the card for you.</p>
+      </div>
+
+      <div class="bch-sc">
+        <div class="bch-sc__top"><span>Club card · Season schedule</span><b>Sign your card</b></div>
+        <table>
+          <caption class="bch-sr">Leagues, tournaments and lessons at The Bogey Club</caption>
+          <thead><tr><th scope="col">No.</th><th scope="col">Event</th><th scope="col">Format</th><th scope="col">When</th><th scope="col"><span class="bch-sr">Link</span></th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="bch-sc__no">01</td>
+              <td class="bch-sc__ev">The Bogey Cup<small>Our ongoing simulator tournament</small></td>
+              <td data-l="Format">4 rounds over 4 weeks · Stableford · weekly skins &amp; closest-to-the-pin prizes</td>
+              <td data-l="When">Play your round any time that week</td>
+              <td class="bch-sc__go"><a class="bch-link" href="https://thebogeyclub.com/leagues-and-events/">Details</a></td>
+            </tr>
+            <tr>
+              <td class="bch-sc__no">02</td>
+              <td class="bch-sc__ev">Men's Night &amp; leagues<span class="bch-tag">Active</span><small>Weekly golf, good company, cold drinks</small></td>
+              <td data-l="Format">League play on our Golfzon simulators</td>
+              <td data-l="When">See the current league schedule</td>
+              <td class="bch-sc__go"><a class="bch-link" href="https://thebogeyclub.com/leagues-and-events/">Join a league</a></td>
+            </tr>
+            <tr>
+              <td class="bch-sc__no">03</td>
+              <td class="bch-sc__ev">Private golf lessons<small>One-on-one coaching with our pro</small></td>
+              <td data-l="Format">Simulator data plus expert eyes on your swing</td>
+              <td data-l="When">Book a time that suits you</td>
+              <td class="bch-sc__go"><a class="bch-link" href="https://thebogeyclub.com/meet-our-pro/">Meet our pro</a></td>
+            </tr>
+            <tr>
+              <td class="bch-sc__no">04</td>
+              <td class="bch-sc__ev">The Bogey Club Classic<span class="bch-tag bch-tag--past">2026 · In the books</span><small>Our annual outdoor tournament</small></td>
+              <td data-l="Format">4th annual scramble, played June 4, 2026 at The Club at Bond Head</td>
+              <td data-l="When">Next edition to be announced</td>
+              <td class="bch-sc__go"><a class="bch-link" href="https://thebogeyclub.com/the-bogey-club-classic-2026/">See the Classic</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- H — HOW IT WORKS ================================================= -->
+  <section class="bch-sec bch-sec--cream bch-light" id="bch-how" aria-labelledby="bch-how-h">
+    <div class="bch-wrap">
+      <div class="bch-head">
+        <p class="bch-kicker">How it works</p>
+        <h2 class="bch-display bch-h2" id="bch-how-h">Book in a minute.<br><span class="bch-accent">Swing all night.</span></h2>
+      </div>
+      <div class="bch-how">
+        <div class="bch-price">
+          <p class="bch-kicker" style="color:var(--bch-lime)">Simulator pricing</p>
+          <p class="bch-price__amt"><b>$60</b><span>per hour,<br>per bay + HST</span></p>
+          <ul>
+            <li>Priced per <b>bay, not per person</b></li>
+            <li>Players per bay <b>Up to 4</b></li>
+            <li>Full foursome <b>$15 / player / hr + HST</b></li>
+          </ul>
+          <a class="bch-btn" href="https://thebogeyclub.golfbooking.ca/calendar.php" data-bch-cta="pricing-book">Book your bay</a>
+        </div>
+
+        <div style="display:grid;gap:24px">
+          <ol class="bch-steps">
+            <li><div><h3>Pick a time online</h3><p>Choose your bay and time on our live booking calendar. Walk-ins are welcome when a bay is free, but booking ahead is best — especially evenings and weekends.</p></div></li>
+            <li><div><h3>Bring your crew</h3><p>Up to four players share a bay. Bigger group? Book more than one bay, or ask us about a private event.</p></div></li>
+            <li><div><h3>Tee it up</h3><p>Bring your own clubs or ask us about using ours. First time on a simulator? We'll get you set up.</p></div></li>
+            <li><div><h3>Stay for the 19th hole</h3><p>Grab a cold one at the bar during staffed bar hours, then decide whether it's one more round or karaoke.</p></div></li>
+          </ol>
+
+          <dl class="bch-qa">
+            <div><dt>How much does a simulator cost?</dt><dd>$60 per hour per bay, plus HST.</dd></div>
+            <div><dt>Is it per person or per bay?</dt><dd>Per bay. Split it between up to four players.</dd></div>
+            <div><dt>Are beginners welcome?</dt><dd>Absolutely. Golfzon works for first-timers and low handicappers alike.</dd></div>
+            <div><dt>When is the bar staffed?</dt><dd>During posted bar hours — see <a href="#bch-visit">Visit</a> or call us. Golf can be booked outside bar hours.</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- I — REVIEWS: hidden until verified reviews are pasted in. Remove
+       the "hidden" attribute only after replacing every quote with a real,
+       attributable review (Google, existing site testimonials). -->
+  <section class="bch-sec bch-sec--green" aria-labelledby="bch-rv-h" data-bch-reviews hidden>
+    <div class="bch-wrap">
+      <div class="bch-head bch-head--split">
+        <div>
+          <p class="bch-kicker">Signed scorecards</p>
+          <h2 class="bch-display bch-h2" id="bch-rv-h">Don't take<br><span class="bch-accent">our word for it.</span></h2>
+        </div>
+        <a class="bch-link" href="https://www.google.com/maps/search/?api=1&amp;query=The+Bogey+Club+17705+Leslie+St+Newmarket+ON" style="justify-self:start">Read our Google reviews</a>
+      </div>
+      <div class="bch-reviews">
+        <figure class="bch-review" data-bch-todo="review">
+          <blockquote><p>PASTE VERIFIED REVIEW — simulators &amp; staff.</p></blockquote>
+          <figcaption>Reviewer name<span>Google review</span></figcaption>
+        </figure>
+        <figure class="bch-review" data-bch-todo="review">
+          <blockquote><p>PASTE VERIFIED REVIEW — bar &amp; atmosphere.</p></blockquote>
+          <figcaption>Reviewer name<span>Google review</span></figcaption>
+        </figure>
+        <figure class="bch-review" data-bch-todo="review">
+          <blockquote><p>PASTE VERIFIED REVIEW — party or private event.</p></blockquote>
+          <figcaption>Reviewer name<span>Google review</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- J — SHOP THE CLUB (live Shopify products, checked 2026-10-21) ===== -->
+  <section class="bch-sec bch-sec--white bch-light" aria-labelledby="bch-shop-h">
+    <div class="bch-wrap">
+      <div class="bch-head bch-head--split">
+        <div>
+          <p class="bch-kicker">Shop the club</p>
+          <h2 class="bch-display bch-h2" id="bch-shop-h">Look good.<br><span class="bch-accent">Play average.</span></h2>
+        </div>
+        <p class="bch-lede">Hats, polos, crewnecks and on-course essentials, designed by the club for the course, the bar and everywhere in between.</p>
+      </div>
+      <ul class="bch-shop">
+        <li><a class="bch-prod" href="https://shop.thebogeyclub.com/products/the-heritage-snap">
+          <figure class="bch-ph"><img src="https://cdn.shopify.com/s/files/1/0699/1436/2106/files/14_5a62f0a0-6ddb-42ad-ad8d-5a78d7ebfd50.png?v=1744838815&amp;width=600" alt="The Heritage Snap two-tone snapback hat with off-white crown and green brim" width="600" height="600" loading="lazy" decoding="async"></figure>
+          <p class="bch-prod__name"><span class="bch-prod__type">Hat</span>The Heritage Snap</p></a></li>
+        <li><a class="bch-prod" href="https://shop.thebogeyclub.com/products/par-black">
+          <figure class="bch-ph"><img src="https://cdn.shopify.com/s/files/1/0699/1436/2106/files/89.png?v=1742239558&amp;width=600" alt="Par Black golf polo from The Bogey Club" width="600" height="600" loading="lazy" decoding="async"></figure>
+          <p class="bch-prod__name"><span class="bch-prod__type">Golf polo</span>Par Black</p></a></li>
+        <li><a class="bch-prod" href="https://shop.thebogeyclub.com/products/bogey-green">
+          <figure class="bch-ph"><img src="https://cdn.shopify.com/s/files/1/0699/1436/2106/files/71.png?v=1764797922&amp;width=600" alt="Bogey Green crewneck sweatshirt" width="600" height="600" loading="lazy" decoding="async"></figure>
+          <p class="bch-prod__name"><span class="bch-prod__type">Crewneck</span>Bogey Green Crewneck</p></a></li>
+        <li><a class="bch-prod" href="https://shop.thebogeyclub.com/products/the-bogey-club-caddy-towel">
+          <figure class="bch-ph"><img src="https://cdn.shopify.com/s/files/1/0699/1436/2106/files/3_4d47c0f7-1cfb-4321-9504-67573417d09f.png?v=1751916327&amp;width=600" alt="The Bogey Club caddy golf towel" width="600" height="600" loading="lazy" decoding="async"></figure>
+          <p class="bch-prod__name"><span class="bch-prod__type">Accessory</span>The Bogey Club Caddy Towel</p></a></li>
+      </ul>
+      <div class="bch-btns" style="margin-top:32px">
+        <a class="bch-btn bch-btn--green" href="https://shop.thebogeyclub.com/">Shop the club</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- K — VISIT ======================================================== -->
+  <section class="bch-sec bch-sec--green" id="bch-visit" aria-labelledby="bch-visit-h">
+    <div class="bch-wrap">
+      <div class="bch-head">
+        <p class="bch-kicker">Visit the club</p>
+        <h2 class="bch-display bch-h2" id="bch-visit-h">Find the<br><span class="bch-accent">19th hole.</span></h2>
+        <p class="bch-lede">On Leslie Street in Newmarket, Ontario — an easy trip from Aurora, East Gwillimbury and across York Region.</p>
+      </div>
+      <div class="bch-visit">
+        <div class="bch-visit__card">
+          <address>The Bogey Club<br>17705 Leslie Street, Unit 5<br>Newmarket, Ontario L3Y 3E3</address>
+          <div class="bch-contact">
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=The+Bogey+Club%2C+17705+Leslie+St+Unit+5%2C+Newmarket%2C+ON+L3Y+3E3" rel="noopener" target="_blank"><span>Map</span>Get directions</a>
+            <a href="tel:+19052354653"><span>Call</span>(905) 235-4653</a>
+            <a href="mailto:golf@thebogeyclub.com"><span>Email</span>golf@thebogeyclub.com</a>
+          </div>
+        </div>
+        <div class="bch-visit__hours">
+          <table class="bch-hours">
+            <caption>Golf booking hours</caption>
+            <tbody>
+              <tr><th scope="row">Monday – Sunday</th><td>9 AM – 12 AM</td></tr>
+            </tbody>
+          </table>
+          <table class="bch-hours">
+            <caption>Staffed bar hours</caption>
+            <tbody>
+              <tr><th scope="row">Daily</th><td>Call for today's bar hours</td></tr>
+            </tbody>
+          </table>
+          <p style="font-size:14px;color:var(--bch-cream)">Holiday hours may vary. Golf bookings are available during golf hours; drinks are served only while the bar is staffed.</p>
+          <div class="bch-btns">
+            <a class="bch-btn" href="https://thebogeyclub.golfbooking.ca/calendar.php">Book golf</a>
+            <a class="bch-btn bch-btn--ghost" href="https://thebogeyclub.com/karaoke/" data-bch-link="karaoke-booking">Book karaoke</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- L — FAQ ========================================================== -->
+  <section class="bch-sec bch-sec--cream bch-light" aria-labelledby="bch-faq-h">
+    <div class="bch-wrap">
+      <div class="bch-head bch-head--split">
+        <div>
+          <p class="bch-kicker">Good questions</p>
+          <h2 class="bch-display bch-h2" id="bch-faq-h">Before you<br><span class="bch-accent">tee off.</span></h2>
+        </div>
+        <a class="bch-link" href="https://thebogeyclub.com/faqs/" style="justify-self:start">All FAQs</a>
+      </div>
+      <div class="bch-faq">
+        <details><summary>How do I book indoor golf?</summary><div><p>Book online through our <a href="https://thebogeyclub.golfbooking.ca/calendar.php">golf booking calendar</a>. Walk-ins are welcome when a bay is open, but we recommend booking ahead for evenings and weekends.</p></div></details>
+        <details><summary>How much does it cost to play?</summary><div><p>$60 per hour per simulator bay, plus HST. Pricing is per bay, not per person, and up to four players can share a bay.</p></div></details>
+        <details><summary>Can a big group golf together?</summary><div><p>Yes. Each of our four bays fits up to four players, so you can book several bays side by side. For larger celebrations, send us an <a href="#bch-plan">event inquiry</a>.</p></div></details>
+        <details><summary>Do I need my own golf clubs?</summary><div><p>You're welcome to bring your own. If you don't have clubs, ask us when you book and we'll help you out.</p></div></details>
+        <details><summary>How do I book karaoke?</summary><div><p>Karaoke has its own booking — head to the <a href="https://thebogeyclub.com/karaoke/">karaoke page</a> to reserve. Please don't use the golf calendar for karaoke.</p></div></details>
+        <details><summary>Can I host a birthday or corporate event?</summary><div><p>Yes. Our dedicated upstairs event space has its own full bar, and you can add golf simulators and karaoke to the night. Share your date, headcount and event type through our <a href="#bch-plan">event inquiry</a> and we'll follow up with options. More on our <a href="https://thebogeyclub.com/private-events/">private events page</a>.</p></div></details>
+        <details><summary>How many guests can the event space hold?</summary><div><p>It depends on the format of your event. Tell us your expected headcount and we'll recommend the right setup.</p></div></details>
+        <details><summary>Is the bar always open?</summary><div><p>No. Golf can be booked during golf hours, but drinks are only served by our licensed staff during staffed bar hours. You must be 19+ with valid ID to be served.</p></div></details>
+        <details><summary>Do you offer golf lessons?</summary><div><p>Yes — private lessons with our pro. <a href="https://thebogeyclub.com/meet-our-pro/">Meet our pro</a> to learn more and book.</p></div></details>
+        <details><summary>Where is The Bogey Club?</summary><div><p>17705 Leslie Street, Unit 5, Newmarket, Ontario L3Y 3E3 — close to Aurora and East Gwillimbury. Call <a href="tel:+19052354653">(905) 235-4653</a> or email <a href="mailto:golf@thebogeyclub.com">golf@thebogeyclub.com</a>.</p></div></details>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+</main>
+<!-- =====================================================================
+     GLOBAL FOOTER — Elementor Theme Builder > Footer (Entire Site).
+     The BCH:NEWSLETTER marker below shows where the EXISTING newsletter
+     signup widget goes (keep its current provider/list). Verify the legal and
+     social URLs against the live footer before publishing.
+     ===================================================================== -->
+<footer class="bch bch-ftr">
+  <div class="bch-wrap">
+    <div class="bch-ftr__top">
+      <div class="bch-ftr__brand">
+        <p class="bch-ftr__tag">The round ends.<span class="bch-accent">The night doesn't.</span></p>
+        <p>Newmarket's indoor golf, bar &amp; entertainment destination: four Golfzon simulators, two full bars, cold beer on tap, karaoke and private event space.</p>
+        <address>
+          17705 Leslie Street, Unit 5, Newmarket, Ontario L3Y 3E3<br>
+          <a href="tel:+19052354653">(905) 235-4653</a> · <a href="mailto:golf@thebogeyclub.com">golf@thebogeyclub.com</a>
+        </address>
+        <div class="bch-social">
+          <a href="https://instagram.com/thebogeyclub" rel="noopener" target="_blank" aria-label="The Bogey Club on Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="bch-ftr__cols">
+        <nav aria-label="Play">
+          <h2>Play</h2>
+          <ul>
+            <li><a href="https://thebogeyclub.golfbooking.ca/calendar.php">Book golf</a></li>
+            <li><a href="https://thebogeyclub.com/our-simulators/">Our simulators</a></li>
+            <li><a href="https://thebogeyclub.com/karaoke/">Karaoke</a></li>
+            <li><a href="https://thebogeyclub.com/meet-our-pro/">Private lessons</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Events">
+          <h2>Events</h2>
+          <ul>
+            <li><a href="https://thebogeyclub.com/private-events/">Private events</a></li>
+            <li><a href="https://thebogeyclub.com/leagues-and-events/">Leagues &amp; events</a></li>
+            <li><a href="https://thebogeyclub.com/the-bogey-club-classic-2026/">Bogey Club Classic</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Club">
+          <h2>Club</h2>
+          <ul>
+            <li><a href="https://thebogeyclub.com/about-us/">About us</a></li>
+            <li><a href="https://thebogeyclub.com/faqs/">FAQs &amp; contact</a></li>
+            <li><a href="https://shop.thebogeyclub.com/">Shop</a></li>
+          </ul>
+        </nav>
+        <div class="bch-news">
+          <h2>Newsletter</h2>
+          <p class="bch-news__title">Get on the tee sheet.</p>
+          <p>League dates, tournaments and club news — straight to your inbox.</p>
+          <!-- PREVIEW ONLY — stands in for the existing newsletter widget. -->
+<form class="bch-news__form" data-bch-preview-form novalidate>
+  <label class="bch-sr" for="bch-n-email">Email address</label>
+  <input id="bch-n-email" type="email" name="email" placeholder="you@email.com" autocomplete="email" required>
+  <button class="bch-btn" type="submit">Sign up</button>
+  <p class="bch-form__status" role="status" hidden></p>
+</form>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="bch-ftr__base">
+      <p>© <span data-bch-year>2026</span> The Bogey Club · Newmarket, Ontario</p>
+      <ul>
+        <li><a href="https://thebogeyclub.com/privacy-policy/">Privacy policy</a></li>
+        <li><a href="https://thebogeyclub.com/faqs/">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE BOOKING BAR — add once, site-wide (end of the footer template).
+     Hidden on desktop. Appears after the hero's own buttons scroll away. -->
+<div class="bch bch-bookbar" id="bch-bookbar" role="region" aria-label="Quick booking">
+  <a class="bch-btn" href="https://thebogeyclub.golfbooking.ca/calendar.php" data-bch-cta="bar-book-golf">Book Golf</a>
+  <a class="bch-btn bch-btn--cream" href="https://thebogeyclub.com/karaoke/" data-bch-link="karaoke-booking" data-bch-cta="bar-book-karaoke">Book Karaoke</a>
+</div>
+
+<script>
+/* The Bogey Club homepage — minimal, dependency-free behaviour.
+   Safe to load once site-wide (WPCode footer snippet) or in HTML widget #2.
+   No tracking: CTAs carry data-bch-cta for the site's existing GTM/GA. */
+(function () {
+  "use strict";
+
+  /* Set this to the real karaoke booking URL (copy it from the booking
+     button on /karaoke/). While empty, karaoke CTAs open /karaoke/. */
+  var KARAOKE_BOOKING_URL = "";
+
+  function ready(fn) {
+    if (document.readyState !== "loading") fn();
+    else document.addEventListener("DOMContentLoaded", fn);
+  }
+
+  ready(function () {
+    var html = document.documentElement;
+
+    if (KARAOKE_BOOKING_URL) {
+      document.querySelectorAll('[data-bch-link="karaoke-booking"]').forEach(function (a) {
+        a.href = KARAOKE_BOOKING_URL;
+      });
+    }
+
+    /* Missing photo → show the designed fallback instead of a broken image. */
+    document.querySelectorAll(".bch-ph img").forEach(function (img) {
+      function miss() { img.closest(".bch-ph").classList.add("is-missing"); }
+      if (img.complete && img.naturalWidth === 0) miss();
+      else img.addEventListener("error", miss, { once: true });
+    });
+
+    /* Header: mobile menu */
+    var hdr = document.getElementById("bch-hdr");
+    var burger = hdr && hdr.querySelector(".bch-burger");
+    var nav = document.getElementById("bch-nav");
+    if (burger && nav) {
+      var setOpen = function (open) {
+        burger.setAttribute("aria-expanded", String(open));
+        burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+        nav.classList.toggle("is-open", open);
+        html.classList.toggle("bch-lock", open);
+        if (open) { var first = nav.querySelector("a"); if (first) first.focus(); }
+      };
+      burger.addEventListener("click", function () {
+        setOpen(burger.getAttribute("aria-expanded") !== "true");
+      });
+      nav.addEventListener("click", function (e) {
+        if (e.target.closest("a")) setOpen(false);
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && nav.classList.contains("is-open")) { setOpen(false); burger.focus(); }
+      });
+      window.matchMedia("(min-width: 1240px)").addEventListener("change", function (mq) {
+        if (mq.matches) setOpen(false);
+      });
+    }
+
+    if (hdr) {
+      var onScroll = function () { hdr.classList.toggle("is-scrolled", window.scrollY > 8); };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+    }
+
+    /* Mobile booking bar: show once the hero's own buttons are off screen
+       (on pages without a hero, show after a short scroll). */
+    var bar = document.getElementById("bch-bookbar");
+    if (bar) {
+      var heroCtas = document.querySelector(".bch-hero__ctas");
+      if (heroCtas && "IntersectionObserver" in window) {
+        new IntersectionObserver(function (entries) {
+          var e = entries[entries.length - 1];
+          bar.classList.toggle("is-visible", !e.isIntersecting && e.boundingClientRect.top < 0);
+        }).observe(heroCtas);
+      } else {
+        var onBar = function () { bar.classList.toggle("is-visible", window.scrollY > 300); };
+        window.addEventListener("scroll", onBar, { passive: true });
+        onBar();
+      }
+    }
+
+    document.querySelectorAll("[data-bch-year]").forEach(function (el) {
+      el.textContent = String(new Date().getFullYear());
+    });
+
+    /* Preview-only demo forms (preview.html). Live forms are untouched. */
+    document.querySelectorAll("form[data-bch-preview-form]").forEach(function (form) {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var status = form.querySelector(".bch-form__status");
+        var ok = form.checkValidity();
+        if (!ok) form.reportValidity();
+        if (status) {
+          status.hidden = false;
+          status.textContent = ok
+            ? "Preview: this would be sent by the existing WordPress form."
+            : "Please complete the required fields.";
+        }
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
