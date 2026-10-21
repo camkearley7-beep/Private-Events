@@ -50,11 +50,6 @@ for f in have: shutil.copy(ROOT / 'fonts' / f, up / 'fonts' / f)
 
 # Preview: same markup, concept renders standing in for photos (labelled).
 pa = ROOT / 'preview-assets'; pa.mkdir(exist_ok=True)
-for s, d in [('render-bay-close.jpg', 'golf-simulator-bay-the-bogey-club-newmarket.jpg'),
-             ('render-bay-tall.jpg', 'golf-simulator-bay-the-bogey-club-newmarket-mobile.jpg'),
-             ('render-course.jpg', 'golfzon-simulator-screen-the-bogey-club.jpg'),
-             ]:
-    shutil.copy(A / s, pa / d)
 for f in (up / 'bogey-home').iterdir(): shutil.copy(f, pa / f.name)
 prev = lambda s: s.replace('{{IMG}}', 'preview-assets').replace('{{FONTS}}', 'fonts')
 label_css = ('[data-photo]::before{content:attr(data-photo);position:absolute;z-index:6;top:14px;right:14px;'
@@ -108,7 +103,7 @@ def full_page(img, fonts, extra_css='', robots='index, follow'):
 <meta property="og:title" content="The Bogey Club | Golf Simulator Sports Bar in Newmarket">
 <meta property="og:description" content="Four Golfzon simulators, two full bars, cold beer on tap, karaoke and private events in Newmarket, Ontario.">
 <meta property="og:url" content="https://thebogeyclub.com/">
-<meta property="og:image" content="{IMG_LIVE}/golf-simulator-bay-the-bogey-club-newmarket.jpg">
+<meta property="og:image" content="https://thebogeyclub.com/wp-content/uploads/2026/08/Main-Area.png">
 {p(head)}<style>
 html {{ scroll-behavior: smooth; }}
 body {{ margin: 0; background: #FFFFFF; }}
@@ -128,6 +123,34 @@ body {{ margin: 0; background: #FFFFFF; }}
 </body>
 </html>
 '''
+
+# 0) ONE Elementor HTML widget: everything in a single paste (no <html>/<head>/<body>).
+#    Use with Page Settings > Page Layout: "Elementor Canvas" (no theme header/footer).
+elementor_fix = """
+/* Let the widget run edge to edge inside Elementor's container/section wrappers */
+.e-con:has(.tt-one), .elementor-section:has(.tt-one) .elementor-container, .elementor-column:has(.tt-one) > .elementor-widget-wrap {
+  --padding-top: 0px; --padding-right: 0px; --padding-bottom: 0px; --padding-left: 0px; --gap: 0px; --content-width: 100%; --width: 100%;
+  padding: 0 !important; max-width: none !important; width: 100% !important; }
+.elementor-widget-html:has(.tt-one), .elementor-widget-html:has(.tt-one) > .elementor-widget-container { width: 100%; margin: 0 !important; padding: 0 !important; }
+body:has(.tt-one) { margin: 0; overflow-x: clip; }
+"""
+one = (f"<!-- THE BOGEY CLUB HOMEPAGE: paste this whole file into ONE Elementor HTML widget.\n"
+       f"     Page Settings > Page Layout = Elementor Canvas. Container: Full Width, padding 0. -->\n"
+       f"<div class=\"tt-one\">\n" + live(head).split('-->', 1)[1].strip() + "\n<style>\n" + css + elementor_fix + "</style>\n"
+       + live(header) + "\n" + live(home) + "\n" + live(footer).replace('<!--BCH:NEWSLETTER-->', '<!-- Existing newsletter signup form goes here -->')
+       + "\n" + schema_tag + "<script>\n" + js + "</script>\n</div>\n")
+import base64 as _b64
+from PIL import Image as _I; import io as _io
+_im = _I.open(A / 'bogey-club-logo.png'); _im = _im.resize((300, round(_im.height * 300 / _im.width)), _I.LANCZOS)
+_buf = _io.BytesIO(); _im.convert('L').save(_buf, 'PNG', optimize=True)
+_logo = 'data:image/png;base64,' + _b64.b64encode(_buf.getvalue()).decode()
+one = one.replace(IMG_LIVE + '/bogey-club-logo.png', _logo)
+if 'Satoshi-Variable.woff2' in have:
+    _font = 'data:font/woff2;base64,' + _b64.b64encode((ROOT / 'fonts' / 'Satoshi-Variable.woff2').read_bytes()).decode()
+    one = re.sub(r'<link rel="preload"[^>]*>\n', '', one)
+    one = re.sub(r"src: url\('[^']*Satoshi-Variable\.woff2'\) format\('woff2-variations'\), url\('[^']*Satoshi-Variable\.woff2'\) format\('woff2'\)",
+                 lambda m: "src: url('" + _font + "') format('woff2')", one)
+(dist / 'ELEMENTOR-PASTE-THIS.html').write_text(one)
 
 # 1) live-ready: assets load from the WordPress uploads folders
 (dist / 'bogey-club-homepage.html').write_text(full_page(IMG_LIVE, FONTS_LIVE))

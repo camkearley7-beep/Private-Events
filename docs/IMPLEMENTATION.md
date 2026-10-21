@@ -7,6 +7,7 @@ This is the production build of the approved design for WordPress and Elementor.
 | `site/dist/` | Paste-ready files, numbered in install order |
 | `site/dist/uploads/` | Files to upload to WordPress |
 | `site/preview.html` | The whole site in one file. Open it in a browser. |
+| `site/dist/ELEMENTOR-PASTE-THIS.html` | **The file to paste into one Elementor HTML widget** (see Quick install) |
 | `site/dist/bogey-club-homepage.html` | **The complete finished page in one HTML file**: head/SEO, fonts, CSS, header, homepage, footer, structured data and script. Assets load from the WordPress uploads folders in §1. |
 | `site/dist/bogey-club-homepage-standalone.html` | The same page with fonts and images embedded, so it opens anywhere (review only, `noindex`) |
 | `site/src/` | Sources. Edit these, then run `site/build.sh`. |
@@ -14,6 +15,22 @@ This is the production build of the approved design for WordPress and Elementor.
 | `concepts/club/` | Logo source and concept renders used by the preview build |
 
 Install everything on a **staging copy first**. Most hosts offer one-click staging, or use the WP Staging plugin. Go live only after §8 passes.
+
+---
+
+## Quick install: one widget, nothing to upload
+
+Use **`site/dist/ELEMENTOR-PASTE-THIS.html`**. It has your logo and the Satoshi font built in, and it loads the photos and video already on your WordPress site.
+
+1. Pages → your homepage draft → **Edit with Elementor**.
+2. Open Page Settings (the cog at the bottom left) and set **Page Layout: Elementor Canvas**. This hides the theme's own header and footer, because the paste includes them.
+3. Delete everything on the page. Add one **Container**, then set **Content Width: Full Width** and **Padding: 0** on all sides.
+4. Drag an **HTML** widget into it, open `ELEMENTOR-PASTE-THIS.html` in a text editor, copy **all** of it, and paste it into the HTML Code box.
+5. Click **Update** or **Publish**.
+
+Do **not** paste `bogey-club-homepage-standalone.html` or `bogey-club-homepage.html` into Elementor. Those are complete web pages for viewing in a browser.
+
+The rest of this guide is the full site-wide setup: header and footer on every page, the Karaoke menu item, and SEO plugin settings. Use it when you're ready to replace the theme header and footer everywhere.
 
 ---
 
