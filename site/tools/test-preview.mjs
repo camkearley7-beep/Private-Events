@@ -29,12 +29,6 @@ for (const [w, h] of [[1440, 900], [390, 844]]) {
   ok(r.deadLinks === 0, `${tag} no empty or "#" links`);
   const m = new Date(); const ym = m.getFullYear() + '-' + String(m.getMonth() + 1).padStart(2, '0');
   ok(r.karaoke.length >= 3 && r.karaoke.every(u => u.includes('date=' + ym) && u.includes('bayfilter=4') && u.includes('templateId=50')), `${tag} ${r.karaoke.length} karaoke links open the karaoke calendar on ${ym}`);
-  // planner
-  await p.evaluate(() => document.getElementById('tt-console').scrollIntoView());
-  for (let i = 0; i < 8; i++) await p.click('.stepper button[data-d="1"]');
-  await p.click('.seg button[data-h="3"]');
-  const pl = await p.evaluate(() => ({ n: document.getElementById('tt-pl').textContent, nb: document.getElementById('tt-nb').textContent, pp: document.getElementById('tt-pp').textContent, ev: document.getElementById('tt-ev').classList.contains('show'), on: document.querySelectorAll('.bayc.on').length }));
-  ok(pl.n === '14' && pl.nb === '4 bays' && pl.on === 4 && pl.pp.startsWith('$51') && pl.ev, `${tag} planner: 14 players × 3 hrs → ${pl.nb}, ${pl.pp.trim()}, event nudge shown`);
   if (w > 860) {
     const at = f => p.evaluate(f => { const wk = document.getElementById('walk'); window.scrollTo({ top: wk.offsetTop + (wk.offsetHeight - innerHeight) * f, behavior: 'instant' }); }, f);
     await at(0); await p.waitForTimeout(250);

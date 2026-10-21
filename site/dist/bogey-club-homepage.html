@@ -61,7 +61,7 @@ body { margin: 0; background: #FFFFFF; }
 .tt .lede { font-size: clamp(17px, 1.3vw, 19px); line-height: 1.6; color: var(--soft); max-width: 46ch; }
 .tt .data { font-weight: 500; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--green); }
 .tt .data i { font-style: normal; opacity: .7; }
-.tt .events .data i, .tt .console .data i, .tt .stop .data i { color: var(--sand); opacity: 1; }
+.tt .events .data i, .tt .stop .data i { color: var(--sand); opacity: 1; }
 
 /* buttons */
 .tt .btn {
@@ -163,39 +163,6 @@ body { margin: 0; background: #FFFFFF; }
 .tt .bars-photo .pin { position: absolute; left: 10%; top: 14%; display: flex; align-items: center; gap: 10px; }
 .tt .bars-photo .pin::before { content: ''; width: 12px; height: 12px; border-radius: 50%; background: var(--white); box-shadow: 0 0 0 6px rgba(255,255,255,.3); }
 .tt .bars-photo .pin span { background: var(--white); color: var(--pine); padding: 6px 10px; border-radius: 4px; }
-
-/* ================= 4. PLAN YOUR BAY ================= */
-.tt .plan { background: var(--white); padding: 120px var(--g); display: grid; grid-template-columns: .9fr 1.1fr; gap: 70px; align-items: center; }
-.tt .plan .data { margin-bottom: 18px; }
-.tt .plan .lede { margin-top: 20px; }
-.tt .console { background: var(--pine); color: var(--white); border-radius: 12px; padding: 34px; display: grid; gap: 28px; }
-.tt .ctrl { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 16px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,.14); }
-.tt .console .data { color: var(--sand); }
-.tt .ctrl label { font-weight: 600; font-size: 18px; display: block; margin-top: 4px; }
-.tt .stepper { display: flex; align-items: center; border: 1.5px solid rgba(255,255,255,.3); border-radius: 6px; }
-.tt .stepper button { width: 56px; height: 56px; font-size: 24px; font-weight: 500; }
-.tt .stepper button:hover { background: rgba(255,255,255,.08); }
-.tt .stepper output { min-width: 66px; text-align: center; font-weight: 600; font-size: 28px; }
-.tt .seg { display: flex; border: 1.5px solid rgba(255,255,255,.3); border-radius: 6px; overflow: hidden; }
-.tt .seg button { min-width: 62px; height: 56px; font-weight: 600; font-size: 17px; }
-.tt .seg button[aria-pressed="true"] { background: var(--white); color: var(--pine); }
-.tt .bays { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-.tt .bayc { aspect-ratio: 16 / 10; border-radius: 6px; border: 1.5px solid rgba(255,255,255,.18); position: relative; overflow: hidden; background: rgba(255,255,255,.05); transition: border-color .4s; }
-.tt .bayc img { width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .5s; }
-.tt .bayc.on { border-color: var(--sand); }
-.tt .bayc.on img { opacity: 1; }
-.tt .bayc span { position: absolute; left: 8px; bottom: 6px; font-size: 11px; font-weight: 500; color: var(--white); text-shadow: 0 1px 4px rgba(0,0,0,.5); }
-.tt .bayc .who { position: absolute; right: 8px; top: 6px; display: flex; gap: 3px; }
-.tt .bayc .who i { width: 7px; height: 7px; border-radius: 50%; background: var(--white); }
-.tt .total { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: end; }
-.tt .total b { display: block; font-weight: 700; font-size: 44px; line-height: 1; margin-top: 8px; letter-spacing: -.02em; }
-.tt .total .fine { grid-column: 1 / -1; font-size: 14px; color: rgba(255,255,255,.65); }
-.tt .console .btn { width: 100%; }
-.tt .console .btn-red { background: var(--white); color: var(--green); }
-.tt .console .btn-red:hover { background: var(--mist); }
-.tt .console .ev { display: none; font-size: 15px; background: rgba(215,201,164,.14); border-left: 2px solid var(--sand); padding: 12px 14px; }
-.tt .console .ev.show { display: block; }
-.tt .console .ev a { font-weight: 600; text-decoration: underline; }
 
 /* ================= 5. PRIVATE EVENTS (the one rich-green block) ================= */
 .tt .events { background: var(--green); color: var(--white); display: grid; grid-template-columns: 1.15fr .85fr; min-height: 820px; }
@@ -300,12 +267,6 @@ body { margin: 0; background: #FFFFFF; }
   .tt .readout b { font-size: 28px; white-space: nowrap; }
   .tt .readout div + div { padding-left: 12px; }
 
-  .tt .plan { grid-template-columns: 1fr; padding: 72px 18px; gap: 30px; }
-  .tt .console { padding: 22px 18px; gap: 22px; }
-  .tt .stepper button { width: 52px; height: 52px; }
-  .tt .stepper output { min-width: 52px; font-size: 24px; }
-  .tt .seg button { min-width: 50px; height: 52px; }
-  .tt .total b { font-size: 32px; }
 
   .tt .events { grid-template-columns: 1fr; min-height: 0; }
   .tt .events-photo { height: 400px; }
@@ -340,7 +301,7 @@ body { margin: 0; background: #FFFFFF; }
 body.admin-bar .tt .hdr { top: 32px; }
 @media (max-width: 782px) { body.admin-bar .tt .hdr { top: 46px; } }
 /* photo frames: a clean pine panel shows if a photo is missing, never a broken icon */
-.tt .hero picture, .tt .stop, .tt .bars-photo, .tt .events-photo, .tt .bayc { background-color: var(--pine); }
+.tt .hero picture, .tt .stop, .tt .bars-photo, .tt .events-photo { background-color: var(--pine); }
 .tt img.tt-missing { visibility: hidden; }
 /* mobile menu sheet */
 .tt .menu[aria-expanded="true"] { color: var(--green); }
@@ -678,39 +639,8 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
   </div>
 </section>
 
-<!-- 4. PLAN YOUR BAY -->
-<section class="plan on-light" aria-labelledby="tt-plan-h">
-  <div>
-    <p class="data">Plan your bay</p>
-    <h2 id="tt-plan-h" class="h-l">How many are coming?</h2>
-    <p class="lede">Up to four golfers share a bay and you pay per bay, not per person. Tell us your group and we'll show you what to book.</p>
-  </div>
-  <div class="console" id="tt-console">
-    <div class="ctrl">
-      <div><span class="data">Players</span><label for="tt-pl">Your group</label></div>
-      <div class="stepper"><button type="button" data-d="-1" aria-label="Fewer players">−</button><output id="tt-pl" aria-live="polite">6</output><button type="button" data-d="1" aria-label="More players">+</button></div>
-    </div>
-    <div class="ctrl">
-      <div><span class="data">Time</span><span style="font-weight:500;font-size:18px;display:block;margin-top:4px" id="tt-hrs-l">Hours on the sim</span></div>
-      <div class="seg" role="group" aria-labelledby="tt-hrs-l"><button type="button" aria-pressed="false" data-h="1">1</button><button type="button" aria-pressed="true" data-h="2">2</button><button type="button" aria-pressed="false" data-h="3">3</button></div>
-    </div>
-    <div class="bays" aria-hidden="true">
-      <div class="bayc"><img src="https://thebogeyclub.com/wp-content/uploads/bogey-home/golfzon-simulator-screen-the-bogey-club.jpg" alt="" loading="lazy" decoding="async"><span>Bay 01</span><span class="who"></span></div>
-      <div class="bayc"><img src="https://thebogeyclub.com/wp-content/uploads/bogey-home/golfzon-simulator-screen-the-bogey-club.jpg" alt="" loading="lazy" decoding="async"><span>Bay 02</span><span class="who"></span></div>
-      <div class="bayc"><img src="https://thebogeyclub.com/wp-content/uploads/bogey-home/golfzon-simulator-screen-the-bogey-club.jpg" alt="" loading="lazy" decoding="async"><span>Bay 03</span><span class="who"></span></div>
-      <div class="bayc"><img src="https://thebogeyclub.com/wp-content/uploads/bogey-home/golfzon-simulator-screen-the-bogey-club.jpg" alt="" loading="lazy" decoding="async"><span>Bay 04</span><span class="who"></span></div>
-    </div>
-    <div class="total" aria-live="polite">
-      <div><span class="data">You'll need</span><b id="tt-nb">2 bays</b></div>
-      <div><span class="data">Works out to</span><b id="tt-pp">$40<small style="font-size:16px"> /person</small></b></div>
-      <p class="fine" id="tt-fine">2 bays × 2 hrs × $60 = $240 + HST. Subject to availability.</p>
-    </div>
-    <p class="ev" id="tt-ev">That's a party. With a group this size, our <a href="#events">private event space</a> might be the better call.</p>
-    <a class="btn btn-red" href="https://thebogeyclub.golfbooking.ca/calendar.php" data-tt-cta="planner-book-golf">Check availability</a>
-  </div>
-</section>
 
-<!-- 5. PRIVATE EVENTS -->
+<!-- 4. PRIVATE EVENTS -->
 <section class="events" id="events" aria-labelledby="tt-ev-h">
   <div class="events-photo" data-photo="Concept render · replace with an event-space photo">
     <picture>
@@ -733,7 +663,7 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
   </div>
 </section>
 
-<!-- 6. CLUB LIFE -->
+<!-- 5. CLUB LIFE -->
 <section class="life" id="life" aria-labelledby="tt-life-h">
   <div class="life-head">
     <div><p class="data">Club life</p><h2 id="tt-life-h" class="h-l">There's always a next round.</h2></div>
@@ -748,7 +678,7 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
   </div>
 </section>
 
-<!-- 7. VISIT -->
+<!-- 6. VISIT -->
 <section class="visit on-light" id="visit" aria-labelledby="tt-visit-h">
   <div>
     <p class="data">Visit <i>/</i> Newmarket, Ontario</p>
@@ -884,39 +814,6 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
       size();
     }
 
-    /* Plan your bay: players + hours -> bays needed and cost per person.
-       $60 per bay per hour + HST, up to 4 players per bay, 4 bays. */
-    var con = document.getElementById("tt-console");
-    if (con) {
-      var RATE = 60, players = 6, hours = 2;
-      var out = document.getElementById("tt-pl"), bays = con.querySelectorAll(".bayc"), segs = con.querySelectorAll(".seg button");
-      var plural = function (n, one, many) { return n + " " + (n === 1 ? one : many); };
-      var calc = function () {
-        var nb = Math.min(4, Math.ceil(players / 4)), total = nb * hours * RATE, left = players;
-        out.textContent = players;
-        bays.forEach(function (b, i) {
-          var on = i < nb, n = on ? Math.min(4, Math.ceil(left / (nb - i))) : 0;
-          left -= n;
-          b.classList.toggle("on", on);
-          b.querySelector(".who").innerHTML = new Array(n + 1).join("<i></i>");
-        });
-        document.getElementById("tt-nb").textContent = plural(nb, "bay", "bays");
-        document.getElementById("tt-pp").firstChild.nodeValue = "$" + Math.round(total / players);
-        document.getElementById("tt-fine").textContent = plural(nb, "bay", "bays") + " × " + plural(hours, "hr", "hrs") + " × $60 = $" + total + " + HST. Subject to availability.";
-        document.getElementById("tt-ev").classList.toggle("show", players >= 12);
-      };
-      con.querySelectorAll(".stepper button").forEach(function (b) {
-        b.addEventListener("click", function () { players = Math.max(1, Math.min(16, players + Number(b.dataset.d))); calc(); });
-      });
-      segs.forEach(function (b) {
-        b.addEventListener("click", function () {
-          hours = Number(b.dataset.h);
-          segs.forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
-          calc();
-        });
-      });
-      calc();
-    }
   });
 })();
 </script>

@@ -86,7 +86,7 @@ If you prefer the Media Library (which files under `/2026/10/`), find and replac
 - **SEO title:** `The Bogey Club | Golf Simulator Sports Bar in Newmarket` (55 characters)
 - **Meta description:** `Four Golfzon simulators, two full bars, cold beer on tap, karaoke and private event space in Newmarket, Ontario. Book a bay or plan your party.` (144 characters)
 - **H1:** "Golf simulator sports bar · Newmarket, ON — Your handicap is welcome here." The location line sits inside the H1, so the keywords are in it.
-- **H2s:** From the tee to the tap · The best rounds don't end at 18 · How many are coming? · Book the room. We'll run the night. · There's always a next round · Visit The Bogey Club in Newmarket.
+- **H2s:** From the tee to the tap · The best rounds don't end at 18 · Book the room. We'll run the night. · There's always a next round · Visit The Bogey Club in Newmarket.
 - **Structured data (`06-schema.html`):**
   - LocalBusiness (SportsActivityLocation + BarOrPub + EntertainmentBusiness) with address, phone, email, and the Newmarket, Aurora and East Gwillimbury service area
   - Amenities: 4 Golfzon simulators, 2 bars, draft beer, karaoke, event space
@@ -102,7 +102,7 @@ If you prefer the Media Library (which files under `/2026/10/`), find and replac
 
 | Destination | URL | Header | Homepage | Footer / dock |
 |---|---|---|---|---|
-| Book golf | `thebogeyclub.golfbooking.ca/calendar.php` | Book a bay, mobile menu | Hero, Bays stop, planner | Footer, dock |
+| Book golf | `thebogeyclub.golfbooking.ca/calendar.php` | Book a bay, mobile menu | Hero, Bays stop | Footer, dock |
 | Book karaoke | `…calendar.php?date=<this month>&bayfilter=4&templateId=50&lang=en` (month set automatically, same as the karaoke page) | Mobile menu | Stage stop | Dock |
 | Karaoke page | `/karaoke/` | **Karaoke** | Hero, Stage stop | Footer |
 | Private events + inquiry form | `/private-events/` | Private events | Hero (→ section), events section ×2, Upstairs stop | Footer, dock |
@@ -131,7 +131,6 @@ Every CTA carries `data-tt-cta="…"`, so the site's existing Google Tag Manager
 - Satoshi Bold loads and renders the H1 (verified with `document.fonts.check`, not just the CSS name)
 - No horizontal overflow, exactly one H1, no empty or `#` links
 - All karaoke links open the karaoke calendar on the current month
-- Bay planner: 14 players × 3 hrs gives 4 bays and $51 per person, and the private-event suggestion appears
 - Desktop: the tee-to-tap section moves sideways as you scroll
 - Mobile: the menu opens, focuses the first link and closes on Esc; the booking bar is visible
 - axe WCAG 2 A/AA: 0 violations; no JavaScript errors
@@ -139,7 +138,7 @@ Every CTA carries `data-tt-cta="…"`, so the site's existing Google Tag Manager
 **Run on staging before launch:**
 
 - [ ] `site/tools/check-links.sh` from a normal connection (every link returns 200)
-- [ ] Book golf: reach the checkout from the header, hero and planner
+- [ ] Book golf: reach the checkout from the header and hero
 - [ ] Book karaoke: the karaoke calendar opens, not the golf calendar
 - [ ] Event inquiry on `/private-events/` arrives in the inbox
 - [ ] Newsletter test signup is added to the list
@@ -157,7 +156,7 @@ Every CTA carries `data-tt-cta="…"`, so the site's existing Google Tag Manager
 | Real photos | 7 files listed in §1 |
 | Golf hours "Daily 9 AM – 12 AM" | Confirm. Listings conflict. |
 | Staffed bar hours | Shown as "See posted hours". Add real hours when confirmed. |
-| $60/bay/hour + HST, up to 4 players | Confirm. Used in the planner and the structured data. |
+| $60/bay/hour + HST, up to 4 players | Confirm. Used in the structured data. |
 | Second bar is upstairs in the event space | Confirm |
 | Men's Night | Confirm it's running |
 | Privacy URL, Instagram handle | Confirm |

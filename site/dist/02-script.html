@@ -75,39 +75,6 @@
       size();
     }
 
-    /* Plan your bay: players + hours -> bays needed and cost per person.
-       $60 per bay per hour + HST, up to 4 players per bay, 4 bays. */
-    var con = document.getElementById("tt-console");
-    if (con) {
-      var RATE = 60, players = 6, hours = 2;
-      var out = document.getElementById("tt-pl"), bays = con.querySelectorAll(".bayc"), segs = con.querySelectorAll(".seg button");
-      var plural = function (n, one, many) { return n + " " + (n === 1 ? one : many); };
-      var calc = function () {
-        var nb = Math.min(4, Math.ceil(players / 4)), total = nb * hours * RATE, left = players;
-        out.textContent = players;
-        bays.forEach(function (b, i) {
-          var on = i < nb, n = on ? Math.min(4, Math.ceil(left / (nb - i))) : 0;
-          left -= n;
-          b.classList.toggle("on", on);
-          b.querySelector(".who").innerHTML = new Array(n + 1).join("<i></i>");
-        });
-        document.getElementById("tt-nb").textContent = plural(nb, "bay", "bays");
-        document.getElementById("tt-pp").firstChild.nodeValue = "$" + Math.round(total / players);
-        document.getElementById("tt-fine").textContent = plural(nb, "bay", "bays") + " × " + plural(hours, "hr", "hrs") + " × $60 = $" + total + " + HST. Subject to availability.";
-        document.getElementById("tt-ev").classList.toggle("show", players >= 12);
-      };
-      con.querySelectorAll(".stepper button").forEach(function (b) {
-        b.addEventListener("click", function () { players = Math.max(1, Math.min(16, players + Number(b.dataset.d))); calc(); });
-      });
-      segs.forEach(function (b) {
-        b.addEventListener("click", function () {
-          hours = Number(b.dataset.h);
-          segs.forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
-          calc();
-        });
-      });
-      calc();
-    }
   });
 })();
 </script>

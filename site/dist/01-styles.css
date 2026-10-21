@@ -29,7 +29,7 @@
 .tt .lede { font-size: clamp(17px, 1.3vw, 19px); line-height: 1.6; color: var(--soft); max-width: 46ch; }
 .tt .data { font-weight: 500; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--green); }
 .tt .data i { font-style: normal; opacity: .7; }
-.tt .events .data i, .tt .console .data i, .tt .stop .data i { color: var(--sand); opacity: 1; }
+.tt .events .data i, .tt .stop .data i { color: var(--sand); opacity: 1; }
 
 /* buttons */
 .tt .btn {
@@ -131,39 +131,6 @@
 .tt .bars-photo .pin { position: absolute; left: 10%; top: 14%; display: flex; align-items: center; gap: 10px; }
 .tt .bars-photo .pin::before { content: ''; width: 12px; height: 12px; border-radius: 50%; background: var(--white); box-shadow: 0 0 0 6px rgba(255,255,255,.3); }
 .tt .bars-photo .pin span { background: var(--white); color: var(--pine); padding: 6px 10px; border-radius: 4px; }
-
-/* ================= 4. PLAN YOUR BAY ================= */
-.tt .plan { background: var(--white); padding: 120px var(--g); display: grid; grid-template-columns: .9fr 1.1fr; gap: 70px; align-items: center; }
-.tt .plan .data { margin-bottom: 18px; }
-.tt .plan .lede { margin-top: 20px; }
-.tt .console { background: var(--pine); color: var(--white); border-radius: 12px; padding: 34px; display: grid; gap: 28px; }
-.tt .ctrl { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 16px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,.14); }
-.tt .console .data { color: var(--sand); }
-.tt .ctrl label { font-weight: 600; font-size: 18px; display: block; margin-top: 4px; }
-.tt .stepper { display: flex; align-items: center; border: 1.5px solid rgba(255,255,255,.3); border-radius: 6px; }
-.tt .stepper button { width: 56px; height: 56px; font-size: 24px; font-weight: 500; }
-.tt .stepper button:hover { background: rgba(255,255,255,.08); }
-.tt .stepper output { min-width: 66px; text-align: center; font-weight: 600; font-size: 28px; }
-.tt .seg { display: flex; border: 1.5px solid rgba(255,255,255,.3); border-radius: 6px; overflow: hidden; }
-.tt .seg button { min-width: 62px; height: 56px; font-weight: 600; font-size: 17px; }
-.tt .seg button[aria-pressed="true"] { background: var(--white); color: var(--pine); }
-.tt .bays { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-.tt .bayc { aspect-ratio: 16 / 10; border-radius: 6px; border: 1.5px solid rgba(255,255,255,.18); position: relative; overflow: hidden; background: rgba(255,255,255,.05); transition: border-color .4s; }
-.tt .bayc img { width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .5s; }
-.tt .bayc.on { border-color: var(--sand); }
-.tt .bayc.on img { opacity: 1; }
-.tt .bayc span { position: absolute; left: 8px; bottom: 6px; font-size: 11px; font-weight: 500; color: var(--white); text-shadow: 0 1px 4px rgba(0,0,0,.5); }
-.tt .bayc .who { position: absolute; right: 8px; top: 6px; display: flex; gap: 3px; }
-.tt .bayc .who i { width: 7px; height: 7px; border-radius: 50%; background: var(--white); }
-.tt .total { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: end; }
-.tt .total b { display: block; font-weight: 700; font-size: 44px; line-height: 1; margin-top: 8px; letter-spacing: -.02em; }
-.tt .total .fine { grid-column: 1 / -1; font-size: 14px; color: rgba(255,255,255,.65); }
-.tt .console .btn { width: 100%; }
-.tt .console .btn-red { background: var(--white); color: var(--green); }
-.tt .console .btn-red:hover { background: var(--mist); }
-.tt .console .ev { display: none; font-size: 15px; background: rgba(215,201,164,.14); border-left: 2px solid var(--sand); padding: 12px 14px; }
-.tt .console .ev.show { display: block; }
-.tt .console .ev a { font-weight: 600; text-decoration: underline; }
 
 /* ================= 5. PRIVATE EVENTS (the one rich-green block) ================= */
 .tt .events { background: var(--green); color: var(--white); display: grid; grid-template-columns: 1.15fr .85fr; min-height: 820px; }
@@ -268,12 +235,6 @@
   .tt .readout b { font-size: 28px; white-space: nowrap; }
   .tt .readout div + div { padding-left: 12px; }
 
-  .tt .plan { grid-template-columns: 1fr; padding: 72px 18px; gap: 30px; }
-  .tt .console { padding: 22px 18px; gap: 22px; }
-  .tt .stepper button { width: 52px; height: 52px; }
-  .tt .stepper output { min-width: 52px; font-size: 24px; }
-  .tt .seg button { min-width: 50px; height: 52px; }
-  .tt .total b { font-size: 32px; }
 
   .tt .events { grid-template-columns: 1fr; min-height: 0; }
   .tt .events-photo { height: 400px; }
@@ -308,7 +269,7 @@
 body.admin-bar .tt .hdr { top: 32px; }
 @media (max-width: 782px) { body.admin-bar .tt .hdr { top: 46px; } }
 /* photo frames: a clean pine panel shows if a photo is missing, never a broken icon */
-.tt .hero picture, .tt .stop, .tt .bars-photo, .tt .events-photo, .tt .bayc { background-color: var(--pine); }
+.tt .hero picture, .tt .stop, .tt .bars-photo, .tt .events-photo { background-color: var(--pine); }
 .tt img.tt-missing { visibility: hidden; }
 /* mobile menu sheet */
 .tt .menu[aria-expanded="true"] { color: var(--green); }
