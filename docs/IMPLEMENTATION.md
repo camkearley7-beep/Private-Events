@@ -11,7 +11,7 @@ This is the production build of the approved design for WordPress and Elementor.
 | `site/dist/bogey-club-homepage-standalone.html` | The same page with fonts and images embedded, so it opens anywhere (review only, `noindex`) |
 | `site/src/` | Sources. Edit these, then run `site/build.sh`. |
 | `site/tools/` | Automated tests, screenshot tool, link checker |
-| `concepts/club/` | The approved design file and the concept renders |
+| `concepts/club/` | Logo source and concept renders used by the preview build |
 
 Install everything on a **staging copy first**. Most hosts offer one-click staging, or use the WP Staging plugin. Go live only after §8 passes.
 
