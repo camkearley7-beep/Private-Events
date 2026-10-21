@@ -1,0 +1,175 @@
+<!-- =====================================================================
+     HOMEPAGE — one Elementor HTML widget in a full-width container with
+     0 padding and 0 gap. Page Settings: "Elementor Full Width", Hide Title.
+     {{IMG}} = folder holding the homepage photos (docs/IMPLEMENTATION.md §5).
+     ===================================================================== -->
+<div class="tt" id="tt-home">
+
+<!-- 1. HERO -->
+<section class="hero" aria-labelledby="tt-h1" data-photo="Concept render · replace with a Bogey Club bay photo">
+  <picture>
+    <source media="(max-width: 860px)" srcset="{{IMG}}/golf-simulator-bay-the-bogey-club-newmarket-mobile.jpg">
+    <img src="{{IMG}}/golf-simulator-bay-the-bogey-club-newmarket.jpg" width="1920" height="1080" fetchpriority="high" decoding="async"
+         alt="A Golfzon golf simulator bay at The Bogey Club in Newmarket, ball teed up facing the course on screen">
+  </picture>
+  <svg class="aim" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path class="draw" pathLength="1" d="M960 1040 C 990 860, 1042 600, 1061 462"/>
+    <text x="1080" y="456">TARGET · 412 YD</text>
+  </svg>
+  <div class="hero-copy">
+    <div>
+      <h1 id="tt-h1" class="h-xl"><small>Golf simulator sports bar · Newmarket, ON</small><span class="ln">Your handicap</span> <span class="ln">is welcome here.</span></h1>
+      <p class="lede">Good golf, bad golf, and everything in between. Four premium Golfzon simulators, two full bars, cold beer on tap, karaoke, and private events.</p>
+    </div>
+    <div class="hero-actions">
+      <a class="btn btn-red" href="https://thebogeyclub.golfbooking.ca/calendar.php" data-tt-cta="hero-book-golf">Book a simulator</a>
+      <a class="btn btn-line" href="#events" data-tt-cta="hero-events">Plan a private event</a>
+      <div class="also"><a class="link" href="https://thebogeyclub.com/karaoke/">Karaoke</a><a class="link" href="#walk">Explore the club</a></div>
+    </div>
+  </div>
+  <div class="rail data" aria-hidden="true">
+    <span>TwoVision NX <i>/</i> × 2</span><span>Vision Plus <i>/</i> × 2</span><span>Draft <i>/</i> On tap</span><span>17705 Leslie St <i>/</i> Newmarket</span>
+  </div>
+</section>
+
+<!-- 2. FROM THE TEE TO THE TAP (desktop: scroll-driven dolly · mobile: swipe) -->
+<section class="walk" id="walk" aria-labelledby="tt-walk-h">
+  <div class="walk-pin">
+    <div class="walk-head">
+      <h2 id="tt-walk-h" class="h-l">From the tee<br>to the tap.</h2>
+      <p class="data">Four stops <i>/</i> one building <i>/</i> <span class="hint">scroll</span></p>
+    </div>
+    <div class="track" id="tt-track">
+      <article class="stop" data-photo="Concept render · Golfzon screen">
+        <img src="{{IMG}}/golfzon-simulator-screen-the-bogey-club.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="A golf course on a Golfzon simulator screen at The Bogey Club">
+        <div class="stop-body"><p class="stop-no data">01 <i>/</i> The bays</p><h3 class="h-m">Four Golfzon simulators</h3><p>Two TwoVision NX, two Vision Plus. Famous courses, real ball data, up to four players a bay. Rain or shine, all year.</p><div class="acts"><a class="btn btn-red" href="https://thebogeyclub.golfbooking.ca/calendar.php">Book a simulator</a><a class="btn btn-line" href="https://thebogeyclub.com/our-simulators/">The simulators</a></div></div>
+      </article>
+      <article class="stop" data-photo="Concept render · bar">
+        <img src="{{IMG}}/draft-beer-bar-the-bogey-club-newmarket.jpg" width="1600" height="1100" loading="lazy" decoding="async" alt="Cold draft beer at the bar at The Bogey Club">
+        <div class="stop-body"><p class="stop-no data">02 <i>/</i> The bars</p><h3 class="h-m">Two full bars</h3><p>Cold draft on tap, a proper back bar and seats with a view of the bays. The 19th hole, twice.</p><div class="acts"><a class="btn btn-line" href="#bars">See the bars</a></div></div>
+      </article>
+      <article class="stop" data-photo="Real still · Bogey Club karaoke video">
+        <img src="{{IMG}}/karaoke-the-bogey-club-newmarket.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="Guests singing a duet on the karaoke stage at The Bogey Club in Newmarket">
+        <div class="stop-body"><p class="stop-no data">03 <i>/</i> The stage</p><h3 class="h-m">Karaoke</h3><p>When the round is over and someone says "one song." It is never one song.</p><div class="acts"><a class="btn btn-red" href="https://thebogeyclub.golfbooking.ca/calendar.php?bayfilter=4&amp;templateId=50&amp;lang=en" data-tt-link="karaoke-booking" data-tt-cta="walk-book-karaoke">Book karaoke</a><a class="btn btn-line" href="https://thebogeyclub.com/karaoke/">Karaoke page</a></div></div>
+      </article>
+      <article class="stop" data-photo="Concept render · event space">
+        <img src="{{IMG}}/private-event-space-the-bogey-club-newmarket.jpg" width="1920" height="1100" loading="lazy" decoding="async" alt="The upstairs private event space with its own bar at The Bogey Club">
+        <div class="stop-body"><p class="stop-no data">04 <i>/</i> The upstairs</p><h3 class="h-m">Private event space</h3><p>A dedicated room with its own full bar, for birthdays, work parties and everything worth celebrating.</p><div class="acts"><a class="btn btn-red" href="#events">Plan an event</a></div></div>
+      </article>
+    </div>
+    <div class="walk-foot">
+      <ol class="data" id="tt-stops"><li class="on">01 Bays</li><li>02 Bars</li><li>03 Stage</li><li>04 Upstairs</li></ol>
+      <div class="bar"><i id="tt-prog"></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. TWO FULL BARS -->
+<section class="bars" id="bars" aria-labelledby="tt-bars-h">
+  <div class="bars-copy">
+    <p class="data">The 19th hole <i>/</i> × 2</p>
+    <h2 id="tt-bars-h" class="h-xl">The best rounds don't end at 18.</h2>
+    <p class="lede">Two full bars, cold beer on tap and room for the whole group. Grab a pint before you tee off, between rounds, or long after the last putt drops. Golf not required.</p>
+    <div class="readout">
+      <div><p class="data">Full bars</p><b>2</b></div>
+      <div><p class="data">Draft</p><b>On tap</b></div>
+      <div><p class="data">Bays</p><b>4</b></div>
+    </div>
+    <p class="note">Bays can be booked online during golf hours. Drinks are served by our staff during staffed bar hours. 19+ with valid ID.</p>
+  </div>
+  <div class="bars-photo" data-photo="Concept render · replace with a bar photo">
+    <picture>
+      <source media="(max-width: 860px)" srcset="{{IMG}}/draft-beer-bar-the-bogey-club-newmarket-mobile.jpg">
+      <img src="{{IMG}}/draft-beer-bar-the-bogey-club-newmarket.jpg" width="1600" height="1100" loading="lazy" decoding="async" alt="Draft beer on the bar top with tap handles behind at The Bogey Club">
+    </picture>
+    <span class="pin data"><span>Bar 01 · Main floor</span></span>
+  </div>
+</section>
+
+<!-- 4. PLAN YOUR BAY -->
+<section class="plan on-light" aria-labelledby="tt-plan-h">
+  <div>
+    <p class="data">Plan your bay</p>
+    <h2 id="tt-plan-h" class="h-l">How many are coming?</h2>
+    <p class="lede">Up to four golfers share a bay and you pay per bay, not per person. Tell us your group and we'll show you what to book.</p>
+  </div>
+  <div class="console" id="tt-console">
+    <div class="ctrl">
+      <div><span class="data">Players</span><label for="tt-pl">Your group</label></div>
+      <div class="stepper"><button type="button" data-d="-1" aria-label="Fewer players">−</button><output id="tt-pl" aria-live="polite">6</output><button type="button" data-d="1" aria-label="More players">+</button></div>
+    </div>
+    <div class="ctrl">
+      <div><span class="data">Time</span><span style="font-weight:500;font-size:18px;display:block;margin-top:4px" id="tt-hrs-l">Hours on the sim</span></div>
+      <div class="seg" role="group" aria-labelledby="tt-hrs-l"><button type="button" aria-pressed="false" data-h="1">1</button><button type="button" aria-pressed="true" data-h="2">2</button><button type="button" aria-pressed="false" data-h="3">3</button></div>
+    </div>
+    <div class="bays" aria-hidden="true">
+      <div class="bayc"><img src="{{IMG}}/golfzon-simulator-screen-the-bogey-club.jpg" alt="" loading="lazy" decoding="async"><span>Bay 01</span><span class="who"></span></div>
+      <div class="bayc"><img src="{{IMG}}/golfzon-simulator-screen-the-bogey-club.jpg" alt="" loading="lazy" decoding="async"><span>Bay 02</span><span class="who"></span></div>
+      <div class="bayc"><img src="{{IMG}}/golfzon-simulator-screen-the-bogey-club.jpg" alt="" loading="lazy" decoding="async"><span>Bay 03</span><span class="who"></span></div>
+      <div class="bayc"><img src="{{IMG}}/golfzon-simulator-screen-the-bogey-club.jpg" alt="" loading="lazy" decoding="async"><span>Bay 04</span><span class="who"></span></div>
+    </div>
+    <div class="total" aria-live="polite">
+      <div><span class="data">You'll need</span><b id="tt-nb">2 bays</b></div>
+      <div><span class="data">Works out to</span><b id="tt-pp">$40<small style="font-size:16px"> /person</small></b></div>
+      <p class="fine" id="tt-fine">2 bays × 2 hrs × $60 = $240 + HST. Subject to availability.</p>
+    </div>
+    <p class="ev" id="tt-ev">That's a party. With a group this size, our <a href="#events">private event space</a> might be the better call.</p>
+    <a class="btn btn-red" href="https://thebogeyclub.golfbooking.ca/calendar.php" data-tt-cta="planner-book-golf">Check availability</a>
+  </div>
+</section>
+
+<!-- 5. PRIVATE EVENTS -->
+<section class="events" id="events" aria-labelledby="tt-ev-h">
+  <div class="events-photo" data-photo="Concept render · replace with an event-space photo">
+    <picture>
+      <source media="(max-width: 860px)" srcset="{{IMG}}/private-event-space-the-bogey-club-newmarket-mobile.jpg">
+      <img src="{{IMG}}/private-event-space-the-bogey-club-newmarket.jpg" width="1920" height="1100" loading="lazy" decoding="async" alt="Private event space with its own bar at The Bogey Club, a party venue in Newmarket">
+    </picture>
+    <div class="stamp"><span class="data">Private event</span><b>The upstairs is yours</b><span style="font-size:14px">Own bar · golf &amp; karaoke in the building</span></div>
+  </div>
+  <div class="events-copy">
+    <p class="data">Private events <i>/</i> Newmarket</p>
+    <h2 id="tt-ev-h" class="h-l">Book the room. We'll run the night.</h2>
+    <p class="lede">A dedicated event space with its own full bar, four Golfzon simulators downstairs and karaoke on site. Our team helps you plan it and runs it on the night.</p>
+    <ul class="occ">
+      <li>Birthday parties <span class="data">Any age worth toasting</span></li>
+      <li>Corporate &amp; holiday parties <span class="data">Teams of all sizes</span></li>
+      <li>Team building <span class="data">Golf, no experience needed</span></li>
+      <li>Bachelor parties &amp; celebrations <span class="data">Your crew, your night</span></li>
+    </ul>
+    <div class="acts"><a class="btn btn-red" href="https://thebogeyclub.com/private-events/" data-tt-link="event-inquiry" data-tt-cta="events-inquiry">Start an event inquiry</a><a class="btn btn-line" href="https://thebogeyclub.com/private-events/">See the event space</a></div>
+  </div>
+</section>
+
+<!-- 6. CLUB LIFE -->
+<section class="life" id="life" aria-labelledby="tt-life-h">
+  <div class="life-head">
+    <div><p class="data">Club life</p><h2 id="tt-life-h" class="h-l">There's always a next round.</h2></div>
+    <a class="link" href="https://thebogeyclub.com/leagues-and-events/">Leagues &amp; events calendar</a>
+  </div>
+  <div class="rows">
+    <a class="row" href="https://thebogeyclub.com/leagues-and-events/"><span class="data">League</span><h3>The Bogey Cup</h3><p>Four rounds over four weeks. Stableford, weekly skins and closest-to-the-pin prizes.</p><span class="go">Join</span></a>
+    <a class="row" href="https://thebogeyclub.com/leagues-and-events/"><span class="data">Weekly</span><h3>Men's Night &amp; leagues</h3><p>A standing tee time, the same crew and a cold one after.</p><span class="go">Schedule</span></a>
+    <a class="row" href="https://thebogeyclub.com/meet-our-pro/"><span class="data">Coaching</span><h3>Private lessons</h3><p>One-on-one with our pro, with every swing measured.</p><span class="go">Meet the pro</span></a>
+    <a class="row" href="https://thebogeyclub.com/the-bogey-club-classic-2026/"><span class="data">Annual</span><h3>The Bogey Club Classic</h3><p>Our outdoor tournament. The 2026 edition is in the books.</p><span class="go">Details</span></a>
+    <a class="row" href="https://shop.thebogeyclub.com/"><span class="data">Shop</span><h3>Club apparel</h3><p>Hats, polos, crewnecks and towels from the club shop.</p><span class="go">Shop</span></a>
+  </div>
+</section>
+
+<!-- 7. VISIT -->
+<section class="visit on-light" id="visit" aria-labelledby="tt-visit-h">
+  <div>
+    <p class="data">Visit <i>/</i> Newmarket, Ontario</p>
+    <h2 id="tt-visit-h" class="sr">Visit The Bogey Club in Newmarket</h2>
+    <address>17705 Leslie Street, Unit 5<br>Newmarket, ON L3Y 3E3</address>
+    <div class="acts"><a class="btn btn-red" href="https://www.google.com/maps/dir/?api=1&amp;destination=The+Bogey+Club%2C+17705+Leslie+St+Unit+5%2C+Newmarket%2C+ON+L3Y+3E3" target="_blank" rel="noopener">Get directions</a><a class="btn btn-line" href="tel:+19052354653">(905) 235-4653</a></div>
+  </div>
+  <div class="hours">
+    <div><span>Golf bookings</span><span>Daily · 9 AM – 12 AM</span></div>
+    <div><span>Bar (staffed)</span><span>See posted hours</span></div>
+    <div><span>Email</span><a href="mailto:golf@thebogeyclub.com">golf@thebogeyclub.com</a></div>
+    <div><span>Nearby</span><span>Aurora · East Gwillimbury</span></div>
+  </div>
+</section>
+
+</div>

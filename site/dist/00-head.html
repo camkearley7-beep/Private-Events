@@ -1,0 +1,13 @@
+<!-- =====================================================================
+     SITE <head> — WPCode > Add Snippet > HTML, location "Site Wide Header".
+     Satoshi (Indian Type Foundry, ITF Free Font License, free for
+     commercial use). Upload the .woff2 files from site/fonts/ to
+     /wp-content/uploads/fonts/ (or Elementor > Custom Fonts, family
+     name "Satoshi"). Regular/Medium are referenced for when those files
+     are added; until then those weights fall back to the system UI font.
+     ===================================================================== -->
+<link rel="preload" href="https://thebogeyclub.com/wp-content/uploads/fonts/Satoshi-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: 'Satoshi'; src: url('https://thebogeyclub.com/wp-content/uploads/fonts/Satoshi-Bold.woff2') format('woff2'); font-weight: 600 700; font-style: normal; font-display: swap; }
+html .tt { --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; }
+</style>

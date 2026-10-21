@@ -1,0 +1,113 @@
+<script>
+/* The Bogey Club — site script (production). Vanilla, no dependencies,
+   no tracking (CTAs carry data-tt-cta for the site's existing GTM/GA).
+   Install once, site-wide: WPCode footer snippet (see 02-script.html). */
+(function () {
+  "use strict";
+  function ready(fn) { if (document.readyState !== "loading") fn(); else document.addEventListener("DOMContentLoaded", fn); }
+
+  ready(function () {
+    var html = document.documentElement;
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    /* Karaoke booking: open the karaoke-filtered calendar on the current month
+       (same behaviour as the /karaoke/ page). */
+    var now = new Date(), month = now.getFullYear() + "-" + String(now.getMonth() + 1).padStart(2, "0");
+    document.querySelectorAll('[data-tt-link="karaoke-booking"]').forEach(function (a) {
+      a.href = "https://thebogeyclub.golfbooking.ca/calendar.php?date=" + month + "&bayfilter=4&templateId=50&lang=en";
+    });
+    document.querySelectorAll("[data-tt-year]").forEach(function (el) { el.textContent = now.getFullYear(); });
+
+    /* A missing photo shows the pine frame, never a broken-image icon. */
+    document.querySelectorAll(".tt img").forEach(function (img) {
+      function miss() { img.classList.add("tt-missing"); }
+      if (img.complete && img.naturalWidth === 0 && img.currentSrc) miss();
+      else img.addEventListener("error", miss, { once: true });
+    });
+
+    /* Mobile menu */
+    var btn = document.querySelector(".tt .menu"), sheet = document.getElementById("tt-mnav");
+    if (btn && sheet) {
+      var setOpen = function (open) {
+        btn.setAttribute("aria-expanded", String(open));
+        btn.textContent = open ? "Close" : "Menu";
+        sheet.classList.toggle("open", open);
+        html.classList.toggle("tt-lock", open);
+        if (open) { var first = sheet.querySelector("a"); if (first) first.focus(); }
+      };
+      btn.addEventListener("click", function () { setOpen(btn.getAttribute("aria-expanded") !== "true"); });
+      sheet.addEventListener("click", function (e) { if (e.target.closest("a")) setOpen(false); });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape" && sheet.classList.contains("open")) { setOpen(false); btn.focus(); } });
+      window.matchMedia("(min-width: 861px)").addEventListener("change", function (mq) { if (mq.matches) setOpen(false); });
+    }
+
+    /* From the tee to the tap: vertical scroll drives a horizontal dolly on desktop;
+       on mobile the track is a native swipe. */
+    var walk = document.getElementById("walk"), track = document.getElementById("tt-track");
+    if (walk && track) {
+      var desk = window.matchMedia("(min-width: 861px)");
+      var prog = document.getElementById("tt-prog"), stops = document.querySelectorAll("#tt-stops li");
+      var mark = function (k) {
+        prog.style.width = (k * 100) + "%";
+        var idx = Math.min(stops.length - 1, Math.round(k * (stops.length - 1)));
+        stops.forEach(function (s, i) { s.classList.toggle("on", i === idx); });
+      };
+      var onScroll = function () {
+        if (!desk.matches || reduce) return;
+        var travel = track.scrollWidth - window.innerWidth, span = walk.offsetHeight - window.innerHeight;
+        if (travel <= 0 || span <= 0) return;
+        var k = Math.min(1, Math.max(0, -walk.getBoundingClientRect().top / span));
+        track.style.transform = "translate3d(" + (-k * travel) + "px,0,0)";
+        mark(k);
+      };
+      var size = function () {
+        if (!desk.matches || reduce) { walk.style.height = ""; track.style.transform = ""; return; }
+        walk.style.height = (window.innerHeight + Math.max(0, track.scrollWidth - window.innerWidth)) + "px";
+        onScroll();
+      };
+      track.addEventListener("scroll", function () {
+        if (desk.matches) return;
+        mark(track.scrollLeft / Math.max(1, track.scrollWidth - track.clientWidth));
+      }, { passive: true });
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", size);
+      window.addEventListener("load", size);
+      size();
+    }
+
+    /* Plan your bay: players + hours -> bays needed and cost per person.
+       $60 per bay per hour + HST, up to 4 players per bay, 4 bays. */
+    var con = document.getElementById("tt-console");
+    if (con) {
+      var RATE = 60, players = 6, hours = 2;
+      var out = document.getElementById("tt-pl"), bays = con.querySelectorAll(".bayc"), segs = con.querySelectorAll(".seg button");
+      var plural = function (n, one, many) { return n + " " + (n === 1 ? one : many); };
+      var calc = function () {
+        var nb = Math.min(4, Math.ceil(players / 4)), total = nb * hours * RATE, left = players;
+        out.textContent = players;
+        bays.forEach(function (b, i) {
+          var on = i < nb, n = on ? Math.min(4, Math.ceil(left / (nb - i))) : 0;
+          left -= n;
+          b.classList.toggle("on", on);
+          b.querySelector(".who").innerHTML = new Array(n + 1).join("<i></i>");
+        });
+        document.getElementById("tt-nb").textContent = plural(nb, "bay", "bays");
+        document.getElementById("tt-pp").firstChild.nodeValue = "$" + Math.round(total / players);
+        document.getElementById("tt-fine").textContent = plural(nb, "bay", "bays") + " × " + plural(hours, "hr", "hrs") + " × $60 = $" + total + " + HST. Subject to availability.";
+        document.getElementById("tt-ev").classList.toggle("show", players >= 12);
+      };
+      con.querySelectorAll(".stepper button").forEach(function (b) {
+        b.addEventListener("click", function () { players = Math.max(1, Math.min(16, players + Number(b.dataset.d))); calc(); });
+      });
+      segs.forEach(function (b) {
+        b.addEventListener("click", function () {
+          hours = Number(b.dataset.h);
+          segs.forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+          calc();
+        });
+      });
+      calc();
+    }
+  });
+})();
+</script>
