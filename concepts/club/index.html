@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Bogey Club | Golf Simulator Sports Bar in Newmarket (concept preview)</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* =====================================================================
+   THE BOGEY CLUB — "TEE TO TAP"  (homepage concept, v4)
+   Idea: the page is one walk through the club, from the tee box to the
+   tap. Its visual language comes from two real things in the venue:
+   the Golfzon shot-data screen (precise mono readouts, aim lines) and
+   the clubhouse (walnut, deep course green, warm white, a pin-flag red).
+   ===================================================================== */
+#tt {
+  --black: #0C0D0C; --char: #151715; --green: #0F2A1F; --course: #1E4532;
+  --warm: #F3EEE5; --paper: #E8E0D1; --walnut: #4A2F1F; --oak: #A8764F;
+  --red: #B23A2E; --red-d: #8F2C23; --brass: #C2A065; --mute: #8D8A82;
+  --sans: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  --g: clamp(20px, 4.4vw, 72px);
+  font-family: var(--sans); font-size: 17px; line-height: 1.55; color: var(--warm); background: var(--black);
+  -webkit-font-smoothing: antialiased; overflow-x: clip;
+}
+#tt *, #tt *::before, #tt *::after { box-sizing: border-box; margin: 0; padding: 0; }
+#tt a { color: inherit; text-decoration: none; }
+#tt img { display: block; max-width: 100%; height: auto; }
+#tt button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+#tt :focus-visible { outline: 2px solid var(--brass); outline-offset: 4px; }
+#tt .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* type system: Archivo expanded for headlines (club-sole engraving),
+   Archivo normal for reading, Plex Mono for shot-data readouts */
+#tt .h-xl, #tt .h-l, #tt .h-m { font-family: var(--sans); font-stretch: 125%; font-weight: 700; text-transform: uppercase; letter-spacing: -.01em; }
+#tt .h-xl { font-size: clamp(38px, 5.6vw, 92px); line-height: .95; }
+#tt .h-l  { font-size: clamp(32px, 4.2vw, 68px); line-height: .98; }
+#tt .h-m  { font-size: clamp(22px, 2.1vw, 32px); line-height: 1.05; }
+#tt .lede { font-size: clamp(17px, 1.35vw, 20px); line-height: 1.55; color: rgba(243,238,229,.82); max-width: 44ch; }
+#tt .data { font-family: var(--mono); font-weight: 500; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+#tt .data i { font-style: normal; color: var(--brass); }
+
+/* buttons: squared, technical, no glow */
+#tt .btn {
+  display: inline-flex; align-items: center; justify-content: space-between; gap: 28px; min-height: 56px; padding: 0 22px;
+  font-family: var(--sans); font-stretch: 112%; font-weight: 700; font-size: 15px; letter-spacing: .04em; text-transform: uppercase; border-radius: 3px;
+  transition: background .2s, color .2s, border-color .2s;
+}
+#tt .btn::after { content: ''; width: 18px; height: 10px; background: currentColor; clip-path: polygon(0 42%, 78% 42%, 78% 0, 100% 50%, 78% 100%, 78% 58%, 0 58%); transition: transform .25s; }
+#tt .btn:hover::after { transform: translateX(4px); }
+#tt .btn-red { background: var(--red); color: #fff; }
+#tt .btn-red:hover { background: var(--red-d); }
+#tt .btn-line { border: 1.5px solid rgba(243,238,229,.55); }
+#tt .btn-line:hover { border-color: var(--warm); background: rgba(243,238,229,.08); }
+#tt .btn-dark { background: var(--char); color: var(--warm); }
+#tt .btn-dark:hover { background: var(--green); }
+#tt .link { font-weight: 600; border-bottom: 1.5px solid currentColor; padding-bottom: 2px; }
+
+/* concept-render labels (preview only) */
+#tt .ref { position: absolute; z-index: 4; font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: rgba(243,238,229,.75); background: rgba(12,13,12,.65); padding: 5px 8px; border-radius: 2px; }
+#tt .ref.real { color: #fff; background: var(--red); }
+
+/* ================= HEADER ================= */
+#tt .hdr { position: absolute; z-index: 30; inset: 0 0 auto 0; display: flex; align-items: center; justify-content: space-between; padding: 22px var(--g); }
+#tt .logo { width: 92px; }
+#tt .nav { display: flex; gap: 30px; font-size: 14px; font-weight: 600; letter-spacing: .02em; }
+#tt .nav a { opacity: .85; } #tt .nav a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 6px; }
+#tt .hdr .btn { min-height: 46px; font-size: 13px; gap: 18px; }
+#tt .menu { display: none; font-family: var(--mono); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; padding: 14px 4px; }
+
+/* ================= 1. HERO: AT ADDRESS ================= */
+#tt .hero { position: relative; height: 100vh; height: 100svh; min-height: 680px; overflow: hidden; isolation: isolate; }
+#tt .hero picture, #tt .hero > picture img { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -2; }
+#tt .hero picture img { object-fit: cover; object-position: 50% 50%; animation: push 18s ease-out forwards; }
+@keyframes push { from { transform: scale(1.08); } to { transform: scale(1); } }
+#tt .hero::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(12,13,12,.55) 0%, rgba(12,13,12,0) 22%, rgba(12,13,12,0) 48%, rgba(12,13,12,.9) 100%); }
+#tt .hero .ref { top: 92px; right: var(--g); }
+/* the aim line: from the ball on the mat to the flag on the screen */
+#tt .aim { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+#tt .aim path { stroke: rgba(243,238,229,.85); stroke-width: 1.5; stroke-dasharray: 3 7; fill: none; }
+#tt .aim .draw { stroke-dasharray: 1; stroke-dashoffset: 1; animation: aim 1.8s .8s cubic-bezier(.3,.1,.2,1) forwards; stroke-width: 2.5; stroke: var(--warm); }
+@keyframes aim { to { stroke-dashoffset: 0; } }
+#tt .aim text { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; fill: var(--warm); opacity: 0; animation: fadein .6s 2.4s forwards; }
+@keyframes fadein { to { opacity: 1; } }
+#tt .hero-copy { position: absolute; left: var(--g); right: var(--g); bottom: 92px; display: grid; grid-template-columns: 1.3fr .7fr; gap: 40px; align-items: end; }
+#tt .hero h1 { max-width: 14ch; }
+#tt .hero h1 small { display: block; font-family: var(--mono); font-stretch: 100%; font-weight: 500; font-size: 13px; letter-spacing: .12em; color: var(--brass); margin-bottom: 18px; }
+#tt .hero .lede { margin-top: 18px; }
+#tt .hero-actions { display: grid; gap: 10px; justify-items: stretch; }
+#tt .hero-actions .btn { width: 100%; }
+#tt .hero-actions .also { display: flex; justify-content: space-between; font-size: 15px; padding-top: 6px; }
+/* HUD rail */
+#tt .rail { position: absolute; left: 0; right: 0; bottom: 0; height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 0 var(--g); border-top: 1px solid rgba(243,238,229,.18); background: rgba(12,13,12,.55); backdrop-filter: blur(6px); color: rgba(243,238,229,.82); }
+#tt .rail span { white-space: nowrap; }
+
+/* ================= 2. WALK THE CLUB (tee to tap) ================= */
+#tt .walk { position: relative; background: var(--black); }
+#tt .walk-pin { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; display: grid; grid-template-rows: auto 1fr auto; padding: 84px 0 30px; }
+#tt .walk-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; padding: 0 var(--g) 26px; }
+#tt .walk-head .data { color: var(--mute); }
+#tt .track { display: flex; gap: 20px; padding: 0 var(--g); will-change: transform; }
+#tt .stop { position: relative; flex: none; width: min(72vw, 1080px); height: 100%; border-radius: 4px; overflow: hidden; isolation: isolate; }
+#tt .stop img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform 1.2s; }
+#tt .stop::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(12,13,12,.82) 0%, rgba(12,13,12,.25) 55%, rgba(12,13,12,0) 100%); }
+#tt .stop .ref { top: 16px; right: 16px; }
+#tt .stop-body { position: absolute; left: 40px; bottom: 40px; max-width: 470px; }
+#tt .stop-no { display: flex; gap: 14px; align-items: center; margin-bottom: 16px; color: var(--brass); }
+#tt .stop-no::after { content: ''; width: 60px; height: 1px; background: currentColor; }
+#tt .stop p { margin: 14px 0 24px; color: rgba(243,238,229,.85); }
+#tt .stop .acts { display: flex; gap: 10px; flex-wrap: wrap; }
+#tt .stop .btn { min-height: 50px; font-size: 13px; }
+#tt .walk-foot { display: flex; align-items: center; gap: 22px; padding: 22px var(--g) 0; }
+#tt .walk-foot .bar { flex: 1; height: 2px; background: rgba(243,238,229,.15); position: relative; }
+#tt .walk-foot .bar i { position: absolute; inset: 0 auto 0 0; width: 0; background: var(--warm); }
+#tt .walk-foot ol { display: flex; gap: 22px; list-style: none; }
+#tt .walk-foot li { color: var(--mute); transition: color .3s; } #tt .walk-foot li.on { color: var(--warm); }
+
+/* ================= 3. TWO FULL BARS ================= */
+#tt .bars { background: var(--walnut); position: relative; display: grid; grid-template-columns: 1fr 1fr; min-height: 820px; }
+#tt .bars::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, rgba(0,0,0,.07) 0 2px, transparent 2px 46px); pointer-events: none; }
+#tt .bars-copy { position: relative; padding: 120px var(--g); display: flex; flex-direction: column; justify-content: center; }
+#tt .bars-copy .data { color: var(--brass); margin-bottom: 22px; }
+#tt .bars .lede { margin: 26px 0 40px; color: rgba(243,238,229,.86); }
+#tt .readout { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(243,238,229,.25); border-bottom: 1px solid rgba(243,238,229,.25); margin-bottom: 30px; }
+#tt .readout div { padding: 18px 0 16px; }
+#tt .readout div + div { padding-left: 20px; border-left: 1px solid rgba(243,238,229,.25); }
+#tt .readout b { display: block; font-stretch: 125%; font-weight: 700; font-size: 40px; line-height: 1; margin-top: 8px; }
+#tt .readout .data { color: rgba(243,238,229,.65); margin: 0; }
+#tt .note { font-size: 13px; color: rgba(243,238,229,.6); max-width: 52ch; }
+#tt .bars-photo { position: relative; overflow: hidden; }
+#tt .bars-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 78% 50%; }
+#tt .bars-photo .ref { left: 16px; bottom: 16px; }
+#tt .bars-photo .pin { position: absolute; left: 12%; top: 18%; display: flex; align-items: center; gap: 12px; }
+#tt .bars-photo .pin::before { content: ''; width: 12px; height: 12px; border-radius: 50%; background: var(--warm); box-shadow: 0 0 0 6px rgba(243,238,229,.25); }
+#tt .bars-photo .pin span { background: var(--warm); color: var(--black); padding: 6px 10px; }
+
+/* ================= 4. PLAN YOUR BAY ================= */
+#tt .plan { background: var(--warm); color: var(--char); padding: 130px var(--g); display: grid; grid-template-columns: .9fr 1.1fr; gap: 70px; align-items: center; }
+#tt .plan .data { color: var(--red); margin-bottom: 20px; }
+#tt .plan .lede { color: #4A4A45; margin-top: 22px; }
+#tt .console { background: var(--char); color: var(--warm); border-radius: 6px; padding: 34px; display: grid; gap: 30px; }
+#tt .ctrl { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 16px; padding-bottom: 26px; border-bottom: 1px solid rgba(243,238,229,.14); }
+#tt .ctrl .data { color: var(--mute); }
+#tt .ctrl label { font-weight: 600; font-size: 18px; display: block; margin-top: 4px; }
+#tt .stepper { display: flex; align-items: center; border: 1.5px solid rgba(243,238,229,.3); border-radius: 3px; }
+#tt .stepper button { width: 56px; height: 56px; font-size: 24px; }
+#tt .stepper button:hover { background: rgba(243,238,229,.08); }
+#tt .stepper output { min-width: 70px; text-align: center; font-stretch: 125%; font-weight: 700; font-size: 30px; }
+#tt .seg { display: flex; border: 1.5px solid rgba(243,238,229,.3); border-radius: 3px; overflow: hidden; }
+#tt .seg button { min-width: 64px; height: 56px; font-weight: 700; font-stretch: 112%; }
+#tt .seg button[aria-pressed="true"] { background: var(--warm); color: var(--char); }
+#tt .bays { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+#tt .bayc { aspect-ratio: 16 / 10; border-radius: 3px; border: 1.5px solid rgba(243,238,229,.18); position: relative; overflow: hidden; background: #1C1F1C; transition: border-color .4s; }
+#tt .bayc img { width: 100%; height: 100%; object-fit: cover; opacity: .0; filter: grayscale(1); transition: opacity .5s, filter .5s; }
+#tt .bayc.on { border-color: var(--warm); }
+#tt .bayc.on img { opacity: 1; filter: none; }
+#tt .bayc span { position: absolute; left: 8px; bottom: 6px; font-family: var(--mono); font-size: 10px; letter-spacing: .1em; color: var(--warm); }
+#tt .bayc .who { position: absolute; right: 8px; top: 6px; display: flex; gap: 3px; }
+#tt .bayc .who i { width: 7px; height: 7px; border-radius: 50%; background: var(--warm); }
+#tt .total { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: end; }
+#tt .total b { display: block; font-stretch: 125%; font-weight: 700; font-size: 46px; line-height: 1; margin-top: 6px; }
+#tt .total .data { color: var(--mute); }
+#tt .total .fine { grid-column: 1 / -1; font-size: 13px; color: var(--mute); }
+#tt .console .btn { width: 100%; }
+#tt .console .ev { display: none; font-size: 15px; background: rgba(194,160,101,.14); border-left: 2px solid var(--brass); padding: 12px 14px; }
+#tt .console .ev.show { display: block; }
+#tt .console .ev a { font-weight: 700; text-decoration: underline; }
+
+/* ================= 5. PRIVATE EVENTS ================= */
+#tt .events { background: var(--green); display: grid; grid-template-columns: 1.15fr .85fr; min-height: 860px; }
+#tt .events-photo { position: relative; overflow: hidden; }
+#tt .events-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+#tt .events-photo .ref { left: 16px; top: 16px; }
+#tt .events-photo .stamp { position: absolute; right: 28px; bottom: 28px; background: var(--warm); color: var(--char); padding: 18px 20px; max-width: 280px; }
+#tt .events-photo .stamp b { display: block; font-stretch: 125%; font-weight: 700; font-size: 22px; text-transform: uppercase; line-height: 1; margin: 6px 0 6px; }
+#tt .events-photo .stamp .data { color: var(--red); }
+#tt .events-copy { padding: 110px var(--g) 100px; display: flex; flex-direction: column; justify-content: center; }
+#tt .events-copy > .data { color: var(--brass); margin-bottom: 22px; }
+#tt .events .lede { margin: 24px 0 34px; }
+#tt .occ { list-style: none; border-top: 1px solid rgba(243,238,229,.2); margin-bottom: 36px; }
+#tt .occ li { display: flex; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid rgba(243,238,229,.2); font-size: 17px; }
+#tt .occ li .data { color: rgba(243,238,229,.55); }
+#tt .events .acts { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* ================= 6. CLUB LIFE ================= */
+#tt .life { background: var(--paper); color: var(--char); padding: 110px var(--g); }
+#tt .life-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 50px; }
+#tt .life-head .data { color: var(--red); margin-bottom: 14px; }
+#tt .rows { border-top: 2px solid var(--char); }
+#tt .row { display: grid; grid-template-columns: 90px 1.1fr 1.4fr auto; align-items: center; gap: 30px; padding: 26px 0; border-bottom: 1px solid rgba(21,23,21,.2); transition: background .2s, padding .3s; }
+#tt .row:hover { background: rgba(21,23,21,.04); padding-left: 12px; }
+#tt .row .data { color: #6B675F; }
+#tt .row h3 { font-stretch: 125%; font-weight: 700; font-size: 24px; text-transform: uppercase; line-height: 1.05; }
+#tt .row p { color: #4A4A45; font-size: 16px; }
+#tt .row .go { font-weight: 700; font-stretch: 112%; text-transform: uppercase; font-size: 13px; letter-spacing: .04em; white-space: nowrap; }
+#tt .row .go::after { content: ' →'; }
+
+/* ================= 7. VISIT + FOOTER ================= */
+#tt .visit { background: var(--char); padding: 110px var(--g) 60px; display: grid; grid-template-columns: 1.1fr .9fr; gap: 60px; }
+#tt .visit .data { color: var(--brass); margin-bottom: 18px; }
+#tt .visit address { font-style: normal; font-stretch: 125%; font-weight: 700; text-transform: uppercase; font-size: clamp(24px, 2.4vw, 38px); line-height: 1.08; }
+#tt .visit .acts { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 34px; }
+#tt .hours { border-top: 1px solid rgba(243,238,229,.2); }
+#tt .hours div { display: flex; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid rgba(243,238,229,.2); }
+#tt .hours span:first-child { color: var(--mute); }
+#tt footer { background: var(--black); padding: 60px var(--g) 40px; display: grid; grid-template-columns: 1.2fr repeat(3, .7fr) 1.3fr; gap: 40px; font-size: 15px; color: rgba(243,238,229,.72); }
+#tt footer img { width: 104px; margin-bottom: 16px; }
+#tt footer h4 { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--brass); margin-bottom: 14px; }
+#tt footer ul { list-style: none; display: grid; gap: 9px; }
+#tt footer a:hover { color: var(--warm); }
+#tt .news { display: flex; border-bottom: 1.5px solid rgba(243,238,229,.4); margin-top: 14px; }
+#tt .news span { flex: 1; padding: 14px 0; color: rgba(243,238,229,.45); }
+#tt .news b { padding: 14px 0; font-stretch: 112%; text-transform: uppercase; font-size: 13px; color: var(--warm); }
+#tt .legal { grid-column: 1 / -1; display: flex; justify-content: space-between; padding-top: 24px; border-top: 1px solid rgba(243,238,229,.12); font-size: 13px; color: rgba(243,238,229,.45); }
+
+/* mobile action dock */
+#tt .dock { display: none; }
+
+/* ================= MOBILE: designed for the thumb ================= */
+@media (max-width: 860px) {
+  #tt { font-size: 16px; }
+  #tt .nav, #tt .hdr .btn { display: none; }
+  #tt .menu { display: block; }
+  #tt .hdr { padding: 14px 18px; }
+  #tt .logo { width: 70px; }
+  #tt .hero { min-height: 0; height: 100svh; }
+  #tt .hero picture img { object-position: 50% 40%; }
+  #tt .hero::after { background: linear-gradient(180deg, rgba(12,13,12,.6) 0%, rgba(12,13,12,0) 18%, rgba(12,13,12,0) 38%, rgba(12,13,12,.95) 74%); }
+  #tt .hero .ref { top: 74px; right: 18px; }
+  #tt .hero-copy { grid-template-columns: 1fr; left: 18px; right: 18px; bottom: 112px; gap: 22px; }
+  #tt .hero h1 small { font-size: 11px; margin-bottom: 12px; }
+  #tt .hero .lede { font-size: 16px; margin-top: 12px; }
+  #tt .hero-actions { display: none; }
+  #tt .rail { display: none; }
+  #tt .aim { display: none; }
+  #tt .ref { font-size: 8.5px; padding: 4px 6px; max-width: 62vw; }
+  #tt .dock {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 6px; position: fixed; z-index: 40; left: 10px; right: 10px; bottom: calc(10px + env(safe-area-inset-bottom));
+    padding: 6px; background: rgba(21,23,21,.94); border: 1px solid rgba(243,238,229,.14); border-radius: 6px; backdrop-filter: blur(10px);
+  }
+  #tt .dock a { min-height: 54px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 3px; font-stretch: 112%; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: .03em; }
+  #tt .dock a small { font-family: var(--mono); font-weight: 400; font-size: 9px; letter-spacing: .1em; opacity: .7; margin-top: 2px; text-transform: uppercase; }
+  #tt .dock a:first-child { background: var(--red); color: #fff; font-size: 15px; }
+  #tt .dock a + a { border: 1px solid rgba(243,238,229,.2); }
+
+  /* walk: native horizontal swipe instead of the pinned dolly */
+  #tt .walk-pin { position: static; height: auto; padding: 80px 0 40px; }
+  #tt .walk-head { padding: 0 18px 22px; flex-direction: column; align-items: start; gap: 10px; }
+  #tt .track { overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 18px; gap: 10px; transform: none !important; scrollbar-width: none; }
+  #tt .track::-webkit-scrollbar { display: none; }
+  #tt .stop { width: 84vw; height: 560px; scroll-snap-align: center; }
+  #tt .stop::after { background: linear-gradient(180deg, rgba(12,13,12,0) 30%, rgba(12,13,12,.92) 82%); }
+  #tt .stop-body { left: 20px; right: 20px; bottom: 22px; }
+  #tt .stop p { font-size: 15px; margin: 10px 0 18px; }
+  #tt .stop .acts .btn { flex: 1; }
+  #tt .walk-foot { padding: 18px 18px 0; }
+  #tt .walk-foot ol { gap: 12px; }
+
+  #tt .bars { grid-template-columns: 1fr; min-height: 0; }
+  #tt .bars-photo { height: 440px; order: -1; }
+  #tt .bars-copy { padding: 54px 18px 64px; }
+  #tt .readout b { font-size: 26px; white-space: nowrap; }
+  #tt .occ li .data { display: none; }
+  #tt .readout div + div { padding-left: 12px; }
+
+  #tt .plan { grid-template-columns: 1fr; padding: 80px 18px; gap: 34px; }
+  #tt .console { padding: 22px 18px; gap: 22px; margin: 0 -6px; }
+  #tt .ctrl { padding-bottom: 20px; }
+  #tt .stepper button { width: 52px; height: 52px; }
+  #tt .stepper output { min-width: 54px; font-size: 26px; }
+  #tt .seg button { min-width: 50px; height: 52px; }
+  #tt .total b { font-size: 34px; }
+
+  #tt .events { grid-template-columns: 1fr; min-height: 0; }
+  #tt .events-photo { height: 420px; }
+  #tt .events-photo .stamp { right: 14px; bottom: 14px; left: 14px; max-width: none; padding: 14px 16px; }
+  #tt .events-copy { padding: 54px 18px 70px; }
+  #tt .events .acts .btn { flex: 1 1 100%; }
+
+  #tt .life { padding: 80px 18px; }
+  #tt .life-head { flex-direction: column; align-items: start; }
+  #tt .row { grid-template-columns: 1fr auto; gap: 6px 16px; padding: 20px 0; }
+  #tt .row .data { grid-column: 1 / -1; }
+  #tt .row p { grid-column: 1 / -1; grid-row: 3; font-size: 15px; }
+  #tt .row .go { grid-column: 2; grid-row: 2; }
+
+  #tt .visit { grid-template-columns: 1fr; padding: 80px 18px 50px; gap: 40px; }
+  #tt .visit .acts .btn { flex: 1 1 100%; }
+  #tt footer { grid-template-columns: 1fr 1fr; padding: 50px 18px 120px; }
+  #tt footer > div:first-child, #tt footer > div:last-of-type { grid-column: 1 / -1; }
+  #tt .legal { flex-direction: column; gap: 6px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #tt *, #tt *::before, #tt *::after { animation: none !important; transition: none !important; }
+  #tt .aim .draw { stroke-dashoffset: 0; } #tt .aim text { opacity: 1; }
+}
+</style>
+</head>
+<body style="margin:0;background:#0C0D0C">
+<div id="tt">
+
+<header class="hdr">
+  <a href="#" aria-label="The Bogey Club home"><img class="logo" src="assets/bogey-club-logo-white.png" width="760" height="608" alt="The Bogey Club — Golf Simulator Lounge &amp; Bar"></a>
+  <nav class="nav" aria-label="Main">
+    <a href="#walk">Golf</a><a href="#">Karaoke</a><a href="#events">Private events</a><a href="#life">Leagues</a><a href="#life">Lessons</a><a href="#">Shop</a><a href="#visit">Contact</a>
+  </nav>
+  <a class="btn btn-red" href="#">Book a bay</a>
+  <button class="menu" type="button">Menu</button>
+</header>
+
+<!-- 1. HERO: you are standing at the ball -->
+<section class="hero" aria-labelledby="h1">
+  <picture>
+    <source media="(max-width: 860px)" srcset="assets/render-bay-tall.jpg">
+    <img src="assets/render-bay.jpg" alt="A Golfzon simulator bay at The Bogey Club, ball teed up on the mat facing the course on screen">
+  </picture>
+  <span class="ref">Concept render · to be replaced by Bogey Club bay photo</span>
+  <svg class="aim" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path class="draw" pathLength="1" d="M960 996 C 985 820, 1030 560, 1043 474"/>
+    <text x="1062" y="446">TARGET · 412 YD</text>
+  </svg>
+  <div class="hero-copy">
+    <div>
+      <h1 id="h1" class="h-xl"><small>Golf simulator sports bar · Newmarket, ON</small>Four bays. Two bars. One great night.</h1>
+      <p class="lede">Premium Golfzon simulators, cold draft beer, karaoke and a private event space, all under one roof.</p>
+    </div>
+    <div class="hero-actions">
+      <a class="btn btn-red" href="#">Book a simulator</a>
+      <a class="btn btn-line" href="#events">Plan a private event</a>
+      <div class="also"><a class="link" href="#">Karaoke</a><a class="link" href="#walk">Explore the club</a></div>
+    </div>
+  </div>
+  <div class="rail data" aria-hidden="true">
+    <span>Bay 01 <i>/</i> TwoVision NX</span><span>Bays 03–04 <i>/</i> Vision Plus</span><span>Taps <i>/</i> Pouring</span><span>17705 Leslie St <i>/</i> Newmarket</span>
+  </div>
+</section>
+
+<!-- 2. WALK THE CLUB: tee to tap, one continuous move -->
+<section class="walk" id="walk" aria-labelledby="walk-h">
+  <div class="walk-pin">
+    <div class="walk-head">
+      <h2 id="walk-h" class="h-l">From the tee<br>to the tap.</h2>
+      <p class="data">Four stops <i>/</i> one building <i>/</i> <span class="hint">scroll</span></p>
+    </div>
+    <div class="track" id="track">
+      <article class="stop">
+        <img src="assets/render-course.jpg" alt="Golfzon course on a simulator screen" loading="lazy">
+        <span class="ref">Concept render · Golfzon screen</span>
+        <div class="stop-body"><p class="stop-no data">01 <i>/</i> The bays</p><h3 class="h-m">Four Golfzon simulators</h3><p>Two TwoVision NX, two Vision Plus. Famous courses, real ball data, up to four players a bay. Rain or shine, all year.</p><div class="acts"><a class="btn btn-red" href="#">Book a simulator</a><a class="btn btn-line" href="#">The simulators</a></div></div>
+      </article>
+      <article class="stop">
+        <img src="assets/render-pour.jpg" alt="Draft beer poured at the bar" loading="lazy">
+        <span class="ref">Concept render · bar</span>
+        <div class="stop-body"><p class="stop-no data">02 <i>/</i> The bars</p><h3 class="h-m">Two full bars</h3><p>Cold draft on tap, a proper back bar and seats with a view of the bays. The 19th hole, twice.</p><div class="acts"><a class="btn btn-line" href="#bars">See the bars</a></div></div>
+      </article>
+      <article class="stop">
+        <img src="assets/karaoke-real-duet.jpg" alt="Guests singing a duet on The Bogey Club karaoke stage" loading="lazy">
+        <span class="ref real">Real still · Bogey Club karaoke video</span>
+        <div class="stop-body"><p class="stop-no data">03 <i>/</i> The stage</p><h3 class="h-m">Karaoke</h3><p>When the round is over and someone says "one song." It is never one song.</p><div class="acts"><a class="btn btn-red" href="#">Book karaoke</a><a class="btn btn-line" href="#">Karaoke page</a></div></div>
+      </article>
+      <article class="stop">
+        <img src="assets/render-upstairs.jpg" alt="The upstairs private event space" loading="lazy">
+        <span class="ref">Concept render · event space</span>
+        <div class="stop-body"><p class="stop-no data">04 <i>/</i> The upstairs</p><h3 class="h-m">Private event space</h3><p>A dedicated room with its own full bar, for birthdays, work parties and everything worth celebrating.</p><div class="acts"><a class="btn btn-red" href="#events">Plan an event</a></div></div>
+      </article>
+    </div>
+    <div class="walk-foot">
+      <ol class="data" id="stops"><li class="on">01 Bays</li><li>02 Bars</li><li>03 Stage</li><li>04 Upstairs</li></ol>
+      <div class="bar"><i id="prog"></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. TWO FULL BARS -->
+<section class="bars" id="bars" aria-labelledby="bars-h">
+  <div class="bars-copy">
+    <p class="data">The 19th hole <i>/</i> × 2</p>
+    <h2 id="bars-h" class="h-xl">The best rounds don't end at 18.</h2>
+    <p class="lede">Two full bars, cold beer on tap and room for the whole group. Grab a pint before you tee off, between rounds, or long after the last putt drops. Golf not required.</p>
+    <div class="readout">
+      <div><p class="data">Full bars</p><b>2</b></div>
+      <div><p class="data">Draft</p><b>On tap</b></div>
+      <div><p class="data">Golfzon bays</p><b>4</b></div>
+    </div>
+    <p class="note">Bays can be booked online during golf hours. Drinks are served by our staff during staffed bar hours. 19+ with valid ID.</p>
+  </div>
+  <div class="bars-photo">
+    <picture><source media="(max-width: 860px)" srcset="assets/render-pour-tall.jpg"><img src="assets/render-pour.jpg" alt="Cold draft beer on the walnut bar top, tap handles behind" loading="lazy"></picture>
+    <span class="pin data"><span>Bar 01 · Main floor</span></span>
+    <span class="ref">Concept render · to be replaced by bar photo</span>
+  </div>
+</section>
+
+<!-- 4. PLAN YOUR BAY (practical interaction) -->
+<section class="plan" aria-labelledby="plan-h">
+  <div>
+    <p class="data">Plan your bay</p>
+    <h2 id="plan-h" class="h-l">How many are coming?</h2>
+    <p class="lede">Up to four golfers share a bay and you pay per bay, not per person. Tell us your group and we'll show you what to book.</p>
+  </div>
+  <div class="console" id="console">
+    <div class="ctrl">
+      <div><span class="data">Players</span><label for="pl">Your group</label></div>
+      <div class="stepper"><button type="button" data-d="-1" aria-label="Fewer players">−</button><output id="pl" aria-live="polite">6</output><button type="button" data-d="1" aria-label="More players">+</button></div>
+    </div>
+    <div class="ctrl">
+      <div><span class="data">Time</span><label>Hours on the sim</label></div>
+      <div class="seg" role="group" aria-label="Hours"><button type="button" aria-pressed="false" data-h="1">1</button><button type="button" aria-pressed="true" data-h="2">2</button><button type="button" aria-pressed="false" data-h="3">3</button></div>
+    </div>
+    <div class="bays" aria-hidden="true">
+      <div class="bayc"><img src="assets/render-course.jpg" alt=""><span>Bay 01</span><span class="who"></span></div>
+      <div class="bayc"><img src="assets/render-course.jpg" alt=""><span>Bay 02</span><span class="who"></span></div>
+      <div class="bayc"><img src="assets/render-course.jpg" alt=""><span>Bay 03</span><span class="who"></span></div>
+      <div class="bayc"><img src="assets/render-course.jpg" alt=""><span>Bay 04</span><span class="who"></span></div>
+    </div>
+    <div class="total" aria-live="polite">
+      <div><span class="data">You'll need</span><b id="nb">2 bays</b></div>
+      <div><span class="data">Works out to</span><b id="pp">$40<small style="font-size:16px;font-stretch:100%"> /person</small></b></div>
+      <p class="fine" id="fine">2 bays × 2 hrs × $60 = $240 + HST. Subject to availability.</p>
+    </div>
+    <p class="ev" id="ev">That's a party. With a group this size, our <a href="#events">private event space</a> might be the better call.</p>
+    <a class="btn btn-red" href="#" id="book">Check availability</a>
+  </div>
+</section>
+
+<!-- 5. PRIVATE EVENTS -->
+<section class="events" id="events" aria-labelledby="ev-h">
+  <div class="events-photo">
+    <picture><source media="(max-width: 860px)" srcset="assets/render-upstairs-tall.jpg"><img src="assets/render-upstairs.jpg" alt="The upstairs event space with its own bar" loading="lazy"></picture>
+    <span class="ref">Concept render · to be replaced by event-space photo</span>
+    <div class="stamp"><span class="data">Private event</span><b>The upstairs is yours</b><span style="font-size:14px">Own bar · golf &amp; karaoke in the building</span></div>
+  </div>
+  <div class="events-copy">
+    <p class="data">Private events <i>/</i> Newmarket</p>
+    <h2 id="ev-h" class="h-l">Book the room. We'll run the night.</h2>
+    <p class="lede">A dedicated event space with its own full bar, four Golfzon simulators downstairs and karaoke on site. Our team helps you plan it and runs it on the night.</p>
+    <ul class="occ">
+      <li>Birthday parties <span class="data">Any age worth toasting</span></li>
+      <li>Corporate &amp; holiday parties <span class="data">Teams of all sizes</span></li>
+      <li>Team building <span class="data">Golf, no experience needed</span></li>
+      <li>Bachelor parties &amp; celebrations <span class="data">Your crew, your night</span></li>
+    </ul>
+    <div class="acts"><a class="btn btn-red" href="#">Start an event inquiry</a><a class="btn btn-line" href="#">See the event space</a></div>
+  </div>
+</section>
+
+<!-- 6. CLUB LIFE -->
+<section class="life" id="life" aria-labelledby="life-h">
+  <div class="life-head">
+    <div><p class="data">Club life</p><h2 id="life-h" class="h-l">There's always a next round.</h2></div>
+    <a class="link" href="#">Leagues &amp; events calendar</a>
+  </div>
+  <div class="rows">
+    <a class="row" href="#"><span class="data">League</span><h3>The Bogey Cup</h3><p>Four rounds over four weeks. Stableford, weekly skins and closest-to-the-pin prizes.</p><span class="go">Join</span></a>
+    <a class="row" href="#"><span class="data">Weekly</span><h3>Men's Night &amp; leagues</h3><p>A standing tee time, the same crew and a cold one after.</p><span class="go">Schedule</span></a>
+    <a class="row" href="#"><span class="data">Coaching</span><h3>Private lessons</h3><p>One-on-one with our pro, with every swing measured.</p><span class="go">Meet the pro</span></a>
+    <a class="row" href="#"><span class="data">Annual</span><h3>The Bogey Club Classic</h3><p>Our outdoor tournament. The 2026 edition is in the books.</p><span class="go">Details</span></a>
+    <a class="row" href="#"><span class="data">Shop</span><h3>Club apparel</h3><p>Hats, polos, crewnecks and towels from the club shop.</p><span class="go">Shop</span></a>
+  </div>
+</section>
+
+<!-- 7. VISIT -->
+<section class="visit" id="visit" aria-labelledby="visit-h">
+  <div>
+    <p class="data">Visit <i>/</i> Newmarket, Ontario</p>
+    <h2 id="visit-h" class="sr">Visit The Bogey Club</h2>
+    <address>17705 Leslie Street, Unit 5<br>Newmarket, ON L3Y 3E3</address>
+    <div class="acts"><a class="btn btn-red" href="#">Get directions</a><a class="btn btn-line" href="tel:+19052354653">(905) 235-4653</a></div>
+  </div>
+  <div class="hours">
+    <div><span>Golf bookings</span><span>Daily · 9 AM – 12 AM</span></div>
+    <div><span>Bar (staffed)</span><span>See posted hours</span></div>
+    <div><span>Email</span><span>golf@thebogeyclub.com</span></div>
+    <div><span>Nearby</span><span>Aurora · East Gwillimbury</span></div>
+  </div>
+</section>
+
+<footer>
+  <div><img src="assets/bogey-club-logo-white.png" width="760" height="608" alt="The Bogey Club"><p>Newmarket's golf simulator sports bar.</p></div>
+  <div><h4>Play</h4><ul><li><a href="#">Book golf</a></li><li><a href="#">Our simulators</a></li><li><a href="#">Karaoke</a></li><li><a href="#">Private lessons</a></li></ul></div>
+  <div><h4>Events</h4><ul><li><a href="#">Private events</a></li><li><a href="#">Leagues &amp; events</a></li><li><a href="#">Bogey Club Classic</a></li></ul></div>
+  <div><h4>Club</h4><ul><li><a href="#">About</a></li><li><a href="#">Shop</a></li><li><a href="#">FAQs &amp; contact</a></li></ul></div>
+  <div><h4>Newsletter</h4><p>Leagues, tournaments and club news.</p><div class="news"><span>Existing signup form</span><b>Join</b></div></div>
+  <div class="legal"><span>© 2026 The Bogey Club · 17705 Leslie St, Unit 5, Newmarket</span><span>Privacy policy · Instagram</span></div>
+</footer>
+
+<nav class="dock" aria-label="Quick actions">
+  <a href="#">Book a bay<small>Golf</small></a>
+  <a href="#">Karaoke<small>Book</small></a>
+  <a href="#events">Events<small>Inquire</small></a>
+</nav>
+</div>
+
+<script>
+(function () {
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var desk = matchMedia('(min-width: 861px)');
+
+  /* Walk the club: vertical scroll drives a horizontal dolly (desktop only) */
+  var walk = document.getElementById('walk'), pin = walk.querySelector('.walk-pin'), track = document.getElementById('track');
+  var prog = document.getElementById('prog'), stops = document.querySelectorAll('#stops li');
+  function sizeWalk() {
+    if (!desk.matches || reduce) { walk.style.height = ''; track.style.transform = ''; return; }
+    var travel = track.scrollWidth - innerWidth;
+    walk.style.height = (innerHeight + travel) + 'px';
+    onScroll();
+  }
+  function onScroll() {
+    if (!desk.matches || reduce) return;
+    var r = walk.getBoundingClientRect(), travel = track.scrollWidth - innerWidth;
+    var k = Math.min(1, Math.max(0, -r.top / (walk.offsetHeight - innerHeight)));
+    track.style.transform = 'translate3d(' + (-k * travel) + 'px,0,0)';
+    prog.style.width = (k * 100) + '%';
+    var idx = Math.min(stops.length - 1, Math.round(k * (stops.length - 1)));
+    stops.forEach(function (s, i) { s.classList.toggle('on', i === idx); });
+  }
+  track.addEventListener('scroll', function () {
+    if (desk.matches) return;
+    var k = track.scrollLeft / (track.scrollWidth - track.clientWidth || 1);
+    prog.style.width = (k * 100) + '%';
+    var idx = Math.round(k * (stops.length - 1));
+    stops.forEach(function (s, i) { s.classList.toggle('on', i === idx); });
+  }, { passive: true });
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', sizeWalk);
+  addEventListener('load', sizeWalk); sizeWalk();
+
+  /* Plan your bay */
+  var players = 6, hours = 2, RATE = 60;
+  var out = document.getElementById('pl'), bays = document.querySelectorAll('.bayc');
+  function calc() {
+    var nb = Math.min(4, Math.ceil(players / 4)), total = nb * hours * RATE;
+    out.textContent = players;
+    var left = players;
+    bays.forEach(function (b, i) {
+      var on = i < nb, n = on ? Math.min(4, Math.ceil(left / (nb - i))) : 0; left -= n;
+      b.classList.toggle('on', on);
+      b.querySelector('.who').innerHTML = new Array(n + 1).join('<i></i>');
+    });
+    document.getElementById('nb').textContent = nb + (nb === 1 ? ' bay' : ' bays');
+    document.getElementById('pp').firstChild.nodeValue = '$' + Math.round(total / players);
+    document.getElementById('fine').textContent = nb + (nb === 1 ? ' bay' : ' bays') + ' × ' + hours + (hours === 1 ? ' hr' : ' hrs') + ' × $60 = $' + total + ' + HST. Subject to availability.';
+    document.getElementById('ev').classList.toggle('show', players >= 12);
+  }
+  document.querySelectorAll('.stepper button').forEach(function (b) {
+    b.addEventListener('click', function () { players = Math.max(1, Math.min(16, players + +b.dataset.d)); calc(); });
+  });
+  document.querySelectorAll('.seg button').forEach(function (b) {
+    b.addEventListener('click', function () { hours = +b.dataset.h; document.querySelectorAll('.seg button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); }); calc(); });
+  });
+  window.ttSet = function (p, h) { players = p; hours = h || hours; document.querySelectorAll('.seg button').forEach(function (x) { x.setAttribute('aria-pressed', String(+x.dataset.h === hours)); }); calc(); };
+  calc();
+})();
+</script>
+</body>
+</html>
