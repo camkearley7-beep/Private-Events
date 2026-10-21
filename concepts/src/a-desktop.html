@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Direction A — Open Membership — desktop</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&display=swap">
+<style>
+  :root {
+    --linen: #F3EFE7; --chalk: #FBF9F5; --charcoal: #22231F; --pine: #33493C;
+    --stone: #B9B2A5; --mute: #6E6A62; --flag: #C4462B; --rule: rgba(34,35,31,.14);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { width: 1440px; background: var(--linen); color: var(--charcoal); font-family: "Instrument Sans", sans-serif; font-size: 18px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+
+  .ph { position: relative; background: #CFC6B6; display: flex; flex-direction: column; justify-content: flex-end; padding: 22px; color: #5A5347; overflow: hidden; }
+  .ph span { font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+  .ph small { display: block; font-size: 13px; line-height: 1.45; max-width: 34ch; margin-top: 6px; }
+  .ph::before { content: ""; position: absolute; inset: 14px; border: 1px solid rgba(90,83,71,.25); }
+
+  .logo { justify-self: start; display: inline-flex; align-items: center; height: 30px; padding: 0 10px; border: 1px dashed var(--stone); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--mute); }
+
+  header { height: 76px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 0 48px; }
+  nav { display: flex; gap: 34px; font-size: 15px; font-weight: 500; }
+  nav a:first-child { color: var(--charcoal); }
+  .head-right { justify-self: end; display: flex; align-items: center; gap: 28px; font-size: 15px; font-weight: 500; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; height: 48px; padding: 0 24px; border-radius: 999px; font-size: 15px; font-weight: 600; letter-spacing: -.005em; }
+  .btn--flag { background: var(--flag); color: #FFF8F2; }
+  .btn--line { box-shadow: inset 0 0 0 1px var(--charcoal); }
+  .btn--sm { height: 40px; padding: 0 18px; font-size: 14px; }
+
+  .hero { display: grid; grid-template-columns: 660px 1fr; height: 824px; }
+  .hero__copy { padding: 132px 48px 48px; display: flex; flex-direction: column; }
+  .eyebrow { font-size: 14px; font-weight: 500; color: var(--mute); margin-bottom: 28px; }
+  h1 { font-weight: 500; font-size: 84px; line-height: .98; letter-spacing: -.045em; font-stretch: 92%; }
+  .lede { margin-top: 28px; font-size: 20px; line-height: 1.5; max-width: 30ch; color: #3A3B36; }
+  .actions { margin-top: 40px; display: flex; align-items: center; gap: 26px; }
+  .textlink { font-size: 15px; font-weight: 600; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+  .hero__foot { margin-top: auto; display: flex; gap: 28px; white-space: nowrap; font-size: 14px; color: var(--mute); padding-top: 24px; border-top: 1px solid var(--rule); }
+  .hero .ph { margin: 0; }
+
+  /* Experiences: the index */
+  .index { display: grid; grid-template-columns: 1fr 640px; gap: 64px; padding: 140px 48px 140px; }
+  .index__label { font-size: 14px; color: var(--mute); margin-bottom: 40px; }
+  .index ol { list-style: none; border-top: 1px solid var(--rule); }
+  .index li a { display: grid; grid-template-columns: 56px 1fr auto; align-items: baseline; padding: 30px 0 32px; border-bottom: 1px solid var(--rule); color: var(--stone); transition: color .2s; }
+  .index li a .n { font-size: 14px; font-weight: 500; }
+  .index li a .t { font-size: 80px; font-weight: 500; letter-spacing: -.045em; line-height: 1; font-stretch: 92%; }
+  .index li a .d { font-size: 15px; max-width: 24ch; text-align: right; color: var(--mute); opacity: 0; }
+  .index li.is-on a { color: var(--charcoal); }
+  .index li.is-on a .d { opacity: 1; }
+  .index li.is-on a .t::after { content: " →"; font-weight: 400; color: var(--flag); }
+  .index .ph { height: 760px; }
+  .note { position: absolute; top: 18px; right: 18px; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; background: var(--chalk); padding: 6px 10px; color: var(--mute); }
+</style>
+</head>
+<body>
+  <header>
+    <span class="logo">Real logo · font_logo.png</span>
+    <nav aria-label="Main">
+      <a href="#">Golf</a><a href="#">Karaoke</a><a href="#">Private events</a><a href="#">Leagues</a><a href="#">Lessons</a><a href="#">Shop</a>
+    </nav>
+    <div class="head-right"><a href="#">Contact</a><a class="btn btn--flag btn--sm" href="#">Book a bay</a></div>
+  </header>
+
+  <section class="hero">
+    <div class="hero__copy">
+      <p class="eyebrow">Indoor golf &amp; bar · Newmarket, Ontario</p>
+      <h1>The clubhouse,<br>minus the rules.</h1>
+      <p class="lede">Four Golfzon simulators, two full bars, karaoke and private events. No membership, no dress code, no handicap required.</p>
+      <div class="actions">
+        <a class="btn btn--flag" href="#">Book a bay</a>
+        <a class="textlink" href="#">Karaoke &amp; events</a>
+      </div>
+      <div class="hero__foot"><span>17705 Leslie St, Newmarket</span><span>From $60 / bay / hour</span><span>(905) 235-4653</span></div>
+    </div>
+    <div class="ph"><span>Photo needed · Hero</span><small>The main bar at golden hour: a friend mid-laugh at the rail, the simulator bays softly lit behind. Eye level, 35mm, f/2, warm practical light, no flash.</small></div>
+  </section>
+
+  <section class="index">
+    <div>
+      <p class="index__label">What's on</p>
+      <ol>
+        <li class="is-on"><a href="#"><span class="n">01</span><span class="t">Golf</span><span class="d">Four Golfzon bays, all year. Book by the hour.</span></a></li>
+        <li><a href="#"><span class="n">02</span><span class="t">Karaoke</span><span class="d">Your song, your crew, the bar a few steps away.</span></a></li>
+        <li><a href="#"><span class="n">03</span><span class="t">Private events</span><span class="d">Take over the upstairs.</span></a></li>
+      </ol>
+    </div>
+    <div class="ph"><span class="note">Image follows the highlighted line</span><span>Photo needed · Golf</span><small>A TwoVision NX bay mid-swing, shot from behind the golfer toward the screen. Clean, symmetrical, quiet.</small></div>
+  </section>
+</body>
+</html>

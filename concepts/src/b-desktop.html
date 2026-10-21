@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Direction B — After Hours — desktop</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300..600&display=swap">
+<style>
+  :root { --ink: #121411; --smoke: #1C1F1B; --bone: #ECE6DA; --ash: #8D8A83; --amber: #E3A857; --pine: #1E2B24; --rule: rgba(236,230,218,.16); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { width: 1440px; background: var(--ink); color: var(--bone); font-family: "Inter Tight", sans-serif; font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  .ph { position: absolute; inset: 0; background: #262420; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #6F6A61; text-align: center; }
+  .ph span { font-size: 11px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; }
+  .ph small { font-size: 13px; max-width: 46ch; margin-top: 8px; line-height: 1.45; }
+  .hero { position: relative; height: 900px; overflow: hidden; }
+  .hero::after { content: ""; position: absolute; inset: auto 0 0 0; height: 55%; background: linear-gradient(transparent, rgba(18,20,17,.92)); }
+  header { position: absolute; z-index: 2; top: 0; left: 0; right: 0; height: 84px; display: flex; align-items: center; justify-content: space-between; padding: 0 56px; }
+  .logo { height: 40px; padding: 0 12px; border: 1px dashed #5B5850; display: grid; place-items: center; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ash); }
+  nav { display: flex; gap: 36px; align-items: center; font-size: 15px; font-weight: 400; color: #CFC9BD; }
+  .btn { display: inline-flex; align-items: center; height: 46px; padding: 0 22px; border-radius: 2px; font-size: 15px; font-weight: 500; }
+  .btn--amber { background: var(--amber); color: var(--ink); }
+  .btn--line { box-shadow: inset 0 0 0 1px rgba(236,230,218,.5); }
+  .copy { position: absolute; z-index: 2; left: 56px; right: 56px; bottom: 64px; display: grid; grid-template-columns: 1fr 320px; align-items: end; gap: 40px; }
+  .kicker { font-size: 14px; color: var(--amber); margin-bottom: 22px; letter-spacing: .02em; }
+  h1 { font-weight: 300; font-size: 136px; line-height: .92; letter-spacing: -.055em; }
+  .lede { margin-top: 26px; font-size: 19px; color: #CFC9BD; max-width: 44ch; font-weight: 300; }
+  .actions { margin-top: 32px; display: flex; gap: 12px; }
+  .tonight { border-top: 1px solid var(--rule); font-size: 14px; }
+  .tonight div { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--rule); color: var(--ash); }
+  .tonight b { font-weight: 400; color: var(--bone); }
+  .tonight p { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--ash); padding-bottom: 12px; }
+
+  .strip { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 2px; height: 760px; margin-top: 2px; }
+  .frame { position: relative; overflow: hidden; }
+  .frame .ph { background: #1E1D1A; }
+  .frame .lab { position: absolute; z-index: 2; left: 32px; right: 32px; bottom: 30px; display: flex; justify-content: space-between; align-items: end; }
+  .frame .lab b { display: block; font-size: 44px; font-weight: 300; letter-spacing: -.04em; line-height: 1; }
+  .frame .lab small { display: block; margin-top: 8px; color: var(--ash); font-size: 15px; }
+  .frame .lab i { font-style: normal; color: var(--amber); font-size: 15px; }
+</style>
+</head>
+<body>
+  <section class="hero">
+    <div class="ph"><span>Photo needed · Hero (night)</span><small>A low, wide shot across the bar after dark: draft taps catching tungsten light in the foreground, a lit simulator screen glowing deep in the room. Slow shutter, real ambient light only.</small></div>
+    <header>
+      <span class="logo">Real logo · white</span>
+      <nav><a>Golf</a><a>Karaoke</a><a>Private events</a><a>Menu ≡</a><a class="btn btn--amber">Book a bay</a></nav>
+    </header>
+    <div class="copy">
+      <div>
+        <p class="kicker">Indoor golf, bar &amp; karaoke · Newmarket</p>
+        <h1>Golf until<br>last call.</h1>
+        <p class="lede">Four Golfzon simulators, two full bars, karaoke after dark and a private room upstairs.</p>
+        <div class="actions"><a class="btn btn--amber">Book a bay</a><a class="btn btn--line">Book karaoke</a></div>
+      </div>
+      <div class="tonight">
+        <p>At the club</p>
+        <div><span>Golfzon simulators</span><b>4</b></div>
+        <div><span>Full bars</span><b>2</b></div>
+        <div><span>Draft beer</span><b>On tap</b></div>
+        <div><span>Private events</span><b>Upstairs →</b></div>
+      </div>
+    </div>
+  </section>
+  <section class="strip">
+    <a class="frame"><div class="ph"><span>Photo · Golf</span></div><div class="lab"><div><b>Golf</b><small>Four bays. Book by the hour.</small></div><i>Book →</i></div></a>
+    <a class="frame"><div class="ph"><span>Photo · Karaoke</span></div><div class="lab"><div><b>Karaoke</b><small>The bar's loudest corner.</small></div><i>Book →</i></div></a>
+    <a class="frame"><div class="ph"><span>Photo · Events</span></div><div class="lab"><div><b>Events</b><small>The whole upstairs.</small></div><i>Inquire →</i></div></a>
+  </section>
+</body>
+</html>

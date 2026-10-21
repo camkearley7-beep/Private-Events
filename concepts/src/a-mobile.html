@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=390">
+<title>Direction A — Open Membership — mobile</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&display=swap">
+<style>
+  :root {
+    --linen: #F3EFE7; --chalk: #FBF9F5; --charcoal: #22231F; --pine: #33493C;
+    --stone: #B9B2A5; --mute: #6E6A62; --flag: #C4462B; --rule: rgba(34,35,31,.14);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { width: 390px; background: var(--linen); color: var(--charcoal); font-family: "Instrument Sans", sans-serif; font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  .ph { position: relative; background: #CFC6B6; display: flex; flex-direction: column; justify-content: flex-end; padding: 18px; color: #5A5347; }
+  .ph span { font-size: 10px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+  .ph small { display: block; font-size: 12px; line-height: 1.4; margin-top: 4px; max-width: 32ch; }
+  .ph::before { content: ""; position: absolute; inset: 10px; border: 1px solid rgba(90,83,71,.25); }
+  .ph--dark { background: #283A30; color: #A9B5AC; }
+  .ph--dark::before { border-color: rgba(169,181,172,.25); }
+
+  header { height: 60px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
+  .mark { width: 38px; height: 38px; border: 1px dashed var(--stone); display: grid; place-items: center; font-size: 8px; letter-spacing: .1em; text-transform: uppercase; color: var(--mute); text-align: center; line-height: 1.1; }
+  .menu { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; height: 44px; }
+  .menu i { display: grid; gap: 5px; } .menu i::before, .menu i::after { content: ""; width: 20px; height: 1.5px; background: currentColor; }
+
+  .wrap { padding: 0 20px; }
+  .btn { display: flex; align-items: center; justify-content: center; height: 54px; border-radius: 999px; font-size: 16px; font-weight: 600; }
+  .btn--flag { background: var(--flag); color: #FFF8F2; }
+  .btn--chalk { background: var(--chalk); color: var(--charcoal); }
+  .label { font-size: 13px; font-weight: 500; color: var(--mute); }
+
+  .hero .ph { height: 380px; }
+  .hero__copy { padding: 28px 20px 0; }
+  h1 { font-weight: 500; font-size: 46px; line-height: 1; letter-spacing: -.045em; font-stretch: 92%; margin-top: 12px; }
+  .lede { margin-top: 16px; font-size: 17px; color: #3A3B36; }
+  .hero .btn { margin-top: 26px; }
+  .sub { display: flex; justify-content: center; gap: 28px; margin-top: 16px; font-size: 15px; font-weight: 600; }
+  .sub a { border-bottom: 1px solid currentColor; padding-bottom: 1px; }
+
+  section { padding-top: 88px; }
+  h2 { font-weight: 500; font-size: 36px; line-height: 1.02; letter-spacing: -.04em; font-stretch: 92%; }
+
+  .exp { margin-top: 26px; display: grid; gap: 40px; }
+  .exp .ph { height: 260px; }
+  .exp__t { display: flex; justify-content: space-between; align-items: baseline; padding: 16px 20px 0; }
+  .exp__t b { font-weight: 500; font-size: 30px; letter-spacing: -.035em; }
+  .exp__t em { font-style: normal; color: var(--flag); font-size: 22px; }
+  .exp p { padding: 4px 20px 0; font-size: 15px; color: var(--mute); }
+
+  .venue__pics { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 26px; padding: 0 20px; }
+  .venue__pics .ph { height: 240px; }
+  .venue__pics figcaption { font-size: 13px; color: var(--mute); margin-top: 8px; }
+  .facts { margin: 22px 20px 0; padding-top: 16px; border-top: 1px solid var(--rule); display: grid; gap: 6px; font-size: 15px; }
+  .facts div { display: flex; justify-content: space-between; } .facts span { color: var(--mute); }
+
+  .events { margin-top: 96px; background: var(--pine); color: var(--chalk); padding: 0 0 48px; }
+  .events .ph { height: 360px; }
+  .events .label { color: #A9B5AC; display: block; margin: 28px 0 10px; }
+  .events p.copy { margin-top: 14px; font-size: 16px; color: #D7DDD6; }
+  .events .btn { margin-top: 26px; }
+  .events .sub { color: var(--chalk); }
+
+  .ledger { margin-top: 22px; border-top: 1px solid var(--charcoal); }
+  .ledger a, .ledger div { display: grid; grid-template-columns: 96px 1fr; gap: 12px; padding: 16px 0; border-bottom: 1px solid var(--rule); font-size: 15px; }
+  .ledger dt { color: var(--mute); }
+  .ledger dd b { font-weight: 600; display: block; }
+  .ledger dd u { text-decoration: none; color: var(--flag); font-weight: 600; }
+  .review { margin-top: 28px; padding: 22px; background: var(--chalk); border: 1px dashed var(--stone); }
+  .review p { font-size: 19px; line-height: 1.35; letter-spacing: -.01em; color: var(--mute); }
+  .review small { display: block; margin-top: 10px; font-size: 13px; color: var(--mute); }
+
+  footer { margin-top: 96px; background: var(--charcoal); color: #CFCAC0; padding: 44px 20px 130px; font-size: 15px; }
+  .wordmark { height: 64px; width: 190px; border: 1px dashed #5F5D57; display: grid; place-items: center; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: #8C877D; }
+  .news { margin-top: 30px; }
+  .news p { color: var(--chalk); font-size: 19px; letter-spacing: -.01em; }
+  .field { margin-top: 14px; display: flex; border-bottom: 1px solid #77736B; height: 50px; align-items: center; justify-content: space-between; color: #8C877D; }
+  .field b { color: var(--chalk); font-weight: 600; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-top: 40px; }
+  .cols h3 { font-size: 12px; font-weight: 500; color: #8C877D; margin-bottom: 8px; }
+  .cols a { display: block; padding: 6px 0; color: var(--chalk); }
+  .legal { margin-top: 36px; font-size: 12px; color: #8C877D; display: flex; justify-content: space-between; }
+
+  .dock { position: fixed; left: 12px; right: 12px; bottom: 14px; height: 60px; background: var(--charcoal); border-radius: 999px; display: grid; grid-template-columns: 1fr 1fr; padding: 6px; gap: 6px; box-shadow: 0 10px 30px rgba(34,35,31,.25); }
+  .dock a { border-radius: 999px; display: grid; place-items: center; font-size: 15px; font-weight: 600; color: var(--chalk); }
+  .dock a:first-child { background: var(--flag); }
+</style>
+</head>
+<body>
+  <header><span class="mark">B<br>mark</span><a class="menu" href="#">Menu <i></i></a></header>
+
+  <div class="hero">
+    <div class="ph"><span>Photo needed · Hero</span><small>The main bar at golden hour, bays glowing behind.</small></div>
+    <div class="hero__copy">
+      <p class="label">Indoor golf &amp; bar · Newmarket</p>
+      <h1>The clubhouse, minus the rules.</h1>
+      <p class="lede">Four Golfzon simulators, two full bars, karaoke and private events. No membership required.</p>
+      <a class="btn btn--flag" href="#">Book a bay</a>
+      <div class="sub"><a href="#">Book karaoke</a><a href="#">Plan an event</a></div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap"><p class="label">What's on</p></div>
+    <div class="exp">
+      <a href="#"><div class="ph"><span>Photo · Golf</span></div><div class="exp__t"><b>Golf</b><em>→</em></div><p>Four Golfzon bays, all year. From $60 an hour.</p></a>
+      <a href="#"><div class="ph"><span>Photo · Karaoke</span></div><div class="exp__t"><b>Karaoke</b><em>→</em></div><p>Your song, your crew, the bar a few steps away.</p></a>
+      <a href="#"><div class="ph"><span>Photo · Event space</span></div><div class="exp__t"><b>Private events</b><em>→</em></div><p>Birthdays, work parties, anything worth a toast.</p></a>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap"><p class="label">The venue</p><h2 style="margin-top:10px">Four bays.<br>Two bars.<br>Stay a while.</h2></div>
+    <div class="venue__pics">
+      <figure><div class="ph"><span>Bar one</span></div><figcaption>The clubhouse bar</figcaption></figure>
+      <figure><div class="ph"><span>Bar two</span></div><figcaption>Upstairs, in the event space</figcaption></figure>
+    </div>
+    <div class="facts">
+      <div><span>Golfzon simulators</span>4</div>
+      <div><span>Full bars</span>2</div>
+      <div><span>Draft beer</span>On tap</div>
+    </div>
+  </section>
+
+  <div class="events">
+    <div class="ph ph--dark"><span>Photo needed · Event space</span><small>The upstairs room set for a party, its bar lit, a long table mid-celebration.</small></div>
+    <div class="wrap">
+      <span class="label">Private events</span>
+      <h2>Take over the upstairs.</h2>
+      <p class="copy">A dedicated event space with its own full bar, four simulators downstairs and karaoke on call. Birthdays, corporate events, holiday parties.</p>
+      <a class="btn btn--chalk" href="#">Start an event inquiry</a>
+      <div class="sub"><a href="#">See the event space</a></div>
+    </div>
+  </div>
+
+  <section><div class="wrap">
+    <p class="label">Good to know</p>
+    <dl class="ledger">
+      <div><dt>Golf</dt><dd><b>$60 per bay, per hour + HST</b>Up to 4 players. <u>Book a bay</u></dd></div>
+      <div><dt>Karaoke</dt><dd><b>Booked separately</b><u>Book karaoke</u></dd></div>
+      <div><dt>Hours</dt><dd><b>Open daily</b>Bar hours posted separately</dd></div>
+      <div><dt>Find us</dt><dd><b>17705 Leslie St, Unit 5</b>Newmarket · <u>Directions</u></dd></div>
+      <div><dt>Call</dt><dd><b>(905) 235-4653</b></dd></div>
+    </dl>
+    <div class="review"><p>Verified Google review goes here: one real quote, not a carousel.</p><small>Reviewer name · Google</small></div>
+  </div></section>
+
+  <footer>
+    <div class="wordmark">Logo · white version</div>
+    <div class="news"><p>Leagues, tournaments and club news, straight to your inbox.</p><div class="field">Email address <b>Join</b></div></div>
+    <div class="cols">
+      <div><h3>Play</h3><a>Book golf</a><a>Our simulators</a><a>Karaoke</a><a>Lessons</a></div>
+      <div><h3>Club</h3><a>Private events</a><a>Leagues &amp; events</a><a>Shop</a><a>About</a><a>FAQs &amp; contact</a></div>
+    </div>
+    <div class="legal"><span>© The Bogey Club</span><span>Privacy · Instagram</span></div>
+  </footer>
+
+  <nav class="dock" aria-label="Quick booking"><a href="#">Book golf</a><a href="#">Karaoke</a></nav>
+</body>
+</html>
