@@ -94,5 +94,58 @@ body {{ margin: 0; background: #FFFFFF; }}
 </html>
 '''
 (ROOT / 'preview.html').write_text(page)
+
+# Complete single-file pages ---------------------------------------------
+def full_page(img, fonts, extra_css='', robots='index, follow'):
+    p = lambda s: s.replace('{{IMG}}', img).replace('{{FONTS}}', fonts)
+    return f'''<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Bogey Club | Golf Simulator Sports Bar in Newmarket</title>
+<meta name="description" content="Four Golfzon simulators, two full bars, cold beer on tap, karaoke and private event space in Newmarket, Ontario. Book a bay or plan your party.">
+<link rel="canonical" href="https://thebogeyclub.com/">
+<meta name="robots" content="{robots}">
+<meta name="theme-color" content="#FFFFFF">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Bogey Club | Golf Simulator Sports Bar in Newmarket">
+<meta property="og:description" content="Four Golfzon simulators, two full bars, cold beer on tap, karaoke and private events in Newmarket, Ontario.">
+<meta property="og:url" content="https://thebogeyclub.com/">
+<meta property="og:image" content="{IMG_LIVE}/golf-simulator-bay-the-bogey-club-newmarket.jpg">
+{p(head)}<style>
+html {{ scroll-behavior: smooth; }}
+body {{ margin: 0; background: #FFFFFF; }}
+@media (prefers-reduced-motion: reduce) {{ html {{ scroll-behavior: auto; }} }}
+{css}
+{extra_css}
+</style>
+{schema_tag}</head>
+<body>
+{p(header)}
+<main>
+{p(home)}
+</main>
+{p(footer).replace('<!--BCH:NEWSLETTER-->', '<!-- Existing newsletter signup form goes here -->')}
+<script>
+{js}</script>
+</body>
+</html>
+'''
+
+# 1) live-ready: assets load from the WordPress uploads folders
+(dist / 'bogey-club-homepage.html').write_text(full_page(IMG_LIVE, FONTS_LIVE))
+
+# 2) self-contained: fonts and images embedded as data URIs (opens anywhere)
+import base64, mimetypes
+def embed(html):
+    def rep(m):
+        path = ROOT / m.group(1)
+        mt = mimetypes.guess_type(path.name)[0] or ('font/woff2' if path.suffix == '.woff2' else 'application/octet-stream')
+        return 'data:' + mt + ';base64,' + base64.b64encode(path.read_bytes()).decode()
+    return re.sub(r'((?:preview-assets|fonts)/[\w.-]+\.(?:jpg|png|woff2))', rep, html)
+sc = full_page('preview-assets', 'fonts', label_css, robots='noindex')
+sc = re.sub(r'<link rel="preload"[^>]*>\n', '', sc)
+(dist / 'bogey-club-homepage-standalone.html').write_text(embed(sc))
 print('built dist/ (' + str(len(files)) + ' files + uploads/) and preview.html; fonts:', sorted(have))
 PY

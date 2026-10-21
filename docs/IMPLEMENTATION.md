@@ -7,6 +7,8 @@ This is the production build of the approved design for WordPress and Elementor.
 | `site/dist/` | Paste-ready files, numbered in install order |
 | `site/dist/uploads/` | Files to upload to WordPress |
 | `site/preview.html` | The whole site in one file. Open it in a browser. |
+| `site/dist/bogey-club-homepage.html` | **The complete finished page in one HTML file**: head/SEO, fonts, CSS, header, homepage, footer, structured data and script. Assets load from the WordPress uploads folders in §1. |
+| `site/dist/bogey-club-homepage-standalone.html` | The same page with fonts and images embedded, so it opens anywhere (review only, `noindex`) |
 | `site/src/` | Sources. Edit these, then run `site/build.sh`. |
 | `site/tools/` | Automated tests, screenshot tool, link checker |
 | `concepts/club/` | The approved design file and the concept renders |
