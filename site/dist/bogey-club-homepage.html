@@ -84,7 +84,7 @@ body { margin: 0; background: #FFFFFF; }
 .tt .ref.real { background: var(--green); }
 
 /* ================= HEADER ================= */
-.tt .hdr { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 0 var(--g); background: rgba(255,255,255,.96); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.tt .hdr { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 0 var(--g); background: var(--white); border-bottom: 1px solid var(--line); }
 .tt .logo { width: 76px; }
 .tt .nav { display: flex; gap: 32px; font-size: 15px; font-weight: 500; }
 .tt .nav a { color: var(--pine); position: relative; padding: 6px 0; }
@@ -183,14 +183,35 @@ body { margin: 0; background: #FFFFFF; }
 .tt .life { background: var(--mist); padding: 110px var(--g); }
 .tt .life-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 46px; }
 .tt .life-head .data { margin-bottom: 14px; }
+.tt .life-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: start; }
 .tt .rows { border-top: 2px solid var(--pine); }
-.tt .row { display: grid; grid-template-columns: 110px 1.1fr 1.4fr auto; align-items: center; gap: 30px; padding: 26px 0; border-bottom: 1px solid var(--line); transition: background .2s, padding .3s; }
-.tt .row:hover { background: var(--white); padding-left: 14px; }
-.tt .row .data { color: rgba(35,62,49,.75); }
+.tt .row { position: relative; isolation: isolate; display: grid; grid-template-columns: 44px 1fr auto; align-items: center; gap: 24px; padding: 26px 22px; border-bottom: 1px solid var(--line); transition: color .35s ease; }
+.tt .row::before { content: ''; position: absolute; inset: 0; z-index: -1; background: var(--green); transform: scaleX(0); transform-origin: left; transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+.tt .row.on::before { transform: scaleX(1); }
+.tt .row .thumb { display: none; }
+.tt .row .num { font-weight: 700; font-size: 14px; color: var(--green); transition: color .35s; }
+.tt .row .rt { display: grid; gap: 4px; transition: transform .45s cubic-bezier(.2,.8,.2,1); }
+.tt .row .data { color: rgba(35,62,49,.75); transition: color .35s; }
 .tt .row h3 { font-weight: 600; font-size: 24px; line-height: 1.15; letter-spacing: -.015em; }
-.tt .row p { color: var(--soft); font-size: 16px; }
-.tt .row .go { font-weight: 600; font-size: 15px; color: var(--green); white-space: nowrap; }
-.tt .row .go::after { content: ' →'; }
+.tt .row p { color: var(--soft); font-size: 16px; transition: color .35s; max-width: 46ch; }
+.tt .row .go { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; color: var(--green); white-space: nowrap; transition: color .35s; }
+.tt .row .go::after { content: '→'; display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid currentColor; transition: transform .45s cubic-bezier(.2,.8,.2,1), background .35s, color .35s; }
+.tt .row.on { color: var(--white); }
+.tt .row.on .num, .tt .row.on .data { color: var(--sand); }
+.tt .row.on p { color: rgba(255,255,255,.85); }
+.tt .row.on .go { color: var(--white); }
+.tt .row.on .go::after { background: var(--white); color: var(--green); border-color: var(--white); transform: translateX(6px) rotate(-45deg); }
+.tt .row.on .rt { transform: translateX(6px); }
+.tt .life-media { position: sticky; top: 110px; aspect-ratio: 4 / 5; border-radius: 14px; overflow: hidden; background: var(--pine); }
+.tt .life-media figure { position: absolute; inset: 0; margin: 0; clip-path: inset(100% 0 0 0); transition: clip-path .8s cubic-bezier(.7,0,.2,1); }
+.tt .life-media figure.was { clip-path: inset(0); z-index: 1; }
+.tt .life-media figure.on { clip-path: inset(0); z-index: 2; }
+.tt .life-media img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.12); transition: transform 1.4s cubic-bezier(.2,.8,.2,1); }
+.tt .life-media figure.on img { transform: scale(1); }
+.tt .life-media figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 60px 24px 22px; background: linear-gradient(180deg, rgba(35,62,49,0), rgba(35,62,49,.88)); color: var(--white); font-weight: 600; font-size: 22px; letter-spacing: -.01em; display: grid; gap: 4px; }
+.tt .life-media figcaption .data { color: var(--sand); }
+.tt .life-count { position: absolute; z-index: 3; top: 16px; right: 16px; background: rgba(255,255,255,.92); color: var(--pine); font-size: 13px; font-weight: 500; padding: 6px 10px; border-radius: 999px; font-variant-numeric: tabular-nums; }
+.tt .life-count b { font-weight: 700; }
 
 /* ================= 7. VISIT + FOOTER ================= */
 .tt .visit { background: var(--white); padding: 110px var(--g) 90px; display: grid; grid-template-columns: 1.1fr .9fr; gap: 60px; }
@@ -275,11 +296,21 @@ body { margin: 0; background: #FFFFFF; }
 
   .tt .life { padding: 72px 18px; }
   .tt .life-head { flex-direction: column; align-items: start; }
-  .tt .row { grid-template-columns: 1fr auto; gap: 6px 16px; padding: 20px 0; }
-  .tt .row .data { grid-column: 1 / -1; }
-  .tt .row p { grid-column: 1 / -1; grid-row: 3; font-size: 15px; }
-  .tt .row .go { grid-column: 2; grid-row: 2; }
-  .tt .row h3 { font-size: 21px; }
+  .tt .life-grid { display: block; }
+  .tt .life-media { display: none; }
+  .tt .row { grid-template-columns: 92px 1fr; gap: 4px 16px; padding: 16px 0; align-items: start; }
+  .tt .row::before, .tt .row .num { display: none; }
+  .tt .row.on { color: inherit; }
+  .tt .row.on .data { color: rgba(35,62,49,.75); } .tt .row.on p { color: var(--soft); } .tt .row.on .go { color: var(--green); }
+  .tt .row.on .rt { transform: none; }
+  .tt .row .thumb { display: block; grid-row: 1 / span 2; width: 92px; height: 92px; border-radius: 10px; overflow: hidden; background: var(--pine); }
+  .tt .row .thumb img { width: 100%; height: 100%; object-fit: cover; transition: clip-path .8s cubic-bezier(.7,0,.2,1) var(--d, 0ms), transform 1.2s cubic-bezier(.2,.8,.2,1) var(--d, 0ms); }
+  .tt .rows.anim .row:not(.in) .thumb img { clip-path: inset(0 100% 0 0); transform: scale(1.15); }
+  .tt .row h3 { font-size: 19px; }
+  .tt .row p { font-size: 14px; }
+  .tt .row .go { grid-column: 2; font-size: 14px; }
+  .tt .row .go::after { width: 28px; height: 28px; }
+  .tt .row.on .go::after { background: none; color: var(--green); border-color: currentColor; transform: none; }
 
   .tt .visit { grid-template-columns: 1fr; padding: 72px 18px 50px; gap: 36px; }
   .tt .visit .acts .btn { flex: 1 1 100%; }
@@ -672,12 +703,47 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
     <div><p class="data">Club life</p><h2 id="tt-life-h" class="h-l">There's always a next round.</h2></div>
     <a class="link" href="https://thebogeyclub.com/leagues-and-events/">Leagues &amp; events calendar</a>
   </div>
-  <div class="rows">
-    <a class="row" href="https://thebogeyclub.com/leagues-and-events/"><span class="data">League</span><h3>The Bogey Cup</h3><p>Four rounds over four weeks. Stableford, weekly skins and closest-to-the-pin prizes.</p><span class="go">Join</span></a>
-    <a class="row" href="https://thebogeyclub.com/leagues-and-events/"><span class="data">Weekly</span><h3>Men's Night &amp; leagues</h3><p>A standing tee time, the same crew and a cold one after.</p><span class="go">Schedule</span></a>
-    <a class="row" href="https://thebogeyclub.com/meet-our-pro/"><span class="data">Coaching</span><h3>Private lessons</h3><p>One-on-one with our pro, with every swing measured.</p><span class="go">Meet the pro</span></a>
-    <a class="row" href="https://thebogeyclub.com/the-bogey-club-classic-2026/"><span class="data">Annual</span><h3>The Bogey Club Classic</h3><p>Our outdoor tournament. The 2026 edition is in the books.</p><span class="go">Details</span></a>
-    <a class="row" href="https://shop.thebogeyclub.com/"><span class="data">Shop</span><h3>Club apparel</h3><p>Hats, polos, crewnecks and towels from the club shop.</p><span class="go">Shop</span></a>
+  <div class="life-grid">
+  <div class="rows" id="tt-rows">
+    <a class="row on" href="https://thebogeyclub.com/leagues-and-events/" data-i="0" style="--d:0ms">
+      <span class="thumb"><img src="https://thebogeyclub.com/wp-content/uploads/2023/05/edit-size-2.png" alt="" loading="lazy" decoding="async"></span>
+      <span class="num">01</span>
+      <span class="rt"><span class="data">League</span><h3>The Bogey Cup</h3><p>Four rounds over four weeks. Stableford, weekly skins and closest-to-the-pin prizes.</p></span>
+      <span class="go">Join</span>
+    </a>
+    <a class="row" href="https://thebogeyclub.com/leagues-and-events/" data-i="1" style="--d:90ms">
+      <span class="thumb"><img src="https://thebogeyclub.com/wp-content/uploads/2026/08/Sim-People.jpg" alt="" loading="lazy" decoding="async"></span>
+      <span class="num">02</span>
+      <span class="rt"><span class="data">Weekly</span><h3>Men's Night &amp; leagues</h3><p>A standing tee time, the same crew and a cold one after.</p></span>
+      <span class="go">Schedule</span>
+    </a>
+    <a class="row" href="https://thebogeyclub.com/meet-our-pro/" data-i="2" style="--d:180ms">
+      <span class="thumb"><img src="https://thebogeyclub.com/wp-content/uploads/2026/04/ChatGPT-Image-Apr-23-2026-11_31_41-AM.png" alt="" loading="lazy" decoding="async"></span>
+      <span class="num">03</span>
+      <span class="rt"><span class="data">Coaching</span><h3>Private lessons</h3><p>One-on-one with our pro, with every swing measured.</p></span>
+      <span class="go">Meet the pro</span>
+    </a>
+    <a class="row" href="https://thebogeyclub.com/the-bogey-club-classic-2026/" data-i="3" style="--d:270ms">
+      <span class="thumb"><img src="https://thebogeyclub.com/wp-content/uploads/2024/06/4D9A2760-scaled.jpg" alt="" loading="lazy" decoding="async"></span>
+      <span class="num">04</span>
+      <span class="rt"><span class="data">Annual</span><h3>The Bogey Club Classic</h3><p>Our outdoor tournament. The 2026 edition is in the books.</p></span>
+      <span class="go">Details</span>
+    </a>
+    <a class="row" href="https://shop.thebogeyclub.com/" data-i="4" style="--d:360ms">
+      <span class="thumb"><img src="https://thebogeyclub.com/wp-content/uploads/2026/10/BogeyClubPhotoshoot_WordPress_1600px.jpg" alt="" loading="lazy" decoding="async"></span>
+      <span class="num">05</span>
+      <span class="rt"><span class="data">Shop</span><h3>Club apparel</h3><p>Hats, polos, crewnecks and towels from the club shop.</p></span>
+      <span class="go">Shop</span>
+    </a>
+  </div>
+  <div class="life-media" id="tt-life-media">
+    <figure class="on"><img src="https://thebogeyclub.com/wp-content/uploads/2023/05/edit-size-2.png" alt="The Bogey Cup simulator tournament at The Bogey Club" loading="lazy" decoding="async"><figcaption><span class="data">League</span>The Bogey Cup</figcaption></figure>
+    <figure class=""><img src="https://thebogeyclub.com/wp-content/uploads/2026/08/Sim-People.jpg" alt="Golfers playing a league night on the simulators at The Bogey Club" loading="lazy" decoding="async"><figcaption><span class="data">Weekly</span>Men's Night &amp; leagues</figcaption></figure>
+    <figure class=""><img src="https://thebogeyclub.com/wp-content/uploads/2026/04/ChatGPT-Image-Apr-23-2026-11_31_41-AM.png" alt="A private golf lesson on a simulator at The Bogey Club" loading="lazy" decoding="async"><figcaption><span class="data">Coaching</span>Private lessons</figcaption></figure>
+    <figure class=""><img src="https://thebogeyclub.com/wp-content/uploads/2024/06/4D9A2760-scaled.jpg" alt="Golfers at The Bogey Club Classic outdoor tournament" loading="lazy" decoding="async"><figcaption><span class="data">Annual</span>The Bogey Club Classic</figcaption></figure>
+    <figure class=""><img src="https://thebogeyclub.com/wp-content/uploads/2026/10/BogeyClubPhotoshoot_WordPress_1600px.jpg" alt="The Bogey Club apparel photoshoot" loading="lazy" decoding="async"><figcaption><span class="data">Shop</span>Club apparel</figcaption></figure>
+    <span class="life-count" aria-hidden="true"><b id="tt-life-n">01</b> / 05</span>
+  </div>
   </div>
 </section>
 
@@ -779,6 +845,34 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
         vid.addEventListener("error", drop);
         var p = vid.play && vid.play();
         if (p && p.catch) p.catch(function () { /* autoplay blocked: the still stays */ });
+      }
+    }
+
+    /* Club life: hovering/focusing a row wipes its photo into the panel (desktop);
+       on phones each row's thumbnail wipes in as it scrolls into view. */
+    var lifeRows = document.querySelectorAll("#tt-rows .row"), figs = document.querySelectorAll("#tt-life-media figure");
+    if (lifeRows.length && figs.length) {
+      var cur = 0, num = document.getElementById("tt-life-n");
+      var setRow = function (i) {
+        if (i === cur) return;
+        figs.forEach(function (f, k) { f.classList.toggle("was", k === cur); f.classList.remove("on"); });
+        figs[i].classList.add("on");
+        lifeRows.forEach(function (r, k) { r.classList.toggle("on", k === i); });
+        if (num) num.textContent = String(i + 1).padStart(2, "0");
+        cur = i;
+      };
+      var hover = window.matchMedia("(hover: hover) and (min-width: 861px)");
+      lifeRows.forEach(function (r, i) {
+        r.addEventListener("mouseenter", function () { if (hover.matches) setRow(i); });
+        r.addEventListener("focus", function () { setRow(i); });
+      });
+      var rowsBox = document.getElementById("tt-rows");
+      if ("IntersectionObserver" in window && !reduce) {
+        rowsBox.classList.add("anim");
+        var rio = new IntersectionObserver(function (es) {
+          es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); rio.unobserve(e.target); } });
+        }, { threshold: .35 });
+        lifeRows.forEach(function (r) { rio.observe(r); });
       }
     }
 
