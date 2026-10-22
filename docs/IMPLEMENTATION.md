@@ -74,7 +74,7 @@ Each sponsor gets a simulator bay: the logo on a framed screen that powers on wi
 - **Order:** Bay 1 Benson Kearley IFG, Bay 2 Bird Infrastructure, Bay 3 Newmarket Tire 'N' Mag (black screen), Bay 4 Hartley Built.
 - **Logos:** always full colour.
 - **Hartley Built:** its file has empty space above the logo, so it is shifted up 28% (`.bay.lift`). If you upload a tightly cropped version, remove `lift` from its class.
-- **Links:** to link a sponsor to their website, follow the comment above the list in the HTML.
+- **Links:** each bay opens the sponsor's website in a new tab (bkifg.com, birdinfrastructure.ca, newmarkettire.com, hartleybuilt.com).
 
 ## 2. Site-wide code (WPCode plugin, free)
 

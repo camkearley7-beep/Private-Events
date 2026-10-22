@@ -311,7 +311,7 @@ body { margin: 0; background: #FFFFFF; }
 .tt .bays-row.anim li:not(.in) { transform: translateY(40px); opacity: 0; }
 .tt .bay { display: block; border-radius: 16px; padding: 10px; background: #18291F; border: 1px solid rgba(255,255,255,.08); color: var(--white);
   box-shadow: 0 20px 40px rgba(0,0,0,.25); transition: transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s, border-color .45s; }
-.tt .bay:hover, .tt a.bay:focus-visible { transform: translateY(-8px); border-color: rgba(215,201,164,.5); box-shadow: 0 32px 60px rgba(0,0,0,.35); }
+.tt .bay:hover, .tt .bay:focus-visible { transform: translateY(-8px); border-color: rgba(215,201,164,.5); box-shadow: 0 32px 60px rgba(0,0,0,.35); }
 /* the screen */
 .tt .scr { position: relative; aspect-ratio: 16 / 10; border-radius: 8px; overflow: hidden; background: var(--white); display: grid; place-items: center; padding: 16px 18px; }
 .tt .bay.black .scr { background: #000; }
@@ -329,7 +329,7 @@ body { margin: 0; background: #FFFFFF; }
 @keyframes tt-sweep { from { transform: translateX(-120%); } to { transform: translateX(120%); } }
 /* the hitting-mat nameplate */
 .tt .mat { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-top: 10px; padding: 12px 12px 10px; border-radius: 8px;
-  background: var(--green) repeating-linear-gradient(90deg, rgba(255,255,255,.035) 0 14px, transparent 14px 28px); }
+  background: var(--green); }
 .tt .mat .data { color: var(--sand); }
 .tt .mat .nm { font-weight: 600; font-size: 15px; text-align: right; }
 .tt .sp-foot { margin-top: 48px; text-align: center; color: rgba(255,255,255,.8); font-size: 16px; }
@@ -752,31 +752,30 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
     <div><p class="data">With thanks to our sponsors</p><h2 id="tt-sp-h" class="h-l">Our playing partners.</h2></div>
     <p class="lede">Four bays, four partners. These are the people who back our leagues, our tournaments and plenty of great nights at the club.</p>
   </div>
-  <!-- To link a sponsor: change <div class="bay"> to <a class="bay" href="WEBSITE" target="_blank" rel="noopener sponsored"> (and </div> to </a>). -->
   <ul class="bays-row" id="tt-signs">
     <li style="--d:0ms">
-      <div class="bay">
+      <a class="bay" href="https://bkifg.com/" target="_blank" rel="noopener sponsored" aria-label="Benson Kearley IFG (opens in a new tab)">
         <div class="scr"><img src="https://thebogeyclub.com/wp-content/uploads/2023/03/BKIFG_Logo-HQ_1643305627-1.png" alt="Benson Kearley IFG" loading="lazy" decoding="async"></div>
         <div class="mat"><span class="data">Bay 1</span><span class="nm">Benson Kearley IFG</span></div>
-      </div>
+      </a>
     </li>
     <li style="--d:140ms">
-      <div class="bay">
+      <a class="bay" href="https://www.birdinfrastructure.ca/" target="_blank" rel="noopener sponsored" aria-label="Bird Infrastructure (opens in a new tab)">
         <div class="scr"><img src="https://thebogeyclub.com/wp-content/uploads/2026/10/Full-Logo-White-Bogey-Club-1.png" alt="Bird Infrastructure" loading="lazy" decoding="async"></div>
         <div class="mat"><span class="data">Bay 2</span><span class="nm">Bird Infrastructure</span></div>
-      </div>
+      </a>
     </li>
     <li style="--d:280ms">
-      <div class="bay black">
+      <a class="bay black" href="https://www.newmarkettire.com/" target="_blank" rel="noopener sponsored" aria-label="Newmarket Tire 'N' Mag (opens in a new tab)">
         <div class="scr"><img src="https://thebogeyclub.com/wp-content/uploads/2026/10/NTM_logo.jpeg" alt="Newmarket Tire 'N' Mag" loading="lazy" decoding="async"></div>
         <div class="mat"><span class="data">Bay 3</span><span class="nm">Newmarket Tire 'N' Mag</span></div>
-      </div>
+      </a>
     </li>
     <li style="--d:420ms">
-      <div class="bay lift">
+      <a class="bay lift" href="https://hartleybuilt.com/" target="_blank" rel="noopener sponsored" aria-label="Hartley Built (opens in a new tab)">
         <div class="scr"><img src="https://thebogeyclub.com/wp-content/uploads/2026/10/Full-Logo-White-Bogey-Club-1-1.png" alt="Hartley Built" loading="lazy" decoding="async"></div>
         <div class="mat"><span class="data">Bay 4</span><span class="nm">Hartley Built</span></div>
-      </div>
+      </a>
     </li>
   </ul>
   <p class="sp-foot">Want your name on a bay? <a href="mailto:golf@thebogeyclub.com?subject=Sponsoring%20The%20Bogey%20Club">Talk to us about sponsorship</a></p>
