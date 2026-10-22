@@ -44,7 +44,7 @@ The rest of this guide is the full site-wide setup: header and footer on every p
 
 | Where | Photo |
 |---|---|
-| Tee-to-tap stop 02 (The bars) | `/wp-content/uploads/2026/08/Main-Bar.png` |
+| Tee-to-tap stop 01 (The shop) | `/wp-content/uploads/2026/10/BogeyClubPhotoshoot_WordPress_1600px.jpg` |
 | Tee-to-tap stop 03 (Karaoke) | `/wp-content/uploads/2026/10/ChatGPT-Image-Oct-16-2026-10_49_54-AM.png` |
 | Tee-to-tap stop 04 (The upstairs) | `/wp-content/uploads/2026/08/Party-Room-1-edit-2.png` |
 | Two full bars: Bar 01 (main floor) | `/wp-content/uploads/2026/08/Main-Bar.png` |
