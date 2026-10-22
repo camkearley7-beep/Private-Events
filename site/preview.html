@@ -52,7 +52,6 @@ body { margin: 0; background: #FFFFFF; }
 .tt .lede { font-size: clamp(17px, 1.3vw, 19px); line-height: 1.6; color: var(--soft); max-width: 46ch; }
 .tt .data { font-weight: 500; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--green); }
 .tt .data i { font-style: normal; opacity: .7; }
-.tt .events .data i, .tt .stop .data i { color: var(--sand); opacity: 1; }
 
 /* buttons */
 .tt .btn {
@@ -154,23 +153,6 @@ body { margin: 0; background: #FFFFFF; }
 .tt .bars-photo .pin { position: absolute; left: 10%; top: 14%; display: flex; align-items: center; gap: 10px; }
 .tt .bars-photo .pin::before { content: ''; width: 12px; height: 12px; border-radius: 50%; background: var(--white); box-shadow: 0 0 0 6px rgba(255,255,255,.3); }
 .tt .bars-photo .pin span { background: var(--white); color: var(--pine); padding: 6px 10px; border-radius: 4px; }
-
-/* ================= 5. PRIVATE EVENTS (the one rich-green block) ================= */
-.tt .events { background: var(--green); color: var(--white); display: grid; grid-template-columns: 1.15fr .85fr; min-height: 820px; }
-.tt .events-photo { position: relative; overflow: hidden; }
-.tt .events-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.tt .events-photo .ref { left: 16px; top: 16px; }
-.tt .events-photo .stamp { position: absolute; right: 28px; bottom: 28px; background: var(--white); color: var(--pine); padding: 18px 20px; max-width: 290px; border-radius: 8px; }
-.tt .events-photo .stamp b { display: block; font-weight: 600; font-size: 22px; line-height: 1.15; margin: 6px 0; letter-spacing: -.01em; }
-.tt .events-copy { padding: 100px var(--g) 90px; display: flex; flex-direction: column; justify-content: center; }
-.tt .events-copy > .data { color: var(--sand); margin-bottom: 20px; }
-.tt .events .lede { margin: 22px 0 32px; color: rgba(255,255,255,.88); }
-.tt .occ { list-style: none; border-top: 1px solid rgba(255,255,255,.22); margin-bottom: 34px; }
-.tt .occ li { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.22); font-size: 17px; }
-.tt .occ li .data { color: var(--sand); }
-.tt .events .acts { display: flex; gap: 12px; flex-wrap: wrap; }
-.tt .events .btn-red { background: var(--white); color: var(--green); }
-.tt .events .btn-red:hover { background: var(--mist); }
 
 /* ================= 6. CLUB LIFE ================= */
 .tt .life { background: var(--mist); padding: 110px var(--g); }
@@ -280,12 +262,7 @@ body { margin: 0; background: #FFFFFF; }
   .tt .readout div + div { padding-left: 12px; }
 
 
-  .tt .events { grid-template-columns: 1fr; min-height: 0; }
-  .tt .events-photo { height: 400px; }
-  .tt .events-photo .stamp { right: 14px; bottom: 14px; left: 14px; max-width: none; padding: 14px 16px; }
-  .tt .events-copy { padding: 52px 18px 68px; }
   .tt .occ li .data { display: none; }
-  .tt .events .acts .btn { flex: 1 1 100%; }
 
   .tt .life { padding: 72px 18px; }
   .tt .life-head { flex-direction: column; align-items: start; }
@@ -316,6 +293,44 @@ body { margin: 0; background: #FFFFFF; }
   .tt .aim .draw { stroke-dashoffset: 0; } .tt .aim text { opacity: 1; }
 }
 
+/* ================= SPONSORS: tee-box signs ================= */
+.tt .partners { background: var(--pine); color: var(--white); padding: 110px var(--g) 90px; overflow: hidden; }
+.tt .partners .data { color: var(--sand); }
+.tt .sp-head { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; }
+.tt .sp-head .data { margin-bottom: 14px; }
+.tt .partners .lede { color: rgba(255,255,255,.82); }
+.tt .signs { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin-top: 64px; perspective: 900px; }
+.tt .signs li { display: flex; flex-direction: column; align-items: center; transition: transform .9s cubic-bezier(.2,.9,.2,1.15) var(--d, 0ms), opacity .6s ease var(--d, 0ms); }
+.tt .signs.anim li:not(.in) { transform: translateY(70px); opacity: 0; }
+.tt .signs li::after { content: ''; width: 78%; height: 10px; margin-top: -4px; border-radius: 50%; background: rgba(0,0,0,.28); filter: blur(5px); }
+.tt .sign { position: relative; z-index: 1; width: 100%; display: grid; justify-items: center; gap: 0; text-align: center; color: var(--pine);
+  background: var(--white); border-radius: 18px 18px 12px 12px; overflow: hidden; box-shadow: 0 18px 40px rgba(0,0,0,.28);
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--ty, 0px)); transition: transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s; }
+.tt .sign:hover, .tt .sign:focus-visible { --ty: -8px; box-shadow: 0 30px 60px rgba(0,0,0,.35); }
+.tt .sign-top { width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; padding: 12px 0; background: var(--green); }
+.tt .sign-top .data { color: var(--white); }
+.tt .sign-top::before { content: ''; width: 12px; height: 15px; background: var(--sand); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 15'%3E%3Cpath d='M1 0h1.6v15H1z M2.6 .5 11 3.6 2.6 6.8z'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 15'%3E%3Cpath d='M1 0h1.6v15H1z M2.6 .5 11 3.6 2.6 6.8z'/%3E%3C/svg%3E") center / contain no-repeat; }
+.tt .sign-logo { width: 100%; height: 132px; display: grid; place-items: center; padding: 18px 22px; }
+.tt .sign-logo img { max-height: 84px; max-width: 100%; object-fit: contain; filter: grayscale(1); opacity: .78; transition: filter .45s, opacity .45s, transform .45s; }
+.tt .sign:hover .sign-logo img, .tt .sign:focus-visible .sign-logo img { filter: none; opacity: 1; transform: scale(1.04); }
+.tt .sign-name { width: 100%; padding: 12px 10px 14px; border-top: 1px solid var(--line); font-weight: 500; font-size: 15px; }
+.tt .sign-ph { display: inline-block; padding: 12px 16px; border: 1.5px dashed rgba(35,62,49,.3); border-radius: 8px; font-weight: 500; font-size: 14px; color: rgba(35,62,49,.75); }
+.tt .posts { display: flex; justify-content: space-between; width: 46%; height: 54px; }
+.tt .posts i { width: 10px; height: 100%; border-radius: 0 0 2px 2px; background: linear-gradient(90deg, #A8966C, var(--sand) 45%, #B9A77D); }
+.tt .sp-foot { margin-top: 48px; text-align: center; color: rgba(255,255,255,.8); font-size: 16px; }
+.tt .sp-foot a { color: var(--white); font-weight: 600; border-bottom: 1.5px solid var(--sand); padding-bottom: 2px; margin-left: 6px; }
+@media (max-width: 860px) {
+  .tt .partners { padding: 72px 18px 64px; }
+  .tt .sp-head { grid-template-columns: 1fr; gap: 16px; }
+  .tt .signs { grid-template-columns: 1fr 1fr; gap: 26px 14px; margin-top: 40px; }
+  .tt .sign-logo { height: 96px; padding: 12px 14px; }
+  .tt .sign-logo img { max-height: 60px; filter: none; opacity: 1; }
+  .tt .sign-name { font-size: 13px; padding: 10px 6px 12px; }
+  .tt .sign-ph { font-size: 12px; padding: 10px; }
+  .tt .posts { height: 34px; }
+  .tt .posts i { width: 8px; }
+}
+
 /* ---------- production additions ---------- */
 .tt :is(h1, h2, h3, b, strong, address, output, .btn, .h-xl, .h-l, .h-m) { font-family: var(--font); }
 .tt .hdr-space { height: 78px; }
@@ -323,7 +338,7 @@ body { margin: 0; background: #FFFFFF; }
 body.admin-bar .tt .hdr { top: 32px; }
 @media (max-width: 782px) { body.admin-bar .tt .hdr { top: 46px; } }
 /* photo frames: a clean pine panel shows if a photo is missing, never a broken icon */
-.tt .hero picture, .tt .stop, .tt .bars-photo, .tt .events-photo { background-color: var(--pine); }
+.tt .hero picture, .tt .stop, .tt .bars-photo { background-color: var(--pine); }
 .tt img.tt-missing { visibility: hidden; }
 /* hero video: fades in over the still once it is actually playing */
 .tt .hero-video { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .8s ease; pointer-events: none; }
@@ -606,7 +621,7 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
     </div>
     <div class="hero-actions">
       <a class="btn btn-red" href="https://thebogeyclub.golfbooking.ca/calendar.php" data-tt-cta="hero-book-golf">Book a simulator</a>
-      <a class="btn btn-line" href="#events" data-tt-cta="hero-events">Plan a private event</a>
+      <a class="btn btn-line" href="https://thebogeyclub.com/private-events/" data-tt-cta="hero-events">Plan a private event</a>
       <div class="also"><a class="link" href="https://thebogeyclub.com/karaoke/">Karaoke</a><a class="link" href="#walk">Explore the club</a></div>
     </div>
   </div>
@@ -637,7 +652,7 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
       </article>
       <article class="stop">
         <img src="https://thebogeyclub.com/wp-content/uploads/2026/08/Party-Room-1-edit-2.png" loading="lazy" decoding="async" alt="The upstairs private party room at The Bogey Club">
-        <div class="stop-body"><p class="stop-no data">04 <i>/</i> The upstairs</p><h3 class="h-m">Private event space</h3><p>A dedicated room with its own full bar, for birthdays, work parties and everything worth celebrating.</p><div class="acts"><a class="btn btn-red" href="#events">Plan an event</a></div></div>
+        <div class="stop-body"><p class="stop-no data">04 <i>/</i> The upstairs</p><h3 class="h-m">Private event space</h3><p>A dedicated room with its own full bar, for birthdays, work parties and everything worth celebrating.</p><div class="acts"><a class="btn btn-red" href="https://thebogeyclub.com/private-events/">Plan an event</a></div></div>
       </article>
     </div>
     <div class="walk-foot">
@@ -669,29 +684,7 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
 </section>
 
 
-<!-- 4. PRIVATE EVENTS -->
-<section class="events" id="events" aria-labelledby="tt-ev-h">
-  <div class="events-photo">
-    <picture>
-      <img src="https://thebogeyclub.com/wp-content/uploads/2026/08/Party-room-2-edit-2.png" loading="lazy" decoding="async" alt="Private party room with its own bar at The Bogey Club, a party venue in Newmarket">
-    </picture>
-    <div class="stamp"><span class="data">Private event</span><b>The upstairs is yours</b><span style="font-size:14px">Own bar · golf &amp; karaoke in the building</span></div>
-  </div>
-  <div class="events-copy">
-    <p class="data">Private events <i>/</i> Newmarket</p>
-    <h2 id="tt-ev-h" class="h-l">Book the room. We'll run the night.</h2>
-    <p class="lede">A dedicated event space with its own full bar, four Golfzon simulators downstairs and karaoke on site. Our team helps you plan it and runs it on the night.</p>
-    <ul class="occ">
-      <li>Birthday parties <span class="data">Any age worth toasting</span></li>
-      <li>Corporate &amp; holiday parties <span class="data">Teams of all sizes</span></li>
-      <li>Team building <span class="data">Golf, no experience needed</span></li>
-      <li>Bachelor parties &amp; celebrations <span class="data">Your crew, your night</span></li>
-    </ul>
-    <div class="acts"><a class="btn btn-red" href="https://thebogeyclub.com/private-events/" data-tt-link="event-inquiry" data-tt-cta="events-inquiry">Start an event inquiry</a><a class="btn btn-line" href="https://thebogeyclub.com/private-events/">See the event space</a></div>
-  </div>
-</section>
-
-<!-- 5. CLUB LIFE -->
+<!-- 4. CLUB LIFE -->
 <section class="life" id="life" aria-labelledby="tt-life-h">
   <div class="life-head">
     <div><p class="data">Club life</p><h2 id="tt-life-h" class="h-l">There's always a next round.</h2></div>
@@ -739,6 +732,73 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
     <span class="life-count" aria-hidden="true"><b id="tt-life-n">01</b> / 05</span>
   </div>
   </div>
+</section>
+
+<!-- 5. SPONSORS: tee-box signs -->
+<section class="partners" id="sponsors" aria-labelledby="tt-sp-h">
+  <div class="sp-head">
+    <div><p class="data">With thanks to our sponsors</p><h2 id="tt-sp-h" class="h-l">Our playing partners.</h2></div>
+    <p class="lede">Every course thanks its sponsors at the tee box. So do we. These are the people who back our leagues, our tournaments and plenty of great nights at the club.</p>
+  </div>
+  <ul class="signs" id="tt-signs">
+    <li style="--d:0ms">
+      <!-- SPONSOR 1: when the logo is ready, replace this <div class="sign"> with:
+           <a class="sign" href="SPONSOR-WEBSITE" target="_blank" rel="noopener sponsored">
+             <span class="sign-top"><span class="data">Hole 01</span></span>
+             <span class="sign-logo"><img src="LOGO-URL" alt="SPONSOR NAME" loading="lazy" decoding="async"></span>
+             <span class="sign-name">SPONSOR NAME</span>
+           </a> -->
+      <div class="sign">
+        <span class="sign-top"><span class="data">Hole 01</span></span>
+        <span class="sign-logo"><span class="sign-ph">Sponsor logo 1</span></span>
+        <span class="sign-name">Sponsor name</span>
+      </div>
+      <span class="posts" aria-hidden="true"><i></i><i></i></span>
+    </li>
+    <li style="--d:110ms">
+      <!-- SPONSOR 2: when the logo is ready, replace this <div class="sign"> with:
+           <a class="sign" href="SPONSOR-WEBSITE" target="_blank" rel="noopener sponsored">
+             <span class="sign-top"><span class="data">Hole 02</span></span>
+             <span class="sign-logo"><img src="LOGO-URL" alt="SPONSOR NAME" loading="lazy" decoding="async"></span>
+             <span class="sign-name">SPONSOR NAME</span>
+           </a> -->
+      <div class="sign">
+        <span class="sign-top"><span class="data">Hole 02</span></span>
+        <span class="sign-logo"><span class="sign-ph">Sponsor logo 2</span></span>
+        <span class="sign-name">Sponsor name</span>
+      </div>
+      <span class="posts" aria-hidden="true"><i></i><i></i></span>
+    </li>
+    <li style="--d:220ms">
+      <!-- SPONSOR 3: when the logo is ready, replace this <div class="sign"> with:
+           <a class="sign" href="SPONSOR-WEBSITE" target="_blank" rel="noopener sponsored">
+             <span class="sign-top"><span class="data">Hole 03</span></span>
+             <span class="sign-logo"><img src="LOGO-URL" alt="SPONSOR NAME" loading="lazy" decoding="async"></span>
+             <span class="sign-name">SPONSOR NAME</span>
+           </a> -->
+      <div class="sign">
+        <span class="sign-top"><span class="data">Hole 03</span></span>
+        <span class="sign-logo"><span class="sign-ph">Sponsor logo 3</span></span>
+        <span class="sign-name">Sponsor name</span>
+      </div>
+      <span class="posts" aria-hidden="true"><i></i><i></i></span>
+    </li>
+    <li style="--d:330ms">
+      <!-- SPONSOR 4: when the logo is ready, replace this <div class="sign"> with:
+           <a class="sign" href="SPONSOR-WEBSITE" target="_blank" rel="noopener sponsored">
+             <span class="sign-top"><span class="data">Hole 04</span></span>
+             <span class="sign-logo"><img src="LOGO-URL" alt="SPONSOR NAME" loading="lazy" decoding="async"></span>
+             <span class="sign-name">SPONSOR NAME</span>
+           </a> -->
+      <div class="sign">
+        <span class="sign-top"><span class="data">Hole 04</span></span>
+        <span class="sign-logo"><span class="sign-ph">Sponsor logo 4</span></span>
+        <span class="sign-name">Sponsor name</span>
+      </div>
+      <span class="posts" aria-hidden="true"><i></i><i></i></span>
+    </li>
+  </ul>
+  <p class="sp-foot">Want your name on a tee box? <a href="mailto:golf@thebogeyclub.com?subject=Sponsoring%20The%20Bogey%20Club">Talk to us about sponsorship</a></p>
 </section>
 
 <!-- 6. VISIT -->
@@ -867,6 +927,29 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
           es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); rio.unobserve(e.target); } });
         }, { threshold: .35 });
         lifeRows.forEach(function (r) { rio.observe(r); });
+      }
+    }
+
+    /* Sponsors: signs rise into place on scroll; on desktop each tilts toward the cursor. */
+    var signs = document.getElementById("tt-signs");
+    if (signs) {
+      var items = signs.querySelectorAll("li");
+      if ("IntersectionObserver" in window && !reduce) {
+        signs.classList.add("anim");
+        var sio = new IntersectionObserver(function (es) {
+          es.forEach(function (e) { if (e.isIntersecting) { items.forEach(function (li) { li.classList.add("in"); }); sio.disconnect(); } });
+        }, { threshold: .25 });
+        sio.observe(signs);
+      }
+      if (!reduce && window.matchMedia("(hover: hover)").matches) {
+        signs.querySelectorAll(".sign").forEach(function (card) {
+          card.addEventListener("pointermove", function (e) {
+            var r = card.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+            card.style.setProperty("--ry", (x * 14).toFixed(2) + "deg");
+            card.style.setProperty("--rx", (-y * 12).toFixed(2) + "deg");
+          });
+          card.addEventListener("pointerleave", function () { card.style.removeProperty("--rx"); card.style.removeProperty("--ry"); });
+        });
       }
     }
 

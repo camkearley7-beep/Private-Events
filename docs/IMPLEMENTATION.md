@@ -48,7 +48,6 @@ The rest of this guide is the full site-wide setup: header and footer on every p
 | Tee-to-tap stop 03 (Karaoke) | `/wp-content/uploads/2026/10/ChatGPT-Image-Oct-16-2026-10_49_54-AM.png` |
 | Tee-to-tap stop 04 (The upstairs) | `/wp-content/uploads/2026/08/Party-Room-1-edit-2.png` |
 | Two full bars section | `/wp-content/uploads/2026/08/Main-Area.png` |
-| Private events section | `/wp-content/uploads/2026/08/Party-room-2-edit-2.png` |
 
    Not used yet: `Party-room-2.png` (the unedited version), `Hallway.png`, and images `…Oct-19…02_24_43-PM.png`, `…02_24_35-PM.png` and `…02_24_31-PM.png`.
 
@@ -68,6 +67,14 @@ The rest of this guide is the full site-wide setup: header and footer on every p
 Until a photo is uploaded, its frame shows a clean deep-pine panel instead of a broken image. The concept renders in `concepts/club/assets/` are for review only and must never be uploaded.
 
 If you prefer the Media Library (which files under `/2026/10/`), find and replace `https://thebogeyclub.com/wp-content/uploads/bogey-home/` in `03`, `04` and `05` with the real folder.
+
+## Sponsor logos (tee-box signs)
+
+The "Our playing partners" section has four sign placeholders, one per sponsor. For each sponsor, in `site/src/home.html` (or directly in the pasted HTML):
+1. Upload the logo to the Media Library. A transparent PNG or SVG works best.
+2. Find the comment `SPONSOR 1` (2, 3, 4). Replace the `<div class="sign">…</div>` below it with the `<a class="sign" …>` block shown in that comment, filling in the sponsor's website, the logo URL and the name.
+
+Logos show in greyscale and turn full colour on hover on desktop. On phones they always show in colour.
 
 ## 2. Site-wide code (WPCode plugin, free)
 
@@ -115,7 +122,7 @@ If you prefer the Media Library (which files under `/2026/10/`), find and replac
 - **SEO title:** `The Bogey Club | Golf Simulator Sports Bar in Newmarket` (55 characters)
 - **Meta description:** `Four Golfzon simulators, two full bars, cold beer on tap, karaoke and private event space in Newmarket, Ontario. Book a bay or plan your party.` (144 characters)
 - **H1:** "Golf simulator sports bar · Newmarket, ON — Your handicap is welcome here." The location line sits inside the H1, so the keywords are in it.
-- **H2s:** From the tee to the tap · The best rounds don't end at 18 · Book the room. We'll run the night. · There's always a next round · Visit The Bogey Club in Newmarket.
+- **H2s:** From the tee to the tap · The best rounds don't end at 18 · There's always a next round · Our playing partners · Visit The Bogey Club in Newmarket.
 - **Structured data (`06-schema.html`):**
   - LocalBusiness (SportsActivityLocation + BarOrPub + EntertainmentBusiness) with address, phone, email, and the Newmarket, Aurora and East Gwillimbury service area
   - Amenities: 4 Golfzon simulators, 2 bars, draft beer, karaoke, event space
@@ -134,7 +141,7 @@ If you prefer the Media Library (which files under `/2026/10/`), find and replac
 | Book golf | `thebogeyclub.golfbooking.ca/calendar.php` | Book a bay, mobile menu | Hero, Bays stop | Footer, dock |
 | Book karaoke | `…calendar.php?date=<this month>&bayfilter=4&templateId=50&lang=en` (month set automatically, same as the karaoke page) | Mobile menu | Stage stop | Dock |
 | Karaoke page | `/karaoke/` | **Karaoke** | Hero, Stage stop | Footer |
-| Private events + inquiry form | `/private-events/` | Private events | Hero (→ section), events section ×2, Upstairs stop | Footer, dock |
+| Private events + inquiry form | `/private-events/` | Private events | Hero, Upstairs stop | Footer, dock |
 | Our simulators | `/our-simulators/` | Golf | Bays stop | Footer |
 | Leagues & events | `/leagues-and-events/` | Leagues | Club life ×3 | Footer |
 | Private lessons | `/meet-our-pro/` | Lessons | Club life | Footer |
