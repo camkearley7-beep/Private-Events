@@ -120,23 +120,38 @@
 .tt .walk-foot ol { display: flex; gap: 22px; list-style: none; }
 .tt .walk-foot li { color: rgba(35,62,49,.75); transition: color .3s; } .tt .walk-foot li.on { color: var(--green); }
 
-/* ================= 3. TWO FULL BARS ================= */
-.tt .bars { background: var(--mist); position: relative; display: grid; grid-template-columns: 1fr 1fr; min-height: 760px; }
-.tt .bars-copy { position: relative; padding: 110px var(--g); display: flex; flex-direction: column; justify-content: center; }
-.tt .bars-copy .data { margin-bottom: 20px; }
-.tt .bars .lede { margin: 24px 0 40px; }
-.tt .readout { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-bottom: 28px; }
-.tt .readout div { padding: 18px 0 16px; }
-.tt .readout div + div { padding-left: 20px; border-left: 1px solid var(--line); }
-.tt .readout b { display: block; font-weight: 700; font-size: 38px; line-height: 1; margin-top: 10px; color: var(--green); letter-spacing: -.02em; }
-.tt .readout .data { color: rgba(35,62,49,.75); margin: 0; }
-.tt .note { font-size: 14px; color: rgba(35,62,49,.75); max-width: 52ch; padding-left: 14px; border-left: 2px solid var(--sand); }
-.tt .bars-photo { position: relative; overflow: hidden; margin: 28px 28px 28px 0; border-radius: 10px; }
-.tt .bars-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
-.tt .bars-photo .ref { left: 16px; bottom: 16px; }
-.tt .bars-photo .pin { position: absolute; left: 10%; top: 14%; display: flex; align-items: center; gap: 10px; }
-.tt .bars-photo .pin::before { content: ''; width: 12px; height: 12px; border-radius: 50%; background: var(--white); box-shadow: 0 0 0 6px rgba(255,255,255,.3); }
-.tt .bars-photo .pin span { background: var(--white); color: var(--pine); padding: 6px 10px; border-radius: 4px; }
+/* ================= 3. TWO FULL BARS: tap-handle comparison ================= */
+.tt .bars { background: var(--white); padding: 110px var(--g) 100px; }
+.tt .bars-head { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: end; margin-bottom: 48px; }
+.tt .bars-head .data { margin-bottom: 18px; }
+.tt .duo { position: relative; aspect-ratio: 21 / 9; border-radius: 16px; overflow: hidden; background: var(--pine); touch-action: pan-y; user-select: none; cursor: ew-resize; }
+.tt .duo figure { position: absolute; inset: 0; margin: 0; }
+.tt .duo img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.tt .duo-a { clip-path: inset(0 calc(100% - var(--x)) 0 0); }
+.tt .duo figcaption { position: absolute; bottom: 22px; display: grid; gap: 2px; padding: 12px 16px; border-radius: 10px; background: rgba(255,255,255,.94); color: var(--pine); font-weight: 600; font-size: 20px; letter-spacing: -.01em; transition: opacity .3s; }
+.tt .duo figcaption .data { font-size: 11px; }
+.tt .duo-a figcaption { left: 22px; }
+.tt .duo-b figcaption { right: 22px; }
+.tt .duo[data-side="a"] .duo-b figcaption, .tt .duo[data-side="b"] .duo-a figcaption { opacity: .35; }
+.tt .duo-handle { position: absolute; top: 0; bottom: 0; left: var(--x); width: 0; z-index: 3; pointer-events: none; }
+.tt .duo-handle::before { content: ''; position: absolute; top: 0; bottom: 0; left: -1.5px; width: 3px; background: var(--white); box-shadow: 0 0 0 1px rgba(35,62,49,.15); }
+.tt .duo-handle .tap { position: absolute; left: -16px; top: calc(50% - 86px); width: 32px; height: 92px; border-radius: 10px 10px 6px 6px;
+  background: linear-gradient(90deg, #0A4A30, var(--green) 45%, #0A4A30); box-shadow: 0 10px 24px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.12); }
+.tt .duo-handle .tap::before { content: ''; position: absolute; left: 7px; right: 7px; top: 14px; height: 30px; border-radius: 4px; background: var(--white); }
+.tt .duo-handle .tap::after { content: ''; position: absolute; left: 12px; right: 12px; bottom: -14px; height: 16px; border-radius: 0 0 4px 4px; background: linear-gradient(90deg, #9AA39E, #E9EDEA 50%, #9AA39E); }
+.tt .duo-handle .grip { position: absolute; left: -26px; top: calc(50% + 22px); width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; background: var(--white); color: var(--green); font-weight: 700; font-size: 18px; letter-spacing: 2px; box-shadow: 0 10px 24px rgba(0,0,0,.3); transition: transform .3s; }
+.tt .duo.drag .duo-handle .grip { transform: scale(1.12); }
+.tt .duo-range { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; z-index: 4; }
+.tt .duo-range:focus-visible ~ .duo-handle .grip, .tt .duo:has(.duo-range:focus-visible) .grip { outline: 3px solid var(--sand); outline-offset: 3px; }
+.tt .duo-hint { position: absolute; z-index: 2; top: 18px; left: 50%; transform: translateX(-50%); padding: 7px 12px; border-radius: 999px; background: rgba(35,62,49,.82); color: var(--white); font-size: 13px; font-weight: 500; transition: opacity .4s; }
+.tt .duo.used .duo-hint { opacity: 0; }
+.tt .bars-stats { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 36px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.tt .bars-stats div { padding: 22px 0 20px; display: grid; gap: 6px; }
+.tt .bars-stats div + div { padding-left: 24px; border-left: 1px solid var(--line); }
+.tt .bars-stats b { font-weight: 700; font-size: 42px; line-height: 1; letter-spacing: -.02em; color: var(--green); }
+.tt .bars-stats span { font-size: 14px; font-weight: 500; color: rgba(35,62,49,.75); }
+.tt .bars .note { margin-top: 24px; }
+.tt .note { font-size: 14px; color: rgba(35,62,49,.75); max-width: 60ch; padding-left: 14px; border-left: 2px solid var(--sand); }
 
 /* ================= 6. CLUB LIFE ================= */
 .tt .life { background: var(--mist); padding: 110px var(--g); }
@@ -239,11 +254,16 @@
   .tt .walk-foot { padding: 18px 18px 0; }
   .tt .walk-foot ol { gap: 12px; font-size: 11px; }
 
-  .tt .bars { grid-template-columns: 1fr; min-height: 0; }
-  .tt .bars-photo { height: 400px; order: -1; margin: 18px 18px 0; }
-  .tt .bars-copy { padding: 44px 18px 64px; }
-  .tt .readout b { font-size: 28px; white-space: nowrap; }
-  .tt .readout div + div { padding-left: 12px; }
+  .tt .bars { padding: 72px 18px 64px; }
+  .tt .bars-head { grid-template-columns: 1fr; gap: 16px; margin-bottom: 28px; }
+  .tt .duo { aspect-ratio: 4 / 5; border-radius: 12px; margin: 0 -6px; }
+  .tt .duo figcaption { bottom: 14px; font-size: 16px; padding: 9px 12px; }
+  .tt .duo-a figcaption { left: 14px; } .tt .duo-b figcaption { right: 14px; }
+  .tt .duo-handle .tap { transform: scale(.8); }
+  .tt .bars-stats { grid-template-columns: 1fr 1fr; }
+  .tt .bars-stats div:nth-child(3) { padding-left: 0; border-left: 0; }
+  .tt .bars-stats div:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .tt .bars-stats b { font-size: 32px; }
 
 
   .tt .occ li .data { display: none; }
@@ -328,7 +348,7 @@
 body.admin-bar .tt .hdr { top: 32px; }
 @media (max-width: 782px) { body.admin-bar .tt .hdr { top: 46px; } }
 /* photo frames: a clean pine panel shows if a photo is missing, never a broken icon */
-.tt .hero picture, .tt .stop, .tt .bars-photo { background-color: var(--pine); }
+.tt .hero picture, .tt .stop { background-color: var(--pine); }
 .tt img.tt-missing { visibility: hidden; }
 /* hero video: fades in over the still once it is actually playing */
 .tt .hero-video { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .8s ease; pointer-events: none; }
@@ -471,25 +491,26 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
   </div>
 </section>
 
-<!-- 3. TWO FULL BARS -->
+<!-- 3. TWO FULL BARS: drag the tap handle to compare the two bars -->
 <section class="bars" id="bars" aria-labelledby="tt-bars-h">
-  <div class="bars-copy">
-    <p class="data">The 19th hole <i>/</i> × 2</p>
-    <h2 id="tt-bars-h" class="h-xl">The best rounds don't end at 18.</h2>
+  <div class="bars-head">
+    <div><p class="data">The 19th hole <i>/</i> × 2</p><h2 id="tt-bars-h" class="h-xl">The best rounds don't end at 18.</h2></div>
     <p class="lede">Two full bars, cold beer on tap and room for the whole group. Grab a pint before you tee off, between rounds, or long after the last putt drops. Golf not required.</p>
-    <div class="readout">
-      <div><p class="data">Full bars</p><b>2</b></div>
-      <div><p class="data">Draft</p><b>On tap</b></div>
-      <div><p class="data">Bays</p><b>4</b></div>
-    </div>
-    <p class="note">Bays can be booked online during golf hours. Drinks are served by our staff during staffed bar hours. 19+ with valid ID.</p>
   </div>
-  <div class="bars-photo">
-    <picture>
-      <img src="https://thebogeyclub.com/wp-content/uploads/2026/10/ChatGPT-Image-Oct-19-2026-02_24_43-PM.png" loading="lazy" decoding="async" alt="The bar at The Bogey Club golf simulator sports bar in Newmarket">
-    </picture>
-    <span class="pin data"><span>Bar 01 · Main floor</span></span>
+  <div class="duo" id="tt-duo" style="--x:50%">
+    <figure class="duo-b"><img src="https://thebogeyclub.com/wp-content/uploads/2026/08/Party-room-2-edit-2.png" loading="lazy" decoding="async" alt="Bar 2, the upstairs bar in the event space at The Bogey Club"><figcaption><span class="data">Bar 02</span>Upstairs</figcaption></figure>
+    <figure class="duo-a"><img src="https://thebogeyclub.com/wp-content/uploads/2026/10/ChatGPT-Image-Oct-19-2026-02_24_43-PM.png" loading="lazy" decoding="async" alt="Bar 1, the main-floor bar at The Bogey Club in Newmarket"><figcaption><span class="data">Bar 01</span>Main floor</figcaption></figure>
+    <div class="duo-handle" aria-hidden="true"><span class="tap"></span><span class="grip">‹ ›</span></div>
+    <input class="duo-range" type="range" min="0" max="100" value="50" aria-label="Slide to compare Bar 1 and Bar 2">
+    <span class="duo-hint" aria-hidden="true">Drag to switch bars</span>
   </div>
+  <div class="bars-stats">
+    <div><b data-count="2">2</b><span>Full bars</span></div>
+    <div><b data-count="4">4</b><span>Golfzon bays</span></div>
+    <div><b>On tap</b><span>Cold draft beer</span></div>
+    <div><b>19+</b><span>Valid ID to be served</span></div>
+  </div>
+  <p class="note">Bays can be booked online during golf hours. Drinks are served by our staff during staffed bar hours.</p>
 </section>
 
 
@@ -857,6 +878,53 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
         vid.addEventListener("error", drop);
         var p = vid.play && vid.play();
         if (p && p.catch) p.catch(function () { /* autoplay blocked: the still stays */ });
+      }
+    }
+
+    /* Two bars: drag the tap handle (or use arrow keys) to compare; on desktop it follows the pointer. */
+    var duo = document.getElementById("tt-duo");
+    if (duo) {
+      var range = duo.querySelector(".duo-range");
+      var setX = function (v) {
+        v = Math.max(0, Math.min(100, v));
+        duo.style.setProperty("--x", v + "%"); range.value = Math.round(v);
+        duo.dataset.side = v > 60 ? "a" : v < 40 ? "b" : "";
+      };
+      var fromEvent = function (e) { var r = duo.getBoundingClientRect(); return (e.clientX - r.left) / r.width * 100; };
+      var used = function () { duo.classList.add("used"); };
+      range.addEventListener("input", function () { setX(Number(range.value)); used(); });
+      duo.addEventListener("pointerdown", function (e) { duo.classList.add("drag"); setX(fromEvent(e)); used(); });
+      duo.addEventListener("pointermove", function (e) {
+        if (duo.classList.contains("drag") || e.pointerType === "mouse") { setX(fromEvent(e)); if (e.pointerType === "mouse") used(); }
+      });
+      ["pointerup", "pointercancel", "pointerleave"].forEach(function (t) { duo.addEventListener(t, function () { duo.classList.remove("drag"); }); });
+      /* gentle intro: the handle sweeps once when the section first appears */
+      if ("IntersectionObserver" in window && !reduce) {
+        var dio = new IntersectionObserver(function (es) {
+          if (!es[0].isIntersecting || duo.classList.contains("used")) return;
+          dio.disconnect();
+          var t0 = performance.now();
+          (function step(t) {
+            if (duo.classList.contains("used")) return;
+            var k = Math.min(1, (t - t0) / 1800);
+            setX(50 + Math.sin(k * Math.PI * 2) * 22 * (1 - k));
+            if (k < 1) requestAnimationFrame(step);
+          })(t0);
+        }, { threshold: .5 });
+        dio.observe(duo);
+      }
+      /* count-up for the numbers */
+      var nums = document.querySelectorAll(".bars-stats [data-count]");
+      if (nums.length && "IntersectionObserver" in window && !reduce) {
+        nums.forEach(function (el) { el.textContent = "0"; });
+        var nio = new IntersectionObserver(function (es) {
+          if (!es[0].isIntersecting) return; nio.disconnect();
+          nums.forEach(function (el) {
+            var end = Number(el.dataset.count), t0 = performance.now();
+            (function tick(t) { var k = Math.min(1, (t - t0) / 900); el.textContent = Math.round(end * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(tick); })(t0);
+          });
+        }, { threshold: .6 });
+        nio.observe(nums[0].parentElement.parentElement);
       }
     }
 

@@ -40,6 +40,53 @@
       }
     }
 
+    /* Two bars: drag the tap handle (or use arrow keys) to compare; on desktop it follows the pointer. */
+    var duo = document.getElementById("tt-duo");
+    if (duo) {
+      var range = duo.querySelector(".duo-range");
+      var setX = function (v) {
+        v = Math.max(0, Math.min(100, v));
+        duo.style.setProperty("--x", v + "%"); range.value = Math.round(v);
+        duo.dataset.side = v > 60 ? "a" : v < 40 ? "b" : "";
+      };
+      var fromEvent = function (e) { var r = duo.getBoundingClientRect(); return (e.clientX - r.left) / r.width * 100; };
+      var used = function () { duo.classList.add("used"); };
+      range.addEventListener("input", function () { setX(Number(range.value)); used(); });
+      duo.addEventListener("pointerdown", function (e) { duo.classList.add("drag"); setX(fromEvent(e)); used(); });
+      duo.addEventListener("pointermove", function (e) {
+        if (duo.classList.contains("drag") || e.pointerType === "mouse") { setX(fromEvent(e)); if (e.pointerType === "mouse") used(); }
+      });
+      ["pointerup", "pointercancel", "pointerleave"].forEach(function (t) { duo.addEventListener(t, function () { duo.classList.remove("drag"); }); });
+      /* gentle intro: the handle sweeps once when the section first appears */
+      if ("IntersectionObserver" in window && !reduce) {
+        var dio = new IntersectionObserver(function (es) {
+          if (!es[0].isIntersecting || duo.classList.contains("used")) return;
+          dio.disconnect();
+          var t0 = performance.now();
+          (function step(t) {
+            if (duo.classList.contains("used")) return;
+            var k = Math.min(1, (t - t0) / 1800);
+            setX(50 + Math.sin(k * Math.PI * 2) * 22 * (1 - k));
+            if (k < 1) requestAnimationFrame(step);
+          })(t0);
+        }, { threshold: .5 });
+        dio.observe(duo);
+      }
+      /* count-up for the numbers */
+      var nums = document.querySelectorAll(".bars-stats [data-count]");
+      if (nums.length && "IntersectionObserver" in window && !reduce) {
+        nums.forEach(function (el) { el.textContent = "0"; });
+        var nio = new IntersectionObserver(function (es) {
+          if (!es[0].isIntersecting) return; nio.disconnect();
+          nums.forEach(function (el) {
+            var end = Number(el.dataset.count), t0 = performance.now();
+            (function tick(t) { var k = Math.min(1, (t - t0) / 900); el.textContent = Math.round(end * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(tick); })(t0);
+          });
+        }, { threshold: .6 });
+        nio.observe(nums[0].parentElement.parentElement);
+      }
+    }
+
     /* Club life: hovering/focusing a row wipes its photo into the panel (desktop);
        on phones each row's thumbnail wipes in as it scrolls into view. */
     var lifeRows = document.querySelectorAll("#tt-rows .row"), figs = document.querySelectorAll("#tt-life-media figure");
