@@ -68,13 +68,13 @@ Until a photo is uploaded, its frame shows a clean deep-pine panel instead of a 
 
 If you prefer the Media Library (which files under `/2026/10/`), find and replace `https://thebogeyclub.com/wp-content/uploads/bogey-home/` in `03`, `04` and `05` with the real folder.
 
-## Sponsor logos (tee-box signs)
+## Sponsors ("Our playing partners")
 
-The "Our playing partners" section has four sign placeholders, one per sponsor. For each sponsor, in `site/src/home.html` (or directly in the pasted HTML):
-1. Upload the logo to the Media Library. A transparent PNG or SVG works best.
-2. Find the comment `SPONSOR 1` (2, 3, 4). Replace the `<div class="sign">…</div>` below it with the `<a class="sign" …>` block shown in that comment, filling in the sponsor's website, the logo URL and the name.
-
-Logos always show in full colour on a white panel (Newmarket Tire 'N' Mag on black). Order: Bay 1 Benson Kearley IFG, Bay 2 Bird Infrastructure, Bay 3 Newmarket Tire 'N' Mag, Bay 4 Hartley Built.
+Each sponsor gets a simulator bay: the logo on a framed screen that powers on with a light sweep as the row scrolls into view, above a green hitting-mat nameplate ("Bay 1 · Benson Kearley IFG").
+- **Order:** Bay 1 Benson Kearley IFG, Bay 2 Bird Infrastructure, Bay 3 Newmarket Tire 'N' Mag (black screen), Bay 4 Hartley Built.
+- **Logos:** always full colour.
+- **Hartley Built:** its file has empty space above the logo, so it is shifted up 28% (`.bay.lift`). If you upload a tightly cropped version, remove `lift` from its class.
+- **Links:** to link a sponsor to their website, follow the comment above the list in the HTML.
 
 ## 2. Site-wide code (WPCode plugin, free)
 

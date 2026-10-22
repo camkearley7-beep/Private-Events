@@ -67,27 +67,15 @@
       }
     }
 
-    /* Sponsors: signs rise into place on scroll; on desktop each tilts toward the cursor. */
+    /* Sponsors: each bay's screen powers on as the row scrolls into view. */
     var signs = document.getElementById("tt-signs");
-    if (signs) {
+    if (signs && "IntersectionObserver" in window && !reduce) {
       var items = signs.querySelectorAll("li");
-      if ("IntersectionObserver" in window && !reduce) {
-        signs.classList.add("anim");
-        var sio = new IntersectionObserver(function (es) {
-          es.forEach(function (e) { if (e.isIntersecting) { items.forEach(function (li) { li.classList.add("in"); }); sio.disconnect(); } });
-        }, { threshold: .25 });
-        sio.observe(signs);
-      }
-      if (!reduce && window.matchMedia("(hover: hover)").matches) {
-        signs.querySelectorAll(".sign").forEach(function (card) {
-          card.addEventListener("pointermove", function (e) {
-            var r = card.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
-            card.style.setProperty("--ry", (x * 14).toFixed(2) + "deg");
-            card.style.setProperty("--rx", (-y * 12).toFixed(2) + "deg");
-          });
-          card.addEventListener("pointerleave", function () { card.style.removeProperty("--rx"); card.style.removeProperty("--ry"); });
-        });
-      }
+      signs.classList.add("anim");
+      var sio = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { items.forEach(function (li) { li.classList.add("in"); }); sio.disconnect(); } });
+      }, { threshold: .25 });
+      sio.observe(signs);
     }
 
     /* Mobile menu */
