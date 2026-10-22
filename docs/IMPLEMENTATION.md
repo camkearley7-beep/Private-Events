@@ -47,8 +47,8 @@ The rest of this guide is the full site-wide setup: header and footer on every p
 | Tee-to-tap stop 02 (The bars) | `/wp-content/uploads/2026/08/Main-Bar.png` |
 | Tee-to-tap stop 03 (Karaoke) | `/wp-content/uploads/2026/10/ChatGPT-Image-Oct-16-2026-10_49_54-AM.png` |
 | Tee-to-tap stop 04 (The upstairs) | `/wp-content/uploads/2026/08/Party-Room-1-edit-2.png` |
-| Two full bars: Bar 01 (main floor) | `/wp-content/uploads/2026/10/ChatGPT-Image-Oct-19-2026-02_24_43-PM.png` |
-| Two full bars: Bar 02 (upstairs) | `/wp-content/uploads/2026/08/Party-room-2-edit-2.png` |
+| Two full bars: Bar 01 (main floor) | `/wp-content/uploads/2026/08/Main-Bar.png` |
+| Two full bars: Bar 02 (upstairs) | `/wp-content/uploads/2026/10/ChatGPT-Image-Oct-19-2026-02_24_43-PM.png` |
 
    Not used yet: `Party-room-2.png` (the unedited version), `Hallway.png`, and images `…Oct-19…02_24_43-PM.png`, `…02_24_35-PM.png` and `…02_24_31-PM.png`.
 
