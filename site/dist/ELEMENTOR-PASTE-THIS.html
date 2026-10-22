@@ -135,14 +135,20 @@
 .tt .duo[data-side="a"] .duo-b figcaption, .tt .duo[data-side="b"] .duo-a figcaption { opacity: .35; }
 .tt .duo-handle { position: absolute; top: 0; bottom: 0; left: var(--x); width: 0; z-index: 3; pointer-events: none; }
 .tt .duo-handle::before { content: ''; position: absolute; top: 0; bottom: 0; left: -1.5px; width: 3px; background: var(--white); box-shadow: 0 0 0 1px rgba(35,62,49,.15); }
-.tt .duo-handle .tap { position: absolute; left: -16px; top: calc(50% - 86px); width: 32px; height: 92px; border-radius: 10px 10px 6px 6px;
-  background: linear-gradient(90deg, #0A4A30, var(--green) 45%, #0A4A30); box-shadow: 0 10px 24px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.12); }
-.tt .duo-handle .tap::before { content: ''; position: absolute; left: 7px; right: 7px; top: 14px; height: 30px; border-radius: 4px; background: var(--white); }
-.tt .duo-handle .tap::after { content: ''; position: absolute; left: 12px; right: 12px; bottom: -14px; height: 16px; border-radius: 0 0 4px 4px; background: linear-gradient(90deg, #9AA39E, #E9EDEA 50%, #9AA39E); }
-.tt .duo-handle .grip { position: absolute; left: -26px; top: calc(50% + 22px); width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; background: var(--white); color: var(--green); font-weight: 700; font-size: 18px; letter-spacing: 2px; box-shadow: 0 10px 24px rgba(0,0,0,.3); transition: transform .3s; }
-.tt .duo.drag .duo-handle .grip { transform: scale(1.12); }
+.tt .duo-handle .ball { position: absolute; left: -32px; top: calc(50% - 32px); width: 64px; height: 64px; border-radius: 50%; overflow: hidden;
+  background: #FFFFFF; box-shadow: 0 14px 28px rgba(0,0,0,.35), inset -8px -10px 18px rgba(35,62,49,.18), inset 6px 6px 12px rgba(255,255,255,.9);
+  transition: transform .25s cubic-bezier(.2,.8,.2,1); }
+/* dimples roll with the ball */
+.tt .duo-handle .ball i { position: absolute; inset: -6px; border-radius: 50%; transform: rotate(var(--rot, 0deg));
+  background: radial-gradient(circle at 50% 50%, rgba(35,62,49,.16) 0 2.2px, transparent 2.8px) 0 0 / 9px 9px,
+              radial-gradient(circle at 50% 50%, rgba(35,62,49,.16) 0 2.2px, transparent 2.8px) 4.5px 4.5px / 9px 9px; }
+/* soft highlight sits on top so the light stays put while the dimples turn */
+.tt .duo-handle .ball::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle at 34% 28%, rgba(255,255,255,.95) 0 10%, rgba(255,255,255,0) 42%), radial-gradient(circle at 70% 78%, rgba(35,62,49,.22), transparent 60%); }
+/* little arrows either side say "drag me" */
+.tt .duo-handle::after { content: '‹                ›'; white-space: pre; position: absolute; top: calc(50% - 12px); left: 50%; transform: translateX(-50%); color: var(--white); font-weight: 700; font-size: 20px; line-height: 24px; text-shadow: 0 1px 6px rgba(0,0,0,.5); }
+.tt .duo.drag .duo-handle .ball { transform: scale(1.1); }
+.tt .duo:has(.duo-range:focus-visible) .ball { outline: 3px solid var(--sand); outline-offset: 3px; }
 .tt .duo-range { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; z-index: 4; }
-.tt .duo-range:focus-visible ~ .duo-handle .grip, .tt .duo:has(.duo-range:focus-visible) .grip { outline: 3px solid var(--sand); outline-offset: 3px; }
 .tt .duo-hint { position: absolute; z-index: 2; top: 18px; left: 50%; transform: translateX(-50%); padding: 7px 12px; border-radius: 999px; background: rgba(35,62,49,.82); color: var(--white); font-size: 13px; font-weight: 500; transition: opacity .4s; }
 .tt .duo.used .duo-hint { opacity: 0; }
 .tt .bars-stats { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 36px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -259,7 +265,6 @@
   .tt .duo { aspect-ratio: 4 / 5; border-radius: 12px; margin: 0 -6px; }
   .tt .duo figcaption { bottom: 14px; font-size: 16px; padding: 9px 12px; }
   .tt .duo-a figcaption { left: 14px; } .tt .duo-b figcaption { right: 14px; }
-  .tt .duo-handle .tap { transform: scale(.8); }
   .tt .bars-stats { grid-template-columns: 1fr 1fr; }
   .tt .bars-stats div:nth-child(3) { padding-left: 0; border-left: 0; }
   .tt .bars-stats div:nth-child(n+3) { border-top: 1px solid var(--line); }
@@ -491,7 +496,7 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
   </div>
 </section>
 
-<!-- 3. TWO FULL BARS: drag the tap handle to compare the two bars -->
+<!-- 3. TWO FULL BARS: roll the golf ball to compare the two bars -->
 <section class="bars" id="bars" aria-labelledby="tt-bars-h">
   <div class="bars-head">
     <div><p class="data">The 19th hole <i>/</i> × 2</p><h2 id="tt-bars-h" class="h-xl">The best rounds don't end at 18.</h2></div>
@@ -500,7 +505,7 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
   <div class="duo" id="tt-duo" style="--x:50%">
     <figure class="duo-b"><img src="https://thebogeyclub.com/wp-content/uploads/2026/10/ChatGPT-Image-Oct-19-2026-02_24_43-PM.png" loading="lazy" decoding="async" alt="Bar 2, the upstairs bar in the event space at The Bogey Club"><figcaption><span class="data">Bar 02</span>Upstairs</figcaption></figure>
     <figure class="duo-a"><img src="https://thebogeyclub.com/wp-content/uploads/2026/08/Main-Bar.png" loading="lazy" decoding="async" alt="Bar 1, the main-floor bar at The Bogey Club in Newmarket"><figcaption><span class="data">Bar 01</span>Main floor</figcaption></figure>
-    <div class="duo-handle" aria-hidden="true"><span class="tap"></span><span class="grip">‹ ›</span></div>
+    <div class="duo-handle" aria-hidden="true"><span class="ball"><i></i></span></div>
     <input class="duo-range" type="range" min="0" max="100" value="50" aria-label="Slide to compare Bar 1 and Bar 2">
     <span class="duo-hint" aria-hidden="true">Drag to switch bars</span>
   </div>
@@ -881,13 +886,14 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
       }
     }
 
-    /* Two bars: drag the tap handle (or use arrow keys) to compare; on desktop it follows the pointer. */
+    /* Two bars: roll the golf ball (or use arrow keys) to compare; on desktop it follows the pointer. */
     var duo = document.getElementById("tt-duo");
     if (duo) {
       var range = duo.querySelector(".duo-range");
       var setX = function (v) {
         v = Math.max(0, Math.min(100, v));
         duo.style.setProperty("--x", v + "%"); range.value = Math.round(v);
+        duo.style.setProperty("--rot", (v * 7.2).toFixed(1) + "deg"); /* the ball rolls as it moves */
         duo.dataset.side = v > 60 ? "a" : v < 40 ? "b" : "";
       };
       var fromEvent = function (e) { var r = duo.getBoundingClientRect(); return (e.clientX - r.left) / r.width * 100; };

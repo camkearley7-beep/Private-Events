@@ -40,13 +40,14 @@
       }
     }
 
-    /* Two bars: drag the tap handle (or use arrow keys) to compare; on desktop it follows the pointer. */
+    /* Two bars: roll the golf ball (or use arrow keys) to compare; on desktop it follows the pointer. */
     var duo = document.getElementById("tt-duo");
     if (duo) {
       var range = duo.querySelector(".duo-range");
       var setX = function (v) {
         v = Math.max(0, Math.min(100, v));
         duo.style.setProperty("--x", v + "%"); range.value = Math.round(v);
+        duo.style.setProperty("--rot", (v * 7.2).toFixed(1) + "deg"); /* the ball rolls as it moves */
         duo.dataset.side = v > 60 ? "a" : v < 40 ? "b" : "";
       };
       var fromEvent = function (e) { var r = duo.getBoundingClientRect(); return (e.clientX - r.left) / r.width * 100; };
