@@ -317,13 +317,11 @@ body { margin: 0; background: #FFFFFF; }
 .tt .sign-top { width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; padding: 12px 0; background: var(--green); }
 .tt .sign-top .data { color: var(--white); }
 .tt .sign-top::before { content: ''; width: 12px; height: 15px; background: var(--sand); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 15'%3E%3Cpath d='M1 0h1.6v15H1z M2.6 .5 11 3.6 2.6 6.8z'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 15'%3E%3Cpath d='M1 0h1.6v15H1z M2.6 .5 11 3.6 2.6 6.8z'/%3E%3C/svg%3E") center / contain no-repeat; }
-.tt .sign-logo { width: 100%; height: 132px; display: grid; place-items: center; padding: 18px 22px; }
-.tt .sign-logo img { max-height: 84px; max-width: 100%; object-fit: contain; filter: grayscale(1); opacity: .78; transition: filter .45s, opacity .45s, transform .45s; }
-.tt .sign:hover .sign-logo img, .tt .sign:focus-visible .sign-logo img { filter: none; opacity: 1; transform: scale(1.04); }
-.tt .sign.dark .sign-logo { background: var(--pine); }
-.tt .sign.dark .sign-logo img { filter: none; opacity: 1; }
-.tt .sign-logo { height: 160px; }
-@media (max-width: 860px) { .tt .sign-logo { height: 110px; } }
+.tt .sign-logo { width: 100%; height: 160px; display: grid; place-items: center; padding: 14px 16px; background: var(--white); }
+.tt .sign-logo img { width: 100%; height: 100%; object-fit: contain; transition: transform .45s; }
+.tt .sign:hover .sign-logo img, .tt .sign:focus-visible .sign-logo img { transform: scale(1.04); }
+.tt .sign.black .sign-logo { background: #000; }
+@media (max-width: 860px) { .tt .sign-logo { height: 110px; padding: 10px 12px; } }
 .tt .sign-name { width: 100%; padding: 12px 10px 14px; border-top: 1px solid var(--line); font-weight: 500; font-size: 15px; }
 .tt .sign-ph { display: inline-block; padding: 12px 16px; border: 1.5px dashed rgba(35,62,49,.3); border-radius: 8px; font-weight: 500; font-size: 14px; color: rgba(35,62,49,.75); }
 .tt .posts { display: flex; justify-content: space-between; width: 46%; height: 54px; }
@@ -334,8 +332,6 @@ body { margin: 0; background: #FFFFFF; }
   .tt .partners { padding: 72px 18px 64px; }
   .tt .sp-head { grid-template-columns: 1fr; gap: 16px; }
   .tt .signs { grid-template-columns: 1fr 1fr; gap: 26px 14px; margin-top: 40px; }
-  .tt .sign-logo { height: 96px; padding: 12px 14px; }
-  .tt .sign-logo img { max-height: 60px; filter: none; opacity: 1; }
   .tt .sign-name { font-size: 13px; padding: 10px 6px 12px; }
   .tt .sign-ph { font-size: 12px; padding: 10px; }
   .tt .posts { height: 34px; }
