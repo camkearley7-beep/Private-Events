@@ -74,7 +74,7 @@ The "Our playing partners" section has four sign placeholders, one per sponsor. 
 1. Upload the logo to the Media Library. A transparent PNG or SVG works best.
 2. Find the comment `SPONSOR 1` (2, 3, 4). Replace the `<div class="sign">…</div>` below it with the `<a class="sign" …>` block shown in that comment, filling in the sponsor's website, the logo URL and the name.
 
-Logos show in greyscale and turn full colour on hover on desktop. On phones they always show in colour.
+Logos always show in full colour on a white panel (Newmarket Tire 'N' Mag on black). Order: Bay 1 Benson Kearley IFG, Bay 2 Bird Infrastructure, Bay 3 Newmarket Tire 'N' Mag, Bay 4 Hartley Built.
 
 ## 2. Site-wide code (WPCode plugin, free)
 
