@@ -148,6 +148,17 @@
       }
     }
 
+    /* WPForms: if a WPForms widget with CSS class "tt-wpforms" is on the page,
+       move its form into the contact card and use it instead of the built-in one. */
+    var wpf = document.querySelector(".tt-wpforms .wpforms-container, .wpforms-container.tt-wpforms");
+    var slot = document.getElementById("tt-cslot");
+    if (wpf && slot) {
+      slot.appendChild(wpf);
+      document.getElementById("tt-ccard").classList.add("has-wpf");
+      var host = document.querySelector(".elementor-element.tt-wpforms");
+      if (host && !host.contains(wpf)) host.style.display = "none";
+    }
+
     /* Contact form */
     var cform = document.getElementById("tt-cform");
     if (cform) {

@@ -225,7 +225,30 @@ body { margin: 0; background: #FFFFFF; }
 .tt .visit .btn-line:hover { background: var(--mist); }
 .tt .hours { border-top: 1px solid var(--line); margin-top: 40px; }
 .tt .visit { align-items: start; }
-.tt .cform { display: grid; gap: 16px; padding: 36px; border-radius: 20px; background: var(--mist); border: 1px solid var(--line); }
+.tt .cform-card { display: grid; gap: 16px; padding: 36px; border-radius: 20px; background: var(--mist); border: 1px solid var(--line); }
+.tt .cform { display: grid; gap: 16px; }
+.tt .cform-card.has-wpf .cform { display: none; }
+/* WPForms, restyled to match the card */
+.tt .cform-slot .wpforms-container { margin: 0 !important; }
+.tt .cform-slot .wpforms-field { padding: 0 0 16px !important; }
+.tt .cform-slot .wpforms-field-label { font: 500 14px/1.4 var(--font) !important; color: var(--pine) !important; margin: 0 0 6px !important; }
+.tt .cform-slot .wpforms-field-sublabel, .tt .cform-slot .wpforms-field-description { font-family: var(--font) !important; color: rgba(35,62,49,.75) !important; }
+.tt .cform-slot .wpforms-required-label { color: var(--green) !important; }
+.tt .cform-slot input[type=text], .tt .cform-slot input[type=email], .tt .cform-slot input[type=tel], .tt .cform-slot input[type=number], .tt .cform-slot select, .tt .cform-slot textarea {
+  width: 100% !important; max-width: none !important; min-height: 52px !important; height: auto !important; padding: 12px 14px !important; border-radius: 10px !important;
+  border: 1.5px solid rgba(35,62,49,.25) !important; background: var(--white) !important; color: var(--pine) !important; font: 400 16px/1.4 var(--font) !important; box-shadow: none !important; }
+.tt .cform-slot textarea { min-height: 120px !important; }
+.tt .cform-slot input:focus, .tt .cform-slot select:focus, .tt .cform-slot textarea:focus { outline: none !important; border-color: var(--green) !important; box-shadow: 0 0 0 3px rgba(13,91,59,.18) !important; }
+.tt .cform-slot .wpforms-field-medium, .tt .cform-slot .wpforms-field-large { max-width: none !important; }
+.tt .cform-slot button[type=submit], .tt .cform-slot .wpforms-submit {
+  min-height: 54px !important; min-width: 220px !important; padding: 0 22px !important; border: 0 !important; border-radius: 6px !important;
+  background: var(--green) !important; color: var(--white) !important; font: 600 16px var(--font) !important; cursor: pointer; transition: background .2s; }
+.tt .cform-slot button[type=submit]:hover { background: var(--pine) !important; }
+.tt .cform-slot label.wpforms-error, .tt .cform-slot em.wpforms-error { color: #A3352B !important; font: 500 13px var(--font) !important; }
+.tt .cform-slot .wpforms-confirmation-container-full { background: var(--white) !important; border: 1px solid var(--line) !important; border-left: 3px solid var(--green) !important; color: var(--pine) !important; border-radius: 10px; font-family: var(--font); }
+.tt .cform-slot .wpforms-field-container { display: flex; flex-wrap: wrap; column-gap: 16px; }
+.tt .cform-slot .wpforms-field { width: 100% !important; float: none !important; margin-left: 0 !important; clear: none !important; }
+@media (min-width: 861px) { .tt .cform-slot .wpforms-field.wpforms-one-half { width: calc(50% - 8px) !important; } }
 .tt .cform-sub { color: var(--soft); font-size: 16px; margin-top: -6px; }
 .tt .crow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .tt .cfield { display: grid; gap: 6px; }
@@ -332,7 +355,8 @@ body { margin: 0; background: #FFFFFF; }
 
   .tt .visit { grid-template-columns: 1fr; padding: 72px 18px 50px; gap: 36px; }
   .tt .visit .acts .btn { flex: 1 1 100%; }
-  .tt .cform { padding: 22px 18px; border-radius: 16px; }
+  .tt .cform-card { padding: 22px 18px; border-radius: 16px; }
+  .tt .cform-slot button[type=submit] { width: 100% !important; }
   .tt .crow { grid-template-columns: 1fr; }
   .tt .cform .btn { width: 100%; }
   .tt footer { grid-template-columns: 1fr 1fr; padding: 50px 18px 120px; }
@@ -862,11 +886,14 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
     </div>
   </div>
 
-  <!-- Contact form. Sends via FORM_ENDPOINT in the site script if set (e.g. a Formspree
-       form URL); otherwise it opens the visitor's email app addressed to the club. -->
+  <!-- Contact form card. If a WPForms widget with the CSS class "tt-wpforms" is on the
+       page, the site script moves that form in here and hides the built-in fields.
+       Otherwise the built-in form below is used (FORM_ENDPOINT, or the visitor's email app). -->
+  <div class="cform-card" id="tt-ccard">
+  <h3 class="h-m">Send us a message</h3>
+  <p class="cform-sub">Questions, group bookings, leagues or sponsorship. We'll get back to you.</p>
+  <div class="cform-slot" id="tt-cslot"></div>
   <form class="cform" id="tt-cform" novalidate>
-    <h3 class="h-m">Send us a message</h3>
-    <p class="cform-sub">Questions, group bookings, leagues or sponsorship. We'll get back to you.</p>
     <div class="crow">
       <label class="cfield"><span>Name</span><input name="name" autocomplete="name" required></label>
       <label class="cfield"><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
@@ -885,6 +912,7 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
     <button class="btn btn-red" type="submit">Send message</button>
     <p class="cstatus" role="status" aria-live="polite"></p>
   </form>
+  </div>
 </section>
 
 </div>
@@ -1078,6 +1106,17 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
         }, { threshold: .3 });
         sio.observe(signs);
       }
+    }
+
+    /* WPForms: if a WPForms widget with CSS class "tt-wpforms" is on the page,
+       move its form into the contact card and use it instead of the built-in one. */
+    var wpf = document.querySelector(".tt-wpforms .wpforms-container, .wpforms-container.tt-wpforms");
+    var slot = document.getElementById("tt-cslot");
+    if (wpf && slot) {
+      slot.appendChild(wpf);
+      document.getElementById("tt-ccard").classList.add("has-wpf");
+      var host = document.querySelector(".elementor-element.tt-wpforms");
+      if (host && !host.contains(wpf)) host.style.display = "none";
     }
 
     /* Contact form */

@@ -191,11 +191,14 @@
     </div>
   </div>
 
-  <!-- Contact form. Sends via FORM_ENDPOINT in the site script if set (e.g. a Formspree
-       form URL); otherwise it opens the visitor's email app addressed to the club. -->
+  <!-- Contact form card. If a WPForms widget with the CSS class "tt-wpforms" is on the
+       page, the site script moves that form in here and hides the built-in fields.
+       Otherwise the built-in form below is used (FORM_ENDPOINT, or the visitor's email app). -->
+  <div class="cform-card" id="tt-ccard">
+  <h3 class="h-m">Send us a message</h3>
+  <p class="cform-sub">Questions, group bookings, leagues or sponsorship. We'll get back to you.</p>
+  <div class="cform-slot" id="tt-cslot"></div>
   <form class="cform" id="tt-cform" novalidate>
-    <h3 class="h-m">Send us a message</h3>
-    <p class="cform-sub">Questions, group bookings, leagues or sponsorship. We'll get back to you.</p>
     <div class="crow">
       <label class="cfield"><span>Name</span><input name="name" autocomplete="name" required></label>
       <label class="cfield"><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
@@ -214,6 +217,7 @@
     <button class="btn btn-red" type="submit">Send message</button>
     <p class="cstatus" role="status" aria-live="polite"></p>
   </form>
+  </div>
 </section>
 
 </div>
