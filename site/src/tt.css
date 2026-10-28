@@ -335,7 +335,7 @@
   .tt .legal { flex-direction: column; gap: 6px; }
 }
 /* Bay rates */
-.tt .rates { background: var(--green); color: var(--white); padding: 96px var(--g) 84px; }
+.tt .rates { background: var(--green); color: var(--white); padding: 96px var(--g) 84px; scroll-margin-top: 60px; }
 .tt .rates .data { color: var(--sand); }
 .tt .rates-head { display: grid; grid-template-columns: 1fr auto; gap: 18px 48px; align-items: end; margin-bottom: 44px; }
 .tt .rates-head .data { grid-column: 1 / -1; }
