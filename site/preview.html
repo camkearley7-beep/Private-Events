@@ -115,11 +115,15 @@ body { margin: 0; background: #FFFFFF; }
 
 /* ================= 2. TEE TO TAP ================= */
 .tt .walk { position: relative; background: var(--white); }
-.tt .walk-pin { position: sticky; top: 78px; height: calc(100vh - 78px); height: calc(100svh - 78px); overflow: hidden; display: grid; grid-template-rows: auto 1fr auto; padding: 56px 0 28px; }
+.tt .walk-pin { padding: 72px 0 48px; }
+.tt .walk.dolly .walk-pin { position: sticky; top: 78px; height: calc(100vh - 78px); height: calc(100svh - 78px); overflow: hidden; display: grid; grid-template-rows: auto 1fr auto; padding: 56px 0 28px; }
 .tt .walk-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; padding: 0 var(--g) 26px; }
 .tt .walk-head .data { color: rgba(35,62,49,.75); }
-.tt .track { display: flex; gap: 20px; padding: 0 var(--g); will-change: transform; }
-.tt .stop { position: relative; flex: none; width: min(72vw, 1080px); height: 100%; border-radius: 10px; overflow: hidden; isolation: isolate; color: var(--white); }
+.tt .track { display: flex; gap: 16px; padding: 0 var(--g); overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding: 0 var(--g); -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.tt .track::-webkit-scrollbar { display: none; }
+.tt .walk.dolly .track { gap: 20px; overflow: visible; scroll-snap-type: none; will-change: transform; }
+.tt .stop { position: relative; flex: none; width: min(84vw, 760px); height: clamp(420px, 72svh, 620px); scroll-snap-align: start; border-radius: 10px; overflow: hidden; isolation: isolate; color: var(--white); }
+.tt .walk.dolly .stop { width: min(72vw, 1080px); height: 100%; }
 .tt .stop img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
 .tt .stop::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(80deg, rgba(35,62,49,.88) 0%, rgba(35,62,49,.35) 45%, rgba(35,62,49,0) 70%); }
 .tt .stop .ref { top: 16px; right: 16px; }
@@ -133,7 +137,16 @@ body { margin: 0; background: #FFFFFF; }
 .tt .walk-foot { display: flex; align-items: center; gap: 22px; padding: 22px var(--g) 0; }
 .tt .walk-foot .bar { flex: 1; height: 2px; background: var(--line); position: relative; }
 .tt .walk-foot .bar i { position: absolute; inset: 0 auto 0 0; width: 0; background: var(--green); }
-.tt .walk-foot ol { display: flex; gap: 22px; list-style: none; }
+.tt .walk-foot ol { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; }
+.tt .walk-foot li button { all: unset; cursor: pointer; padding: 6px 0; }
+.tt .walk-foot li button:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+.tt .walk-nav { display: flex; gap: 8px; }
+.tt .walk-nav button { all: unset; box-sizing: border-box; width: 44px; height: 44px; display: grid; place-items: center; border: 1.5px solid var(--line); border-radius: 50%; color: var(--pine); cursor: pointer; transition: background .2s, color .2s, border-color .2s, opacity .2s; }
+.tt .walk-nav button:hover { background: var(--green); border-color: var(--green); color: var(--white); }
+.tt .walk-nav button:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+.tt .walk-nav button[disabled] { opacity: .35; cursor: default; background: none; color: var(--pine); border-color: var(--line); }
+.tt .walk-nav svg { width: 18px; height: 18px; }
+.tt .walk.dolly .walk-nav { display: none; }
 .tt .walk-foot li { color: rgba(35,62,49,.75); transition: color .3s; } .tt .walk-foot li.on { color: var(--green); }
 
 /* ================= 3. TWO FULL BARS: tap-handle comparison ================= */
@@ -279,7 +292,6 @@ body { margin: 0; background: #FFFFFF; }
   .tt .menu { display: block; }
   .tt .hdr { height: 64px; padding: 0 18px; }
   .tt .hdr-space { height: 64px; }
-  .tt .walk-pin { top: 64px; }
   .tt .logo { height: 36px; max-width: 180px; }
   /* hero: photo on top, copy on white beneath, so the first screen stays light */
   .tt .hero { height: auto; min-height: 0; color: var(--pine); }
@@ -304,17 +316,18 @@ body { margin: 0; background: #FFFFFF; }
   .tt .dock a:first-child small { color: rgba(255,255,255,.75); }
   .tt .dock a + a { background: var(--mist); }
 
-  .tt .walk-pin { position: static; height: auto; padding: 64px 0 40px; }
+  .tt .walk-pin { padding: 64px 0 40px; }
   .tt .walk-head { padding: 0 18px 22px; flex-direction: column; align-items: start; gap: 8px; }
-  .tt .track { overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 18px; gap: 10px; transform: none !important; scrollbar-width: none; }
-  .tt .track::-webkit-scrollbar { display: none; }
-  .tt .stop { width: 84vw; height: 540px; scroll-snap-align: center; }
+  .tt .track { padding: 0 18px; gap: 10px; scroll-padding: 0 18px; }
+  .tt .stop { width: 86vw; height: clamp(440px, 74svh, 560px); }
   .tt .stop::after { background: linear-gradient(180deg, rgba(35,62,49,0) 30%, rgba(35,62,49,.92) 82%); }
   .tt .stop-body { left: 20px; right: 20px; bottom: 22px; }
   .tt .stop p { font-size: 15px; margin: 10px 0 18px; }
   .tt .stop .acts .btn { flex: 1; }
-  .tt .walk-foot { padding: 18px 18px 0; }
-  .tt .walk-foot ol { gap: 12px; font-size: 11px; }
+  .tt .walk-foot { padding: 18px 18px 0; gap: 14px; flex-wrap: wrap; }
+  .tt .walk-foot ol { gap: 12px; font-size: 11px; order: 1; width: 100%; justify-content: space-between; }
+  .tt .walk-foot .bar { order: 2; }
+  .tt .walk-nav { order: 3; }
 
   .tt .bars { padding: 72px 18px 64px; }
   .tt .bars-head { grid-template-columns: 1fr; gap: 16px; margin-bottom: 28px; }
@@ -383,6 +396,14 @@ body { margin: 0; background: #FFFFFF; }
   .tt .rates-list { grid-template-columns: repeat(2, 1fr); }
   .tt .rates-list li:nth-child(3) { padding-left: 0; border-left: 0; }
   .tt .rates-list li:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,.22); }
+}
+@media (max-height: 520px) and (orientation: landscape) {
+  .tt .stop { width: min(80vw, 640px); height: calc(100svh - 96px); min-height: 280px; }
+  .tt .stop::after { background: linear-gradient(80deg, rgba(35,62,49,.9) 0%, rgba(35,62,49,.5) 55%, rgba(35,62,49,.1) 100%); }
+  .tt .stop-body { left: 20px; right: auto; bottom: 18px; max-width: 70%; }
+  .tt .stop p { margin: 6px 0 12px; font-size: 14px; }
+  .tt .stop .acts .btn { flex: none; }
+  .tt .dock { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .tt *, .tt *::before, .tt *::after { animation: none !important; transition: none !important; }
@@ -755,7 +776,7 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
   <div class="walk-pin">
     <div class="walk-head">
       <h2 id="tt-walk-h" class="h-l">From the tee<br>to the tap.</h2>
-      <p class="data">Four stops <i>/</i> one building <i>/</i> <span class="hint">scroll</span></p>
+      <p class="data">Four stops <i>/</i> one building <i>/</i> <span class="hint" id="tt-walk-hint">swipe</span></p>
     </div>
     <div class="track" id="tt-track">
       <article class="stop">
@@ -776,8 +797,9 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
       </article>
     </div>
     <div class="walk-foot">
-      <ol class="data" id="tt-stops"><li class="on">01 Shop</li><li>02 Bays</li><li>03 Stage</li><li>04 Upstairs</li></ol>
+      <ol class="data" id="tt-stops"><li class="on"><button type="button" data-go="0">01 Shop</button></li><li><button type="button" data-go="1">02 Bays</button></li><li><button type="button" data-go="2">03 Stage</button></li><li><button type="button" data-go="3">04 Upstairs</button></li></ol>
       <div class="bar"><i id="tt-prog"></i></div>
+      <div class="walk-nav"><button type="button" id="tt-walk-prev" aria-label="Previous stop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" id="tt-walk-next" aria-label="Next stop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>
     </div>
   </div>
 </section>
@@ -1205,37 +1227,63 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
       window.matchMedia("(min-width: 861px)").addEventListener("change", function (mq) { if (mq.matches) setOpen(false); });
     }
 
-    /* From the tee to the tap: vertical scroll drives a horizontal dolly on desktop;
-       on mobile the track is a native swipe. */
+    /* From the tee to the tap: on a desktop with a mouse, vertical scroll drives a
+       horizontal dolly (.dolly). Everywhere else (phones, tablets, touch laptops,
+       reduced motion) the track is a native swipe with arrows and stop buttons. */
     var walk = document.getElementById("walk"), track = document.getElementById("tt-track");
     if (walk && track) {
-      var desk = window.matchMedia("(min-width: 861px)");
+      var desk = window.matchMedia("(min-width: 1025px) and (min-height: 600px) and (hover: hover) and (pointer: fine)");
       var prog = document.getElementById("tt-prog"), stops = document.querySelectorAll("#tt-stops li");
+      var cards = track.querySelectorAll(".stop"), hint = document.getElementById("tt-walk-hint");
+      var prev = document.getElementById("tt-walk-prev"), next = document.getElementById("tt-walk-next");
+      var dolly = function () { return desk.matches && !reduce; };
+      var cur = 0;
       var mark = function (k) {
         prog.style.width = (k * 100) + "%";
-        var idx = Math.min(stops.length - 1, Math.round(k * (stops.length - 1)));
-        stops.forEach(function (s, i) { s.classList.toggle("on", i === idx); });
+        cur = Math.min(stops.length - 1, Math.round(k * (stops.length - 1)));
+        stops.forEach(function (s, i) { s.classList.toggle("on", i === cur); });
+        if (prev) prev.disabled = k <= 0.01;
+        if (next) next.disabled = k >= 0.99;
       };
       var onScroll = function () {
-        if (!desk.matches || reduce) return;
+        if (!dolly()) return;
         var travel = track.scrollWidth - window.innerWidth, span = walk.offsetHeight - window.innerHeight;
         if (travel <= 0 || span <= 0) return;
         var k = Math.min(1, Math.max(0, -walk.getBoundingClientRect().top / span));
         track.style.transform = "translate3d(" + (-k * travel) + "px,0,0)";
         mark(k);
       };
+      var onSwipe = function () {
+        if (dolly()) return;
+        mark(track.scrollLeft / Math.max(1, track.scrollWidth - track.clientWidth));
+      };
       var size = function () {
-        if (!desk.matches || reduce) { walk.style.height = ""; track.style.transform = ""; return; }
+        var on = dolly();
+        walk.classList.toggle("dolly", on);
+        if (hint) hint.textContent = on ? "scroll" : "swipe";
+        if (!on) { walk.style.height = ""; track.style.transform = ""; onSwipe(); return; }
         walk.style.height = (window.innerHeight + Math.max(0, track.scrollWidth - window.innerWidth)) + "px";
         onScroll();
       };
-      track.addEventListener("scroll", function () {
-        if (desk.matches) return;
-        mark(track.scrollLeft / Math.max(1, track.scrollWidth - track.clientWidth));
-      }, { passive: true });
+      var go = function (i) {
+        i = Math.max(0, Math.min(cards.length - 1, i));
+        if (dolly()) {
+          var span = walk.offsetHeight - window.innerHeight;
+          window.scrollTo({ top: window.scrollY + walk.getBoundingClientRect().top + span * i / Math.max(1, cards.length - 1), behavior: reduce ? "auto" : "smooth" });
+        } else {
+          track.scrollTo({ left: cards[i].offsetLeft - track.firstElementChild.offsetLeft, behavior: reduce ? "auto" : "smooth" });
+        }
+      };
+      document.querySelectorAll("#tt-stops [data-go]").forEach(function (b) {
+        b.addEventListener("click", function () { go(+b.getAttribute("data-go")); });
+      });
+      if (prev) prev.addEventListener("click", function () { go(cur - 1); });
+      if (next) next.addEventListener("click", function () { go(cur + 1); });
+      track.addEventListener("scroll", onSwipe, { passive: true });
       window.addEventListener("scroll", onScroll, { passive: true });
       window.addEventListener("resize", size);
       window.addEventListener("load", size);
+      if (desk.addEventListener) desk.addEventListener("change", size);
       size();
     }
 

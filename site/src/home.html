@@ -37,7 +37,7 @@
   <div class="walk-pin">
     <div class="walk-head">
       <h2 id="tt-walk-h" class="h-l">From the tee<br>to the tap.</h2>
-      <p class="data">Four stops <i>/</i> one building <i>/</i> <span class="hint">scroll</span></p>
+      <p class="data">Four stops <i>/</i> one building <i>/</i> <span class="hint" id="tt-walk-hint">swipe</span></p>
     </div>
     <div class="track" id="tt-track">
       <article class="stop">
@@ -58,8 +58,9 @@
       </article>
     </div>
     <div class="walk-foot">
-      <ol class="data" id="tt-stops"><li class="on">01 Shop</li><li>02 Bays</li><li>03 Stage</li><li>04 Upstairs</li></ol>
+      <ol class="data" id="tt-stops"><li class="on"><button type="button" data-go="0">01 Shop</button></li><li><button type="button" data-go="1">02 Bays</button></li><li><button type="button" data-go="2">03 Stage</button></li><li><button type="button" data-go="3">04 Upstairs</button></li></ol>
       <div class="bar"><i id="tt-prog"></i></div>
+      <div class="walk-nav"><button type="button" id="tt-walk-prev" aria-label="Previous stop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" id="tt-walk-next" aria-label="Next stop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>
     </div>
   </div>
 </section>

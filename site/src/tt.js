@@ -205,37 +205,63 @@
       window.matchMedia("(min-width: 861px)").addEventListener("change", function (mq) { if (mq.matches) setOpen(false); });
     }
 
-    /* From the tee to the tap: vertical scroll drives a horizontal dolly on desktop;
-       on mobile the track is a native swipe. */
+    /* From the tee to the tap: on a desktop with a mouse, vertical scroll drives a
+       horizontal dolly (.dolly). Everywhere else (phones, tablets, touch laptops,
+       reduced motion) the track is a native swipe with arrows and stop buttons. */
     var walk = document.getElementById("walk"), track = document.getElementById("tt-track");
     if (walk && track) {
-      var desk = window.matchMedia("(min-width: 861px)");
+      var desk = window.matchMedia("(min-width: 1025px) and (min-height: 600px) and (hover: hover) and (pointer: fine)");
       var prog = document.getElementById("tt-prog"), stops = document.querySelectorAll("#tt-stops li");
+      var cards = track.querySelectorAll(".stop"), hint = document.getElementById("tt-walk-hint");
+      var prev = document.getElementById("tt-walk-prev"), next = document.getElementById("tt-walk-next");
+      var dolly = function () { return desk.matches && !reduce; };
+      var cur = 0;
       var mark = function (k) {
         prog.style.width = (k * 100) + "%";
-        var idx = Math.min(stops.length - 1, Math.round(k * (stops.length - 1)));
-        stops.forEach(function (s, i) { s.classList.toggle("on", i === idx); });
+        cur = Math.min(stops.length - 1, Math.round(k * (stops.length - 1)));
+        stops.forEach(function (s, i) { s.classList.toggle("on", i === cur); });
+        if (prev) prev.disabled = k <= 0.01;
+        if (next) next.disabled = k >= 0.99;
       };
       var onScroll = function () {
-        if (!desk.matches || reduce) return;
+        if (!dolly()) return;
         var travel = track.scrollWidth - window.innerWidth, span = walk.offsetHeight - window.innerHeight;
         if (travel <= 0 || span <= 0) return;
         var k = Math.min(1, Math.max(0, -walk.getBoundingClientRect().top / span));
         track.style.transform = "translate3d(" + (-k * travel) + "px,0,0)";
         mark(k);
       };
+      var onSwipe = function () {
+        if (dolly()) return;
+        mark(track.scrollLeft / Math.max(1, track.scrollWidth - track.clientWidth));
+      };
       var size = function () {
-        if (!desk.matches || reduce) { walk.style.height = ""; track.style.transform = ""; return; }
+        var on = dolly();
+        walk.classList.toggle("dolly", on);
+        if (hint) hint.textContent = on ? "scroll" : "swipe";
+        if (!on) { walk.style.height = ""; track.style.transform = ""; onSwipe(); return; }
         walk.style.height = (window.innerHeight + Math.max(0, track.scrollWidth - window.innerWidth)) + "px";
         onScroll();
       };
-      track.addEventListener("scroll", function () {
-        if (desk.matches) return;
-        mark(track.scrollLeft / Math.max(1, track.scrollWidth - track.clientWidth));
-      }, { passive: true });
+      var go = function (i) {
+        i = Math.max(0, Math.min(cards.length - 1, i));
+        if (dolly()) {
+          var span = walk.offsetHeight - window.innerHeight;
+          window.scrollTo({ top: window.scrollY + walk.getBoundingClientRect().top + span * i / Math.max(1, cards.length - 1), behavior: reduce ? "auto" : "smooth" });
+        } else {
+          track.scrollTo({ left: cards[i].offsetLeft - track.firstElementChild.offsetLeft, behavior: reduce ? "auto" : "smooth" });
+        }
+      };
+      document.querySelectorAll("#tt-stops [data-go]").forEach(function (b) {
+        b.addEventListener("click", function () { go(+b.getAttribute("data-go")); });
+      });
+      if (prev) prev.addEventListener("click", function () { go(cur - 1); });
+      if (next) next.addEventListener("click", function () { go(cur + 1); });
+      track.addEventListener("scroll", onSwipe, { passive: true });
       window.addEventListener("scroll", onScroll, { passive: true });
       window.addEventListener("resize", size);
       window.addEventListener("load", size);
+      if (desk.addEventListener) desk.addEventListener("change", size);
       size();
     }
 
