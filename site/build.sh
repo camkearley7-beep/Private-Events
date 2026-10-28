@@ -151,6 +151,7 @@ if 'Satoshi-Variable.woff2' in have:
     one = re.sub(r"src: url\('[^']*Satoshi-Variable\.woff2'\) format\('woff2-variations'\), url\('[^']*Satoshi-Variable\.woff2'\) format\('woff2'\)",
                  lambda m: "src: url('" + _font + "') format('woff2')", one)
 (dist / 'ELEMENTOR-PASTE-THIS.html').write_text(one)
+(dist / 'ELEMENTOR-PASTE-THIS.txt').write_text(one)  # same code, opens as plain text for copying
 
 # 1) live-ready: assets load from the WordPress uploads folders
 (dist / 'bogey-club-homepage.html').write_text(full_page(IMG_LIVE, FONTS_LIVE))
