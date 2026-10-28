@@ -166,7 +166,7 @@ The "Send us a message" form asks for name, email, phone (optional), a topic (Ge
 | Email | `mailto:golf@thebogeyclub.com` | Mobile menu | Visit | – |
 | Directions | Google Maps | – | Visit | – |
 | Privacy policy | `/privacy-policy/` (**confirm the URL**) | – | – | Footer |
-| Instagram | `instagram.com/thebogeyclub` (**confirm the handle**) | – | – | Footer |
+| Instagram | `instagram.com/the.bogeyclub` | – | – | Footer |
 | Newsletter | existing widget | – | – | Footer |
 
 The event inquiry buttons go to `/private-events/`, where the existing form lives, so its email routing and spam protection are untouched. If that form section has an anchor ID, append it, for example `/private-events/#inquire`.
@@ -208,6 +208,6 @@ Every CTA carries `data-tt-cta="…"`, so the site's existing Google Tag Manager
 | $60/bay/hour + HST, up to 4 players | Confirm. Used in the structured data. |
 | Second bar is upstairs in the event space | Confirm |
 | Men's Night | Confirm it's running |
-| Privacy URL, Instagram handle | Confirm |
+| Privacy policy URL | Confirm |
 | Sponsor links on the current homepage (if any) | Move them to the footer |
 | AI-generated photos on `/karaoke/` (filenames starting `ChatGPT-Image…`) | Consider replacing them with real photos |
