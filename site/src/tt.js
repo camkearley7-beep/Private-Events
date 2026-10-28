@@ -5,6 +5,11 @@
   "use strict";
   function ready(fn) { if (document.readyState !== "loading") fn(); else document.addEventListener("DOMContentLoaded", fn); }
 
+  /* Contact form destination. Leave empty to open the visitor's email app;
+     set to a Formspree form URL (https://formspree.io/f/xxxxxxx) to send in-page. */
+  var FORM_ENDPOINT = "";
+  var CLUB_EMAIL = "golf@thebogeyclub.com";
+
   ready(function () {
     var html = document.documentElement;
     var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -140,6 +145,36 @@
         }, { threshold: .3 });
         sio.observe(signs);
       }
+    }
+
+    /* Contact form */
+    var cform = document.getElementById("tt-cform");
+    if (cform) {
+      var status = cform.querySelector(".cstatus"), sendBtn = cform.querySelector("button[type=submit]");
+      var say = function (msg, err) { status.textContent = msg; status.classList.toggle("err", !!err); };
+      cform.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var ok = true;
+        cform.querySelectorAll("[required]").forEach(function (f) {
+          var bad = !f.value.trim() || (f.type === "email" && !/^\S+@\S+\.\S+$/.test(f.value));
+          f.closest(".cfield").classList.toggle("bad", bad); if (bad && ok) { f.focus(); ok = false; }
+        });
+        if (!ok) { say("Please fill in your name, a valid email and a message.", true); return; }
+        if (cform.elements._gotcha.value) return;
+        var d = {}; ["name", "email", "phone", "topic", "message"].forEach(function (k) { d[k] = cform.elements[k].value.trim(); });
+        if (FORM_ENDPOINT) {
+          sendBtn.disabled = true; say("Sending…");
+          fetch(FORM_ENDPOINT, { method: "POST", headers: { "Accept": "application/json", "Content-Type": "application/json" }, body: JSON.stringify(Object.assign({ _subject: "Website message: " + d.topic }, d)) })
+            .then(function (r) { if (!r.ok) throw 0; cform.reset(); say("Thanks, " + d.name.split(" ")[0] + "! Your message is in. We'll be in touch soon."); })
+            .catch(function () { say("Sorry, that didn't send. Please email " + CLUB_EMAIL + " or call (905) 235-4653.", true); })
+            .then(function () { sendBtn.disabled = false; });
+        } else {
+          var body = d.message + "\n\n— " + d.name + "\n" + d.email + (d.phone ? "\n" + d.phone : "");
+          window.location.href = "mailto:" + CLUB_EMAIL + "?subject=" + encodeURIComponent("Website message: " + d.topic) + "&body=" + encodeURIComponent(body);
+          say("Your email app should open with your message ready to send.");
+        }
+      });
+      cform.addEventListener("input", function (e) { var f = e.target.closest(".cfield"); if (f) f.classList.remove("bad"); });
     }
 
     /* Mobile menu */

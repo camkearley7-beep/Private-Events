@@ -223,7 +223,23 @@ body { margin: 0; background: #FFFFFF; }
 .tt .visit .acts { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 32px; }
 .tt .visit .btn-line { border-color: var(--pine); color: var(--pine); }
 .tt .visit .btn-line:hover { background: var(--mist); }
-.tt .hours { border-top: 1px solid var(--line); }
+.tt .hours { border-top: 1px solid var(--line); margin-top: 40px; }
+.tt .visit { align-items: start; }
+.tt .cform { display: grid; gap: 16px; padding: 36px; border-radius: 20px; background: var(--mist); border: 1px solid var(--line); }
+.tt .cform-sub { color: var(--soft); font-size: 16px; margin-top: -6px; }
+.tt .crow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.tt .cfield { display: grid; gap: 6px; }
+.tt .cfield > span { font-size: 14px; font-weight: 500; color: var(--pine); }
+.tt .cfield em { font-style: normal; color: rgba(35,62,49,.75); font-weight: 400; }
+.tt .cfield input, .tt .cfield select, .tt .cfield textarea { width: 100%; min-height: 52px; padding: 12px 14px; border-radius: 10px; border: 1.5px solid rgba(35,62,49,.25); background: var(--white); color: var(--pine); font: 400 16px/1.4 var(--font); transition: border-color .2s, box-shadow .2s; }
+.tt .cfield textarea { min-height: 120px; resize: vertical; }
+.tt .cfield input:focus, .tt .cfield select:focus, .tt .cfield textarea:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(13,91,59,.18); }
+.tt .cfield.bad input, .tt .cfield.bad textarea { border-color: #A3352B; }
+.tt .cform .btn { justify-self: start; min-width: 220px; }
+.tt .cform .btn[disabled] { opacity: .6; cursor: progress; }
+.tt .cstatus { font-size: 15px; font-weight: 500; color: var(--green); min-height: 1.4em; }
+.tt .cstatus.err { color: #A3352B; }
+.tt .cform .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 .tt .hours div { display: flex; justify-content: space-between; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
 .tt .hours span:first-child { color: rgba(35,62,49,.75); }
 .tt footer { background: var(--pine); padding: 64px var(--g) 40px; display: grid; grid-template-columns: 1.2fr repeat(3, .7fr) 1.3fr; gap: 40px; font-size: 15px; color: rgba(255,255,255,.78); }
@@ -316,6 +332,9 @@ body { margin: 0; background: #FFFFFF; }
 
   .tt .visit { grid-template-columns: 1fr; padding: 72px 18px 50px; gap: 36px; }
   .tt .visit .acts .btn { flex: 1 1 100%; }
+  .tt .cform { padding: 22px 18px; border-radius: 16px; }
+  .tt .crow { grid-template-columns: 1fr; }
+  .tt .cform .btn { width: 100%; }
   .tt footer { grid-template-columns: 1fr 1fr; padding: 50px 18px 120px; }
   .tt footer > div:first-child, .tt footer > div:last-of-type { grid-column: 1 / -1; }
   .tt .legal { flex-direction: column; gap: 6px; }
@@ -828,20 +847,44 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
   <p class="sp-foot">Want your name on a bay? <a href="mailto:golf@thebogeyclub.com?subject=Sponsoring%20The%20Bogey%20Club">Talk to us about sponsorship</a></p>
 </section>
 
-<!-- 6. VISIT -->
+<!-- 6. VISIT + CONTACT -->
 <section class="visit on-light" id="visit" aria-labelledby="tt-visit-h">
-  <div>
+  <div class="visit-info">
     <p class="data">Visit <i>/</i> Newmarket, Ontario</p>
-    <h2 id="tt-visit-h" class="sr">Visit The Bogey Club in Newmarket</h2>
+    <h2 id="tt-visit-h" class="sr">Visit or contact The Bogey Club in Newmarket</h2>
     <address>17705 Leslie Street, Unit 5<br>Newmarket, ON L3Y 3E3</address>
     <div class="acts"><a class="btn btn-red" href="https://www.google.com/maps/dir/?api=1&amp;destination=The+Bogey+Club%2C+17705+Leslie+St+Unit+5%2C+Newmarket%2C+ON+L3Y+3E3" target="_blank" rel="noopener">Get directions</a><a class="btn btn-line" href="tel:+19052354653">(905) 235-4653</a></div>
+    <div class="hours">
+      <div><span>Golf bookings</span><span>Daily · 9 AM – 12 AM</span></div>
+      <div><span>Bar (staffed)</span><span>See posted hours</span></div>
+      <div><span>Email</span><a href="mailto:golf@thebogeyclub.com">golf@thebogeyclub.com</a></div>
+      <div><span>Nearby</span><span>Aurora · East Gwillimbury</span></div>
+    </div>
   </div>
-  <div class="hours">
-    <div><span>Golf bookings</span><span>Daily · 9 AM – 12 AM</span></div>
-    <div><span>Bar (staffed)</span><span>See posted hours</span></div>
-    <div><span>Email</span><a href="mailto:golf@thebogeyclub.com">golf@thebogeyclub.com</a></div>
-    <div><span>Nearby</span><span>Aurora · East Gwillimbury</span></div>
-  </div>
+
+  <!-- Contact form. Sends via FORM_ENDPOINT in the site script if set (e.g. a Formspree
+       form URL); otherwise it opens the visitor's email app addressed to the club. -->
+  <form class="cform" id="tt-cform" novalidate>
+    <h3 class="h-m">Send us a message</h3>
+    <p class="cform-sub">Questions, group bookings, leagues or sponsorship. We'll get back to you.</p>
+    <div class="crow">
+      <label class="cfield"><span>Name</span><input name="name" autocomplete="name" required></label>
+      <label class="cfield"><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
+    </div>
+    <div class="crow">
+      <label class="cfield"><span>Phone <em>(optional)</em></span><input name="phone" type="tel" autocomplete="tel" inputmode="tel"></label>
+      <label class="cfield"><span>About</span>
+        <select name="topic">
+          <option>General question</option><option>Golf booking</option><option>Karaoke</option>
+          <option>Private event</option><option>Leagues &amp; lessons</option><option>Sponsorship</option>
+        </select>
+      </label>
+    </div>
+    <label class="cfield"><span>Message</span><textarea name="message" rows="4" required></textarea></label>
+    <input class="hp" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button class="btn btn-red" type="submit">Send message</button>
+    <p class="cstatus" role="status" aria-live="polite"></p>
+  </form>
 </section>
 
 </div>
@@ -894,6 +937,11 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
 (function () {
   "use strict";
   function ready(fn) { if (document.readyState !== "loading") fn(); else document.addEventListener("DOMContentLoaded", fn); }
+
+  /* Contact form destination. Leave empty to open the visitor's email app;
+     set to a Formspree form URL (https://formspree.io/f/xxxxxxx) to send in-page. */
+  var FORM_ENDPOINT = "";
+  var CLUB_EMAIL = "golf@thebogeyclub.com";
 
   ready(function () {
     var html = document.documentElement;
@@ -1030,6 +1078,36 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
         }, { threshold: .3 });
         sio.observe(signs);
       }
+    }
+
+    /* Contact form */
+    var cform = document.getElementById("tt-cform");
+    if (cform) {
+      var status = cform.querySelector(".cstatus"), sendBtn = cform.querySelector("button[type=submit]");
+      var say = function (msg, err) { status.textContent = msg; status.classList.toggle("err", !!err); };
+      cform.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var ok = true;
+        cform.querySelectorAll("[required]").forEach(function (f) {
+          var bad = !f.value.trim() || (f.type === "email" && !/^\S+@\S+\.\S+$/.test(f.value));
+          f.closest(".cfield").classList.toggle("bad", bad); if (bad && ok) { f.focus(); ok = false; }
+        });
+        if (!ok) { say("Please fill in your name, a valid email and a message.", true); return; }
+        if (cform.elements._gotcha.value) return;
+        var d = {}; ["name", "email", "phone", "topic", "message"].forEach(function (k) { d[k] = cform.elements[k].value.trim(); });
+        if (FORM_ENDPOINT) {
+          sendBtn.disabled = true; say("Sending…");
+          fetch(FORM_ENDPOINT, { method: "POST", headers: { "Accept": "application/json", "Content-Type": "application/json" }, body: JSON.stringify(Object.assign({ _subject: "Website message: " + d.topic }, d)) })
+            .then(function (r) { if (!r.ok) throw 0; cform.reset(); say("Thanks, " + d.name.split(" ")[0] + "! Your message is in. We'll be in touch soon."); })
+            .catch(function () { say("Sorry, that didn't send. Please email " + CLUB_EMAIL + " or call (905) 235-4653.", true); })
+            .then(function () { sendBtn.disabled = false; });
+        } else {
+          var body = d.message + "\n\n— " + d.name + "\n" + d.email + (d.phone ? "\n" + d.phone : "");
+          window.location.href = "mailto:" + CLUB_EMAIL + "?subject=" + encodeURIComponent("Website message: " + d.topic) + "&body=" + encodeURIComponent(body);
+          say("Your email app should open with your message ready to send.");
+        }
+      });
+      cform.addEventListener("input", function (e) { var f = e.target.closest(".cfield"); if (f) f.classList.remove("bad"); });
     }
 
     /* Mobile menu */

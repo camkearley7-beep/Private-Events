@@ -193,7 +193,23 @@
 .tt .visit .acts { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 32px; }
 .tt .visit .btn-line { border-color: var(--pine); color: var(--pine); }
 .tt .visit .btn-line:hover { background: var(--mist); }
-.tt .hours { border-top: 1px solid var(--line); }
+.tt .hours { border-top: 1px solid var(--line); margin-top: 40px; }
+.tt .visit { align-items: start; }
+.tt .cform { display: grid; gap: 16px; padding: 36px; border-radius: 20px; background: var(--mist); border: 1px solid var(--line); }
+.tt .cform-sub { color: var(--soft); font-size: 16px; margin-top: -6px; }
+.tt .crow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.tt .cfield { display: grid; gap: 6px; }
+.tt .cfield > span { font-size: 14px; font-weight: 500; color: var(--pine); }
+.tt .cfield em { font-style: normal; color: rgba(35,62,49,.75); font-weight: 400; }
+.tt .cfield input, .tt .cfield select, .tt .cfield textarea { width: 100%; min-height: 52px; padding: 12px 14px; border-radius: 10px; border: 1.5px solid rgba(35,62,49,.25); background: var(--white); color: var(--pine); font: 400 16px/1.4 var(--font); transition: border-color .2s, box-shadow .2s; }
+.tt .cfield textarea { min-height: 120px; resize: vertical; }
+.tt .cfield input:focus, .tt .cfield select:focus, .tt .cfield textarea:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(13,91,59,.18); }
+.tt .cfield.bad input, .tt .cfield.bad textarea { border-color: #A3352B; }
+.tt .cform .btn { justify-self: start; min-width: 220px; }
+.tt .cform .btn[disabled] { opacity: .6; cursor: progress; }
+.tt .cstatus { font-size: 15px; font-weight: 500; color: var(--green); min-height: 1.4em; }
+.tt .cstatus.err { color: #A3352B; }
+.tt .cform .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 .tt .hours div { display: flex; justify-content: space-between; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
 .tt .hours span:first-child { color: rgba(35,62,49,.75); }
 .tt footer { background: var(--pine); padding: 64px var(--g) 40px; display: grid; grid-template-columns: 1.2fr repeat(3, .7fr) 1.3fr; gap: 40px; font-size: 15px; color: rgba(255,255,255,.78); }
@@ -286,6 +302,9 @@
 
   .tt .visit { grid-template-columns: 1fr; padding: 72px 18px 50px; gap: 36px; }
   .tt .visit .acts .btn { flex: 1 1 100%; }
+  .tt .cform { padding: 22px 18px; border-radius: 16px; }
+  .tt .crow { grid-template-columns: 1fr; }
+  .tt .cform .btn { width: 100%; }
   .tt footer { grid-template-columns: 1fr 1fr; padding: 50px 18px 120px; }
   .tt footer > div:first-child, .tt footer > div:last-of-type { grid-column: 1 / -1; }
   .tt .legal { flex-direction: column; gap: 6px; }

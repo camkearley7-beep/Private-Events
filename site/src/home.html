@@ -176,20 +176,44 @@
   <p class="sp-foot">Want your name on a bay? <a href="mailto:golf@thebogeyclub.com?subject=Sponsoring%20The%20Bogey%20Club">Talk to us about sponsorship</a></p>
 </section>
 
-<!-- 6. VISIT -->
+<!-- 6. VISIT + CONTACT -->
 <section class="visit on-light" id="visit" aria-labelledby="tt-visit-h">
-  <div>
+  <div class="visit-info">
     <p class="data">Visit <i>/</i> Newmarket, Ontario</p>
-    <h2 id="tt-visit-h" class="sr">Visit The Bogey Club in Newmarket</h2>
+    <h2 id="tt-visit-h" class="sr">Visit or contact The Bogey Club in Newmarket</h2>
     <address>17705 Leslie Street, Unit 5<br>Newmarket, ON L3Y 3E3</address>
     <div class="acts"><a class="btn btn-red" href="https://www.google.com/maps/dir/?api=1&amp;destination=The+Bogey+Club%2C+17705+Leslie+St+Unit+5%2C+Newmarket%2C+ON+L3Y+3E3" target="_blank" rel="noopener">Get directions</a><a class="btn btn-line" href="tel:+19052354653">(905) 235-4653</a></div>
+    <div class="hours">
+      <div><span>Golf bookings</span><span>Daily · 9 AM – 12 AM</span></div>
+      <div><span>Bar (staffed)</span><span>See posted hours</span></div>
+      <div><span>Email</span><a href="mailto:golf@thebogeyclub.com">golf@thebogeyclub.com</a></div>
+      <div><span>Nearby</span><span>Aurora · East Gwillimbury</span></div>
+    </div>
   </div>
-  <div class="hours">
-    <div><span>Golf bookings</span><span>Daily · 9 AM – 12 AM</span></div>
-    <div><span>Bar (staffed)</span><span>See posted hours</span></div>
-    <div><span>Email</span><a href="mailto:golf@thebogeyclub.com">golf@thebogeyclub.com</a></div>
-    <div><span>Nearby</span><span>Aurora · East Gwillimbury</span></div>
-  </div>
+
+  <!-- Contact form. Sends via FORM_ENDPOINT in the site script if set (e.g. a Formspree
+       form URL); otherwise it opens the visitor's email app addressed to the club. -->
+  <form class="cform" id="tt-cform" novalidate>
+    <h3 class="h-m">Send us a message</h3>
+    <p class="cform-sub">Questions, group bookings, leagues or sponsorship. We'll get back to you.</p>
+    <div class="crow">
+      <label class="cfield"><span>Name</span><input name="name" autocomplete="name" required></label>
+      <label class="cfield"><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
+    </div>
+    <div class="crow">
+      <label class="cfield"><span>Phone <em>(optional)</em></span><input name="phone" type="tel" autocomplete="tel" inputmode="tel"></label>
+      <label class="cfield"><span>About</span>
+        <select name="topic">
+          <option>General question</option><option>Golf booking</option><option>Karaoke</option>
+          <option>Private event</option><option>Leagues &amp; lessons</option><option>Sponsorship</option>
+        </select>
+      </label>
+    </div>
+    <label class="cfield"><span>Message</span><textarea name="message" rows="4" required></textarea></label>
+    <input class="hp" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button class="btn btn-red" type="submit">Send message</button>
+    <p class="cstatus" role="status" aria-live="polite"></p>
+  </form>
 </section>
 
 </div>

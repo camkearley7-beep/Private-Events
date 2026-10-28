@@ -77,6 +77,18 @@ Each sponsor gets a green bay card: a large outlined bay number, the logo on a r
 - **Hartley Built:** its file has empty space above the logo, so it is shifted up 28% (`.bay.lift`). If you upload a tightly cropped version, remove `lift` from its class.
 - **Links:** each bay opens the sponsor's website in a new tab (bkifg.com, birdinfrastructure.ca, newmarkettire.com, hartleybuilt.com).
 
+## Contact form (Visit section)
+
+The "Send us a message" form asks for name, email, phone (optional), a topic (General question, Golf booking, Karaoke, Private event, Leagues & lessons, Sponsorship) and a message, and checks the required fields before sending.
+
+- **Out of the box:** pressing Send opens the visitor's email app with a message to golf@thebogeyclub.com, filled in from the form.
+- **To send directly from the page (recommended):**
+  1. Create a free form at formspree.io with golf@thebogeyclub.com as the inbox.
+  2. Copy its URL (`https://formspree.io/f/…`).
+  3. Paste it between the quotes in `var FORM_ENDPOINT = "";` near the top of the script, at the bottom of `ELEMENTOR-PASTE-THIS.html` (or in `site/src/tt.js`, then rebuild).
+
+  Messages then send in place, with a "Thanks, we'll be in touch" confirmation and a hidden spam trap.
+
 ## 2. Site-wide code (WPCode plugin, free)
 
 | File | WPCode snippet type | Location |
