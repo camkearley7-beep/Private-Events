@@ -319,7 +319,7 @@ body { margin: 0; background: #FFFFFF; }
 }
 
 /* ================= SPONSORS: tee-box signs ================= */
-.tt .partners { background: var(--pine); color: var(--white); padding: 110px var(--g) 90px; overflow: hidden; }
+.tt .partners { background: radial-gradient(70% 60% at 50% 0%, rgba(13,91,59,.55), transparent 70%), var(--pine); color: var(--white); padding: 110px var(--g) 90px; overflow: hidden; }
 .tt .partners .data { color: var(--sand); }
 .tt .sp-head { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; }
 .tt .sp-head .data { margin-bottom: 14px; }
@@ -327,39 +327,56 @@ body { margin: 0; background: #FFFFFF; }
 .tt .bays-row { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 64px; }
 .tt .bays-row li { transition: transform .8s cubic-bezier(.2,.8,.2,1) var(--d, 0ms), opacity .6s ease var(--d, 0ms); }
 .tt .bays-row.anim li:not(.in) { transform: translateY(40px); opacity: 0; }
-.tt .bay { display: block; border-radius: 16px; padding: 10px; background: #18291F; border: 1px solid rgba(255,255,255,.08); color: var(--white);
-  box-shadow: 0 20px 40px rgba(0,0,0,.25); transition: transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s, border-color .45s; }
-.tt .bay:hover, .tt .bay:focus-visible { transform: translateY(-8px); border-color: rgba(215,201,164,.5); box-shadow: 0 32px 60px rgba(0,0,0,.35); }
-/* the screen */
-.tt .scr { position: relative; aspect-ratio: 16 / 10; border-radius: 8px; overflow: hidden; background: var(--white); display: grid; place-items: center; padding: 16px 18px; }
+.tt .bay { position: relative; isolation: isolate; display: flex; flex-direction: column; gap: 16px; height: 100%; padding: 20px 18px 18px; border-radius: 20px; overflow: hidden; color: var(--white);
+  background: linear-gradient(165deg, #1E5038 0%, #183F2D 50%, #142F23 100%); border: 1px solid rgba(215,201,164,.16);
+  box-shadow: 0 18px 36px rgba(0,0,0,.22); transition: transform .55s cubic-bezier(.2,.8,.2,1), box-shadow .55s, border-color .55s; }
+/* fairway stripes, very faint */
+.tt .bay::after { content: ''; position: absolute; inset: 0; z-index: -1; background: repeating-linear-gradient(115deg, rgba(255,255,255,.025) 0 22px, transparent 22px 44px); }
+/* a thin sand line traces the border of the featured card */
+.tt .bay::before { content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1.5px; pointer-events: none; opacity: 0; transition: opacity .5s;
+  background: conic-gradient(from var(--ang, 0deg), transparent 0 62%, var(--sand) 80%, transparent 96%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); }
+@property --ang { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+@keyframes tt-trace { to { --ang: 360deg; } }
+.tt .bay.lit::before, .tt .bay:hover::before, .tt .bay:focus-visible::before { opacity: 1; animation: tt-trace 3s linear infinite; }
+.tt .bay.lit, .tt .bay:hover, .tt .bay:focus-visible { transform: translateY(-10px); border-color: rgba(215,201,164,.35); box-shadow: 0 34px 60px rgba(0,0,0,.38); }
+.tt .bay-top { display: flex; justify-content: space-between; align-items: flex-start; }
+.tt .bay-top .data { color: var(--sand); padding-top: 6px; }
+.tt .bay-no { font-weight: 700; font-size: 64px; line-height: .8; letter-spacing: -.04em; color: transparent; -webkit-text-stroke: 1.5px rgba(215,201,164,.55); transition: color .5s, -webkit-text-stroke-color .5s; font-variant-numeric: tabular-nums; }
+.tt .bay.lit .bay-no, .tt .bay:hover .bay-no, .tt .bay:focus-visible .bay-no { color: var(--sand); -webkit-text-stroke-color: var(--sand); }
+/* the logo panel */
+.tt .scr { position: relative; display: grid; place-items: center; aspect-ratio: 16 / 10; padding: 18px 20px; border-radius: 12px; overflow: hidden; background: var(--white);
+  box-shadow: 0 14px 30px rgba(0,0,0,.28), inset 0 0 0 1px rgba(35,62,49,.06); transition: transform .55s cubic-bezier(.2,.8,.2,1); }
 .tt .bay.black .scr { background: #000; }
-.tt .scr img { width: 100%; height: 100%; object-fit: contain; transition: transform .6s cubic-bezier(.2,.8,.2,1); }
+.tt .bay.lit .scr, .tt .bay:hover .scr { transform: scale(1.03); }
+.tt .scr img { width: 100%; height: 100%; object-fit: contain; }
 .tt .bay.lift .scr img { transform: translateY(-28%); }
-.tt .bay:hover .scr img { transform: scale(1.05); }
-.tt .bay.lift:hover .scr img { transform: translateY(-28%) scale(1.05); }
-/* power-on sweep: a soft light bar crosses the screen as it reveals */
 .tt .scr::after { content: ''; position: absolute; inset: 0; background: linear-gradient(100deg, transparent 30%, rgba(255,255,255,.55) 48%, transparent 66%); transform: translateX(-120%); pointer-events: none; }
-.tt .bays-row.anim li:not(.in) .scr img { opacity: 0; transform: scale(.94); }
-.tt .bays-row.anim li:not(.in) .bay.lift .scr img { transform: translateY(-28%) scale(.94); }
-.tt .bays-row li .scr img { transition: opacity .6s ease calc(var(--d, 0ms) + 250ms), transform .9s cubic-bezier(.2,.8,.2,1) calc(var(--d, 0ms) + 250ms); }
+.tt .bays-row.anim li:not(.in) .scr img { opacity: 0; }
+.tt .bays-row li .scr img { transition: opacity .6s ease calc(var(--d, 0ms) + 250ms); }
 .tt .bays-row li.in .scr::after { animation: tt-sweep 1.1s cubic-bezier(.3,.1,.2,1) calc(var(--d, 0ms) + 200ms) 1; }
-.tt .bay:hover .scr::after { animation: tt-sweep .9s cubic-bezier(.3,.1,.2,1) 1; }
+.tt .bay.lit .scr::after, .tt .bay:hover .scr::after { animation: tt-sweep 1s cubic-bezier(.3,.1,.2,1) 1; }
 @keyframes tt-sweep { from { transform: translateX(-120%); } to { transform: translateX(120%); } }
-/* the hitting-mat nameplate */
-.tt .mat { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-top: 10px; padding: 12px 12px 10px; border-radius: 8px;
-  background: var(--green); }
-.tt .mat .data { color: var(--sand); }
-.tt .mat .nm { font-weight: 600; font-size: 15px; text-align: right; }
+/* name + visit */
+.tt .bay-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; }
+.tt .bay-foot .nm { font-weight: 600; font-size: 18px; line-height: 1.2; letter-spacing: -.01em; }
+.tt .bay-foot .go { flex: none; display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; border: 1px solid rgba(215,201,164,.45); color: var(--sand); font-size: 13px; font-weight: 600; transition: background .4s, color .4s, border-color .4s; }
+.tt .bay-foot .go::after { content: '→'; transition: transform .4s; }
+.tt .bay.lit .go, .tt .bay:hover .go, .tt .bay:focus-visible .go { background: var(--sand); color: var(--pine); border-color: var(--sand); }
+.tt .bay:hover .go::after, .tt .bay:focus-visible .go::after { transform: translateX(4px); }
 .tt .sp-foot { margin-top: 48px; text-align: center; color: rgba(255,255,255,.8); font-size: 16px; }
 .tt .sp-foot a { color: var(--white); font-weight: 600; border-bottom: 1.5px solid var(--sand); padding-bottom: 2px; margin-left: 6px; }
 @media (max-width: 860px) {
   .tt .partners { padding: 72px 18px 64px; }
   .tt .sp-head { grid-template-columns: 1fr; gap: 16px; }
   .tt .bays-row { grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 40px; }
-  .tt .bay { padding: 7px; border-radius: 12px; }
-  .tt .scr { padding: 10px; }
-  .tt .mat { flex-direction: column; gap: 2px; padding: 9px 10px 8px; }
-  .tt .mat .nm { text-align: left; font-size: 13px; }
+  .tt .bay { padding: 14px 12px 12px; gap: 12px; border-radius: 16px; }
+  .tt .bay-no { font-size: 40px; }
+  .tt .scr { padding: 10px; border-radius: 10px; }
+  .tt .bay-foot { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .tt .bay-foot .nm { font-size: 14px; }
+  .tt .bay-foot .go { font-size: 12px; padding: 6px 10px; }
+  .tt .bay.lit, .tt .bay:hover { transform: translateY(-4px); }
 }
 
 /* ---------- production additions ---------- */
@@ -775,26 +792,30 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
   <ul class="bays-row" id="tt-signs">
     <li style="--d:0ms">
       <a class="bay" href="https://bkifg.com/" target="_blank" rel="noopener sponsored" aria-label="Benson Kearley IFG (opens in a new tab)">
-        <div class="scr"><img src="https://thebogeyclub.com/wp-content/uploads/2023/03/BKIFG_Logo-HQ_1643305627-1.png" alt="Benson Kearley IFG" loading="lazy" decoding="async"></div>
-        <div class="mat"><span class="data">Bay 1</span><span class="nm">Benson Kearley IFG</span></div>
+        <span class="bay-top"><span class="data">Bay 1</span><span class="bay-no" aria-hidden="true">01</span></span>
+        <span class="scr"><img src="https://thebogeyclub.com/wp-content/uploads/2023/03/BKIFG_Logo-HQ_1643305627-1.png" alt="Benson Kearley IFG" loading="lazy" decoding="async"></span>
+        <span class="bay-foot"><span class="nm">Benson Kearley IFG</span><span class="go">Visit site</span></span>
       </a>
     </li>
     <li style="--d:140ms">
       <a class="bay" href="https://www.birdinfrastructure.ca/" target="_blank" rel="noopener sponsored" aria-label="Bird Infrastructure (opens in a new tab)">
-        <div class="scr"><img src="https://thebogeyclub.com/wp-content/uploads/2026/10/Full-Logo-White-Bogey-Club-1.png" alt="Bird Infrastructure" loading="lazy" decoding="async"></div>
-        <div class="mat"><span class="data">Bay 2</span><span class="nm">Bird Infrastructure</span></div>
+        <span class="bay-top"><span class="data">Bay 2</span><span class="bay-no" aria-hidden="true">02</span></span>
+        <span class="scr"><img src="https://thebogeyclub.com/wp-content/uploads/2026/10/Full-Logo-White-Bogey-Club-1.png" alt="Bird Infrastructure" loading="lazy" decoding="async"></span>
+        <span class="bay-foot"><span class="nm">Bird Infrastructure</span><span class="go">Visit site</span></span>
       </a>
     </li>
     <li style="--d:280ms">
       <a class="bay black" href="https://www.newmarkettire.com/" target="_blank" rel="noopener sponsored" aria-label="Newmarket Tire 'N' Mag (opens in a new tab)">
-        <div class="scr"><img src="https://thebogeyclub.com/wp-content/uploads/2026/10/NTM_logo.jpeg" alt="Newmarket Tire 'N' Mag" loading="lazy" decoding="async"></div>
-        <div class="mat"><span class="data">Bay 3</span><span class="nm">Newmarket Tire 'N' Mag</span></div>
+        <span class="bay-top"><span class="data">Bay 3</span><span class="bay-no" aria-hidden="true">03</span></span>
+        <span class="scr"><img src="https://thebogeyclub.com/wp-content/uploads/2026/10/NTM_logo.jpeg" alt="Newmarket Tire 'N' Mag" loading="lazy" decoding="async"></span>
+        <span class="bay-foot"><span class="nm">Newmarket Tire 'N' Mag</span><span class="go">Visit site</span></span>
       </a>
     </li>
     <li style="--d:420ms">
       <a class="bay lift" href="https://hartleybuilt.com/" target="_blank" rel="noopener sponsored" aria-label="Hartley Built (opens in a new tab)">
-        <div class="scr"><img src="https://thebogeyclub.com/wp-content/uploads/2026/10/Full-Logo-White-Bogey-Club-1-1.png" alt="Hartley Built" loading="lazy" decoding="async"></div>
-        <div class="mat"><span class="data">Bay 4</span><span class="nm">Hartley Built</span></div>
+        <span class="bay-top"><span class="data">Bay 4</span><span class="bay-no" aria-hidden="true">04</span></span>
+        <span class="scr"><img src="https://thebogeyclub.com/wp-content/uploads/2026/10/Full-Logo-White-Bogey-Club-1-1.png" alt="Hartley Built" loading="lazy" decoding="async"></span>
+        <span class="bay-foot"><span class="nm">Hartley Built</span><span class="go">Visit site</span></span>
       </a>
     </li>
   </ul>
@@ -978,15 +999,31 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
       }
     }
 
-    /* Sponsors: each bay's screen powers on as the row scrolls into view. */
+    /* Sponsors: cards rise in, then a spotlight cycles through each sponsor.
+       Hovering or focusing a card takes the spotlight; leaving resumes the cycle. */
     var signs = document.getElementById("tt-signs");
-    if (signs && "IntersectionObserver" in window && !reduce) {
-      var items = signs.querySelectorAll("li");
-      signs.classList.add("anim");
-      var sio = new IntersectionObserver(function (es) {
-        es.forEach(function (e) { if (e.isIntersecting) { items.forEach(function (li) { li.classList.add("in"); }); sio.disconnect(); } });
-      }, { threshold: .25 });
-      sio.observe(signs);
+    if (signs) {
+      var items = signs.querySelectorAll("li"), cards = signs.querySelectorAll(".bay"), lit = -1, timer = null;
+      var light = function (i) { lit = i; cards.forEach(function (c, k) { c.classList.toggle("lit", k === i); }); };
+      var start = function () { if (reduce || timer) return; timer = setInterval(function () { light((lit + 1) % cards.length); }, 3200); };
+      var stop = function () { clearInterval(timer); timer = null; };
+      cards.forEach(function (c, i) {
+        c.addEventListener("mouseenter", function () { stop(); light(i); });
+        c.addEventListener("focus", function () { stop(); light(i); });
+      });
+      signs.addEventListener("mouseleave", start);
+      signs.addEventListener("focusout", function (e) { if (!signs.contains(e.relatedTarget)) start(); });
+      if ("IntersectionObserver" in window && !reduce) {
+        signs.classList.add("anim");
+        var sio = new IntersectionObserver(function (es) {
+          es.forEach(function (e) {
+            if (e.isIntersecting) { items.forEach(function (li) { li.classList.add("in"); }); if (lit < 0) setTimeout(function () { light(0); start(); }, 900); }
+            else stop();
+            if (e.isIntersecting && lit >= 0) start();
+          });
+        }, { threshold: .3 });
+        sio.observe(signs);
+      }
     }
 
     /* Mobile menu */

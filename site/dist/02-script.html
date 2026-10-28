@@ -116,15 +116,31 @@
       }
     }
 
-    /* Sponsors: each bay's screen powers on as the row scrolls into view. */
+    /* Sponsors: cards rise in, then a spotlight cycles through each sponsor.
+       Hovering or focusing a card takes the spotlight; leaving resumes the cycle. */
     var signs = document.getElementById("tt-signs");
-    if (signs && "IntersectionObserver" in window && !reduce) {
-      var items = signs.querySelectorAll("li");
-      signs.classList.add("anim");
-      var sio = new IntersectionObserver(function (es) {
-        es.forEach(function (e) { if (e.isIntersecting) { items.forEach(function (li) { li.classList.add("in"); }); sio.disconnect(); } });
-      }, { threshold: .25 });
-      sio.observe(signs);
+    if (signs) {
+      var items = signs.querySelectorAll("li"), cards = signs.querySelectorAll(".bay"), lit = -1, timer = null;
+      var light = function (i) { lit = i; cards.forEach(function (c, k) { c.classList.toggle("lit", k === i); }); };
+      var start = function () { if (reduce || timer) return; timer = setInterval(function () { light((lit + 1) % cards.length); }, 3200); };
+      var stop = function () { clearInterval(timer); timer = null; };
+      cards.forEach(function (c, i) {
+        c.addEventListener("mouseenter", function () { stop(); light(i); });
+        c.addEventListener("focus", function () { stop(); light(i); });
+      });
+      signs.addEventListener("mouseleave", start);
+      signs.addEventListener("focusout", function (e) { if (!signs.contains(e.relatedTarget)) start(); });
+      if ("IntersectionObserver" in window && !reduce) {
+        signs.classList.add("anim");
+        var sio = new IntersectionObserver(function (es) {
+          es.forEach(function (e) {
+            if (e.isIntersecting) { items.forEach(function (li) { li.classList.add("in"); }); if (lit < 0) setTimeout(function () { light(0); start(); }, 900); }
+            else stop();
+            if (e.isIntersecting && lit >= 0) start();
+          });
+        }, { threshold: .3 });
+        sio.observe(signs);
+      }
     }
 
     /* Mobile menu */
