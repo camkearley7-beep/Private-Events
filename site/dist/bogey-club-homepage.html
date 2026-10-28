@@ -84,7 +84,7 @@ body { margin: 0; background: #FFFFFF; }
 
 /* ================= HEADER ================= */
 .tt .hdr { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 0 var(--g); background: var(--white); border-bottom: 1px solid var(--line); }
-.tt .logo { width: 76px; }
+.tt .logo { height: 46px; width: auto; max-width: 240px; object-fit: contain; }
 .tt .nav { display: flex; gap: 32px; font-size: 15px; font-weight: 500; }
 .tt .nav a { color: var(--pine); position: relative; padding: 6px 0; }
 .tt .nav a::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--green); transform: scaleX(0); transition: transform .25s; transform-origin: left; }
@@ -286,7 +286,7 @@ body { margin: 0; background: #FFFFFF; }
   .tt .hdr { height: 64px; padding: 0 18px; }
   .tt .hdr-space { height: 64px; }
   .tt .walk-pin { top: 64px; }
-  .tt .logo { width: 58px; }
+  .tt .logo { height: 36px; max-width: 180px; }
   /* hero: photo on top, copy on white beneath, so the first screen stays light */
   .tt .hero { height: auto; min-height: 0; color: var(--pine); }
   .tt .hero picture { position: relative; display: block; height: 52svh; min-height: 360px; }
@@ -655,7 +655,7 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
      ===================================================================== -->
 <div class="tt">
   <header class="hdr">
-    <a href="https://thebogeyclub.com/" aria-label="The Bogey Club home"><img class="logo" src="https://thebogeyclub.com/wp-content/uploads/bogey-home/bogey-club-logo.png" width="760" height="612" alt="The Bogey Club — Golf Simulator Lounge &amp; Bar"></a>
+    <a href="https://thebogeyclub.com/" aria-label="The Bogey Club home"><img class="logo" src="https://thebogeyclub.com/wp-content/uploads/2026/10/Bogey-Club-Font-Logo-Green.png" alt="The Bogey Club — Golf Simulator Lounge &amp; Bar"></a>
     <nav class="nav" aria-label="Main">
       <a href="https://thebogeyclub.com/our-simulators/">Golf</a>
       <a href="https://thebogeyclub.com/karaoke/">Karaoke</a>
