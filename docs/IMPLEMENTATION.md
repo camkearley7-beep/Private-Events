@@ -97,6 +97,8 @@ The "Send us a message" form asks for name, email, phone (optional), a topic (Ge
   4. **Settings → Notifications:** Send To `golf@thebogeyclub.com`. Subject `Website message: {field_id="4"}`, using the Smart Tag button to pick the dropdown. Reply-To: the Email field (Smart Tag), so you can reply straight to the visitor.
   5. **Settings → Confirmations:** Message, "Thanks! Your message is in. We'll be in touch soon."
   6. **Save.**
+  **The club's form is `[wpforms id="3352"]`.** The script looks for it automatically, so the CSS class in steps 7–8 is optional: a **Shortcode** widget containing `[wpforms id="3352"]`, placed below the HTML widget, is enough.
+
   7. In Elementor, on the homepage, drag a **WPForms** widget into the same container, **below** the HTML widget, and choose "Website contact". Turn off the widget's "Display Form Name" and "Display Form Description".
   8. Go to the widget's **Advanced → CSS Classes** and type `tt-wpforms`.
   9. **Update.** On the live page the form appears inside the card. In the editor it may still show where you dropped it, which is normal.
