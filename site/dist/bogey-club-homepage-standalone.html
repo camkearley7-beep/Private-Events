@@ -369,10 +369,10 @@ body { margin: 0; background: #FFFFFF; }
 .tt .rates-head { display: grid; grid-template-columns: 1fr auto; gap: 18px 48px; align-items: end; margin-bottom: 44px; }
 .tt .rates-head .data { grid-column: 1 / -1; }
 .tt .rates-head h2 { max-width: 24ch; }
-.tt .rates-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255,255,255,.22); border-bottom: 1px solid rgba(255,255,255,.22); }
+.tt .rates-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(255,255,255,.22); border-bottom: 1px solid rgba(255,255,255,.22); }
 .tt .rates-list li { padding: 30px 28px 28px 0; display: grid; gap: 10px; align-content: start; }
 .tt .rates-list li + li { padding-left: 28px; border-left: 1px solid rgba(255,255,255,.22); }
-.tt .rates-list b { font-weight: 700; font-size: clamp(48px, 5vw, 72px); line-height: 1; letter-spacing: -.03em; }
+.tt .rates-list b { font-weight: 700; font-size: clamp(44px, 4.2vw, 64px); line-height: 1; letter-spacing: -.03em; }
 .tt .rates-list b::after { content: ' /hr'; font-size: 16px; font-weight: 500; letter-spacing: 0; opacity: .75; }
 .tt .rates-list span:last-child { font-size: 15px; line-height: 1.5; color: rgba(255,255,255,.85); max-width: 30ch; }
 .tt .rates-note { margin-top: 20px; font-size: 14px; color: rgba(255,255,255,.8); }
@@ -385,6 +385,11 @@ body { margin: 0; background: #FFFFFF; }
   .tt .rates-list li + li { border-top: 1px solid rgba(255,255,255,.22); }
 }
 
+@media (min-width: 861px) and (max-width: 1180px) {
+  .tt .rates-list { grid-template-columns: repeat(2, 1fr); }
+  .tt .rates-list li:nth-child(3) { padding-left: 0; border-left: 0; }
+  .tt .rates-list li:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,.22); }
+}
 @media (prefers-reduced-motion: reduce) {
   .tt *, .tt *::before, .tt *::after { animation: none !important; transition: none !important; }
   .tt .aim .draw { stroke-dashoffset: 0; } .tt .aim text { opacity: 1; }
@@ -649,7 +654,7 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
           }
         ]
       },
-      "priceRange": "$50–$70 per bay per hour + HST"
+      "priceRange": "$49.99–$70 per bay per hour + HST"
     },
     {
       "@type": "WebPage",
@@ -790,9 +795,10 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
     <a class="btn btn-white" href="https://thebogeyclub.golfbooking.ca/calendar.php" data-tt-cta="rates-book-golf">Book a bay</a>
   </div>
   <ul class="rates-list">
-    <li><span class="data">Off-peak</span><b>$50</b><span>Monday to Thursday, open until 5 PM</span></li>
-    <li><span class="data">Standard</span><b>$60</b><span>Monday to Thursday evenings, plus Friday, Saturday and Sunday daytime</span></li>
-    <li><span class="data">Peak</span><b>$70</b><span>Friday and Saturday, 5 PM to close, plus holidays</span></li>
+    <li><span class="data">Overnight · Automated</span><b>$49.99</b><span>Every day, 12 AM to 9 AM, on our automated bays</span></li>
+    <li><span class="data">Off-peak</span><b>$50</b><span>Monday to Thursday, 9 AM to 5 PM</span></li>
+    <li><span class="data">Standard</span><b>$60</b><span>Monday to Thursday, 5 PM to close. Friday, 9 AM to 4 PM. All day Sunday</span></li>
+    <li><span class="data">Peak</span><b>$70</b><span>Friday, 4 PM to close. All day Saturday, plus holidays</span></li>
   </ul>
   <p class="rates-note">All prices are per bay, per hour, plus HST.</p>
 </section>
