@@ -225,7 +225,7 @@ Every CTA carries `data-tt-cta="…"`, so the site's existing Google Tag Manager
 |---|---|
 | Satoshi | Done: `Satoshi-Variable.woff2` covers every weight (400 body, 500 nav/labels, 600 subheadings/buttons, 700 headings). |
 | Real photos | 3 golf photos listed in §1 (bar, event and karaoke photos are in) |
-| Golf hours "Daily 9 AM – 12 AM" | Confirm. Listings conflict. |
+| Hours: bar side "Daily 9 AM – 12 AM", automated bays "Open 24/7" | Confirmed by owner. Update Google Business Profile to match. |
 | Staffed bar hours | Shown as "See posted hours". Add real hours when confirmed. |
 | $60/bay/hour + HST, up to 4 players | Confirm. Used in the structured data. |
 | Second bar is upstairs in the event space | Confirm |
