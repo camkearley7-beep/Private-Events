@@ -171,10 +171,10 @@ assert _visit_info.endswith('</div>')
 part1 = ("<!-- THE BOGEY CLUB HOMEPAGE, PART 1 of 3 (top of page): paste into an HTML widget.\n"
          "     See docs/IMPLEMENTATION.md, 'Three-part install'. -->\n<div class=\"tt-one\">\n"
          + live(head).split('-->', 1)[1].strip() + "\n<style>\n" + css + elementor_fix + "</style>\n"
-         + live(header) + "\n" + _h[:_cut].rstrip() + "\n</div>\n</div>\n")
+         + live(header) + "\n" + _h[:_cut].rstrip().replace('href="#tt-ccard"', 'href="#visit"') + "\n</div>\n</div>\n")
 part2 = ("<!-- THE BOGEY CLUB HOMEPAGE, PART 2 of 3: paste into the HTML widget in the LEFT column of the\n"
-         "     contact container (CSS class tt-visit-row). The WPForms widget goes in the right column. -->\n"
-         "<div class=\"tt\"><div class=\"visit visit-solo on-light\">\n  " + _visit_info + "\n</div></div>\n")
+         "     contact container. Put your WPForms widget in the same container, right after it. -->\n"
+         "<div class=\"tt\"><div class=\"visit visit-solo on-light\" id=\"visit\">\n  " + _visit_info + "\n</div></div>\n")
 part3 = ("<!-- THE BOGEY CLUB HOMEPAGE, PART 3 of 3 (bottom of page): paste into an HTML widget. -->\n"
          "<div class=\"tt-one\">\n" + live(footer).replace('<!--BCH:NEWSLETTER-->', '<!-- Existing newsletter signup form goes here -->')
          + "\n" + schema_tag + "<script>\n" + js + "</script>\n</div>\n")

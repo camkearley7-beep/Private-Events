@@ -1,6 +1,6 @@
 <!-- THE BOGEY CLUB HOMEPAGE, PART 2 of 3: paste into the HTML widget in the LEFT column of the
-     contact container (CSS class tt-visit-row). The WPForms widget goes in the right column. -->
-<div class="tt"><div class="visit visit-solo on-light">
+     contact container. Put your WPForms widget in the same container, right after it. -->
+<div class="tt"><div class="visit visit-solo on-light" id="visit">
   <div class="visit-info">
     <p class="data">Visit <i>/</i> Newmarket, Ontario</p>
     <h2 id="tt-visit-h" class="sr">Visit or contact The Bogey Club in Newmarket</h2>
