@@ -214,21 +214,21 @@
   <h3 class="h-m">Send us a message</h3>
   <p class="cform-sub">Questions, group bookings, leagues or sponsorship. We'll get back to you.</p>
   <div class="cform-slot" id="tt-cslot"></div>
-  <form class="cform" id="tt-cform" novalidate>
+  <form class="cform" id="tt-cform" action="mailto:golf@thebogeyclub.com?subject=Website%20message" method="post" enctype="text/plain">
     <div class="crow">
-      <label class="cfield"><span>Name</span><input name="name" autocomplete="name" required></label>
-      <label class="cfield"><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
+      <label class="cfield"><span>Name</span><input name="tt_name" autocomplete="name" required></label>
+      <label class="cfield"><span>Email</span><input name="tt_email" type="email" autocomplete="email" required></label>
     </div>
     <div class="crow">
-      <label class="cfield"><span>Phone <em>(optional)</em></span><input name="phone" type="tel" autocomplete="tel" inputmode="tel"></label>
+      <label class="cfield"><span>Phone <em>(optional)</em></span><input name="tt_phone" type="tel" autocomplete="tel" inputmode="tel"></label>
       <label class="cfield"><span>About</span>
-        <select name="topic">
+        <select name="tt_topic">
           <option>General question</option><option>Golf booking</option><option>Karaoke</option>
           <option>Private event</option><option>Leagues &amp; lessons</option><option>Sponsorship</option>
         </select>
       </label>
     </div>
-    <label class="cfield"><span>Message</span><textarea name="message" rows="4" required></textarea></label>
+    <label class="cfield"><span>Message</span><textarea name="tt_message" rows="4" required></textarea></label>
     <input class="hp" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
     <button class="btn btn-red" type="submit">Send message</button>
     <p class="cstatus" role="status" aria-live="polite"></p>

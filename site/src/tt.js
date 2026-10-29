@@ -13,7 +13,10 @@
   ready(function () {
     var html = document.documentElement;
     var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    /* each feature runs on its own, so one failure never takes the others down */
+    var fail = function (err) { if (window.console) console.error("[Bogey Club]", err); };
 
+    try {
     /* Karaoke booking: open the karaoke-filtered calendar on the current month
        (same behaviour as the /karaoke/ page). */
     var now = new Date(), month = now.getFullYear() + "-" + String(now.getMonth() + 1).padStart(2, "0");
@@ -22,6 +25,8 @@
     });
     document.querySelectorAll("[data-tt-year]").forEach(function (el) { el.textContent = now.getFullYear(); });
 
+    } catch (err) { fail(err); }
+    try {
     /* A missing photo shows the pine frame, never a broken-image icon. */
     document.querySelectorAll(".tt img").forEach(function (img) {
       function miss() { img.classList.add("tt-missing"); }
@@ -29,6 +34,8 @@
       else img.addEventListener("error", miss, { once: true });
     });
 
+    } catch (err) { fail(err); }
+    try {
     /* Hero video: reveal it only once frames are playing; otherwise keep the still. */
     var hero = document.querySelector(".tt .hero"), vid = hero && hero.querySelector(".hero-video");
     if (vid) {
@@ -44,6 +51,8 @@
       }
     }
 
+    } catch (err) { fail(err); }
+    try {
     /* Two bars: roll the golf ball (or use arrow keys) to compare; on desktop it follows the pointer. */
     var duo = document.getElementById("tt-duo");
     if (duo) {
@@ -92,6 +101,8 @@
       }
     }
 
+    } catch (err) { fail(err); }
+    try {
     /* Club life: hovering/focusing a row wipes its photo into the panel (desktop);
        on phones each row's thumbnail wipes in as it scrolls into view. */
     var lifeRows = document.querySelectorAll("#tt-rows .row"), figs = document.querySelectorAll("#tt-life-media figure");
@@ -120,6 +131,8 @@
       }
     }
 
+    } catch (err) { fail(err); }
+    try {
     /* Sponsors: cards rise in, then a spotlight cycles through each sponsor.
        Hovering or focusing a card takes the spotlight; leaving resumes the cycle. */
     var signs = document.getElementById("tt-signs");
@@ -147,6 +160,8 @@
       }
     }
 
+    } catch (err) { fail(err); }
+    try {
     /* WPForms: if the contact form (shortcode [wpforms id="3352"]) is anywhere on the
        page, move it into the contact card and use it instead of the built-in form. */
     var WPFORMS_ID = "3352"; /* the "Website contact" form: [wpforms id="3352"] */
@@ -159,9 +174,12 @@
       if (host && !host.contains(wpf)) host.style.display = "none";
     }
 
+    } catch (err) { fail(err); }
+    try {
     /* Contact form */
     var cform = document.getElementById("tt-cform");
     if (cform) {
+      cform.noValidate = true; /* our own messages replace the browser bubbles */
       var status = cform.querySelector(".cstatus"), sendBtn = cform.querySelector("button[type=submit]");
       var say = function (msg, err) { status.textContent = msg; status.classList.toggle("err", !!err); };
       cform.addEventListener("submit", function (e) {
@@ -173,7 +191,7 @@
         });
         if (!ok) { say("Please fill in your name, a valid email and a message.", true); return; }
         if (cform.elements._gotcha.value) return;
-        var d = {}; ["name", "email", "phone", "topic", "message"].forEach(function (k) { d[k] = cform.elements[k].value.trim(); });
+        var d = {}; ["name", "email", "phone", "topic", "message"].forEach(function (k) { d[k] = cform.elements["tt_" + k].value.trim(); });
         if (FORM_ENDPOINT) {
           sendBtn.disabled = true; say("Sending…");
           fetch(FORM_ENDPOINT, { method: "POST", headers: { "Accept": "application/json", "Content-Type": "application/json" }, body: JSON.stringify(Object.assign({ _subject: "Website message: " + d.topic }, d)) })
@@ -189,6 +207,8 @@
       cform.addEventListener("input", function (e) { var f = e.target.closest(".cfield"); if (f) f.classList.remove("bad"); });
     }
 
+    } catch (err) { fail(err); }
+    try {
     /* Mobile menu */
     var btn = document.querySelector(".tt .menu"), sheet = document.getElementById("tt-mnav");
     if (btn && sheet) {
@@ -205,6 +225,8 @@
       window.matchMedia("(min-width: 861px)").addEventListener("change", function (mq) { if (mq.matches) setOpen(false); });
     }
 
+    } catch (err) { fail(err); }
+    try {
     /* From the tee to the tap: on a wide screen with a mouse, vertical scroll drives a
        horizontal dolly (.dolly). Everywhere else (phones, tablets, touch screens,
        reduced motion) the CSS stacks the four stops so every one is seen. */
@@ -249,5 +271,6 @@
       size();
     }
 
+    } catch (err) { fail(err); }
   });
 })();
