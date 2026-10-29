@@ -178,6 +178,17 @@
 
     } catch (err) { fail(err); }
     try {
+    /* Links like "Talk to us about sponsorship" jump to the form and pick its topic */
+    document.querySelectorAll("[data-tt-topic]").forEach(function (a) {
+      a.addEventListener("click", function () {
+        var t = a.getAttribute("data-tt-topic"), sel = document.querySelector('#tt-cform [name="tt_topic"]');
+        if (sel) sel.value = t;
+        var first = document.querySelector("#tt-ccard.has-wpf input, #tt-cform [name=tt_name]");
+        if (first) setTimeout(function () { first.focus({ preventScroll: true }); }, 600);
+      });
+    });
+    } catch (err) { fail(err); }
+    try {
     /* Contact form */
     var cform = document.getElementById("tt-cform");
     if (cform) {

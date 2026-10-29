@@ -236,7 +236,8 @@
 .tt .hours { border-top: 1px solid var(--line); margin-top: 40px; }
 .tt .visit { align-items: start; scroll-margin-top: 78px; }
 @media (max-width: 860px) { .tt .visit { scroll-margin-top: 64px; } }
-.tt .cform-card { display: grid; gap: 16px; padding: 36px; border-radius: 20px; background: var(--mist); border: 1px solid var(--line); }
+.tt .cform-card { display: grid; gap: 16px; padding: 36px; border-radius: 20px; background: var(--mist); border: 1px solid var(--line); scroll-margin-top: 100px; }
+@media (max-width: 860px) { .tt .cform-card { scroll-margin-top: 80px; } }
 .tt .cform { display: none; gap: 16px; }
 html.tt-js .tt .cform { display: grid; }
 .tt .cform-nojs p { margin: 0 0 16px; color: var(--soft); }
@@ -740,7 +741,7 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
       </a>
     </li>
   </ul>
-  <p class="sp-foot">Want your name on a bay? <a href="mailto:golf@thebogeyclub.com?subject=Sponsoring%20The%20Bogey%20Club">Talk to us about sponsorship</a></p>
+  <p class="sp-foot">Want your name on a bay? <a href="#tt-ccard" data-tt-topic="Sponsorship" data-tt-cta="sponsor-contact">Talk to us about sponsorship</a></p>
 </section>
 
 <!-- 6. VISIT + CONTACT -->
@@ -1194,6 +1195,17 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
       if (host && !host.contains(wpf)) host.style.display = "none";
     }
 
+    } catch (err) { fail(err); }
+    try {
+    /* Links like "Talk to us about sponsorship" jump to the form and pick its topic */
+    document.querySelectorAll("[data-tt-topic]").forEach(function (a) {
+      a.addEventListener("click", function () {
+        var t = a.getAttribute("data-tt-topic"), sel = document.querySelector('#tt-cform [name="tt_topic"]');
+        if (sel) sel.value = t;
+        var first = document.querySelector("#tt-ccard.has-wpf input, #tt-cform [name=tt_name]");
+        if (first) setTimeout(function () { first.focus({ preventScroll: true }); }, 600);
+      });
+    });
     } catch (err) { fail(err); }
     try {
     /* Contact form */
