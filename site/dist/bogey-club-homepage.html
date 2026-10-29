@@ -434,7 +434,7 @@ body { margin: 0; background: #FFFFFF; }
 .tt .sp-head { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; }
 .tt .sp-head .data { margin-bottom: 14px; }
 .tt .partners .lede { color: rgba(255,255,255,.82); }
-.tt .bays-row { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 64px; }
+.tt .bays-row { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 64px; max-width: 1080px; margin-inline: auto; }
 .tt .bays-row li { transition: transform .8s cubic-bezier(.2,.8,.2,1) var(--d, 0ms), opacity .6s ease var(--d, 0ms); }
 .tt .bays-row.anim li:not(.in) { transform: translateY(40px); opacity: 0; }
 .tt .bay { position: relative; isolation: isolate; display: flex; flex-direction: column; gap: 16px; height: 100%; padding: 20px 18px 18px; border-radius: 20px; overflow: hidden; color: var(--white);
@@ -460,7 +460,6 @@ body { margin: 0; background: #FFFFFF; }
 .tt .bay.black .scr { background: #000; }
 .tt .bay.lit .scr, .tt .bay:hover .scr { transform: scale(1.03); }
 .tt .scr img { width: 100%; height: 100%; object-fit: contain; }
-.tt .bay.lift .scr img { transform: translateY(-28%); }
 .tt .scr::after { content: ''; position: absolute; inset: 0; background: linear-gradient(100deg, transparent 30%, rgba(255,255,255,.55) 48%, transparent 66%); transform: translateX(-120%); pointer-events: none; }
 .tt .bays-row.anim li:not(.in) .scr img { opacity: 0; }
 .tt .bays-row li .scr img { transition: opacity .6s ease calc(var(--d, 0ms) + 250ms); }
@@ -480,6 +479,7 @@ body { margin: 0; background: #FFFFFF; }
   .tt .partners { padding: 72px 18px 64px; }
   .tt .sp-head { grid-template-columns: 1fr; gap: 16px; }
   .tt .bays-row { grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 40px; }
+  .tt .bays-row li:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 7px); }
   .tt .bay { padding: 14px 12px 12px; gap: 12px; border-radius: 16px; }
   .tt .bay-no { font-size: 40px; }
   .tt .scr { padding: 10px; border-radius: 10px; }
@@ -914,7 +914,7 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
 <section class="partners" id="sponsors" aria-labelledby="tt-sp-h">
   <div class="sp-head">
     <div><p class="data">With thanks to our sponsors</p><h2 id="tt-sp-h" class="h-l">Our playing partners.</h2></div>
-    <p class="lede">Four bays, four partners. These are the people who back our leagues, our tournaments and plenty of great nights at the club.</p>
+    <p class="lede">These are the people who back our leagues, our tournaments and plenty of great nights at the club.</p>
   </div>
   <ul class="bays-row" id="tt-signs">
     <li style="--d:0ms">
@@ -936,13 +936,6 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
         <span class="bay-top"><span class="data">Bay 3</span><span class="bay-no" aria-hidden="true">03</span></span>
         <span class="scr"><img src="https://thebogeyclub.com/wp-content/uploads/2026/10/NTM_logo.jpeg" alt="Newmarket Tire 'N' Mag" loading="lazy" decoding="async"></span>
         <span class="bay-foot"><span class="nm">Newmarket Tire 'N' Mag</span><span class="go">Visit site</span></span>
-      </a>
-    </li>
-    <li style="--d:420ms">
-      <a class="bay lift" href="https://hartleybuilt.com/" target="_blank" rel="noopener sponsored" aria-label="Hartley Built (opens in a new tab)">
-        <span class="bay-top"><span class="data">Bay 4</span><span class="bay-no" aria-hidden="true">04</span></span>
-        <span class="scr"><img src="https://thebogeyclub.com/wp-content/uploads/2026/10/Full-Logo-White-Bogey-Club-1-1.png" alt="Hartley Built" loading="lazy" decoding="async"></span>
-        <span class="bay-foot"><span class="nm">Hartley Built</span><span class="go">Visit site</span></span>
       </a>
     </li>
   </ul>

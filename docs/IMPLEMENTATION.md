@@ -72,10 +72,9 @@ If you prefer the Media Library (which files under `/2026/10/`), find and replac
 ## Sponsors ("Our playing partners")
 
 Each sponsor gets a green bay card: a large outlined bay number, the logo on a raised panel, the sponsor's name and a "Visit site" pill. Once the section is on screen, a spotlight cycles through the sponsors every 3 seconds: the featured card lifts, its number fills in sand, a sand line traces its border and a light sweeps across the logo. Hovering or keyboard focus takes the spotlight.
-- **Order:** Bay 1 Benson Kearley IFG, Bay 2 Bird Infrastructure, Bay 3 Newmarket Tire 'N' Mag (black screen), Bay 4 Hartley Built.
+- **Order:** Bay 1 Benson Kearley IFG, Bay 2 Bird Infrastructure, Bay 3 Newmarket Tire 'N' Mag (black screen).
 - **Logos:** always full colour.
-- **Hartley Built:** its file has empty space above the logo, so it is shifted up 28% (`.bay.lift`). If you upload a tightly cropped version, remove `lift` from its class.
-- **Links:** each bay opens the sponsor's website in a new tab (bkifg.com, birdinfrastructure.ca, newmarkettire.com, hartleybuilt.com).
+- **Links:** each bay opens the sponsor's website in a new tab (bkifg.com, birdinfrastructure.ca, newmarkettire.com).
 
 ## Contact form (Visit section)
 
