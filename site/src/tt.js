@@ -3,6 +3,7 @@
    Install once, site-wide: WPCode footer snippet (see 02-script.html). */
 (function () {
   "use strict";
+  document.documentElement.classList.add("tt-js"); /* lets the CSS show script-only parts */
   function ready(fn) { if (document.readyState !== "loading") fn(); else document.addEventListener("DOMContentLoaded", fn); }
 
   /* Contact form destination. Leave empty to open the visitor's email app;
@@ -179,7 +180,6 @@
     /* Contact form */
     var cform = document.getElementById("tt-cform");
     if (cform) {
-      cform.noValidate = true; /* our own messages replace the browser bubbles */
       var status = cform.querySelector(".cstatus"), sendBtn = cform.querySelector("button[type=submit]");
       var say = function (msg, err) { status.textContent = msg; status.classList.toggle("err", !!err); };
       cform.addEventListener("submit", function (e) {

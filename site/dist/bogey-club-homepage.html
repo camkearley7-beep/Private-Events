@@ -260,7 +260,12 @@ body { margin: 0; background: #FFFFFF; }
 .tt .visit { align-items: start; scroll-margin-top: 78px; }
 @media (max-width: 860px) { .tt .visit { scroll-margin-top: 64px; } }
 .tt .cform-card { display: grid; gap: 16px; padding: 36px; border-radius: 20px; background: var(--mist); border: 1px solid var(--line); }
-.tt .cform { display: grid; gap: 16px; }
+.tt .cform { display: none; gap: 16px; }
+html.tt-js .tt .cform { display: grid; }
+.tt .cform-nojs p { margin: 0 0 16px; color: var(--soft); }
+.tt .cform-nojs .acts { display: flex; flex-wrap: wrap; gap: 10px; }
+.tt .cform-nojs .btn-line { border-color: var(--pine); color: var(--pine); }
+html.tt-js .tt .cform-nojs, .tt .cform-card.has-wpf .cform-nojs { display: none; }
 .tt .cform-card.has-wpf .cform { display: none; }
 /* WPForms, restyled to match the card */
 .tt .cform-slot .wpforms-container { margin: 0 !important; }
@@ -964,7 +969,11 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
   <h3 class="h-m">Send us a message</h3>
   <p class="cform-sub">Questions, group bookings, leagues or sponsorship. We'll get back to you.</p>
   <div class="cform-slot" id="tt-cslot"></div>
-  <form class="cform" id="tt-cform" action="mailto:golf@thebogeyclub.com?subject=Website%20message" method="post" enctype="text/plain">
+  <!-- Shown only if the site script can't run (the form needs it), so visitors are never sent anywhere odd. -->
+  <div class="cform-nojs">
+    <div class="acts"><a class="btn btn-red" href="mailto:golf@thebogeyclub.com?subject=Website%20message">Email golf@thebogeyclub.com</a><a class="btn btn-line" href="tel:+19052354653">(905) 235-4653</a></div>
+  </div>
+  <form class="cform" id="tt-cform" novalidate>
     <div class="crow">
       <label class="cfield"><span>Name</span><input name="tt_name" autocomplete="name" required></label>
       <label class="cfield"><span>Email</span><input name="tt_email" type="email" autocomplete="email" required></label>
@@ -1035,6 +1044,7 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
    Install once, site-wide: WPCode footer snippet (see 02-script.html). */
 (function () {
   "use strict";
+  document.documentElement.classList.add("tt-js"); /* lets the CSS show script-only parts */
   function ready(fn) { if (document.readyState !== "loading") fn(); else document.addEventListener("DOMContentLoaded", fn); }
 
   /* Contact form destination. Leave empty to open the visitor's email app;
@@ -1211,7 +1221,6 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
     /* Contact form */
     var cform = document.getElementById("tt-cform");
     if (cform) {
-      cform.noValidate = true; /* our own messages replace the browser bubbles */
       var status = cform.querySelector(".cstatus"), sendBtn = cform.querySelector("button[type=submit]");
       var say = function (msg, err) { status.textContent = msg; status.classList.toggle("err", !!err); };
       cform.addEventListener("submit", function (e) {

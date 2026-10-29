@@ -230,7 +230,12 @@
 .tt .visit { align-items: start; scroll-margin-top: 78px; }
 @media (max-width: 860px) { .tt .visit { scroll-margin-top: 64px; } }
 .tt .cform-card { display: grid; gap: 16px; padding: 36px; border-radius: 20px; background: var(--mist); border: 1px solid var(--line); }
-.tt .cform { display: grid; gap: 16px; }
+.tt .cform { display: none; gap: 16px; }
+html.tt-js .tt .cform { display: grid; }
+.tt .cform-nojs p { margin: 0 0 16px; color: var(--soft); }
+.tt .cform-nojs .acts { display: flex; flex-wrap: wrap; gap: 10px; }
+.tt .cform-nojs .btn-line { border-color: var(--pine); color: var(--pine); }
+html.tt-js .tt .cform-nojs, .tt .cform-card.has-wpf .cform-nojs { display: none; }
 .tt .cform-card.has-wpf .cform { display: none; }
 /* WPForms, restyled to match the card */
 .tt .cform-slot .wpforms-container { margin: 0 !important; }

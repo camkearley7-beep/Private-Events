@@ -207,7 +207,11 @@
   <h3 class="h-m">Send us a message</h3>
   <p class="cform-sub">Questions, group bookings, leagues or sponsorship. We'll get back to you.</p>
   <div class="cform-slot" id="tt-cslot"></div>
-  <form class="cform" id="tt-cform" action="mailto:golf@thebogeyclub.com?subject=Website%20message" method="post" enctype="text/plain">
+  <!-- Shown only if the site script can't run (the form needs it), so visitors are never sent anywhere odd. -->
+  <div class="cform-nojs">
+    <div class="acts"><a class="btn btn-red" href="mailto:golf@thebogeyclub.com?subject=Website%20message">Email golf@thebogeyclub.com</a><a class="btn btn-line" href="tel:+19052354653">(905) 235-4653</a></div>
+  </div>
+  <form class="cform" id="tt-cform" novalidate>
     <div class="crow">
       <label class="cfield"><span>Name</span><input name="tt_name" autocomplete="name" required></label>
       <label class="cfield"><span>Email</span><input name="tt_email" type="email" autocomplete="email" required></label>
