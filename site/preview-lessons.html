@@ -1,0 +1,1152 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Golf Lessons in Newmarket | Andrew McDonald, PGA of Canada | The Bogey Club</title>
+<meta name="robots" content="noindex">
+<!-- =====================================================================
+     SITE <head> — WPCode > Add Snippet > HTML, location "Site Wide Header".
+     Satoshi Variable (Indian Type Foundry, ITF Free Font License, free for
+     commercial use): one file covering weights 300–900. Upload
+     Satoshi-Variable.woff2 from site/dist/uploads/fonts/ to
+     /wp-content/uploads/fonts/ (or Elementor > Custom Fonts, family "Satoshi").
+     ===================================================================== -->
+<link rel="preload" href="fonts/Satoshi-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: 'Satoshi'; src: url('fonts/Satoshi-Variable.woff2') format('woff2-variations'), url('fonts/Satoshi-Variable.woff2') format('woff2'); font-weight: 300 900; font-style: normal; font-display: swap; }
+</style>
+<style>
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #FFFFFF; }
+/* =====================================================================
+   THE BOGEY CLUB — "TEE TO TAP" SITE STYLES (production)
+   Every selector is scoped to .tt so nothing leaks into the theme.
+   Install once, site-wide: Elementor > Site Settings > Custom CSS, or a
+   WPCode CSS snippet. Fonts: see 00-head.html (Satoshi).
+   ===================================================================== */
+
+.tt {
+  --white: #FFFFFF; --mist: #F3F6EF; --green: #0D5B3B; --pine: #233E31; --sand: #D7C9A4;
+  --ink: var(--pine); --soft: rgba(35,62,49,.72); --line: rgba(35,62,49,.14);
+  --font: 'Satoshi', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-body: var(--font);
+  --g: clamp(20px, 4.4vw, 72px);
+  font-family: var(--font-body); font-weight: 400; font-size: 17px; line-height: 1.6; color: var(--ink); background: var(--white);
+  -webkit-font-smoothing: antialiased; overflow-x: clip; font-variant-numeric: tabular-nums;
+}
+.tt *, .tt *::before, .tt *::after { box-sizing: border-box; margin: 0; padding: 0; }
+.tt a { color: inherit; text-decoration: none; }
+.tt img { display: block; max-width: 100%; height: auto; }
+.tt button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+.tt :focus-visible { outline: 2px solid var(--green); outline-offset: 4px; border-radius: 2px; }
+.tt .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* type scale */
+.tt .h-xl, .tt .h-l, .tt .h-m { font-family: var(--font); font-weight: 700; letter-spacing: -.03em; text-wrap: balance; }
+.tt .h-xl { font-size: clamp(38px, 4.6vw, 72px); line-height: 1.02; }
+.tt .h-l  { font-size: clamp(30px, 3.3vw, 52px); line-height: 1.06; }
+.tt .h-m  { font-size: clamp(22px, 1.8vw, 28px); line-height: 1.15; letter-spacing: -.015em; font-weight: 600; }
+.tt .lede { font-size: clamp(17px, 1.3vw, 19px); line-height: 1.6; color: var(--soft); max-width: 46ch; }
+.tt .data { font-weight: 500; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--green); }
+.tt .data i { font-style: normal; opacity: .7; }
+
+/* buttons */
+.tt .btn {
+  display: inline-flex; align-items: center; justify-content: space-between; gap: 26px; min-height: 54px; padding: 0 22px;
+  font-family: var(--font); font-weight: 600; font-size: 16px; letter-spacing: 0; border-radius: 6px;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.tt .btn::after { content: ''; width: 16px; height: 10px; background: currentColor; clip-path: polygon(0 42%, 78% 42%, 78% 0, 100% 50%, 78% 100%, 78% 58%, 0 58%); transition: transform .25s; }
+.tt .btn:hover::after { transform: translateX(4px); }
+.tt .btn-red { background: var(--green); color: var(--white); }
+.tt .btn-red:hover { background: var(--pine); }
+.tt .btn-line { border: 1.5px solid rgba(255,255,255,.7); color: var(--white); }
+.tt .btn-line:hover { background: rgba(255,255,255,.12); border-color: var(--white); }
+.tt .on-light .btn-line, .tt .btn-line.dark { border-color: var(--pine); color: var(--pine); }
+.tt .on-light .btn-line:hover, .tt .btn-line.dark:hover { background: var(--mist); }
+.tt .btn-white { background: var(--white); color: var(--green); }
+.tt .btn-white:hover { background: var(--mist); }
+.tt .link { font-weight: 600; border-bottom: 1.5px solid currentColor; padding-bottom: 2px; }
+
+/* concept-render labels (preview only) */
+.tt .ref { position: absolute; z-index: 4; font-size: 11px; font-weight: 500; letter-spacing: .04em; color: var(--white); background: rgba(35,62,49,.82); padding: 5px 9px; border-radius: 4px; }
+.tt .ref.real { background: var(--green); }
+
+/* ================= HEADER ================= */
+.tt .hdr { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 0 var(--g); background: var(--white); border-bottom: 1px solid var(--line); }
+.tt .logo { height: 46px; width: auto; max-width: 240px; object-fit: contain; }
+.tt .nav { display: flex; gap: 32px; font-size: 15px; font-weight: 500; }
+.tt .nav a { color: var(--pine); position: relative; padding: 6px 0; }
+.tt .nav a::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--green); transform: scaleX(0); transition: transform .25s; transform-origin: left; }
+.tt .nav a:hover::after { transform: scaleX(1); }
+.tt .hdr .btn { min-height: 46px; font-size: 15px; gap: 18px; }
+.tt .menu { display: none; font-weight: 500; font-size: 15px; padding: 12px 4px; color: var(--pine); }
+
+/* ================= 1. HERO ================= */
+.tt .hero { position: relative; height: calc(100vh - 78px); height: calc(100svh - 78px); min-height: 620px; overflow: hidden; isolation: isolate; color: var(--white); }
+.tt .hero picture, .tt .hero picture img { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -2; }
+.tt .hero picture img { object-fit: cover; object-position: 50% 50%; animation: push 18s ease-out forwards; }
+@keyframes push { from { transform: scale(1.06); } to { transform: scale(1); } }
+.tt .hero::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(20deg, rgba(35,62,49,.9) 0%, rgba(35,62,49,.55) 30%, rgba(35,62,49,0) 58%); }
+.tt .hero .ref { top: 18px; right: var(--g); }
+.tt .aim { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.tt .aim .draw { fill: none; stroke: var(--white); stroke-width: 2.5; stroke-dasharray: 1; stroke-dashoffset: 1; animation: aim 1.8s .8s cubic-bezier(.3,.1,.2,1) forwards; }
+@keyframes aim { to { stroke-dashoffset: 0; } }
+.tt .aim text { font-family: var(--font); font-weight: 500; font-size: 13px; letter-spacing: .12em; fill: var(--white); opacity: 0; animation: fadein .6s 2.4s forwards; }
+@keyframes fadein { to { opacity: 1; } }
+.tt .hero-copy { position: absolute; left: var(--g); right: var(--g); bottom: 96px; display: grid; grid-template-columns: 1.3fr .7fr; gap: 40px; align-items: end; }
+.tt .hero h1 { color: var(--white); }
+.tt .hero h1 { text-transform: uppercase; letter-spacing: -.015em; line-height: 1; font-size: clamp(40px, 4.9vw, 76px); }
+.tt .hero h1 .ln { display: block; }
+.tt .hero h1 small { text-transform: uppercase; }
+.tt .hero .lede { max-width: 50ch; }
+.tt .hero h1 small { display: block; font-weight: 500; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--sand); margin-bottom: 18px; }
+.tt .hero .lede { margin-top: 20px; color: rgba(255,255,255,.9); }
+.tt .hero-actions { display: grid; gap: 10px; }
+.tt .hero-actions .btn { width: 100%; }
+.tt .hero-actions .btn-red { background: var(--green); }
+.tt .hero-actions .also { display: flex; justify-content: space-between; font-size: 15px; padding-top: 6px; }
+.tt .rail { position: absolute; left: 0; right: 0; bottom: 0; height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 0 var(--g); background: var(--white); color: var(--pine); }
+.tt .rail.data { color: var(--pine); }
+.tt .rail span { white-space: nowrap; }
+
+/* ================= 2. TEE TO TAP ================= */
+.tt .walk { position: relative; background: var(--white); }
+.tt .walk-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; padding: 0 var(--g) 26px; }
+.tt .walk-head .data { color: rgba(35,62,49,.75); }
+.tt .stop { position: relative; border-radius: 10px; overflow: hidden; isolation: isolate; color: var(--white); }
+.tt .stop .ref { top: 16px; right: 16px; }
+.tt .stop-no { display: flex; gap: 14px; align-items: center; margin-bottom: 14px; }
+.tt .stop .stop-no.data { color: var(--sand); }
+.tt .stop-no::after { content: ''; width: 56px; height: 1px; background: currentColor; }
+.tt .stop p { margin: 12px 0 24px; color: rgba(255,255,255,.9); }
+.tt .stop .acts { display: flex; gap: 10px; flex-wrap: wrap; }
+.tt .stop .btn { min-height: 50px; font-size: 15px; }
+
+/* Stacked (phones, tablets, touch screens, reduced motion, no JS): every stop in view */
+.tt .walk-pin { padding: 72px 0 56px; }
+.tt .track { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; padding: 0 var(--g); }
+.tt .walk:not(.dolly) .stop { display: flex; flex-direction: column; background: var(--pine); }
+.tt .walk:not(.dolly) .stop img { display: block; width: 100%; aspect-ratio: 16 / 10; height: auto; object-fit: cover; }
+.tt .walk:not(.dolly) .stop-body { flex: 1; display: flex; flex-direction: column; padding: 24px 24px 26px; }
+.tt .walk:not(.dolly) .stop .acts { margin-top: auto; }
+.tt .walk:not(.dolly) .stop .btn { flex: 1 1 auto; white-space: nowrap; gap: 16px; padding: 0 18px; }
+.tt .walk:not(.dolly) .walk-foot { display: none; }
+
+/* Dolly (wide screens with a mouse): vertical scroll drives the track sideways */
+.tt .walk.dolly .walk-pin { position: sticky; top: 78px; height: calc(100vh - 78px); height: calc(100svh - 78px); overflow: hidden; display: grid; grid-template-rows: auto 1fr auto; padding: 56px 0 28px; }
+.tt .walk.dolly .track { display: flex; gap: 20px; will-change: transform; }
+.tt .walk.dolly .stop { flex: none; width: min(72vw, 1080px); height: 100%; }
+.tt .walk.dolly .stop img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.tt .walk.dolly .stop::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(80deg, rgba(35,62,49,.88) 0%, rgba(35,62,49,.35) 45%, rgba(35,62,49,0) 70%); }
+.tt .walk.dolly .stop-body { position: absolute; left: 40px; bottom: 40px; max-width: 460px; }
+.tt .walk-foot { display: flex; align-items: center; gap: 22px; padding: 22px var(--g) 0; }
+.tt .walk-foot .bar { flex: 1; height: 2px; background: var(--line); position: relative; }
+.tt .walk-foot .bar i { position: absolute; inset: 0 auto 0 0; width: 0; background: var(--green); }
+.tt .walk-foot ol { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; }
+.tt .walk-foot li { color: rgba(35,62,49,.75); transition: color .3s; } .tt .walk-foot li.on { color: var(--green); }
+.tt .walk-foot li button { all: unset; cursor: pointer; padding: 6px 0; }
+.tt .walk-foot li button:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+
+/* ================= 3. TWO FULL BARS: tap-handle comparison ================= */
+.tt .bars { background: var(--white); padding: 110px var(--g) 100px; }
+.tt .bars-head { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: end; margin-bottom: 48px; }
+.tt .bars-head .data { margin-bottom: 18px; }
+.tt .duo { position: relative; aspect-ratio: 21 / 9; border-radius: 16px; overflow: hidden; background: var(--pine); touch-action: pan-y; user-select: none; cursor: ew-resize; }
+.tt .duo figure { position: absolute; inset: 0; margin: 0; }
+.tt .duo img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.tt .duo-a { clip-path: inset(0 calc(100% - var(--x)) 0 0); }
+.tt .duo figcaption { position: absolute; bottom: 22px; display: grid; gap: 2px; padding: 12px 16px; border-radius: 10px; background: rgba(255,255,255,.94); color: var(--pine); font-weight: 600; font-size: 20px; letter-spacing: -.01em; transition: opacity .3s; }
+.tt .duo figcaption .data { font-size: 11px; }
+.tt .duo-a figcaption { left: 22px; }
+.tt .duo-b figcaption { right: 22px; }
+.tt .duo[data-side="a"] .duo-b figcaption, .tt .duo[data-side="b"] .duo-a figcaption { opacity: .35; }
+.tt .duo-handle { position: absolute; top: 0; bottom: 0; left: var(--x); width: 0; z-index: 3; pointer-events: none; }
+.tt .duo-handle::before { content: ''; position: absolute; top: 0; bottom: 0; left: -1.5px; width: 3px; background: var(--white); box-shadow: 0 0 0 1px rgba(35,62,49,.15); }
+.tt .duo-handle .ball { position: absolute; left: -32px; top: calc(50% - 32px); width: 64px; height: 64px; border-radius: 50%; overflow: hidden;
+  background: #FFFFFF; box-shadow: 0 14px 28px rgba(0,0,0,.35), inset -8px -10px 18px rgba(35,62,49,.18), inset 6px 6px 12px rgba(255,255,255,.9);
+  transition: transform .25s cubic-bezier(.2,.8,.2,1); }
+/* dimples roll with the ball */
+.tt .duo-handle .ball i { position: absolute; inset: -6px; border-radius: 50%; transform: rotate(var(--rot, 0deg));
+  background: radial-gradient(circle at 50% 50%, rgba(35,62,49,.16) 0 2.2px, transparent 2.8px) 0 0 / 9px 9px,
+              radial-gradient(circle at 50% 50%, rgba(35,62,49,.16) 0 2.2px, transparent 2.8px) 4.5px 4.5px / 9px 9px; }
+/* soft highlight sits on top so the light stays put while the dimples turn */
+.tt .duo-handle .ball::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle at 34% 28%, rgba(255,255,255,.95) 0 10%, rgba(255,255,255,0) 42%), radial-gradient(circle at 70% 78%, rgba(35,62,49,.22), transparent 60%); }
+/* little arrows either side say "drag me" */
+.tt .duo-handle::after { content: '‹                ›'; white-space: pre; position: absolute; top: calc(50% - 12px); left: 50%; transform: translateX(-50%); color: var(--white); font-weight: 700; font-size: 20px; line-height: 24px; text-shadow: 0 1px 6px rgba(0,0,0,.5); }
+.tt .duo.drag .duo-handle .ball { transform: scale(1.1); }
+.tt .duo:has(.duo-range:focus-visible) .ball { outline: 3px solid var(--sand); outline-offset: 3px; }
+.tt .duo-range { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; z-index: 4; }
+.tt .duo-hint { position: absolute; z-index: 2; top: 18px; left: 50%; transform: translateX(-50%); padding: 7px 12px; border-radius: 999px; background: rgba(35,62,49,.82); color: var(--white); font-size: 13px; font-weight: 500; transition: opacity .4s; }
+.tt .duo.used .duo-hint { opacity: 0; }
+.tt .bars-stats { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 36px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.tt .bars-stats div { padding: 22px 0 20px; display: grid; gap: 6px; }
+.tt .bars-stats div + div { padding-left: 24px; border-left: 1px solid var(--line); }
+.tt .bars-stats b { font-weight: 700; font-size: 42px; line-height: 1; letter-spacing: -.02em; color: var(--green); }
+.tt .bars-stats span { font-size: 14px; font-weight: 500; color: rgba(35,62,49,.75); }
+.tt .bars .note { margin-top: 24px; }
+.tt .note { font-size: 14px; color: rgba(35,62,49,.75); max-width: 60ch; padding-left: 14px; border-left: 2px solid var(--sand); }
+
+/* ================= 6. CLUB LIFE ================= */
+.tt .life { background: var(--mist); padding: 110px var(--g); }
+.tt .life-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 46px; }
+.tt .life-head .data { margin-bottom: 14px; }
+.tt .life-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: start; }
+.tt .rows { border-top: 2px solid var(--pine); }
+.tt .row { position: relative; isolation: isolate; display: grid; grid-template-columns: 44px 1fr auto; align-items: center; gap: 24px; padding: 26px 22px; border-bottom: 1px solid var(--line); transition: color .35s ease; }
+.tt .row::before { content: ''; position: absolute; inset: 0; z-index: -1; background: var(--green); transform: scaleX(0); transform-origin: left; transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+.tt .row.on::before { transform: scaleX(1); }
+.tt .row .thumb { display: none; }
+.tt .row .num { font-weight: 700; font-size: 14px; color: var(--green); transition: color .35s; }
+.tt .row .rt { display: grid; gap: 4px; transition: transform .45s cubic-bezier(.2,.8,.2,1); }
+.tt .row .data { color: rgba(35,62,49,.75); transition: color .35s; }
+.tt .row h3 { font-weight: 600; font-size: 24px; line-height: 1.15; letter-spacing: -.015em; }
+.tt .row p { color: var(--soft); font-size: 16px; transition: color .35s; max-width: 46ch; }
+.tt .row .go { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; color: var(--green); white-space: nowrap; transition: color .35s; }
+.tt .row .go::after { content: '→'; display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid currentColor; transition: transform .45s cubic-bezier(.2,.8,.2,1), background .35s, color .35s; }
+.tt .row.on { color: var(--white); }
+.tt .row.on .num, .tt .row.on .data { color: var(--sand); }
+.tt .row.on p { color: rgba(255,255,255,.85); }
+.tt .row.on .go { color: var(--white); }
+.tt .row.on .go::after { background: var(--white); color: var(--green); border-color: var(--white); transform: translateX(6px) rotate(-45deg); }
+.tt .row.on .rt { transform: translateX(6px); }
+/* Hover highlight in pure CSS as well, so it works even if the site script is delayed or blocked */
+@media (hover: hover) and (min-width: 861px) {
+  .tt .row:hover::before { transform: scaleX(1); }
+  .tt .row:hover { color: var(--white); }
+  .tt .row:hover .num, .tt .row:hover .data { color: var(--sand); }
+  .tt .row:hover p { color: rgba(255,255,255,.85); }
+  .tt .row:hover .go { color: var(--white); }
+  .tt .row:hover .go::after { background: var(--white); color: var(--green); border-color: var(--white); transform: translateX(6px) rotate(-45deg); }
+  .tt .row:hover .rt { transform: translateX(6px); }
+  .tt .rows:hover .row.on:not(:hover)::before { transform: scaleX(0); }
+  .tt .rows:hover .row.on:not(:hover) { color: var(--ink); }
+  .tt .rows:hover .row.on:not(:hover) .num { color: var(--green); }
+  .tt .rows:hover .row.on:not(:hover) .data { color: rgba(35,62,49,.75); }
+  .tt .rows:hover .row.on:not(:hover) p { color: var(--soft); }
+  .tt .rows:hover .row.on:not(:hover) .go { color: var(--green); }
+  .tt .rows:hover .row.on:not(:hover) .go::after { background: none; color: inherit; border-color: currentColor; transform: none; }
+  .tt .rows:hover .row.on:not(:hover) .rt { transform: none; }
+}
+.tt .life-media { position: sticky; top: 110px; aspect-ratio: 4 / 5; border-radius: 14px; overflow: hidden; background: var(--pine); }
+.tt .life-media figure { position: absolute; inset: 0; margin: 0; clip-path: inset(100% 0 0 0); transition: clip-path .8s cubic-bezier(.7,0,.2,1); }
+.tt .life-media figure.was { clip-path: inset(0); z-index: 1; }
+.tt .life-media figure.on { clip-path: inset(0); z-index: 2; }
+.tt .life-media img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.12); transition: transform 1.4s cubic-bezier(.2,.8,.2,1); }
+.tt .life-media figure.on img { transform: scale(1); }
+.tt .life-media figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 60px 24px 22px; background: linear-gradient(180deg, rgba(35,62,49,0), rgba(35,62,49,.88)); color: var(--white); font-weight: 600; font-size: 22px; letter-spacing: -.01em; display: grid; gap: 4px; }
+.tt .life-media figcaption .data { color: var(--sand); }
+.tt .life-count { position: absolute; z-index: 3; top: 16px; right: 16px; background: rgba(255,255,255,.92); color: var(--pine); font-size: 13px; font-weight: 500; padding: 6px 10px; border-radius: 999px; font-variant-numeric: tabular-nums; }
+.tt .life-count b { font-weight: 700; }
+
+/* ================= 7. VISIT + FOOTER ================= */
+.tt .visit { background: var(--white); padding: 110px var(--g) 90px; display: grid; grid-template-columns: 1.1fr .9fr; gap: 60px; }
+.tt .visit .data { margin-bottom: 18px; }
+.tt .visit address { font-style: normal; font-weight: 600; font-size: clamp(26px, 2.6vw, 40px); line-height: 1.15; letter-spacing: -.02em; }
+.tt .visit .acts { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 32px; }
+.tt .visit .btn-line { border-color: var(--pine); color: var(--pine); }
+.tt .visit .btn-line:hover { background: var(--mist); }
+.tt .hours { border-top: 1px solid var(--line); margin-top: 40px; }
+.tt .visit { align-items: start; scroll-margin-top: 78px; }
+@media (max-width: 860px) { .tt .visit { scroll-margin-top: 64px; } }
+.tt .cform-card { display: grid; gap: 16px; padding: 36px; border-radius: 20px; background: var(--mist); border: 1px solid var(--line); scroll-margin-top: 100px; }
+@media (max-width: 860px) { .tt .cform-card { scroll-margin-top: 80px; } }
+.tt .cform { display: none; gap: 16px; }
+html.tt-js .tt .cform { display: grid; }
+.tt .cform-nojs p { margin: 0 0 16px; color: var(--soft); }
+.tt .cform-nojs .acts { display: flex; flex-wrap: wrap; gap: 10px; }
+.tt .cform-nojs .btn-line { border-color: var(--pine); color: var(--pine); }
+html.tt-js .tt .cform-nojs, .tt .cform-card.has-wpf .cform-nojs { display: none; }
+.tt .cform-card.has-wpf .cform { display: none; }
+/* WPForms, restyled to match the card */
+.tt .cform-slot .wpforms-container { margin: 0 !important; }
+.tt .cform-slot .wpforms-field { padding: 0 0 16px !important; }
+.tt .cform-slot .wpforms-field-label { font: 500 14px/1.4 var(--font) !important; color: var(--pine) !important; margin: 0 0 6px !important; }
+.tt .cform-slot .wpforms-field-sublabel, .tt .cform-slot .wpforms-field-description { font-family: var(--font) !important; color: rgba(35,62,49,.75) !important; }
+.tt .cform-slot .wpforms-required-label { color: var(--green) !important; }
+.tt .cform-slot input[type=text], .tt .cform-slot input[type=email], .tt .cform-slot input[type=tel], .tt .cform-slot input[type=number], .tt .cform-slot select, .tt .cform-slot textarea {
+  width: 100% !important; max-width: none !important; box-sizing: border-box !important; min-height: 52px !important; height: auto !important; padding: 12px 14px !important; border-radius: 10px !important;
+  border: 1.5px solid rgba(35,62,49,.25) !important; background: var(--white) !important; color: var(--pine) !important; font: 400 16px/1.4 var(--font) !important; box-shadow: none !important; }
+.tt .cform-slot textarea { min-height: 120px !important; }
+/* WPForms smart phone field: leave room for the country flag picker */
+.tt .cform-slot .iti { width: 100%; }
+.tt .cform-slot .iti input[type=tel] { padding-left: 52px !important; }
+.tt .cform-slot .iti--separate-dial-code input[type=tel] { padding-left: 92px !important; }
+.tt .cform-slot input:focus, .tt .cform-slot select:focus, .tt .cform-slot textarea:focus { outline: none !important; border-color: var(--green) !important; box-shadow: 0 0 0 3px rgba(13,91,59,.18) !important; }
+.tt .cform-slot .wpforms-field-medium, .tt .cform-slot .wpforms-field-large { max-width: none !important; }
+.tt .cform-slot button[type=submit], .tt .cform-slot .wpforms-submit {
+  min-height: 54px !important; min-width: 220px !important; padding: 0 22px !important; border: 0 !important; border-radius: 6px !important;
+  background: var(--green) !important; color: var(--white) !important; font: 600 16px var(--font) !important; cursor: pointer; transition: background .2s; }
+.tt .cform-slot button[type=submit]:hover { background: var(--pine) !important; }
+.tt .cform-slot label.wpforms-error, .tt .cform-slot em.wpforms-error { color: #A3352B !important; font: 500 13px var(--font) !important; }
+.tt .cform-slot .wpforms-confirmation-container-full { background: var(--white) !important; border: 1px solid var(--line) !important; border-left: 3px solid var(--green) !important; color: var(--pine) !important; border-radius: 10px; font-family: var(--font); }
+.tt .cform-slot .wpforms-field-container { display: flex; flex-wrap: wrap; column-gap: 16px; }
+.tt .cform-slot .wpforms-field { box-sizing: border-box !important; width: 100% !important; float: none !important; margin-left: 0 !important; clear: none !important; }
+@media (min-width: 861px) { .tt .cform-slot .wpforms-field.wpforms-one-half { width: calc(50% - 8px) !important; } }
+.tt .cform-sub { color: var(--soft); font-size: 16px; margin-top: -6px; }
+.tt .crow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.tt .cfield { display: grid; gap: 6px; }
+.tt .cfield > span { font-size: 14px; font-weight: 500; color: var(--pine); }
+.tt .cfield em { font-style: normal; color: rgba(35,62,49,.75); font-weight: 400; }
+.tt .cfield input, .tt .cfield select, .tt .cfield textarea { width: 100%; min-height: 52px; padding: 12px 14px; border-radius: 10px; border: 1.5px solid rgba(35,62,49,.25); background: var(--white); color: var(--pine); font: 400 16px/1.4 var(--font); transition: border-color .2s, box-shadow .2s; }
+.tt .cfield textarea { min-height: 120px; resize: vertical; }
+.tt .cfield input:focus, .tt .cfield select:focus, .tt .cfield textarea:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(13,91,59,.18); }
+.tt .cfield.bad input, .tt .cfield.bad textarea { border-color: #A3352B; }
+.tt .cform .btn { justify-self: start; min-width: 220px; }
+.tt .cform .btn[disabled] { opacity: .6; cursor: progress; }
+.tt .cstatus { font-size: 15px; font-weight: 500; color: var(--green); min-height: 1.4em; }
+.tt .cstatus.err { color: #A3352B; }
+.tt .cform .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.tt .hours div { display: flex; justify-content: space-between; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.tt .hours span:first-child { color: rgba(35,62,49,.75); }
+.tt footer { background: var(--pine); padding: 64px var(--g) 40px; display: grid; grid-template-columns: 1.2fr repeat(3, .7fr) 1.3fr; gap: 40px; font-size: 15px; color: rgba(255,255,255,.78); }
+.tt footer img { width: 92px; margin-bottom: 16px; }
+.tt footer .flogo { display: block; width: 150px; aspect-ratio: 1820 / 1456; overflow: hidden; margin-bottom: 16px; }
+.tt footer .flogo img { display: block; width: 109.89%; max-width: none; height: auto; margin: -14.505% 0 0 -5%; }
+.tt footer h4 { font-weight: 500; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--sand); margin-bottom: 14px; }
+.tt footer ul { list-style: none; display: grid; gap: 9px; }
+.tt footer a:hover { color: var(--white); }
+.tt .news { display: flex; border-bottom: 1.5px solid rgba(255,255,255,.4); margin-top: 14px; }
+.tt .news span { flex: 1; padding: 14px 0; color: rgba(255,255,255,.7); }
+.tt .news b { padding: 14px 0; font-weight: 600; color: var(--white); }
+.tt .legal { grid-column: 1 / -1; display: flex; justify-content: space-between; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.14); font-size: 13px; color: rgba(255,255,255,.55); }
+
+.tt .dock { display: none; }
+
+/* ================= MOBILE ================= */
+@media (max-width: 860px) {
+  .tt { font-size: 16px; }
+  .tt .nav, .tt .hdr .btn { display: none; }
+  .tt .menu { display: block; }
+  .tt .hdr { height: 64px; padding: 0 18px; }
+  .tt .hdr-space { height: 64px; }
+  .tt .logo { height: 36px; max-width: 180px; }
+  /* hero: photo on top, copy on white beneath, so the first screen stays light */
+  .tt .hero { height: auto; min-height: 0; color: var(--pine); }
+  .tt .hero picture { position: relative; display: block; height: 52svh; min-height: 360px; }
+  .tt .hero picture img { object-position: 50% 22%; }
+  .tt .hero picture img { position: absolute; }
+  .tt .hero::after { display: none; }
+  .tt .hero .ref { top: 12px; right: 12px; }
+  .tt .hero-copy { position: static; grid-template-columns: 1fr; padding: 26px 18px 36px; gap: 0; }
+  .tt .hero h1 { color: var(--pine); font-size: 34px; line-height: 1.04; }
+  .tt .hero h1 small { color: var(--green); font-size: 11px; margin-bottom: 12px; }
+  .tt .hero .lede { color: var(--soft); font-size: 16px; margin-top: 14px; }
+  .tt .hero-actions, .tt .rail, .tt .aim { display: none; }
+  .tt .ref { font-size: 10px; padding: 4px 7px; max-width: 64vw; }
+  .tt .dock {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 6px; position: fixed; z-index: 40; left: 10px; right: 10px; bottom: calc(10px + env(safe-area-inset-bottom));
+    padding: 6px; background: var(--white); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 10px 30px rgba(35,62,49,.18);
+  }
+  .tt .dock a { min-height: 54px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 8px; font-weight: 600; font-size: 15px; color: var(--pine); }
+  .tt .dock a small { font-weight: 500; font-size: 11px; color: rgba(35,62,49,.75); margin-top: 1px; }
+  .tt .dock a:first-child { background: var(--green); color: var(--white); font-size: 16px; }
+  .tt .dock a:first-child small { color: rgba(255,255,255,.75); }
+  .tt .dock a + a { background: var(--mist); }
+
+  .tt .walk-pin { padding: 64px 0 48px; }
+  .tt .walk-head { padding: 0 18px 22px; flex-direction: column; align-items: start; gap: 8px; }
+  .tt .track { padding: 0 18px; gap: 14px; }
+  .tt .walk:not(.dolly) .stop-body { padding: 20px 20px 22px; }
+  .tt .stop-no { margin-bottom: 10px; }
+  .tt .stop p { font-size: 15px; margin: 8px 0 18px; }
+
+  .tt .bars { padding: 72px 18px 64px; }
+  .tt .bars-head { grid-template-columns: 1fr; gap: 16px; margin-bottom: 28px; }
+  .tt .duo { aspect-ratio: 4 / 5; border-radius: 12px; margin: 0 -6px; }
+  .tt .duo figcaption { bottom: 14px; font-size: 16px; padding: 9px 12px; }
+  .tt .duo-a figcaption { left: 14px; } .tt .duo-b figcaption { right: 14px; }
+  .tt .bars-stats { grid-template-columns: 1fr 1fr; }
+  .tt .bars-stats div:nth-child(3) { padding-left: 0; border-left: 0; }
+  .tt .bars-stats div:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .tt .bars-stats b { font-size: 32px; }
+
+
+  .tt .occ li .data { display: none; }
+
+  .tt .life { padding: 72px 18px; }
+  .tt .life-head { flex-direction: column; align-items: start; }
+  .tt .life-grid { display: block; }
+  .tt .life-media { display: none; }
+  .tt .row { grid-template-columns: 92px 1fr; gap: 4px 16px; padding: 16px 0; align-items: start; }
+  .tt .row::before, .tt .row .num { display: none; }
+  .tt .row.on { color: inherit; }
+  .tt .row.on .data { color: rgba(35,62,49,.75); } .tt .row.on p { color: var(--soft); } .tt .row.on .go { color: var(--green); }
+  .tt .row.on .rt { transform: none; }
+  .tt .row .thumb { display: block; grid-row: 1 / span 2; width: 92px; height: 92px; border-radius: 10px; overflow: hidden; background: var(--pine); }
+  .tt .row .thumb img { width: 100%; height: 100%; object-fit: cover; transition: clip-path .8s cubic-bezier(.7,0,.2,1) var(--d, 0ms), transform 1.2s cubic-bezier(.2,.8,.2,1) var(--d, 0ms); }
+  .tt .rows.anim .row:not(.in) .thumb img { clip-path: inset(0 100% 0 0); transform: scale(1.15); }
+  .tt .row h3 { font-size: 19px; }
+  .tt .row p { font-size: 14px; }
+  .tt .row .go { grid-column: 2; font-size: 14px; }
+  .tt .row .go::after { width: 28px; height: 28px; }
+  .tt .row.on .go::after { background: none; color: var(--green); border-color: currentColor; transform: none; }
+
+  .tt .visit { grid-template-columns: 1fr; padding: 72px 18px 50px; gap: 36px; }
+  .tt .visit .acts .btn { flex: 1 1 100%; }
+  .tt .cform-card { padding: 22px 18px; border-radius: 16px; }
+  .tt .cform-slot button[type=submit] { width: 100% !important; }
+  .tt .crow { grid-template-columns: 1fr; }
+  .tt .cform .btn { width: 100%; }
+  .tt footer { grid-template-columns: 1fr 1fr; padding: 50px 18px 120px; }
+  .tt footer > div:first-child, .tt footer > div:last-of-type { grid-column: 1 / -1; }
+  .tt .legal { flex-direction: column; gap: 6px; }
+}
+/* Bay rates */
+.tt .rates { background: var(--green); color: var(--white); padding: 96px var(--g) 84px; scroll-margin-top: 60px; }
+.tt .rates .data { color: var(--sand); }
+.tt .rates-head { display: grid; grid-template-columns: 1fr auto; gap: 18px 48px; align-items: end; margin-bottom: 44px; }
+.tt .rates-head .data { grid-column: 1 / -1; }
+.tt .rates-head h2 { max-width: 24ch; }
+.tt .rates-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(255,255,255,.22); border-bottom: 1px solid rgba(255,255,255,.22); }
+.tt .rates-list li { padding: 30px 28px 28px 0; display: grid; gap: 10px; align-content: start; }
+.tt .rates-list li + li { padding-left: 28px; border-left: 1px solid rgba(255,255,255,.22); }
+.tt .rates-list b { font-weight: 700; font-size: clamp(44px, 4.2vw, 64px); line-height: 1; letter-spacing: -.03em; }
+.tt .rates-list b::after { content: ' /hr'; font-size: 16px; font-weight: 500; letter-spacing: 0; opacity: .75; }
+.tt .rates-list span:last-child { font-size: 15px; line-height: 1.5; color: rgba(255,255,255,.85); max-width: 30ch; }
+.tt .rates-note { margin-top: 20px; font-size: 14px; color: rgba(255,255,255,.8); }
+@media (max-width: 860px) {
+  .tt .rates { padding: 72px 18px 64px; }
+  .tt .rates-head { grid-template-columns: 1fr; margin-bottom: 28px; }
+  .tt .rates-head .btn { justify-self: start; }
+  .tt .rates-list { grid-template-columns: 1fr; }
+  .tt .rates-list li, .tt .rates-list li + li { padding: 22px 0; border-left: 0; }
+  .tt .rates-list li + li { border-top: 1px solid rgba(255,255,255,.22); }
+}
+
+@media (min-width: 861px) and (max-width: 1180px) {
+  .tt .rates-list { grid-template-columns: repeat(2, 1fr); }
+  .tt .rates-list li:nth-child(3) { padding-left: 0; border-left: 0; }
+  .tt .rates-list li:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,.22); }
+}
+@media (max-height: 520px) and (orientation: landscape) {
+  .tt .dock { display: none; }
+}
+@media (max-width: 599px) { .tt .track { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) {
+  .tt *, .tt *::before, .tt *::after { animation: none !important; transition: none !important; }
+  .tt .aim .draw { stroke-dashoffset: 0; } .tt .aim text { opacity: 1; }
+}
+
+/* ================= SPONSORS: tee-box signs ================= */
+.tt .partners { background: radial-gradient(70% 60% at 50% 0%, rgba(13,91,59,.55), transparent 70%), var(--pine); color: var(--white); padding: 110px var(--g) 90px; overflow: hidden; }
+.tt .partners .data { color: var(--sand); }
+.tt .sp-head { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; }
+.tt .sp-head .data { margin-bottom: 14px; }
+.tt .partners .lede { color: rgba(255,255,255,.82); }
+.tt .bays-row { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 64px; max-width: 1080px; margin-inline: auto; }
+.tt .bays-row li { transition: transform .8s cubic-bezier(.2,.8,.2,1) var(--d, 0ms), opacity .6s ease var(--d, 0ms); }
+.tt .bays-row.anim li:not(.in) { transform: translateY(40px); opacity: 0; }
+.tt .bay { position: relative; isolation: isolate; display: flex; flex-direction: column; gap: 16px; height: 100%; padding: 20px 18px 18px; border-radius: 20px; overflow: hidden; color: var(--white);
+  background: linear-gradient(165deg, #1E5038 0%, #183F2D 50%, #142F23 100%); border: 1px solid rgba(215,201,164,.16);
+  box-shadow: 0 18px 36px rgba(0,0,0,.22); transition: transform .55s cubic-bezier(.2,.8,.2,1), box-shadow .55s, border-color .55s; }
+/* fairway stripes, very faint */
+.tt .bay::after { content: ''; position: absolute; inset: 0; z-index: -1; background: repeating-linear-gradient(115deg, rgba(255,255,255,.025) 0 22px, transparent 22px 44px); }
+/* a thin sand line traces the border of the featured card */
+.tt .bay::before { content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1.5px; pointer-events: none; opacity: 0; transition: opacity .5s;
+  background: conic-gradient(from var(--ang, 0deg), transparent 0 62%, var(--sand) 80%, transparent 96%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); }
+@property --ang { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+@keyframes tt-trace { to { --ang: 360deg; } }
+.tt .bay.lit::before, .tt .bay:hover::before, .tt .bay:focus-visible::before { opacity: 1; animation: tt-trace 3s linear infinite; }
+.tt .bay.lit, .tt .bay:hover, .tt .bay:focus-visible { transform: translateY(-10px); border-color: rgba(215,201,164,.35); box-shadow: 0 34px 60px rgba(0,0,0,.38); }
+.tt .bay-top { display: flex; justify-content: space-between; align-items: flex-start; }
+.tt .bay-top .data { color: var(--sand); padding-top: 6px; }
+.tt .bay-no { font-weight: 700; font-size: 64px; line-height: .8; letter-spacing: -.04em; color: transparent; -webkit-text-stroke: 1.5px rgba(215,201,164,.55); transition: color .5s, -webkit-text-stroke-color .5s; font-variant-numeric: tabular-nums; }
+.tt .bay.lit .bay-no, .tt .bay:hover .bay-no, .tt .bay:focus-visible .bay-no { color: var(--sand); -webkit-text-stroke-color: var(--sand); }
+/* the logo panel */
+.tt .scr { position: relative; display: grid; place-items: center; aspect-ratio: 16 / 10; padding: 18px 20px; border-radius: 12px; overflow: hidden; background: var(--white);
+  box-shadow: 0 14px 30px rgba(0,0,0,.28), inset 0 0 0 1px rgba(35,62,49,.06); transition: transform .55s cubic-bezier(.2,.8,.2,1); }
+.tt .bay.black .scr { background: #000; }
+.tt .bay.lit .scr, .tt .bay:hover .scr { transform: scale(1.03); }
+.tt .scr img { width: 100%; height: 100%; object-fit: contain; }
+.tt .scr::after { content: ''; position: absolute; inset: 0; background: linear-gradient(100deg, transparent 30%, rgba(255,255,255,.55) 48%, transparent 66%); transform: translateX(-120%); pointer-events: none; }
+.tt .bays-row.anim li:not(.in) .scr img { opacity: 0; }
+.tt .bays-row li .scr img { transition: opacity .6s ease calc(var(--d, 0ms) + 250ms); }
+.tt .bays-row li.in .scr::after { animation: tt-sweep 1.1s cubic-bezier(.3,.1,.2,1) calc(var(--d, 0ms) + 200ms) 1; }
+.tt .bay.lit .scr::after, .tt .bay:hover .scr::after { animation: tt-sweep 1s cubic-bezier(.3,.1,.2,1) 1; }
+@keyframes tt-sweep { from { transform: translateX(-120%); } to { transform: translateX(120%); } }
+/* name + visit */
+.tt .bay-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; }
+.tt .bay-foot .nm { font-weight: 600; font-size: 18px; line-height: 1.2; letter-spacing: -.01em; }
+.tt .bay-foot .go { flex: none; display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; border: 1px solid rgba(215,201,164,.45); color: var(--sand); font-size: 13px; font-weight: 600; transition: background .4s, color .4s, border-color .4s; }
+.tt .bay-foot .go::after { content: '→'; transition: transform .4s; }
+.tt .bay.lit .go, .tt .bay:hover .go, .tt .bay:focus-visible .go { background: var(--sand); color: var(--pine); border-color: var(--sand); }
+.tt .bay:hover .go::after, .tt .bay:focus-visible .go::after { transform: translateX(4px); }
+.tt .sp-foot { margin-top: 48px; text-align: center; color: rgba(255,255,255,.8); font-size: 16px; }
+.tt .sp-foot a { color: var(--white); font-weight: 600; border-bottom: 1.5px solid var(--sand); padding-bottom: 2px; margin-left: 6px; }
+@media (max-width: 860px) {
+  .tt .partners { padding: 72px 18px 64px; }
+  .tt .sp-head { grid-template-columns: 1fr; gap: 16px; }
+  .tt .bays-row { grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 40px; }
+  .tt .bays-row li:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 7px); }
+  .tt .bay { padding: 14px 12px 12px; gap: 12px; border-radius: 16px; }
+  .tt .bay-no { font-size: 40px; }
+  .tt .scr { padding: 10px; border-radius: 10px; }
+  .tt .bay-foot { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .tt .bay-foot .nm { font-size: 14px; }
+  .tt .bay-foot .go { font-size: 12px; padding: 6px 10px; }
+  .tt .bay.lit, .tt .bay:hover { transform: translateY(-4px); }
+}
+
+/* ---------- production additions ---------- */
+.tt :is(h1, h2, h3, b, strong, address, output, .btn, .h-xl, .h-l, .h-m) { font-family: var(--font); }
+.tt .hdr-space { height: 78px; }
+@media (max-width: 860px) { .tt .hdr-space { height: 64px; } }
+body.admin-bar .tt .hdr { top: 32px; }
+@media (max-width: 782px) { body.admin-bar .tt .hdr { top: 46px; } }
+/* photo frames: a clean pine panel shows if a photo is missing, never a broken icon */
+.tt .hero picture, .tt .stop { background-color: var(--pine); }
+.tt img.tt-missing { visibility: hidden; }
+/* hero video: fades in over the still once it is actually playing */
+.tt .hero-video { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; transition: opacity .8s ease; pointer-events: none; }
+/* with the site script, fade in once playing; without it, the video simply plays over its poster */
+html.tt-js .tt .hero-video { opacity: 0; }
+html.tt-js .tt .hero.is-playing .hero-video { opacity: 1; }
+.tt .hero.is-playing .aim { display: none; }
+@media (max-width: 860px) {
+  .tt .hero-video { inset: 0 0 auto 0; height: 52svh; min-height: 360px; }
+}
+/* mobile menu sheet */
+.tt .menu[aria-expanded="true"] { color: var(--green); }
+.tt .mnav { display: none; }
+@media (max-width: 860px) {
+  .tt .mnav { position: fixed; z-index: 899; top: 64px; left: 0; right: 0; bottom: 0; background: var(--white); overflow-y: auto; padding: 8px 18px 120px; flex-direction: column; }
+  .tt .mnav.open { display: flex; }
+  body.admin-bar .tt .mnav { top: 110px; }
+  .tt .mnav a.mlink { display: flex; justify-content: space-between; align-items: center; min-height: 58px; border-bottom: 1px solid var(--line); font-weight: 500; font-size: 20px; color: var(--pine); }
+  .tt .mnav a.mlink::after { content: '→'; color: var(--green); }
+  .tt .mnav .macts { display: grid; gap: 10px; margin-top: 24px; }
+  .tt .mnav .macts .btn { width: 100%; }
+  .tt .mnav .mcontact { margin-top: 22px; display: grid; gap: 6px; font-size: 15px; color: var(--soft); }
+  .tt .mnav .mcontact a { font-weight: 500; color: var(--pine); min-height: 40px; display: flex; align-items: center; }
+}
+html.tt-lock, html.tt-lock body { overflow: hidden; }
+
+/* =====================================================================
+   MEET OUR PRO (/meet-our-pro/)
+   ===================================================================== */
+.tt .ls-hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; padding: 72px var(--g) 88px; background: var(--mist); }
+.tt .ls-hero h1 small { display: block; font-weight: 500; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--green); margin-bottom: 20px; }
+.tt .ls-hero h1 .ln { display: block; }
+.tt .ls-hero h1 .ln + .ln { color: var(--green); }
+.tt .ls-hero .lede { margin-top: 22px; }
+.tt .ls-hero .acts, .tt .ls-book .acts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+.tt .ls-meta { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 30px; color: rgba(35,62,49,.75); }
+.tt .ls-meta li { display: flex; align-items: center; gap: 22px; }
+.tt .ls-meta li + li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--sand); margin-left: -13.5px; margin-right: -13.5px; }
+.tt .ls-hero-photo { position: relative; aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden; background: var(--pine); }
+.tt .ls-hero-photo img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.04); transition: transform 1.6s cubic-bezier(.2,.8,.2,1); }
+.tt .ls-hero-photo:hover img { transform: scale(1.08); }
+.tt .ls-hero-photo figcaption { position: absolute; left: 18px; bottom: 18px; display: grid; gap: 2px; padding: 12px 16px; border-radius: 10px; background: rgba(255,255,255,.94); color: var(--pine); font-weight: 600; font-size: 18px; }
+
+.tt .ls-pro { display: grid; grid-template-columns: .85fr 1.15fr; gap: 64px; align-items: center; padding: 110px var(--g); background: var(--white); }
+.tt .ls-portrait { position: relative; aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden; isolation: isolate;
+  background: radial-gradient(80% 70% at 30% 20%, rgba(255,255,255,.08), transparent 60%), var(--green); }
+.tt .ls-portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
+.tt .ls-portrait:has(img)::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, transparent 55%, rgba(35,62,49,.85)); }
+.tt .ls-mono { position: absolute; inset: 0; display: grid; place-items: center; font-weight: 700; font-size: clamp(120px, 15vw, 220px); letter-spacing: -.06em; line-height: 1;
+  color: transparent; -webkit-text-stroke: 1.5px rgba(215,201,164,.55); }
+.tt .ls-tag { position: absolute; left: 22px; right: 22px; bottom: 22px; display: grid; gap: 4px; color: var(--white); font-weight: 600; font-size: 22px; letter-spacing: -.01em; }
+.tt .ls-tag .data { color: var(--sand); }
+.tt .ls-tag small { font-weight: 500; font-size: 14px; color: rgba(255,255,255,.8); letter-spacing: 0; }
+.tt .ls-pro-copy .data { margin-bottom: 18px; }
+.tt .ls-pro-copy .lede { margin-top: 18px; color: var(--ink); max-width: 52ch; }
+.tt .ls-pro-copy p:not(.data):not(.lede) { margin-top: 16px; color: var(--soft); max-width: 58ch; }
+.tt .ls-stats { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 36px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.tt .ls-stats div { padding: 20px 0 18px; display: grid; gap: 6px; }
+.tt .ls-stats div + div { padding-left: 22px; border-left: 1px solid var(--line); }
+.tt .ls-stats dt { font-size: 13px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: rgba(35,62,49,.75); }
+.tt .ls-stats dd { font-weight: 700; font-size: clamp(22px, 2.2vw, 32px); line-height: 1.1; letter-spacing: -.02em; color: var(--green); }
+
+.tt .ls-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 44px; }
+.tt .ls-head .data { margin-bottom: 14px; }
+.tt .ls-focus { background: var(--mist); padding: 110px var(--g); }
+.tt .ls-cards, .tt .ls-steplist { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.tt .ls-cards li { position: relative; display: grid; gap: 12px; align-content: start; padding: 30px 28px 32px; border-radius: 16px; background: var(--white); border: 1px solid var(--line);
+  transition: transform .45s cubic-bezier(.2,.8,.2,1), background .35s, color .35s, border-color .35s; }
+.tt .ls-cards li:hover { transform: translateY(-6px); background: var(--green); border-color: var(--green); color: var(--white); }
+.tt .ls-cards li:hover p { color: rgba(255,255,255,.85); }
+.tt .ls-cards li:hover .ls-no { -webkit-text-stroke-color: var(--sand); }
+.tt .ls-no { font-weight: 700; font-size: 56px; line-height: 1; letter-spacing: -.04em; color: transparent; -webkit-text-stroke: 1.5px rgba(13,91,59,.45); transition: -webkit-text-stroke-color .35s; }
+.tt .ls-cards p, .tt .ls-steplist p { color: var(--soft); transition: color .35s; }
+
+.tt .ls-sim { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; padding: 104px var(--g); color: var(--white);
+  background: radial-gradient(70% 80% at 85% 20%, rgba(255,255,255,.07), transparent 60%), var(--green); }
+.tt .ls-sim .data { color: var(--sand); margin-bottom: 18px; }
+.tt .ls-sim .lede { margin-top: 18px; color: rgba(255,255,255,.85); }
+.tt .ls-readout { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.tt .ls-readout li { display: grid; gap: 10px; padding: 24px 22px; border-radius: 14px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.16); transition: background .35s, border-color .35s; }
+.tt .ls-readout li:hover { background: rgba(255,255,255,.12); border-color: var(--sand); }
+.tt .ls-readout .data { margin: 0; }
+.tt .ls-readout b { font-weight: 700; font-size: clamp(22px, 2.1vw, 30px); letter-spacing: -.02em; line-height: 1.1; }
+
+.tt .ls-steps { background: var(--white); padding: 110px var(--g) 90px; }
+.tt .ls-steplist li { display: grid; gap: 12px; align-content: start; padding-top: 26px; border-top: 2px solid var(--pine); }
+
+.tt .ls-book { background: var(--white); padding: 0 var(--g) 110px; scroll-margin-top: 78px; }
+.tt .ls-book-card { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; padding: 56px; border-radius: 22px; color: var(--white);
+  background: radial-gradient(60% 90% at 0% 0%, rgba(255,255,255,.08), transparent 60%), var(--pine); }
+.tt .ls-book-card .data { color: var(--sand); margin-bottom: 16px; }
+.tt .ls-book-card .lede { margin-top: 16px; color: rgba(255,255,255,.85); }
+.tt .ls-book-info { display: grid; border-top: 1px solid rgba(255,255,255,.18); }
+.tt .ls-book-info div { display: flex; justify-content: space-between; gap: 20px; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.18); }
+.tt .ls-book-info dt { color: rgba(255,255,255,.7); }
+.tt .ls-book-info dd { text-align: right; font-weight: 500; }
+.tt .ls-book-info a { border-bottom: 1px solid var(--sand); }
+.tt .ls-more { margin-top: 26px; text-align: center; color: var(--soft); }
+.tt .ls-more a { color: var(--green); font-weight: 600; border-bottom: 1.5px solid var(--sand); padding-bottom: 2px; }
+
+@media (max-width: 1100px) and (min-width: 861px) {
+  .tt .ls-cards, .tt .ls-steplist { gap: 14px; }
+  .tt .ls-book-card { padding: 44px; gap: 36px; }
+}
+@media (max-width: 860px) {
+  .tt .ls-hero { grid-template-columns: 1fr; gap: 32px; padding: 40px 18px 56px; }
+  .tt .ls-hero h1 { font-size: 36px; }
+  .tt .ls-hero h1 small { font-size: 11px; margin-bottom: 14px; }
+  .tt .ls-hero .acts .btn, .tt .ls-book .acts .btn { flex: 1 1 100%; }
+  .tt .ls-hero-photo { aspect-ratio: 4 / 3; order: -1; }
+  .tt .ls-pro { grid-template-columns: 1fr; gap: 32px; padding: 72px 18px; }
+  .tt .ls-portrait { aspect-ratio: 4 / 3; }
+  .tt .ls-mono { place-items: start end; padding: 14px 20px; font-size: 104px; }
+  .tt .ls-meta { gap: 6px 16px; }
+  .tt .ls-meta li + li::before { display: none; }
+  .tt .ls-stats div + div { padding-left: 14px; }
+  .tt .ls-stats dd { font-size: 18px; }
+  .tt .ls-stats dt { font-size: 11px; }
+  .tt .ls-head { flex-direction: column; align-items: start; gap: 12px; margin-bottom: 28px; }
+  .tt .ls-focus, .tt .ls-steps { padding: 72px 18px; }
+  .tt .ls-cards, .tt .ls-steplist { grid-template-columns: 1fr; gap: 12px; }
+  .tt .ls-steplist { gap: 26px; }
+  .tt .ls-sim { grid-template-columns: 1fr; gap: 32px; padding: 72px 18px; }
+  .tt .ls-readout li { padding: 18px 16px; }
+  .tt .ls-book { padding: 0 18px 72px; scroll-margin-top: 64px; }
+  .tt .ls-book-card { grid-template-columns: 1fr; gap: 32px; padding: 32px 22px; border-radius: 18px; }
+  .tt .ls-book-info div { flex-direction: column; gap: 4px; }
+  .tt .ls-book-info dd { text-align: left; }
+}
+
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://thebogeyclub.com/meet-our-pro/#andrew",
+      "name": "Andrew McDonald",
+      "jobTitle": "Golf Professional, PGA of Canada",
+      "email": "mailto:amcdonald@magnagolf.com",
+      "worksFor": {
+        "@id": "https://thebogeyclub.com/#business"
+      }
+    },
+    {
+      "@type": "Service",
+      "name": "Private golf lessons",
+      "serviceType": "Golf instruction",
+      "url": "https://thebogeyclub.com/meet-our-pro/",
+      "areaServed": "Newmarket, Ontario",
+      "provider": {
+        "@id": "https://thebogeyclub.com/meet-our-pro/#andrew"
+      },
+      "description": "One-on-one golf lessons on Golfzon simulators with Andrew McDonald, PGA of Canada, covering technique, strategy and the mental game."
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<!-- =====================================================================
+     GLOBAL HEADER — Elementor > Templates > Theme Builder > Header
+     (Display conditions: Entire Site). One HTML widget in a full-width
+     container with 0 padding. The links mirror the WordPress "Primary"
+     menu; keep them in sync (docs/IMPLEMENTATION.md §3).
+     ===================================================================== -->
+<div class="tt">
+  <header class="hdr">
+    <a href="https://thebogeyclub.com/" aria-label="The Bogey Club home"><img class="logo" src="https://thebogeyclub.com/wp-content/uploads/2026/10/Bogey-Club-Font-Logo-Green.png" alt="The Bogey Club — Golf Simulator Lounge &amp; Bar"></a>
+    <nav class="nav" aria-label="Main">
+      <a href="https://thebogeyclub.com/our-simulators/">Golf</a>
+      <a href="https://thebogeyclub.com/karaoke/">Karaoke</a>
+      <a href="https://thebogeyclub.com/private-events/">Private events</a>
+      <a href="https://thebogeyclub.com/leagues-and-events/">Leagues</a>
+      <a href="https://thebogeyclub.com/meet-our-pro/">Lessons</a>
+      <a href="https://shop.thebogeyclub.com/">Shop</a>
+      <a href="https://thebogeyclub.com/#visit">Contact</a>
+    </nav>
+    <a class="btn btn-red" href="https://thebogeyclub.golfbooking.ca/calendar.php" data-tt-cta="header-book-golf">Book a bay</a>
+    <button class="menu" type="button" aria-expanded="false" aria-controls="tt-mnav">Menu</button>
+  </header>
+  <div class="hdr-space" aria-hidden="true"></div>
+
+  <nav class="mnav" id="tt-mnav" aria-label="Mobile">
+    <a class="mlink" href="https://thebogeyclub.com/our-simulators/">Golf simulators</a>
+    <a class="mlink" href="https://thebogeyclub.com/karaoke/">Karaoke</a>
+    <a class="mlink" href="https://thebogeyclub.com/private-events/">Private events</a>
+    <a class="mlink" href="https://thebogeyclub.com/leagues-and-events/">Leagues &amp; events</a>
+    <a class="mlink" href="https://thebogeyclub.com/meet-our-pro/">Private lessons</a>
+    <a class="mlink" href="https://shop.thebogeyclub.com/">Shop</a>
+    <a class="mlink" href="https://thebogeyclub.com/about-us/">About us</a>
+    <a class="mlink" href="https://thebogeyclub.com/#visit">Contact</a>
+    <a class="mlink" href="https://thebogeyclub.com/faqs/">FAQs</a>
+    <div class="macts">
+      <a class="btn btn-red" href="https://thebogeyclub.golfbooking.ca/calendar.php">Book a bay</a>
+      <a class="btn btn-line dark" href="https://thebogeyclub.golfbooking.ca/calendar.php?bayfilter=4&amp;templateId=50&amp;lang=en" data-tt-link="karaoke-booking">Book karaoke</a>
+      <a class="btn btn-line dark" href="https://thebogeyclub.com/private-events/">Plan a private event</a>
+    </div>
+    <div class="mcontact">
+      <a href="tel:+19052354653">(905) 235-4653</a>
+      <a href="mailto:golf@thebogeyclub.com">golf@thebogeyclub.com</a>
+      <span>17705 Leslie St, Unit 5, Newmarket</span>
+    </div>
+  </nav>
+</div>
+
+<main>
+<!-- =====================================================================
+     MEET OUR PRO (/meet-our-pro/) — one Elementor HTML widget, same setup
+     as the homepage (dist/ELEMENTOR-PASTE-LESSONS.html). Facts come from
+     the current page: Andrew McDonald, PGA of Canada, 8+ years teaching,
+     technique / strategy / mental game, book by phone or email.
+     ===================================================================== -->
+<div class="tt" id="tt-lessons">
+
+<!-- 1. HERO -->
+<section class="ls-hero" aria-labelledby="tt-ls-h1">
+  <div class="ls-hero-copy">
+    <h1 id="tt-ls-h1" class="h-xl"><small>Private golf lessons · Newmarket, ON</small><span class="ln">Your handicap is welcome.</span> <span class="ln">Let's lower it.</span></h1>
+    <p class="lede">One-on-one lessons with Andrew McDonald, PGA of Canada, on our Golfzon simulators. Every swing measured, every season.</p>
+    <div class="acts">
+      <a class="btn btn-red" href="mailto:amcdonald@magnagolf.com?subject=Golf%20lesson%20at%20The%20Bogey%20Club" data-tt-cta="lessons-hero-email">Book a lesson</a>
+      <a class="btn btn-line dark" href="tel:+19052354653" data-tt-cta="lessons-hero-call">(905) 235-4653</a>
+    </div>
+    <ul class="ls-meta data">
+      <li>PGA of Canada</li><li>8+ years teaching</li><li>All levels</li>
+    </ul>
+  </div>
+  <figure class="ls-hero-photo">
+    <img src="https://thebogeyclub.com/wp-content/uploads/2026/04/ChatGPT-Image-Apr-23-2026-11_31_41-AM.png" fetchpriority="high" decoding="async" alt="A private golf lesson on a simulator at The Bogey Club">
+    <figcaption><span class="data">Coaching</span>On a Golfzon bay</figcaption>
+  </figure>
+</section>
+
+<!-- 2. MEET ANDREW -->
+<section class="ls-pro" aria-labelledby="tt-ls-pro-h">
+  <!-- Portrait: replace the monogram with Andrew's photo by swapping this <div> for
+       <img src="…" alt="Andrew McDonald, PGA of Canada golf professional"> inside .ls-portrait -->
+  <div class="ls-portrait">
+    <div class="ls-mono" aria-hidden="true">AM</div>
+    <p class="ls-tag"><span class="data">Your coach</span>Andrew McDonald<small>PGA of Canada</small></p>
+  </div>
+  <div class="ls-pro-copy">
+    <p class="data">Meet our pro</p>
+    <h2 id="tt-ls-pro-h" class="h-l">Andrew McDonald</h2>
+    <p class="lede">Andrew is a PGA of Canada golf professional who has been teaching players of every level for more than eight years.</p>
+    <p>His lessons are built around you: your swing, your game and what you want out of it. Some players come in for their first proper lesson, others to chase a few more strokes. Either way, every session is one-on-one, on a simulator that shows exactly what the ball did.</p>
+    <dl class="ls-stats">
+      <div><dt>Teaching</dt><dd>8+ yrs</dd></div>
+      <div><dt>Certified</dt><dd>PGA of Canada</dd></div>
+      <div><dt>Format</dt><dd>One-on-one</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- 3. WHAT YOU'LL WORK ON -->
+<section class="ls-focus" aria-labelledby="tt-ls-focus-h">
+  <div class="ls-head">
+    <div><p class="data">What you'll work on</p><h2 id="tt-ls-focus-h" class="h-l">The whole game, not just the swing.</h2></div>
+    <p class="lede">Personalized instruction across the three things that actually move your score.</p>
+  </div>
+  <ol class="ls-cards">
+    <li><span class="ls-no" aria-hidden="true">01</span><h3 class="h-m">Technique</h3><p>Grip, setup and swing, built on what the ball is actually doing instead of guesswork.</p></li>
+    <li><span class="ls-no" aria-hidden="true">02</span><h3 class="h-m">Strategy</h3><p>Club choice, course management and smarter targets, so good swings turn into lower scores.</p></li>
+    <li><span class="ls-no" aria-hidden="true">03</span><h3 class="h-m">The mental game</h3><p>Routines and focus that hold up on the first tee and over the four-footer.</p></li>
+  </ol>
+</section>
+
+<!-- 4. WHY LEARN ON A SIMULATOR -->
+<section class="ls-sim" aria-labelledby="tt-ls-sim-h">
+  <div>
+    <p class="data">Why learn indoors</p>
+    <h2 id="tt-ls-sim-h" class="h-l">Every swing, measured.</h2>
+    <p class="lede">Our Golfzon simulators read every shot, so you and Andrew see the numbers behind it, not just where it went. And the weather never cancels a lesson.</p>
+  </div>
+  <ul class="ls-readout">
+    <li><span class="data">Ball speed</span><b>How hard</b></li>
+    <li><span class="data">Launch angle</span><b>How high</b></li>
+    <li><span class="data">Spin</span><b>How it curves</b></li>
+    <li><span class="data">Carry</span><b>How far</b></li>
+  </ul>
+</section>
+
+<!-- 5. HOW IT WORKS -->
+<section class="ls-steps" aria-labelledby="tt-ls-steps-h">
+  <div class="ls-head">
+    <div><p class="data">How it works</p><h2 id="tt-ls-steps-h" class="h-l">Three steps to the tee.</h2></div>
+  </div>
+  <ol class="ls-steplist">
+    <li><span class="ls-no" aria-hidden="true">01</span><h3 class="h-m">Get in touch</h3><p>Call the club or email Andrew to find a time that works.</p></li>
+    <li><span class="ls-no" aria-hidden="true">02</span><h3 class="h-m">Share your goals</h3><p>Tell him where your game is today and where you want it to go.</p></li>
+    <li><span class="ls-no" aria-hidden="true">03</span><h3 class="h-m">Tee it up</h3><p>Your lesson runs one-on-one on a Golfzon bay at the club.</p></li>
+  </ol>
+</section>
+
+<!-- 6. BOOK -->
+<section class="ls-book" id="book" aria-labelledby="tt-ls-book-h">
+  <div class="ls-book-card">
+    <div>
+      <p class="data">Book a lesson</p>
+      <h2 id="tt-ls-book-h" class="h-l">Ready when you are.</h2>
+      <p class="lede">Reach Andrew directly to book your private lesson or ask about rates.</p>
+      <div class="acts">
+        <a class="btn btn-white" href="mailto:amcdonald@magnagolf.com?subject=Golf%20lesson%20at%20The%20Bogey%20Club" data-tt-cta="lessons-book-email">Email Andrew</a>
+        <a class="btn btn-line" href="tel:+19052354653" data-tt-cta="lessons-book-call">(905) 235-4653</a>
+      </div>
+    </div>
+    <dl class="ls-book-info">
+      <div><dt>Email</dt><dd><a href="mailto:amcdonald@magnagolf.com">amcdonald@magnagolf.com</a></dd></div>
+      <div><dt>Phone</dt><dd><a href="tel:+19052354653">(905) 235-4653</a></dd></div>
+      <div><dt>Lesson days</dt><dd>Wednesday to Saturday<br>Sunday to Tuesday by appointment</dd></div>
+      <div><dt>Where</dt><dd>17705 Leslie Street, Unit 5<br>Newmarket, ON L3Y 3E3</dd></div>
+    </dl>
+  </div>
+  <p class="ls-more">Practising between lessons? <a href="https://thebogeyclub.golfbooking.ca/calendar.php" data-tt-cta="lessons-book-bay">Book a bay</a> or <a href="https://thebogeyclub.com/leagues-and-events/">join a league</a>.</p>
+</section>
+
+</div>
+
+</main>
+<!-- =====================================================================
+     GLOBAL FOOTER — Elementor > Templates > Theme Builder > Footer
+     (Entire Site). The BCH:NEWSLETTER marker shows where the EXISTING
+     newsletter widget goes: split this HTML into two widgets at the
+     marker and drop the current signup widget between them, so its
+     provider/list keeps working. The mobile booking dock is site-wide.
+     ===================================================================== -->
+<div class="tt">
+<footer>
+  <div><span class="flogo"><img src="https://thebogeyclub.com/wp-content/uploads/2026/10/Full-Logo-White-Bogey-Club.png" width="2000" height="2000" loading="lazy" alt="The Bogey Club"></span><p>Newmarket's Golf Simulator Sports Bar &amp; Event Space</p></div>
+  <div><h4>Play</h4><ul>
+    <li><a href="https://thebogeyclub.golfbooking.ca/calendar.php">Book golf</a></li>
+    <li><a href="https://thebogeyclub.com/our-simulators/">Our simulators</a></li>
+    <li><a href="https://thebogeyclub.com/karaoke/">Karaoke</a></li>
+    <li><a href="https://thebogeyclub.com/meet-our-pro/">Private lessons</a></li>
+  </ul></div>
+  <div><h4>Events</h4><ul>
+    <li><a href="https://thebogeyclub.com/private-events/">Private events</a></li>
+    <li><a href="https://thebogeyclub.com/leagues-and-events/">Leagues &amp; events</a></li>
+    <li><a href="https://thebogeyclub.com/the-bogey-club-classic-2026/">Bogey Club Classic</a></li>
+  </ul></div>
+  <div><h4>Club</h4><ul>
+    <li><a href="https://thebogeyclub.com/about-us/">About us</a></li>
+    <li><a href="https://shop.thebogeyclub.com/">Shop</a></li>
+    <li><a href="https://thebogeyclub.com/faqs/">FAQs &amp; contact</a></li>
+    <li><a href="tel:+19052354653">(905) 235-4653</a></li>
+  </ul></div>
+  <div><h4>Newsletter</h4><p>Leagues, tournaments and club news.</p>
+    <div class="news"><span>Existing newsletter widget goes here</span><b>Join</b></div>
+  </div>
+  <div class="legal"><span>© <span data-tt-year>2026</span> The Bogey Club · 17705 Leslie St, Unit 5, Newmarket, ON L3Y 3E3</span><span><a href="https://thebogeyclub.com/privacy-policy/">Privacy policy</a> · <a href="https://www.instagram.com/the.bogeyclub/" target="_blank" rel="noopener">Instagram</a></span></div>
+</footer>
+
+<nav class="dock" aria-label="Quick booking">
+  <a href="https://thebogeyclub.golfbooking.ca/calendar.php" data-tt-cta="dock-book-golf">Book a bay<small>Golf</small></a>
+  <a href="https://thebogeyclub.golfbooking.ca/calendar.php?bayfilter=4&amp;templateId=50&amp;lang=en" data-tt-link="karaoke-booking" data-tt-cta="dock-book-karaoke">Karaoke<small>Book</small></a>
+  <a href="https://thebogeyclub.com/private-events/" data-tt-cta="dock-events">Events<small>Inquire</small></a>
+</nav>
+</div>
+
+<script>
+/* The Bogey Club — site script (production). Vanilla, no dependencies,
+   no tracking (CTAs carry data-tt-cta for the site's existing GTM/GA).
+   Install once, site-wide: WPCode footer snippet (see 02-script.html). */
+(function () {
+  "use strict";
+  document.documentElement.classList.add("tt-js"); /* lets the CSS show script-only parts */
+  function ready(fn) { if (document.readyState !== "loading") fn(); else document.addEventListener("DOMContentLoaded", fn); }
+
+  /* Contact form destination. Leave empty to open the visitor's email app;
+     set to a Formspree form URL (https://formspree.io/f/xxxxxxx) to send in-page. */
+  var FORM_ENDPOINT = "";
+  var CLUB_EMAIL = "golf@thebogeyclub.com";
+
+  ready(function () {
+    var html = document.documentElement;
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    /* each feature runs on its own, so one failure never takes the others down */
+    var fail = function (err) { if (window.console) console.error("[Bogey Club]", err); };
+
+    try {
+    /* Karaoke booking: open the karaoke-filtered calendar on the current month
+       (same behaviour as the /karaoke/ page). */
+    var now = new Date(), month = now.getFullYear() + "-" + String(now.getMonth() + 1).padStart(2, "0");
+    document.querySelectorAll('[data-tt-link="karaoke-booking"]').forEach(function (a) {
+      a.href = "https://thebogeyclub.golfbooking.ca/calendar.php?date=" + month + "&bayfilter=4&templateId=50&lang=en";
+    });
+    document.querySelectorAll("[data-tt-year]").forEach(function (el) { el.textContent = now.getFullYear(); });
+
+    } catch (err) { fail(err); }
+    try {
+    /* A missing photo shows the pine frame, never a broken-image icon. */
+    document.querySelectorAll(".tt img").forEach(function (img) {
+      function miss() { img.classList.add("tt-missing"); }
+      if (img.complete && img.naturalWidth === 0 && img.currentSrc) miss();
+      else img.addEventListener("error", miss, { once: true });
+    });
+
+    } catch (err) { fail(err); }
+    try {
+    /* Hero video: reveal it only once frames are playing; otherwise keep the still. */
+    var hero = document.querySelector(".tt .hero"), vid = hero && hero.querySelector(".hero-video");
+    if (vid) {
+      var drop = function () { vid.remove(); };
+      if (reduce || window.matchMedia("(prefers-reduced-data: reduce)").matches) drop();
+      else {
+        vid.addEventListener("playing", function () { hero.classList.add("is-playing"); }, { once: true });
+        var srcs = vid.querySelectorAll("source");
+        if (srcs.length) srcs[srcs.length - 1].addEventListener("error", drop);
+        vid.addEventListener("error", drop);
+        var p = vid.play && vid.play();
+        if (p && p.catch) p.catch(function () { /* autoplay blocked: the still stays */ });
+      }
+    }
+
+    } catch (err) { fail(err); }
+    try {
+    /* Two bars: roll the golf ball (or use arrow keys) to compare; on desktop it follows the pointer. */
+    var duo = document.getElementById("tt-duo");
+    if (duo) {
+      var range = duo.querySelector(".duo-range");
+      var setX = function (v) {
+        v = Math.max(0, Math.min(100, v));
+        duo.style.setProperty("--x", v + "%"); range.value = Math.round(v);
+        duo.style.setProperty("--rot", (v * 7.2).toFixed(1) + "deg"); /* the ball rolls as it moves */
+        duo.dataset.side = v > 60 ? "a" : v < 40 ? "b" : "";
+      };
+      var fromEvent = function (e) { var r = duo.getBoundingClientRect(); return (e.clientX - r.left) / r.width * 100; };
+      var used = function () { duo.classList.add("used"); };
+      range.addEventListener("input", function () { setX(Number(range.value)); used(); });
+      duo.addEventListener("pointerdown", function (e) { duo.classList.add("drag"); setX(fromEvent(e)); used(); });
+      duo.addEventListener("pointermove", function (e) {
+        if (duo.classList.contains("drag") || e.pointerType === "mouse") { setX(fromEvent(e)); if (e.pointerType === "mouse") used(); }
+      });
+      ["pointerup", "pointercancel", "pointerleave"].forEach(function (t) { duo.addEventListener(t, function () { duo.classList.remove("drag"); }); });
+      /* gentle intro: the handle sweeps once when the section first appears */
+      if ("IntersectionObserver" in window && !reduce) {
+        var dio = new IntersectionObserver(function (es) {
+          if (!es[0].isIntersecting || duo.classList.contains("used")) return;
+          dio.disconnect();
+          var t0 = performance.now();
+          (function step(t) {
+            if (duo.classList.contains("used")) return;
+            var k = Math.min(1, (t - t0) / 1800);
+            setX(50 + Math.sin(k * Math.PI * 2) * 22 * (1 - k));
+            if (k < 1) requestAnimationFrame(step);
+          })(t0);
+        }, { threshold: .5 });
+        dio.observe(duo);
+      }
+      /* count-up for the numbers */
+      var nums = document.querySelectorAll(".bars-stats [data-count]");
+      if (nums.length && "IntersectionObserver" in window && !reduce) {
+        nums.forEach(function (el) { el.textContent = "0"; });
+        var nio = new IntersectionObserver(function (es) {
+          if (!es[0].isIntersecting) return; nio.disconnect();
+          nums.forEach(function (el) {
+            var end = Number(el.dataset.count), t0 = performance.now();
+            (function tick(t) { var k = Math.min(1, (t - t0) / 900); el.textContent = Math.round(end * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(tick); })(t0);
+          });
+        }, { threshold: .6 });
+        nio.observe(nums[0].parentElement.parentElement);
+      }
+    }
+
+    } catch (err) { fail(err); }
+    try {
+    /* Club life: hovering/focusing a row wipes its photo into the panel (desktop);
+       on phones each row's thumbnail wipes in as it scrolls into view. */
+    var lifeRows = document.querySelectorAll("#tt-rows .row"), figs = document.querySelectorAll("#tt-life-media figure");
+    if (lifeRows.length && figs.length) {
+      var cur = 0, num = document.getElementById("tt-life-n");
+      var setRow = function (i) {
+        if (i === cur) return;
+        figs.forEach(function (f, k) { f.classList.toggle("was", k === cur); f.classList.remove("on"); });
+        figs[i].classList.add("on");
+        lifeRows.forEach(function (r, k) { r.classList.toggle("on", k === i); });
+        if (num) num.textContent = String(i + 1).padStart(2, "0");
+        cur = i;
+      };
+      var hover = window.matchMedia("(hover: hover) and (min-width: 861px)");
+      lifeRows.forEach(function (r, i) {
+        r.addEventListener("mouseenter", function () { if (hover.matches) setRow(i); });
+        r.addEventListener("focus", function () { setRow(i); });
+      });
+      var rowsBox = document.getElementById("tt-rows");
+      if ("IntersectionObserver" in window && !reduce) {
+        rowsBox.classList.add("anim");
+        var rio = new IntersectionObserver(function (es) {
+          es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); rio.unobserve(e.target); } });
+        }, { threshold: .35 });
+        lifeRows.forEach(function (r) { rio.observe(r); });
+      }
+    }
+
+    } catch (err) { fail(err); }
+    try {
+    /* Sponsors: cards rise in, then a spotlight cycles through each sponsor.
+       Hovering or focusing a card takes the spotlight; leaving resumes the cycle. */
+    var signs = document.getElementById("tt-signs");
+    if (signs) {
+      var items = signs.querySelectorAll("li"), cards = signs.querySelectorAll(".bay"), lit = -1, timer = null;
+      var light = function (i) { lit = i; cards.forEach(function (c, k) { c.classList.toggle("lit", k === i); }); };
+      var start = function () { if (reduce || timer) return; timer = setInterval(function () { light((lit + 1) % cards.length); }, 3200); };
+      var stop = function () { clearInterval(timer); timer = null; };
+      cards.forEach(function (c, i) {
+        c.addEventListener("mouseenter", function () { stop(); light(i); });
+        c.addEventListener("focus", function () { stop(); light(i); });
+      });
+      signs.addEventListener("mouseleave", start);
+      signs.addEventListener("focusout", function (e) { if (!signs.contains(e.relatedTarget)) start(); });
+      if ("IntersectionObserver" in window && !reduce) {
+        signs.classList.add("anim");
+        var sio = new IntersectionObserver(function (es) {
+          es.forEach(function (e) {
+            if (e.isIntersecting) { items.forEach(function (li) { li.classList.add("in"); }); if (lit < 0) setTimeout(function () { light(0); start(); }, 900); }
+            else stop();
+            if (e.isIntersecting && lit >= 0) start();
+          });
+        }, { threshold: .3 });
+        sio.observe(signs);
+      }
+    }
+
+    } catch (err) { fail(err); }
+    try {
+    /* WPForms: if the contact form (WPForms form 3352) is anywhere on the
+       page, move it into the contact card and use it instead of the built-in form. */
+    var WPFORMS_ID = "3352"; /* the "Website contact" form. Never write its shortcode in this file: WordPress would run it inside the script. */
+    var wpf = document.getElementById("wpforms-" + WPFORMS_ID) || document.querySelector(".tt-wpforms .wpforms-container, .wpforms-container.tt-wpforms");
+    var slot = document.getElementById("tt-cslot");
+    if (wpf && slot && !slot.contains(wpf)) {
+      var host = wpf.closest(".elementor-element:not(.elementor-widget-html)");
+      slot.appendChild(wpf);
+      document.getElementById("tt-ccard").classList.add("has-wpf");
+      if (host && !host.contains(wpf)) host.style.display = "none";
+    }
+
+    } catch (err) { fail(err); }
+    try {
+    /* Links like "Talk to us about sponsorship" jump to the form and pick its topic */
+    document.querySelectorAll("[data-tt-topic]").forEach(function (a) {
+      a.addEventListener("click", function () {
+        var t = a.getAttribute("data-tt-topic"), sel = document.querySelector('#tt-cform [name="tt_topic"]');
+        if (sel) sel.value = t;
+        var first = document.querySelector("#tt-ccard.has-wpf input:not([type=hidden]), .tt-wpforms input:not([type=hidden]), #tt-cform [name=tt_name]");
+        if (first) setTimeout(function () { first.focus({ preventScroll: true }); }, 600);
+      });
+    });
+    } catch (err) { fail(err); }
+    try {
+    /* Contact form */
+    var cform = document.getElementById("tt-cform");
+    if (cform) {
+      var status = cform.querySelector(".cstatus"), sendBtn = cform.querySelector("button[type=submit]");
+      var say = function (msg, err) { status.textContent = msg; status.classList.toggle("err", !!err); };
+      cform.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var ok = true;
+        cform.querySelectorAll("[required]").forEach(function (f) {
+          var bad = !f.value.trim() || (f.type === "email" && !/^\S+@\S+\.\S+$/.test(f.value));
+          f.closest(".cfield").classList.toggle("bad", bad); if (bad && ok) { f.focus(); ok = false; }
+        });
+        if (!ok) { say("Please fill in your name, a valid email and a message.", true); return; }
+        if (cform.elements._gotcha.value) return;
+        var d = {}; ["name", "email", "phone", "topic", "message"].forEach(function (k) { d[k] = cform.elements["tt_" + k].value.trim(); });
+        if (FORM_ENDPOINT) {
+          sendBtn.disabled = true; say("Sending…");
+          fetch(FORM_ENDPOINT, { method: "POST", headers: { "Accept": "application/json", "Content-Type": "application/json" }, body: JSON.stringify(Object.assign({ _subject: "Website message: " + d.topic }, d)) })
+            .then(function (r) { if (!r.ok) throw 0; cform.reset(); say("Thanks, " + d.name.split(" ")[0] + "! Your message is in. We'll be in touch soon."); })
+            .catch(function () { say("Sorry, that didn't send. Please email " + CLUB_EMAIL + " or call (905) 235-4653.", true); })
+            .then(function () { sendBtn.disabled = false; });
+        } else {
+          var body = d.message + "\n\n— " + d.name + "\n" + d.email + (d.phone ? "\n" + d.phone : "");
+          window.location.href = "mailto:" + CLUB_EMAIL + "?subject=" + encodeURIComponent("Website message: " + d.topic) + "&body=" + encodeURIComponent(body);
+          say("Your email app should open with your message ready to send.");
+        }
+      });
+      cform.addEventListener("input", function (e) { var f = e.target.closest(".cfield"); if (f) f.classList.remove("bad"); });
+    }
+
+    } catch (err) { fail(err); }
+    try {
+    /* Mobile menu */
+    var btn = document.querySelector(".tt .menu"), sheet = document.getElementById("tt-mnav");
+    if (btn && sheet) {
+      var setOpen = function (open) {
+        btn.setAttribute("aria-expanded", String(open));
+        btn.textContent = open ? "Close" : "Menu";
+        sheet.classList.toggle("open", open);
+        html.classList.toggle("tt-lock", open);
+        if (open) { var first = sheet.querySelector("a"); if (first) first.focus(); }
+      };
+      btn.addEventListener("click", function () { setOpen(btn.getAttribute("aria-expanded") !== "true"); });
+      sheet.addEventListener("click", function (e) { if (e.target.closest("a")) setOpen(false); });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape" && sheet.classList.contains("open")) { setOpen(false); btn.focus(); } });
+      window.matchMedia("(min-width: 861px)").addEventListener("change", function (mq) { if (mq.matches) setOpen(false); });
+    }
+
+    } catch (err) { fail(err); }
+    try {
+    /* From the tee to the tap: on a wide screen with a mouse, vertical scroll drives a
+       horizontal dolly (.dolly). Everywhere else (phones, tablets, touch screens,
+       reduced motion) the CSS stacks the four stops so every one is seen. */
+    var walk = document.getElementById("walk"), track = document.getElementById("tt-track");
+    if (walk && track) {
+      var desk = window.matchMedia("(min-width: 1025px) and (min-height: 600px) and (hover: hover) and (pointer: fine)");
+      var prog = document.getElementById("tt-prog"), stops = document.querySelectorAll("#tt-stops li");
+      var cards = track.querySelectorAll(".stop");
+      var dolly = function () { return desk.matches && !reduce; };
+      var mark = function (k) {
+        prog.style.width = (k * 100) + "%";
+        var idx = Math.min(stops.length - 1, Math.round(k * (stops.length - 1)));
+        stops.forEach(function (s, i) { s.classList.toggle("on", i === idx); });
+      };
+      var onScroll = function () {
+        if (!dolly()) return;
+        var travel = track.scrollWidth - window.innerWidth, span = walk.offsetHeight - window.innerHeight;
+        if (travel <= 0 || span <= 0) return;
+        var k = Math.min(1, Math.max(0, -walk.getBoundingClientRect().top / span));
+        track.style.transform = "translate3d(" + (-k * travel) + "px,0,0)";
+        mark(k);
+      };
+      var size = function () {
+        var on = dolly();
+        walk.classList.toggle("dolly", on);
+        if (!on) { walk.style.height = ""; track.style.transform = ""; return; }
+        walk.style.height = (window.innerHeight + Math.max(0, track.scrollWidth - window.innerWidth)) + "px";
+        onScroll();
+      };
+      var go = function (i) {
+        if (!dolly()) { cards[i].scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" }); return; }
+        var span = walk.offsetHeight - window.innerHeight;
+        window.scrollTo({ top: window.scrollY + walk.getBoundingClientRect().top + span * i / Math.max(1, cards.length - 1), behavior: "smooth" });
+      };
+      document.querySelectorAll("#tt-stops [data-go]").forEach(function (b) {
+        b.addEventListener("click", function () { go(+b.getAttribute("data-go")); });
+      });
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", size);
+      window.addEventListener("load", size);
+      if (desk.addEventListener) desk.addEventListener("change", size);
+      size();
+    }
+
+    } catch (err) { fail(err); }
+  });
+})();
+</script>
+</body>
+</html>

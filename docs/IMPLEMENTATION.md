@@ -34,6 +34,14 @@ The rest of this guide is the full site-wide setup: header and footer on every p
 
 ---
 
+## Meet our pro page (/meet-our-pro/)
+
+Same setup as the homepage: on the Meet Our Pro page, set Page Layout to **Elementor Canvas**, add one Full Width container with padding 0, add one **HTML** widget, and paste `site/dist/ELEMENTOR-PASTE-LESSONS.txt`. Header, footer, fonts and script are included.
+
+- **Facts used** (from the current page): Andrew McDonald, PGA of Canada, teaching all levels for 8+ years; technique, strategy and the mental game; book on (905) 235-4653 or amcdonald@magnagolf.com; lesson days Wednesday to Saturday, Sunday to Tuesday by appointment (**confirm these are current**). No lesson prices are shown, because none are published.
+- **Andrew's photo:** the portrait shows an "AM" monogram until you replace it. In `site/src/lessons.html`, swap the `<div class="ls-mono">` for an `<img>` of Andrew (instructions in the comment there) and rebuild, or send the image URL.
+- **SEO (Yoast/Rank Math):** title "Golf Lessons in Newmarket | Andrew McDonald, PGA of Canada | The Bogey Club"; description "Private golf lessons on Golfzon simulators in Newmarket with Andrew McDonald, PGA of Canada. Technique, strategy and the mental game, for every level."
+
 ## 1. Upload files
 
 1. **Fonts.** Upload the contents of `site/dist/uploads/fonts/` to `/wp-content/uploads/fonts/`, using SFTP or the host's file manager.

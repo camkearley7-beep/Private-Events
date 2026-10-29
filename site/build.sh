@@ -176,5 +176,54 @@ def embed(html):
 sc = full_page('preview-assets', 'fonts', label_css, robots='noindex')
 sc = re.sub(r'<link rel="preload"[^>]*>\n', '', sc)
 (dist / 'bogey-club-homepage-standalone.html').write_text(embed(sc))
+# Meet our pro (/meet-our-pro/) ---------------------------------------------
+lessons = src('lessons.html')
+_ls_schema = {"@context": "https://schema.org", "@graph": [
+  {"@type": "Person", "@id": "https://thebogeyclub.com/meet-our-pro/#andrew", "name": "Andrew McDonald",
+   "jobTitle": "Golf Professional, PGA of Canada", "email": "mailto:amcdonald@magnagolf.com",
+   "worksFor": {"@id": "https://thebogeyclub.com/#business"}},
+  {"@type": "Service", "name": "Private golf lessons", "serviceType": "Golf instruction",
+   "url": "https://thebogeyclub.com/meet-our-pro/", "areaServed": "Newmarket, Ontario",
+   "provider": {"@id": "https://thebogeyclub.com/meet-our-pro/#andrew"},
+   "description": "One-on-one golf lessons on Golfzon simulators with Andrew McDonald, PGA of Canada, covering technique, strategy and the mental game."}]}
+_ls_tag = '<script type="application/ld+json">\n' + json.dumps(_ls_schema, indent=2, ensure_ascii=False) + '\n</script>\n'
+_foot = lambda f: f(footer).replace('<!--BCH:NEWSLETTER-->', '<!-- Existing newsletter signup form goes here -->')
+one_ls = ("<!-- THE BOGEY CLUB: MEET OUR PRO page. Paste this whole file into ONE Elementor HTML widget.\n"
+          "     Page Settings > Page Layout = Elementor Canvas. Container: Full Width, padding 0. -->\n"
+          "<div class=\"tt-one\">\n" + live(head).split('-->', 1)[1].strip() + "\n<style>\n" + css + elementor_fix + "</style>\n"
+          + live(header) + "\n" + live(lessons) + "\n" + _foot(live) + "\n" + _ls_tag + "<script>\n" + js + "</script>\n</div>\n")
+one_ls = one_ls.replace(IMG_LIVE + '/bogey-club-logo.png', _logo)
+if 'Satoshi-Variable.woff2' in have:
+    one_ls = re.sub(r'<link rel="preload"[^>]*>\n', '', one_ls)
+    one_ls = re.sub(r"src: url\('[^']*Satoshi-Variable\.woff2'\) format\('woff2-variations'\), url\('[^']*Satoshi-Variable\.woff2'\) format\('woff2'\)",
+                    lambda m: "src: url('" + _font + "') format('woff2')", one_ls)
+assert '[wpforms' not in one_ls
+(dist / 'ELEMENTOR-PASTE-LESSONS.html').write_text(one_ls)
+(dist / 'ELEMENTOR-PASTE-LESSONS.txt').write_text(one_ls)
+(ROOT / 'preview-lessons.html').write_text(f'''<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Golf Lessons in Newmarket | Andrew McDonald, PGA of Canada | The Bogey Club</title>
+<meta name="robots" content="noindex">
+{prev(head)}<style>
+html {{ scroll-behavior: smooth; }}
+body {{ margin: 0; background: #FFFFFF; }}
+{css}
+</style>
+{_ls_tag}</head>
+<body>
+{prev(header)}
+<main>
+{prev(lessons)}
+</main>
+{prev(footer).replace('<!--BCH:NEWSLETTER-->', news_demo)}
+<script>
+{js}</script>
+</body>
+</html>
+''')
+
 print('built dist/ (' + str(len(files)) + ' files + uploads/) and preview.html; fonts:', sorted(have))
 PY
