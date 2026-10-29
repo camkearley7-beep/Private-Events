@@ -129,7 +129,7 @@ The "Send us a message" form asks for name, email, phone (optional), a topic (Ge
    4. Leagues (`/leagues-and-events/`)
    5. Lessons (`/meet-our-pro/`)
    6. Shop (`https://shop.thebogeyclub.com/`)
-   7. Contact (`/faqs/`)
+   7. Contact (`https://thebogeyclub.com/#visit`, a Custom Link to the homepage Visit section)
 2. **Templates → Theme Builder → Header.**
    - Edit the active header, or add one with display condition Entire Site.
    - Delete its contents and add one full-width container with padding 0.
@@ -183,7 +183,8 @@ The "Send us a message" form asks for name, email, phone (optional), a topic (Ge
 | Bogey Club Classic | `/the-bogey-club-classic-2026/` | – | Club life | Footer |
 | Shop | `shop.thebogeyclub.com` | Shop | Club life | Footer |
 | About us | `/about-us/` | Mobile menu | – | Footer |
-| FAQs / contact | `/faqs/` | Contact | – | Footer |
+| Contact (Visit section) | `https://thebogeyclub.com/#visit` | Contact | – | – |
+| FAQs | `/faqs/` | Mobile menu | – | Footer |
 | Phone | `tel:+19052354653` | Mobile menu | Visit | Footer |
 | Email | `mailto:golf@thebogeyclub.com` | Mobile menu | Visit | – |
 | Directions | Google Maps | – | Visit | – |

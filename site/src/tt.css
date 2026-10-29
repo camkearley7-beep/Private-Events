@@ -209,7 +209,8 @@
 .tt .visit .btn-line { border-color: var(--pine); color: var(--pine); }
 .tt .visit .btn-line:hover { background: var(--mist); }
 .tt .hours { border-top: 1px solid var(--line); margin-top: 40px; }
-.tt .visit { align-items: start; }
+.tt .visit { align-items: start; scroll-margin-top: 78px; }
+@media (max-width: 860px) { .tt .visit { scroll-margin-top: 64px; } }
 .tt .cform-card { display: grid; gap: 16px; padding: 36px; border-radius: 20px; background: var(--mist); border: 1px solid var(--line); }
 .tt .cform { display: grid; gap: 16px; }
 .tt .cform-card.has-wpf .cform { display: none; }

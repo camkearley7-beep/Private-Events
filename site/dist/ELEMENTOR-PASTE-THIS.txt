@@ -216,7 +216,8 @@
 .tt .visit .btn-line { border-color: var(--pine); color: var(--pine); }
 .tt .visit .btn-line:hover { background: var(--mist); }
 .tt .hours { border-top: 1px solid var(--line); margin-top: 40px; }
-.tt .visit { align-items: start; }
+.tt .visit { align-items: start; scroll-margin-top: 78px; }
+@media (max-width: 860px) { .tt .visit { scroll-margin-top: 64px; } }
 .tt .cform-card { display: grid; gap: 16px; padding: 36px; border-radius: 20px; background: var(--mist); border: 1px solid var(--line); }
 .tt .cform { display: grid; gap: 16px; }
 .tt .cform-card.has-wpf .cform { display: none; }
@@ -502,7 +503,7 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
       <a href="https://thebogeyclub.com/leagues-and-events/">Leagues</a>
       <a href="https://thebogeyclub.com/meet-our-pro/">Lessons</a>
       <a href="https://shop.thebogeyclub.com/">Shop</a>
-      <a href="https://thebogeyclub.com/faqs/">Contact</a>
+      <a href="https://thebogeyclub.com/#visit">Contact</a>
     </nav>
     <a class="btn btn-red" href="https://thebogeyclub.golfbooking.ca/calendar.php" data-tt-cta="header-book-golf">Book a bay</a>
     <button class="menu" type="button" aria-expanded="false" aria-controls="tt-mnav">Menu</button>
@@ -517,7 +518,8 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
     <a class="mlink" href="https://thebogeyclub.com/meet-our-pro/">Private lessons</a>
     <a class="mlink" href="https://shop.thebogeyclub.com/">Shop</a>
     <a class="mlink" href="https://thebogeyclub.com/about-us/">About us</a>
-    <a class="mlink" href="https://thebogeyclub.com/faqs/">Contact &amp; FAQs</a>
+    <a class="mlink" href="https://thebogeyclub.com/#visit">Contact</a>
+    <a class="mlink" href="https://thebogeyclub.com/faqs/">FAQs</a>
     <div class="macts">
       <a class="btn btn-red" href="https://thebogeyclub.golfbooking.ca/calendar.php">Book a bay</a>
       <a class="btn btn-line dark" href="https://thebogeyclub.golfbooking.ca/calendar.php?bayfilter=4&amp;templateId=50&amp;lang=en" data-tt-link="karaoke-booking">Book karaoke</a>
