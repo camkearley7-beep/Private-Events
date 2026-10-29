@@ -163,9 +163,9 @@
 
     } catch (err) { fail(err); }
     try {
-    /* WPForms: if the contact form (shortcode [wpforms id="3352"]) is anywhere on the
+    /* WPForms: if the contact form (WPForms form 3352) is anywhere on the
        page, move it into the contact card and use it instead of the built-in form. */
-    var WPFORMS_ID = "3352"; /* the "Website contact" form: [wpforms id="3352"] */
+    var WPFORMS_ID = "3352"; /* the "Website contact" form. Never write its shortcode in this file: WordPress would run it inside the script. */
     var wpf = document.getElementById("wpforms-" + WPFORMS_ID) || document.querySelector(".tt-wpforms .wpforms-container, .wpforms-container.tt-wpforms");
     var slot = document.getElementById("tt-cslot");
     if (wpf && slot && !slot.contains(wpf)) {

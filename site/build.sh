@@ -150,36 +150,17 @@ if 'Satoshi-Variable.woff2' in have:
     one = re.sub(r'<link rel="preload"[^>]*>\n', '', one)
     one = re.sub(r"src: url\('[^']*Satoshi-Variable\.woff2'\) format\('woff2-variations'\), url\('[^']*Satoshi-Variable\.woff2'\) format\('woff2'\)",
                  lambda m: "src: url('" + _font + "') format('woff2')", one)
+# The WPForms contact form renders right in the card: WordPress runs shortcodes in
+# Elementor's HTML widget. (The shortcode is assembled here so it never appears in
+# tt.js, where WordPress would run it inside the script and break it.)
+_slot = '<div class="cform-slot" id="tt-cslot"></div>'
+assert one.count(_slot) == 1
+one = one.replace(_slot, '<div class="cform-slot" id="tt-cslot">' + '[' + 'wpforms id="3352" title="false" description="false"' + ']</div>')
+one = one.replace('<div class="cform-card" id="tt-ccard">', '<div class="cform-card has-wpf" id="tt-ccard">')
+assert one.count('[wpforms') == 1 and one.index('[wpforms') < one.index('<script>\n')
 (dist / 'ELEMENTOR-PASTE-THIS.html').write_text(one)
 (dist / 'ELEMENTOR-PASTE-THIS.txt').write_text(one)  # same code, opens as plain text for copying
 
-# 0b) THREE-PART install: the contact row is an Elementor container so the real
-#     WPForms widget sits in the card (works without the site script).
-def _embed(t):
-    t = t.replace(IMG_LIVE + '/bogey-club-logo.png', _logo)
-    if 'Satoshi-Variable.woff2' in have:
-        t = re.sub(r'<link rel="preload"[^>]*>\n', '', t)
-        t = re.sub(r"src: url\('[^']*Satoshi-Variable\.woff2'\) format\('woff2-variations'\), url\('[^']*Satoshi-Variable\.woff2'\) format\('woff2'\)",
-                   lambda m: "src: url('" + _font + "') format('woff2')", t)
-    return t
-_h = live(home)
-_cut = _h.index('<!-- 6. VISIT + CONTACT -->')
-_vi0 = _h.index('<div class="visit-info">', _cut)
-_vi1 = _h.index('<!-- Contact form card', _vi0)
-_visit_info = _h[_vi0:_vi1].rstrip()
-assert _visit_info.endswith('</div>')
-part1 = ("<!-- THE BOGEY CLUB HOMEPAGE, PART 1 of 3 (top of page): paste into an HTML widget.\n"
-         "     See docs/IMPLEMENTATION.md, 'Three-part install'. -->\n<div class=\"tt-one\">\n"
-         + live(head).split('-->', 1)[1].strip() + "\n<style>\n" + css + elementor_fix + "</style>\n"
-         + live(header) + "\n" + _h[:_cut].rstrip().replace('href="#tt-ccard"', 'href="#visit"') + "\n</div>\n</div>\n")
-part2 = ("<!-- THE BOGEY CLUB HOMEPAGE, PART 2 of 3: paste into the HTML widget in the LEFT column of the\n"
-         "     contact container. Put your WPForms widget in the same container, right after it. -->\n"
-         "<div class=\"tt\"><div class=\"visit visit-solo on-light\" id=\"visit\">\n  " + _visit_info + "\n</div></div>\n")
-part3 = ("<!-- THE BOGEY CLUB HOMEPAGE, PART 3 of 3 (bottom of page): paste into an HTML widget. -->\n"
-         "<div class=\"tt-one\">\n" + live(footer).replace('<!--BCH:NEWSLETTER-->', '<!-- Existing newsletter signup form goes here -->')
-         + "\n" + schema_tag + "<script>\n" + js + "</script>\n</div>\n")
-for _n, _t in (('PART-1-top', part1), ('PART-2-visit-info', part2), ('PART-3-bottom', part3)):
-    (dist / f'ELEMENTOR-{_n}.txt').write_text(_embed(_t))
 
 # 1) live-ready: assets load from the WordPress uploads folders
 (dist / 'bogey-club-homepage.html').write_text(full_page(IMG_LIVE, FONTS_LIVE))

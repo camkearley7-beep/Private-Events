@@ -12,7 +12,7 @@
    WPCode CSS snippet. Fonts: see 00-head.html (Satoshi).
    ===================================================================== */
 
-.tt, .tt-visit-row, :is(.e-con, .elementor-section):has(.visit-solo) {
+.tt {
   --white: #FFFFFF; --mist: #F3F6EF; --green: #0D5B3B; --pine: #233E31; --sand: #D7C9A4;
   --ink: var(--pine); --soft: rgba(35,62,49,.72); --line: rgba(35,62,49,.14);
   --font: 'Satoshi', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -246,26 +246,30 @@ html.tt-js .tt .cform { display: grid; }
 html.tt-js .tt .cform-nojs, .tt .cform-card.has-wpf .cform-nojs { display: none; }
 .tt .cform-card.has-wpf .cform { display: none; }
 /* WPForms, restyled to match the card */
-:is(.tt .cform-slot, .tt-wpforms, :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms) .wpforms-container { margin: 0 !important; }
-:is(.tt .cform-slot, .tt-wpforms, :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms) .wpforms-field { padding: 0 0 16px !important; }
-:is(.tt .cform-slot, .tt-wpforms, :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms) .wpforms-field-label { font: 500 14px/1.4 var(--font) !important; color: var(--pine) !important; margin: 0 0 6px !important; }
-:is(.tt .cform-slot, .tt-wpforms, :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms) .wpforms-field-sublabel, :is(.tt .cform-slot, .tt-wpforms, :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms) .wpforms-field-description { font-family: var(--font) !important; color: rgba(35,62,49,.75) !important; }
-:is(.tt .cform-slot, .tt-wpforms, :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms) .wpforms-required-label { color: var(--green) !important; }
-:is(.tt .cform-slot, .tt-wpforms, :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms) input[type=text], :is(.tt .cform-slot, .tt-wpforms, :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms) input[type=email], :is(.tt .cform-slot, .tt-wpforms, :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms) input[type=tel], :is(.tt .cform-slot, .tt-wpforms, :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms) input[type=number], :is(.tt .cform-slot, .tt-wpforms, :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms) select, :is(.tt .cform-slot, .tt-wpforms, :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms) textarea {
+.tt .cform-slot .wpforms-container { margin: 0 !important; }
+.tt .cform-slot .wpforms-field { padding: 0 0 16px !important; }
+.tt .cform-slot .wpforms-field-label { font: 500 14px/1.4 var(--font) !important; color: var(--pine) !important; margin: 0 0 6px !important; }
+.tt .cform-slot .wpforms-field-sublabel, .tt .cform-slot .wpforms-field-description { font-family: var(--font) !important; color: rgba(35,62,49,.75) !important; }
+.tt .cform-slot .wpforms-required-label { color: var(--green) !important; }
+.tt .cform-slot input[type=text], .tt .cform-slot input[type=email], .tt .cform-slot input[type=tel], .tt .cform-slot input[type=number], .tt .cform-slot select, .tt .cform-slot textarea {
   width: 100% !important; max-width: none !important; box-sizing: border-box !important; min-height: 52px !important; height: auto !important; padding: 12px 14px !important; border-radius: 10px !important;
   border: 1.5px solid rgba(35,62,49,.25) !important; background: var(--white) !important; color: var(--pine) !important; font: 400 16px/1.4 var(--font) !important; box-shadow: none !important; }
-:is(.tt .cform-slot, .tt-wpforms, :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms) textarea { min-height: 120px !important; }
-:is(.tt .cform-slot, .tt-wpforms, :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms) input:focus, :is(.tt .cform-slot, .tt-wpforms, :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms) select:focus, :is(.tt .cform-slot, .tt-wpforms, :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms) textarea:focus { outline: none !important; border-color: var(--green) !important; box-shadow: 0 0 0 3px rgba(13,91,59,.18) !important; }
-:is(.tt .cform-slot, .tt-wpforms, :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms) .wpforms-field-medium, :is(.tt .cform-slot, .tt-wpforms, :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms) .wpforms-field-large { max-width: none !important; }
-:is(.tt .cform-slot, .tt-wpforms, :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms) button[type=submit], :is(.tt .cform-slot, .tt-wpforms, :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms) .wpforms-submit {
+.tt .cform-slot textarea { min-height: 120px !important; }
+/* WPForms smart phone field: leave room for the country flag picker */
+.tt .cform-slot .iti { width: 100%; }
+.tt .cform-slot .iti input[type=tel] { padding-left: 52px !important; }
+.tt .cform-slot .iti--separate-dial-code input[type=tel] { padding-left: 92px !important; }
+.tt .cform-slot input:focus, .tt .cform-slot select:focus, .tt .cform-slot textarea:focus { outline: none !important; border-color: var(--green) !important; box-shadow: 0 0 0 3px rgba(13,91,59,.18) !important; }
+.tt .cform-slot .wpforms-field-medium, .tt .cform-slot .wpforms-field-large { max-width: none !important; }
+.tt .cform-slot button[type=submit], .tt .cform-slot .wpforms-submit {
   min-height: 54px !important; min-width: 220px !important; padding: 0 22px !important; border: 0 !important; border-radius: 6px !important;
   background: var(--green) !important; color: var(--white) !important; font: 600 16px var(--font) !important; cursor: pointer; transition: background .2s; }
-:is(.tt .cform-slot, .tt-wpforms, :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms) button[type=submit]:hover { background: var(--pine) !important; }
-:is(.tt .cform-slot, .tt-wpforms, :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms) label.wpforms-error, :is(.tt .cform-slot, .tt-wpforms, :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms) em.wpforms-error { color: #A3352B !important; font: 500 13px var(--font) !important; }
-:is(.tt .cform-slot, .tt-wpforms, :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms) .wpforms-confirmation-container-full { background: var(--white) !important; border: 1px solid var(--line) !important; border-left: 3px solid var(--green) !important; color: var(--pine) !important; border-radius: 10px; font-family: var(--font); }
-:is(.tt .cform-slot, .tt-wpforms, :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms) .wpforms-field-container { display: flex; flex-wrap: wrap; column-gap: 16px; }
-:is(.tt .cform-slot, .tt-wpforms, :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms) .wpforms-field { box-sizing: border-box !important; width: 100% !important; float: none !important; margin-left: 0 !important; clear: none !important; }
-@media (min-width: 861px) { :is(.tt .cform-slot, .tt-wpforms, :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms) .wpforms-field.wpforms-one-half { width: calc(50% - 8px) !important; } }
+.tt .cform-slot button[type=submit]:hover { background: var(--pine) !important; }
+.tt .cform-slot label.wpforms-error, .tt .cform-slot em.wpforms-error { color: #A3352B !important; font: 500 13px var(--font) !important; }
+.tt .cform-slot .wpforms-confirmation-container-full { background: var(--white) !important; border: 1px solid var(--line) !important; border-left: 3px solid var(--green) !important; color: var(--pine) !important; border-radius: 10px; font-family: var(--font); }
+.tt .cform-slot .wpforms-field-container { display: flex; flex-wrap: wrap; column-gap: 16px; }
+.tt .cform-slot .wpforms-field { box-sizing: border-box !important; width: 100% !important; float: none !important; margin-left: 0 !important; clear: none !important; }
+@media (min-width: 861px) { .tt .cform-slot .wpforms-field.wpforms-one-half { width: calc(50% - 8px) !important; } }
 .tt .cform-sub { color: var(--soft); font-size: 16px; margin-top: -6px; }
 .tt .crow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .tt .cfield { display: grid; gap: 6px; }
@@ -368,7 +372,7 @@ html.tt-js .tt .cform-nojs, .tt .cform-card.has-wpf .cform-nojs { display: none;
   .tt .visit { grid-template-columns: 1fr; padding: 72px 18px 50px; gap: 36px; }
   .tt .visit .acts .btn { flex: 1 1 100%; }
   .tt .cform-card { padding: 22px 18px; border-radius: 16px; }
-  :is(.tt .cform-slot, .tt-wpforms, :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms) button[type=submit] { width: 100% !important; }
+  .tt .cform-slot button[type=submit] { width: 100% !important; }
   .tt .crow { grid-template-columns: 1fr; }
   .tt .cform .btn { width: 100%; }
   .tt footer { grid-template-columns: 1fr 1fr; padding: 50px 18px 120px; }
@@ -505,33 +509,6 @@ html.tt-js .tt .hero.is-playing .hero-video { opacity: 1; }
   .tt .mnav .mcontact a { font-weight: 500; color: var(--pine); min-height: 40px; display: flex; align-items: center; }
 }
 html.tt-lock, html.tt-lock body { overflow: hidden; }
-
-/* =====================================================================
-   CONTACT ROW BUILT IN ELEMENTOR (three-part install). Part 2 (visit info)
-   and a WPForms widget placed in the same container, or in two columns of
-   one section, are laid out as the original two-column contact section and
-   card. Detected automatically: no CSS classes or IDs needed. No script.
-   ===================================================================== */
-.tt .visit.visit-solo { display: block; background: var(--white); padding: 110px var(--g) 90px; }
-:is(.e-con, .e-con-inner, .elementor-widget-wrap, .elementor-container):has(> .elementor-element .visit-solo, > .elementor-column .visit-solo):has(> .elementor-widget-wpforms, > .elementor-column .elementor-widget-wpforms) {
-  display: grid !important; grid-template-columns: 1.1fr .9fr; gap: 60px !important; align-items: start;
-  padding: 110px var(--g) 90px !important; max-width: none !important; width: 100% !important; margin: 0 !important; box-sizing: border-box; background: var(--white); }
-:is(.e-con, .e-con-inner, .elementor-widget-wrap, .elementor-container):has(> .elementor-element .visit-solo, > .elementor-column .visit-solo):has(> .elementor-widget-wpforms, > .elementor-column .elementor-widget-wpforms) > .elementor-element:not(.elementor-widget-wpforms), :is(.e-con, .e-con-inner, .elementor-widget-wrap, .elementor-container):has(> .elementor-element .visit-solo, > .elementor-column .visit-solo):has(> .elementor-widget-wpforms, > .elementor-column .elementor-widget-wpforms) > .elementor-column { width: auto !important; max-width: none !important; min-width: 0; margin: 0 !important; padding: 0 !important; }
-:is(.e-con, .e-con-inner, .elementor-widget-wrap, .elementor-container):has(> .elementor-element .visit-solo, > .elementor-column .visit-solo):has(> .elementor-widget-wpforms, > .elementor-column .elementor-widget-wpforms) > .elementor-widget-wpforms { width: auto !important; max-width: none !important; min-width: 0; margin: 0 !important; }
-:is(.e-con, .e-con-inner, .elementor-widget-wrap, .elementor-container):has(> .elementor-element .visit-solo, > .elementor-column .visit-solo):has(> .elementor-widget-wpforms, > .elementor-column .elementor-widget-wpforms) > .elementor-column > .elementor-widget-wrap { padding: 0 !important; }
-:is(.e-con, .e-con-inner, .elementor-widget-wrap, .elementor-container):has(> .elementor-element .visit-solo, > .elementor-column .visit-solo):has(> .elementor-widget-wpforms, > .elementor-column .elementor-widget-wpforms) .elementor-widget-container { margin: 0; padding: 0; }
-:is(.e-con, .e-con-inner, .elementor-widget-wrap, .elementor-container):has(> .elementor-element .visit-solo, > .elementor-column .visit-solo):has(> .elementor-widget-wpforms, > .elementor-column .elementor-widget-wpforms) .tt .visit.visit-solo { padding: 0; background: none; }
-:is(.e-con, .elementor-section):has(.visit-solo):has(.elementor-widget-wpforms) { --padding-top: 0px; --padding-bottom: 0px; --padding-left: 0px; --padding-right: 0px; padding: 0 !important; margin: 0 !important; max-width: none !important; background: var(--white); }
-:is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms { padding: 36px !important; border-radius: 20px; background: var(--mist); border: 1px solid var(--line); font-family: var(--font); color: var(--ink); box-sizing: border-box; }
-:is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms::before { content: "Send us a message"; display: block; font: 600 clamp(22px, 1.8vw, 28px)/1.15 var(--font); letter-spacing: -.015em; color: var(--ink); }
-:is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms .wpforms-container::before { content: "Questions, group bookings, leagues or sponsorship. We'll get back to you."; display: block; font: 400 16px/1.5 var(--font); color: var(--soft); margin: 10px 0 22px; }
-:is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms .wpforms-title, :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms .wpforms-description { display: none !important; }
-@media (max-width: 860px) {
-  .tt .visit.visit-solo { padding: 72px 18px 50px; }
-  :is(.e-con, .e-con-inner, .elementor-widget-wrap, .elementor-container):has(> .elementor-element .visit-solo, > .elementor-column .visit-solo):has(> .elementor-widget-wpforms, > .elementor-column .elementor-widget-wpforms) { grid-template-columns: 1fr; gap: 36px !important; padding: 72px 18px 50px !important; }
-  :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms { padding: 22px 18px !important; border-radius: 16px; }
-  :is(.e-con, .elementor-section):has(.visit-solo) .elementor-widget-wpforms button[type=submit] { width: 100% !important; }
-}
 
 /* Let the widget run edge to edge inside Elementor's container/section wrappers */
 .e-con:has(.tt-one), .elementor-section:has(.tt-one) .elementor-container, .elementor-column:has(.tt-one) > .elementor-widget-wrap {
@@ -791,10 +768,10 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
   <!-- Contact form card. If a WPForms widget with the CSS class "tt-wpforms" is on the
        page, the site script moves that form in here and hides the built-in fields.
        Otherwise the built-in form below is used (FORM_ENDPOINT, or the visitor's email app). -->
-  <div class="cform-card" id="tt-ccard">
+  <div class="cform-card has-wpf" id="tt-ccard">
   <h3 class="h-m">Send us a message</h3>
   <p class="cform-sub">Questions, group bookings, leagues or sponsorship. We'll get back to you.</p>
-  <div class="cform-slot" id="tt-cslot"></div>
+  <div class="cform-slot" id="tt-cslot">[wpforms id="3352" title="false" description="false"]</div>
   <!-- Shown only if the site script can't run (the form needs it), so visitors are never sent anywhere odd. -->
   <div class="cform-nojs">
     <div class="acts"><a class="btn btn-red" href="mailto:golf@thebogeyclub.com?subject=Website%20message">Email golf@thebogeyclub.com</a><a class="btn btn-line" href="tel:+19052354653">(905) 235-4653</a></div>
@@ -1212,9 +1189,9 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
 
     } catch (err) { fail(err); }
     try {
-    /* WPForms: if the contact form (shortcode [wpforms id="3352"]) is anywhere on the
+    /* WPForms: if the contact form (WPForms form 3352) is anywhere on the
        page, move it into the contact card and use it instead of the built-in form. */
-    var WPFORMS_ID = "3352"; /* the "Website contact" form: [wpforms id="3352"] */
+    var WPFORMS_ID = "3352"; /* the "Website contact" form. Never write its shortcode in this file: WordPress would run it inside the script. */
     var wpf = document.getElementById("wpforms-" + WPFORMS_ID) || document.querySelector(".tt-wpforms .wpforms-container, .wpforms-container.tt-wpforms");
     var slot = document.getElementById("tt-cslot");
     if (wpf && slot && !slot.contains(wpf)) {

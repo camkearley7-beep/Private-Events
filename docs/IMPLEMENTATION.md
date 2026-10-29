@@ -34,21 +34,6 @@ The rest of this guide is the full site-wide setup: header and footer on every p
 
 ---
 
-## Three-part install: WPForms in the contact card (recommended)
-
-Use this instead of the single widget when you want the WPForms form ([wpforms id="3352"]) inside the "Send us a message" card. The form is a real Elementor widget, so it works even if a caching or security setting stops the page script.
-
-1. Page Settings: **Page Layout = Elementor Canvas**, as before.
-2. **Container 1:** Full Width, padding 0. Add an **HTML** widget and paste `site/dist/ELEMENTOR-PART-1-top.txt`.
-3. **Container 2 (contact row):** add a container below it.
-   - Inside it, add an **HTML** widget and paste `site/dist/ELEMENTOR-PART-2-visit-info.txt`.
-   - In the **same container**, right after it, add a **WPForms** widget and choose your contact form. Turn **Display Form Name** and **Display Form Description** off.
-   - That's all: the two-column layout, card, heading and field styles are applied automatically. No CSS classes or IDs are needed, and leave Elementor's spacing settings at their defaults. (A section with the HTML widget in one column and WPForms in the other also works.)
-4. **Container 3:** Full Width, padding 0. Add an **HTML** widget and paste `site/dist/ELEMENTOR-PART-3-bottom.txt`.
-5. Update, then clear any cache (caching plugin, host, Cloudflare).
-
-When you change the site later, re-paste only the part that changed: most changes are in Part 1; the script and footer are in Part 3.
-
 ## 1. Upload files
 
 1. **Fonts.** Upload the contents of `site/dist/uploads/fonts/` to `/wp-content/uploads/fonts/`, using SFTP or the host's file manager.
@@ -95,9 +80,8 @@ Each sponsor gets a green bay card: a large outlined bay number, the logo on a r
 
 The "Send us a message" form asks for name, email, phone (optional), a topic (General question, Golf booking, Karaoke, Private event, Leagues & lessons, Sponsorship) and a message, and checks the required fields before sending.
 
-- **With WPForms (recommended):** build the form in WPForms, add a WPForms widget to the same page, and give that widget the CSS class `tt-wpforms`. The site script moves the WPForms form into the "Send us a message" card, restyles it to match, and hides the built-in form. Full steps:
-  1. **WPForms → Add New**, name it "Website contact", and start from a blank form.
-  2. Add the fields:
+- **With WPForms (how the live site works):** `ELEMENTOR-PASTE-THIS.html` already contains the WPForms shortcode for form 3352 inside the card, and WordPress renders it there (it runs shortcodes in Elementor's HTML widget). No extra widget is needed; delete any WPForms or Shortcode widget you added elsewhere on the page. The card's CSS restyles the WPForms fields to match. If you rebuild the form, keep these settings:
+  1. Fields:
 
      | Field | Label | Settings |
      |---|---|---|
@@ -107,15 +91,12 @@ The "Send us a message" form asks for name, email, phone (optional), a topic (Ge
      | Dropdown | What's this about? | Choices: General question, Golf booking, Karaoke, Private event, Leagues & lessons, Sponsorship · Large · CSS class `wpforms-one-half` |
      | Paragraph Text | Message | Required · Large |
 
-  3. **Settings → General:** Submit Button Text "Send message". Turn on anti-spam protection (and hCaptcha/reCAPTCHA if you like).
-  4. **Settings → Notifications:** Send To `golf@thebogeyclub.com`. Subject `Website message: {field_id="4"}`, using the Smart Tag button to pick the dropdown. Reply-To: the Email field (Smart Tag), so you can reply straight to the visitor.
-  5. **Settings → Confirmations:** Message, "Thanks! Your message is in. We'll be in touch soon."
-  6. **Save.**
-  **The club's form is `[wpforms id="3352"]`.** The script looks for it automatically, so the CSS class in steps 7–8 is optional: a **Shortcode** widget containing `[wpforms id="3352"]`, placed below the HTML widget, is enough.
+  2. **Settings → General:** Submit Button Text "Send message". Anti-spam protection on.
+  3. **Settings → Notifications:** Send To `golf@thebogeyclub.com`; Reply-To the Email field.
+  4. **Settings → Confirmations:** Message, "Thanks! Your message is in. We'll be in touch soon."
+  5. If the form's ID ever changes, update `wpforms id` in `site/build.sh` and `WPFORMS_ID` in `site/src/tt.js`, then rebuild.
 
-  7. In Elementor, on the homepage, drag a **WPForms** widget into the same container, **below** the HTML widget, and choose "Website contact". Turn off the widget's "Display Form Name" and "Display Form Description".
-  8. Go to the widget's **Advanced → CSS Classes** and type `tt-wpforms`.
-  9. **Update.** On the live page the form appears inside the card. In the editor it may still show where you dropped it, which is normal.
+  **Important:** never type a shortcode (anything in square brackets that WordPress recognises, like the WPForms one) inside the script or a code comment. WordPress runs it there too, which breaks the whole script.
 
 - **Without WPForms, out of the box:** pressing Send opens the visitor's email app with a message to golf@thebogeyclub.com, filled in from the form.
 - **To send directly from the page (recommended):**
