@@ -34,6 +34,23 @@ The rest of this guide is the full site-wide setup: header and footer on every p
 
 ---
 
+## Three-part install: WPForms in the contact card (recommended)
+
+Use this instead of the single widget when you want the WPForms form ([wpforms id="3352"]) inside the "Send us a message" card. The form is a real Elementor widget, so it works even if a caching or security setting stops the page script.
+
+1. Page Settings: **Page Layout = Elementor Canvas**, as before.
+2. **Container 1:** Full Width, padding 0. Add an **HTML** widget and paste `site/dist/ELEMENTOR-PART-1-top.txt`.
+3. **Container 2 (contact row):** add a Full Width container below it.
+   - Advanced → **CSS ID:** `visit` · **CSS Classes:** `tt-visit-row`.
+   - Inside it, add an **HTML** widget and paste `site/dist/ELEMENTOR-PART-2-visit-info.txt`.
+   - Next to it, add a **WPForms** widget, choose your contact form, and turn **Display Form Name** and **Display Form Description** off.
+   - On the WPForms widget, Advanced → **CSS ID:** `tt-ccard` · **CSS Classes:** `tt-wpforms`.
+   - The layout, spacing, card, heading and field styles all come from the CSS; leave Elementor's own spacing settings at their defaults.
+4. **Container 3:** Full Width, padding 0. Add an **HTML** widget and paste `site/dist/ELEMENTOR-PART-3-bottom.txt`.
+5. Update, then clear any cache (caching plugin, host, Cloudflare).
+
+When you change the site later, re-paste only the part that changed: most changes are in Part 1; the script and footer are in Part 3.
+
 ## 1. Upload files
 
 1. **Fonts.** Upload the contents of `site/dist/uploads/fonts/` to `/wp-content/uploads/fonts/`, using SFTP or the host's file manager.

@@ -35,7 +35,7 @@ body { margin: 0; background: #FFFFFF; }
    WPCode CSS snippet. Fonts: see 00-head.html (Satoshi).
    ===================================================================== */
 
-.tt {
+.tt, .tt-visit-row {
   --white: #FFFFFF; --mist: #F3F6EF; --green: #0D5B3B; --pine: #233E31; --sand: #D7C9A4;
   --ink: var(--pine); --soft: rgba(35,62,49,.72); --line: rgba(35,62,49,.14);
   --font: 'Satoshi', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -269,26 +269,26 @@ html.tt-js .tt .cform { display: grid; }
 html.tt-js .tt .cform-nojs, .tt .cform-card.has-wpf .cform-nojs { display: none; }
 .tt .cform-card.has-wpf .cform { display: none; }
 /* WPForms, restyled to match the card */
-.tt .cform-slot .wpforms-container { margin: 0 !important; }
-.tt .cform-slot .wpforms-field { padding: 0 0 16px !important; }
-.tt .cform-slot .wpforms-field-label { font: 500 14px/1.4 var(--font) !important; color: var(--pine) !important; margin: 0 0 6px !important; }
-.tt .cform-slot .wpforms-field-sublabel, .tt .cform-slot .wpforms-field-description { font-family: var(--font) !important; color: rgba(35,62,49,.75) !important; }
-.tt .cform-slot .wpforms-required-label { color: var(--green) !important; }
-.tt .cform-slot input[type=text], .tt .cform-slot input[type=email], .tt .cform-slot input[type=tel], .tt .cform-slot input[type=number], .tt .cform-slot select, .tt .cform-slot textarea {
-  width: 100% !important; max-width: none !important; min-height: 52px !important; height: auto !important; padding: 12px 14px !important; border-radius: 10px !important;
+:is(.tt .cform-slot, .tt-wpforms) .wpforms-container { margin: 0 !important; }
+:is(.tt .cform-slot, .tt-wpforms) .wpforms-field { padding: 0 0 16px !important; }
+:is(.tt .cform-slot, .tt-wpforms) .wpforms-field-label { font: 500 14px/1.4 var(--font) !important; color: var(--pine) !important; margin: 0 0 6px !important; }
+:is(.tt .cform-slot, .tt-wpforms) .wpforms-field-sublabel, :is(.tt .cform-slot, .tt-wpforms) .wpforms-field-description { font-family: var(--font) !important; color: rgba(35,62,49,.75) !important; }
+:is(.tt .cform-slot, .tt-wpforms) .wpforms-required-label { color: var(--green) !important; }
+:is(.tt .cform-slot, .tt-wpforms) input[type=text], :is(.tt .cform-slot, .tt-wpforms) input[type=email], :is(.tt .cform-slot, .tt-wpforms) input[type=tel], :is(.tt .cform-slot, .tt-wpforms) input[type=number], :is(.tt .cform-slot, .tt-wpforms) select, :is(.tt .cform-slot, .tt-wpforms) textarea {
+  width: 100% !important; max-width: none !important; box-sizing: border-box !important; min-height: 52px !important; height: auto !important; padding: 12px 14px !important; border-radius: 10px !important;
   border: 1.5px solid rgba(35,62,49,.25) !important; background: var(--white) !important; color: var(--pine) !important; font: 400 16px/1.4 var(--font) !important; box-shadow: none !important; }
-.tt .cform-slot textarea { min-height: 120px !important; }
-.tt .cform-slot input:focus, .tt .cform-slot select:focus, .tt .cform-slot textarea:focus { outline: none !important; border-color: var(--green) !important; box-shadow: 0 0 0 3px rgba(13,91,59,.18) !important; }
-.tt .cform-slot .wpforms-field-medium, .tt .cform-slot .wpforms-field-large { max-width: none !important; }
-.tt .cform-slot button[type=submit], .tt .cform-slot .wpforms-submit {
+:is(.tt .cform-slot, .tt-wpforms) textarea { min-height: 120px !important; }
+:is(.tt .cform-slot, .tt-wpforms) input:focus, :is(.tt .cform-slot, .tt-wpforms) select:focus, :is(.tt .cform-slot, .tt-wpforms) textarea:focus { outline: none !important; border-color: var(--green) !important; box-shadow: 0 0 0 3px rgba(13,91,59,.18) !important; }
+:is(.tt .cform-slot, .tt-wpforms) .wpforms-field-medium, :is(.tt .cform-slot, .tt-wpforms) .wpforms-field-large { max-width: none !important; }
+:is(.tt .cform-slot, .tt-wpforms) button[type=submit], :is(.tt .cform-slot, .tt-wpforms) .wpforms-submit {
   min-height: 54px !important; min-width: 220px !important; padding: 0 22px !important; border: 0 !important; border-radius: 6px !important;
   background: var(--green) !important; color: var(--white) !important; font: 600 16px var(--font) !important; cursor: pointer; transition: background .2s; }
-.tt .cform-slot button[type=submit]:hover { background: var(--pine) !important; }
-.tt .cform-slot label.wpforms-error, .tt .cform-slot em.wpforms-error { color: #A3352B !important; font: 500 13px var(--font) !important; }
-.tt .cform-slot .wpforms-confirmation-container-full { background: var(--white) !important; border: 1px solid var(--line) !important; border-left: 3px solid var(--green) !important; color: var(--pine) !important; border-radius: 10px; font-family: var(--font); }
-.tt .cform-slot .wpforms-field-container { display: flex; flex-wrap: wrap; column-gap: 16px; }
-.tt .cform-slot .wpforms-field { width: 100% !important; float: none !important; margin-left: 0 !important; clear: none !important; }
-@media (min-width: 861px) { .tt .cform-slot .wpforms-field.wpforms-one-half { width: calc(50% - 8px) !important; } }
+:is(.tt .cform-slot, .tt-wpforms) button[type=submit]:hover { background: var(--pine) !important; }
+:is(.tt .cform-slot, .tt-wpforms) label.wpforms-error, :is(.tt .cform-slot, .tt-wpforms) em.wpforms-error { color: #A3352B !important; font: 500 13px var(--font) !important; }
+:is(.tt .cform-slot, .tt-wpforms) .wpforms-confirmation-container-full { background: var(--white) !important; border: 1px solid var(--line) !important; border-left: 3px solid var(--green) !important; color: var(--pine) !important; border-radius: 10px; font-family: var(--font); }
+:is(.tt .cform-slot, .tt-wpforms) .wpforms-field-container { display: flex; flex-wrap: wrap; column-gap: 16px; }
+:is(.tt .cform-slot, .tt-wpforms) .wpforms-field { box-sizing: border-box !important; width: 100% !important; float: none !important; margin-left: 0 !important; clear: none !important; }
+@media (min-width: 861px) { :is(.tt .cform-slot, .tt-wpforms) .wpforms-field.wpforms-one-half { width: calc(50% - 8px) !important; } }
 .tt .cform-sub { color: var(--soft); font-size: 16px; margin-top: -6px; }
 .tt .crow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .tt .cfield { display: grid; gap: 6px; }
@@ -391,7 +391,7 @@ html.tt-js .tt .cform-nojs, .tt .cform-card.has-wpf .cform-nojs { display: none;
   .tt .visit { grid-template-columns: 1fr; padding: 72px 18px 50px; gap: 36px; }
   .tt .visit .acts .btn { flex: 1 1 100%; }
   .tt .cform-card { padding: 22px 18px; border-radius: 16px; }
-  .tt .cform-slot button[type=submit] { width: 100% !important; }
+  :is(.tt .cform-slot, .tt-wpforms) button[type=submit] { width: 100% !important; }
   .tt .crow { grid-template-columns: 1fr; }
   .tt .cform .btn { width: 100%; }
   .tt footer { grid-template-columns: 1fr 1fr; padding: 50px 18px 120px; }
@@ -505,8 +505,10 @@ body.admin-bar .tt .hdr { top: 32px; }
 .tt .hero picture, .tt .stop { background-color: var(--pine); }
 .tt img.tt-missing { visibility: hidden; }
 /* hero video: fades in over the still once it is actually playing */
-.tt .hero-video { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .8s ease; pointer-events: none; }
-.tt .hero.is-playing .hero-video { opacity: 1; }
+.tt .hero-video { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; transition: opacity .8s ease; pointer-events: none; }
+/* with the site script, fade in once playing; without it, the video simply plays over its poster */
+html.tt-js .tt .hero-video { opacity: 0; }
+html.tt-js .tt .hero.is-playing .hero-video { opacity: 1; }
 .tt .hero.is-playing .aim { display: none; }
 @media (max-width: 860px) {
   .tt .hero-video { inset: 0 0 auto 0; height: 52svh; min-height: 360px; }
@@ -526,6 +528,32 @@ body.admin-bar .tt .hdr { top: 32px; }
   .tt .mnav .mcontact a { font-weight: 500; color: var(--pine); min-height: 40px; display: flex; align-items: center; }
 }
 html.tt-lock, html.tt-lock body { overflow: hidden; }
+
+/* =====================================================================
+   CONTACT ROW BUILT IN ELEMENTOR (3-part install): a full-width container
+   with CSS class "tt-visit-row" holding the visit-info HTML widget and the
+   WPForms widget (CSS class "tt-wpforms"). Needs no script.
+   ===================================================================== */
+.e-con.tt-visit-row, .elementor-section.tt-visit-row > .elementor-container {
+  display: grid !important; grid-template-columns: 1.1fr .9fr; gap: 60px; align-items: start;
+  padding: 110px var(--g) 90px !important; max-width: none !important; width: 100% !important; margin: 0 !important; box-sizing: border-box; }
+.e-con.tt-visit-row, .elementor-section.tt-visit-row { background: var(--white); scroll-margin-top: 78px; }
+.tt-visit-row > .e-con-inner, .elementor-section.tt-visit-row .elementor-widget-wrap { display: contents !important; }
+.tt-visit-row .elementor-element, .tt-visit-row .elementor-column { width: auto !important; max-width: none !important; min-width: 0; margin: 0 !important; padding: 0 !important; }
+.tt-visit-row .elementor-widget-container { margin: 0; padding: 0; }
+.tt-visit-row .tt { background: transparent; }
+.tt .visit.visit-solo { display: block; padding: 0; background: none; }
+.tt-visit-row .tt-wpforms { padding: 36px !important; border-radius: 20px; background: var(--mist); border: 1px solid var(--line); scroll-margin-top: 100px; font-family: var(--font); color: var(--ink); }
+.tt-visit-row .tt-wpforms::before { content: "Send us a message"; display: block; font: 600 clamp(22px, 1.8vw, 28px)/1.15 var(--font); letter-spacing: -.015em; color: var(--ink); }
+.tt-visit-row .tt-wpforms .wpforms-container::before { content: "Questions, group bookings, leagues or sponsorship. We'll get back to you."; display: block; font: 400 16px/1.5 var(--font); color: var(--soft); margin: 10px 0 22px; }
+.tt-visit-row .tt-wpforms .wpforms-title, .tt-visit-row .tt-wpforms .wpforms-description { display: none !important; }
+@media (max-width: 860px) {
+  .e-con.tt-visit-row, .elementor-section.tt-visit-row > .elementor-container { grid-template-columns: 1fr; gap: 36px; padding: 72px 18px 50px !important; }
+  .e-con.tt-visit-row, .elementor-section.tt-visit-row { scroll-margin-top: 64px; }
+  .tt-visit-row .tt-wpforms { padding: 22px 18px !important; border-radius: 16px; scroll-margin-top: 80px; }
+  .tt-visit-row .tt-wpforms button[type=submit] { width: 100% !important; }
+}
+
 
 
 </style>
@@ -775,7 +803,7 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
     <img src="https://thebogeyclub.com/wp-content/uploads/2026/08/Main-Area.png" fetchpriority="high" decoding="async" alt="Inside The Bogey Club, a golf simulator sports bar in Newmarket">
   </picture>
   <!-- Hero video. Best: also upload an H.264 .mp4 export and list it first (see docs §1). -->
-  <video class="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1" disablepictureinpicture>
+  <video class="hero-video" poster="https://thebogeyclub.com/wp-content/uploads/2026/08/Main-Area.png" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1" disablepictureinpicture>
     <source src="https://thebogeyclub.com/wp-content/uploads/2026/10/copy_DACCDB79-A1F6-4B0D-801B-D09CF8530201.mov" type="video/mp4">
     <source src="https://thebogeyclub.com/wp-content/uploads/2026/10/copy_DACCDB79-A1F6-4B0D-801B-D09CF8530201.mov" type="video/quicktime">
   </video>
@@ -1224,7 +1252,7 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
       a.addEventListener("click", function () {
         var t = a.getAttribute("data-tt-topic"), sel = document.querySelector('#tt-cform [name="tt_topic"]');
         if (sel) sel.value = t;
-        var first = document.querySelector("#tt-ccard.has-wpf input, #tt-cform [name=tt_name]");
+        var first = document.querySelector("#tt-ccard.has-wpf input:not([type=hidden]), .tt-wpforms input:not([type=hidden]), #tt-cform [name=tt_name]");
         if (first) setTimeout(function () { first.focus({ preventScroll: true }); }, 600);
       });
     });

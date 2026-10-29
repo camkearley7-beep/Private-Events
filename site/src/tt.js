@@ -182,7 +182,7 @@
       a.addEventListener("click", function () {
         var t = a.getAttribute("data-tt-topic"), sel = document.querySelector('#tt-cform [name="tt_topic"]');
         if (sel) sel.value = t;
-        var first = document.querySelector("#tt-ccard.has-wpf input, #tt-cform [name=tt_name]");
+        var first = document.querySelector("#tt-ccard.has-wpf input:not([type=hidden]), .tt-wpforms input:not([type=hidden]), #tt-cform [name=tt_name]");
         if (first) setTimeout(function () { first.focus({ preventScroll: true }); }, 600);
       });
     });
