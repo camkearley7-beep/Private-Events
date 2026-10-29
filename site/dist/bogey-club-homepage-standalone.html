@@ -219,6 +219,24 @@ body { margin: 0; background: #FFFFFF; }
 .tt .row.on .go { color: var(--white); }
 .tt .row.on .go::after { background: var(--white); color: var(--green); border-color: var(--white); transform: translateX(6px) rotate(-45deg); }
 .tt .row.on .rt { transform: translateX(6px); }
+/* Hover highlight in pure CSS as well, so it works even if the site script is delayed or blocked */
+@media (hover: hover) and (min-width: 861px) {
+  .tt .row:hover::before { transform: scaleX(1); }
+  .tt .row:hover { color: var(--white); }
+  .tt .row:hover .num, .tt .row:hover .data { color: var(--sand); }
+  .tt .row:hover p { color: rgba(255,255,255,.85); }
+  .tt .row:hover .go { color: var(--white); }
+  .tt .row:hover .go::after { background: var(--white); color: var(--green); border-color: var(--white); transform: translateX(6px) rotate(-45deg); }
+  .tt .row:hover .rt { transform: translateX(6px); }
+  .tt .rows:hover .row.on:not(:hover)::before { transform: scaleX(0); }
+  .tt .rows:hover .row.on:not(:hover) { color: var(--ink); }
+  .tt .rows:hover .row.on:not(:hover) .num { color: var(--green); }
+  .tt .rows:hover .row.on:not(:hover) .data { color: rgba(35,62,49,.75); }
+  .tt .rows:hover .row.on:not(:hover) p { color: var(--soft); }
+  .tt .rows:hover .row.on:not(:hover) .go { color: var(--green); }
+  .tt .rows:hover .row.on:not(:hover) .go::after { background: none; color: inherit; border-color: currentColor; transform: none; }
+  .tt .rows:hover .row.on:not(:hover) .rt { transform: none; }
+}
 .tt .life-media { position: sticky; top: 110px; aspect-ratio: 4 / 5; border-radius: 14px; overflow: hidden; background: var(--pine); }
 .tt .life-media figure { position: absolute; inset: 0; margin: 0; clip-path: inset(100% 0 0 0); transition: clip-path .8s cubic-bezier(.7,0,.2,1); }
 .tt .life-media figure.was { clip-path: inset(0); z-index: 1; }
