@@ -180,7 +180,7 @@ sc = re.sub(r'<link rel="preload"[^>]*>\n', '', sc)
 lessons = src('lessons.html')
 _ls_schema = {"@context": "https://schema.org", "@graph": [
   {"@type": "Person", "@id": "https://thebogeyclub.com/meet-our-pro/#andrew", "name": "Andrew McDonald",
-   "jobTitle": "Golf Professional, PGA of Canada", "email": "mailto:amcdonald@magnagolf.com",
+   "jobTitle": "Associate Professional, PGA of Canada", "email": "mailto:amcdonald@magnagolf.com",
    "worksFor": {"@id": "https://thebogeyclub.com/#business"}},
   {"@type": "Service", "name": "Private golf lessons", "serviceType": "Golf instruction",
    "url": "https://thebogeyclub.com/meet-our-pro/", "areaServed": "Newmarket, Ontario",
