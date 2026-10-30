@@ -533,8 +533,6 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
 .tt .ls-pro { display: grid; grid-template-columns: .82fr 1.18fr; gap: 64px; align-items: center; padding: 56px var(--g) 88px; background: var(--mist); }
 .tt .ls-pro h1 { font-size: clamp(36px, 4vw, 60px); }
 .tt .ls-pro h1 small { display: block; font-weight: 500; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--green); margin-bottom: 18px; }
-.tt .ls-pro h1 .ln { display: block; }
-.tt .ls-pro h1 .ln + .ln { color: var(--green); }
 .tt .ls-name { margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--line); font-weight: 600; font-size: clamp(22px, 1.9vw, 28px); letter-spacing: -.015em; line-height: 1.2; }
 .tt .ls-name span { display: block; margin-top: 4px; font-weight: 500; font-size: 16px; letter-spacing: 0; color: var(--green); }
 .tt .ls-pro .acts, .tt .ls-book .acts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
@@ -556,15 +554,9 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
 
 .tt .ls-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 44px; }
 .tt .ls-head .data { margin-bottom: 14px; }
-.tt .ls-focus { background: var(--white); padding: 110px var(--g); }
-.tt .ls-cards, .tt .ls-steplist { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.tt .ls-cards li { position: relative; display: grid; gap: 12px; align-content: start; padding: 30px 28px 32px; border-radius: 16px; background: var(--mist); border: 1px solid var(--line);
-  transition: transform .45s cubic-bezier(.2,.8,.2,1), background .35s, color .35s, border-color .35s; }
-.tt .ls-cards li:hover { transform: translateY(-6px); background: var(--green); border-color: var(--green); color: var(--white); }
-.tt .ls-cards li:hover p { color: rgba(255,255,255,.85); }
-.tt .ls-cards li:hover .ls-no { -webkit-text-stroke-color: var(--sand); }
+.tt .ls-steplist { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .tt .ls-no { font-weight: 700; font-size: 56px; line-height: 1; letter-spacing: -.04em; color: transparent; -webkit-text-stroke: 1.5px rgba(13,91,59,.45); transition: -webkit-text-stroke-color .35s; }
-.tt .ls-cards p, .tt .ls-steplist p { color: var(--soft); transition: color .35s; }
+.tt .ls-steplist p { color: var(--soft); transition: color .35s; }
 
 .tt .ls-sim { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; padding: 104px var(--g); color: var(--white);
   background: radial-gradient(70% 80% at 85% 20%, rgba(255,255,255,.07), transparent 60%), var(--green); }
@@ -593,7 +585,7 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
 .tt .ls-more a { color: var(--green); font-weight: 600; border-bottom: 1.5px solid var(--sand); padding-bottom: 2px; }
 
 @media (max-width: 1100px) and (min-width: 861px) {
-  .tt .ls-cards, .tt .ls-steplist { gap: 14px; }
+  .tt .ls-steplist { gap: 14px; }
   .tt .ls-book-card { padding: 44px; gap: 36px; }
 }
 @media (max-width: 860px) {
@@ -606,8 +598,8 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
   .tt .ls-stats dd { font-size: 18px; }
   .tt .ls-stats dt { font-size: 11px; }
   .tt .ls-head { flex-direction: column; align-items: start; gap: 12px; margin-bottom: 28px; }
-  .tt .ls-focus, .tt .ls-steps { padding: 72px 18px; }
-  .tt .ls-cards, .tt .ls-steplist { grid-template-columns: 1fr; gap: 12px; }
+  .tt .ls-steps { padding: 72px 18px; }
+  .tt .ls-steplist { grid-template-columns: 1fr; }
   .tt .ls-steplist { gap: 26px; }
   .tt .ls-sim { grid-template-columns: 1fr; gap: 32px; padding: 72px 18px; }
   .tt .ls-readout li { padding: 18px 16px; }
