@@ -578,6 +578,21 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
 .tt .ls-sim-note { margin-top: 26px; font-size: 13px; color: rgba(255,255,255,.82); }
 
 
+.tt .ls-faq { display: grid; grid-template-columns: .8fr 1.2fr; gap: 64px; align-items: start; padding: 104px var(--g) 0; background: var(--white); }
+.tt .ls-faq-head { position: sticky; top: 110px; }
+.tt .ls-faq-head .data { margin-bottom: 16px; }
+.tt .ls-faq-head .lede { margin-top: 16px; }
+.tt .ls-faq-list { border-top: 1px solid var(--line); }
+.tt .ls-faq-list details { border-bottom: 1px solid var(--line); }
+.tt .ls-faq-list summary { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 22px 0; cursor: pointer; list-style: none;
+  font-weight: 600; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -.01em; color: var(--ink); transition: color .25s; }
+.tt .ls-faq-list summary::-webkit-details-marker { display: none; }
+.tt .ls-faq-list summary::after { content: '+'; flex: none; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid var(--line);
+  font-weight: 500; font-size: 20px; line-height: 1; color: var(--green); transition: transform .3s, background .3s, color .3s, border-color .3s; }
+.tt .ls-faq-list summary:hover { color: var(--green); }
+.tt .ls-faq-list details[open] summary::after { transform: rotate(45deg); background: var(--green); border-color: var(--green); color: var(--white); }
+.tt .ls-faq-list details p { padding: 0 54px 22px 0; color: var(--soft); max-width: 62ch; }
+.tt .ls-faq-list details p a { color: var(--green); font-weight: 600; border-bottom: 1.5px solid var(--sand); }
 .tt .ls-book { background: var(--white); padding: 96px var(--g) 110px; scroll-margin-top: 78px; }
 .tt .ls-book-card { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; padding: 56px; border-radius: 22px; color: var(--white);
   background: var(--green); }
@@ -618,6 +633,9 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
   .tt .ls-panel figcaption { grid-template-columns: 1fr; gap: 12px; padding: 14px 6px 6px; }
   .tt .ls-chips li { flex: 1; min-width: 0; }
   .tt .ls-chips b { font-size: 17px; }
+  .tt .ls-faq { grid-template-columns: 1fr; gap: 24px; padding: 72px 18px 0; }
+  .tt .ls-faq-head { position: static; }
+  .tt .ls-faq-list details p { padding-right: 0; }
   .tt .ls-book { padding: 56px 18px 72px; scroll-margin-top: 64px; }
   .tt .ls-book-card { grid-template-columns: 1fr; gap: 32px; padding: 32px 22px; border-radius: 18px; }
   .tt .ls-book-info div { flex-direction: column; gap: 4px; }
@@ -697,7 +715,7 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
   </video>
   <div class="hero-copy">
     <div>
-      <h1 id="tt-h1" class="h-xl"><small>Newmarket's Golf Simulator Sports Bar &amp; Event Space</small><span class="ln">Your handicap</span> <span class="ln">is welcome here.</span></h1>
+      <h1 id="tt-h1" class="h-xl"><small>Newmarket's Golf Simulator Sports Bar &amp; Event Space</small> <span class="ln">Your handicap</span> <span class="ln">is welcome here.</span></h1>
       <p class="lede">Good golf, bad golf, and everything in between. Four premium Golfzon simulators, two full bars, cold beer on tap, karaoke, and private events.</p>
     </div>
     <div class="hero-actions">

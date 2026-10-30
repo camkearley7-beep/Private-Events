@@ -41,7 +41,13 @@ Same setup as the homepage: on the Meet Our Pro page, set Page Layout to **Eleme
 - **Facts used** (from the current page): Andrew McDonald, PGA of Canada, teaching all levels for 8+ years; technique, strategy and the mental game; book on (905) 235-4653 or amcdonald@magnagolf.com. No lesson prices are shown, because none are published.
 - **Andrew's photo:** `/wp-content/uploads/2024/12/1000004121-scaled.jpg`, cropped toward his face; the name tag sits over the bottom of the photo.
 - **Simulator screenshots** ("Every swing, measured"): `sw_my_practice_img02.png` and `img03`–`img05.jpg` in the October 2026 uploads folder. The numbers beside each are labelled as sample shots.
-- **SEO (Yoast/Rank Math):** title "Golf Lessons in Newmarket | Andrew McDonald, PGA of Canada | The Bogey Club"; description "Private golf lessons on Golfzon simulators in Newmarket with Andrew McDonald, PGA of Canada. Technique, strategy and the mental game, for every level."
+- **SEO (Yoast or Rank Math, on the Meet Our Pro page):**
+  - SEO title: `Private Golf Lessons in Newmarket | PGA of Canada Pro | The Bogey Club`
+  - Meta description: `Private golf lessons in Newmarket with Andrew McDonald, Associate Professional, PGA of Canada. One-on-one indoor lessons on Golfzon simulators for every level. Book today.`
+  - Focus keyphrase: `golf lessons Newmarket` (related: private golf lessons, indoor golf lessons, golf instruction).
+  - Keep the URL `/meet-our-pro/` (it already has links pointing to it). Leave Yoast's own schema on; the page's JSON-LD adds the Person, Service and FAQ details.
+- **On the page for Google:** keyword H1 text ("Private golf lessons · Newmarket, ON — Meet Our Pro"), a 7-question golf lessons FAQ (from `site/src/lessons-faq.json`, which also builds the FAQPage schema), and JSON-LD for WebPage, BreadcrumbList, the business, Andrew (Person), the lessons (Service, serving Newmarket, Aurora and East Gwillimbury) and the FAQ.
+- **Off the page (biggest wins):** in Google Business Profile add "Golf lessons" / "Private golf lessons" as services with this page's URL, and post a photo of a lesson; ask lesson students for Google reviews that mention lessons; then in Google Search Console, inspect `https://thebogeyclub.com/meet-our-pro/` and click Request indexing.
 
 ## 1. Upload files
 

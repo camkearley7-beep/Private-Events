@@ -592,6 +592,21 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
 .tt .ls-sim-note { margin-top: 26px; font-size: 13px; color: rgba(255,255,255,.82); }
 
 
+.tt .ls-faq { display: grid; grid-template-columns: .8fr 1.2fr; gap: 64px; align-items: start; padding: 104px var(--g) 0; background: var(--white); }
+.tt .ls-faq-head { position: sticky; top: 110px; }
+.tt .ls-faq-head .data { margin-bottom: 16px; }
+.tt .ls-faq-head .lede { margin-top: 16px; }
+.tt .ls-faq-list { border-top: 1px solid var(--line); }
+.tt .ls-faq-list details { border-bottom: 1px solid var(--line); }
+.tt .ls-faq-list summary { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 22px 0; cursor: pointer; list-style: none;
+  font-weight: 600; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -.01em; color: var(--ink); transition: color .25s; }
+.tt .ls-faq-list summary::-webkit-details-marker { display: none; }
+.tt .ls-faq-list summary::after { content: '+'; flex: none; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid var(--line);
+  font-weight: 500; font-size: 20px; line-height: 1; color: var(--green); transition: transform .3s, background .3s, color .3s, border-color .3s; }
+.tt .ls-faq-list summary:hover { color: var(--green); }
+.tt .ls-faq-list details[open] summary::after { transform: rotate(45deg); background: var(--green); border-color: var(--green); color: var(--white); }
+.tt .ls-faq-list details p { padding: 0 54px 22px 0; color: var(--soft); max-width: 62ch; }
+.tt .ls-faq-list details p a { color: var(--green); font-weight: 600; border-bottom: 1.5px solid var(--sand); }
 .tt .ls-book { background: var(--white); padding: 96px var(--g) 110px; scroll-margin-top: 78px; }
 .tt .ls-book-card { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; padding: 56px; border-radius: 22px; color: var(--white);
   background: var(--green); }
@@ -632,6 +647,9 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
   .tt .ls-panel figcaption { grid-template-columns: 1fr; gap: 12px; padding: 14px 6px 6px; }
   .tt .ls-chips li { flex: 1; min-width: 0; }
   .tt .ls-chips b { font-size: 17px; }
+  .tt .ls-faq { grid-template-columns: 1fr; gap: 24px; padding: 72px 18px 0; }
+  .tt .ls-faq-head { position: static; }
+  .tt .ls-faq-list details p { padding-right: 0; }
   .tt .ls-book { padding: 56px 18px 72px; scroll-margin-top: 64px; }
   .tt .ls-book-card { grid-template-columns: 1fr; gap: 32px; padding: 32px 22px; border-radius: 18px; }
   .tt .ls-book-info div { flex-direction: column; gap: 4px; }
@@ -644,26 +662,177 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "WebPage",
+      "@id": "https://thebogeyclub.com/meet-our-pro/#webpage",
+      "url": "https://thebogeyclub.com/meet-our-pro/",
+      "name": "Private Golf Lessons in Newmarket | Andrew McDonald, PGA of Canada | The Bogey Club",
+      "description": "Private golf lessons in Newmarket, Ontario with Andrew McDonald, Associate Professional, PGA of Canada. One-on-one indoor lessons on Golfzon simulators for every level.",
+      "inLanguage": "en-CA",
+      "about": {
+        "@id": "https://thebogeyclub.com/meet-our-pro/#lessons"
+      },
+      "mainEntity": {
+        "@id": "https://thebogeyclub.com/meet-our-pro/#andrew"
+      },
+      "primaryImageOfPage": "https://thebogeyclub.com/wp-content/uploads/2024/12/1000004121-scaled.jpg",
+      "breadcrumb": {
+        "@id": "https://thebogeyclub.com/meet-our-pro/#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://thebogeyclub.com/meet-our-pro/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://thebogeyclub.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Meet Our Pro",
+          "item": "https://thebogeyclub.com/meet-our-pro/"
+        }
+      ]
+    },
+    {
+      "@type": [
+        "SportsActivityLocation",
+        "BarOrPub",
+        "EntertainmentBusiness"
+      ],
+      "@id": "https://thebogeyclub.com/#business",
+      "name": "The Bogey Club",
+      "url": "https://thebogeyclub.com/",
+      "telephone": "+1-905-235-4653",
+      "email": "golf@thebogeyclub.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "17705 Leslie Street, Unit 5",
+        "addressLocality": "Newmarket",
+        "addressRegion": "ON",
+        "postalCode": "L3Y 3E3",
+        "addressCountry": "CA"
+      }
+    },
+    {
       "@type": "Person",
       "@id": "https://thebogeyclub.com/meet-our-pro/#andrew",
       "name": "Andrew McDonald",
       "jobTitle": "Associate Professional, PGA of Canada",
       "image": "https://thebogeyclub.com/wp-content/uploads/2024/12/1000004121-scaled.jpg",
       "email": "mailto:amcdonald@magnagolf.com",
+      "knowsAbout": [
+        "Golf instruction",
+        "Golf swing technique",
+        "Golf course strategy",
+        "Mental game of golf"
+      ],
+      "memberOf": {
+        "@type": "Organization",
+        "name": "PGA of Canada"
+      },
       "worksFor": {
         "@id": "https://thebogeyclub.com/#business"
       }
     },
     {
       "@type": "Service",
+      "@id": "https://thebogeyclub.com/meet-our-pro/#lessons",
       "name": "Private golf lessons",
-      "serviceType": "Golf instruction",
+      "serviceType": "Golf lessons",
       "url": "https://thebogeyclub.com/meet-our-pro/",
-      "areaServed": "Newmarket, Ontario",
-      "provider": {
-        "@id": "https://thebogeyclub.com/meet-our-pro/#andrew"
+      "provider": [
+        {
+          "@id": "https://thebogeyclub.com/meet-our-pro/#andrew"
+        },
+        {
+          "@id": "https://thebogeyclub.com/#business"
+        }
+      ],
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Newmarket"
+        },
+        {
+          "@type": "City",
+          "name": "Aurora"
+        },
+        {
+          "@type": "City",
+          "name": "East Gwillimbury"
+        }
+      ],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Golfers of every level, beginner to advanced"
       },
-      "description": "One-on-one golf lessons on Golfzon simulators with Andrew McDonald, PGA of Canada, covering technique, strategy and the mental game."
+      "description": "One-on-one indoor golf lessons on Golfzon simulators with Andrew McDonald, PGA of Canada, covering technique, strategy and the mental game."
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://thebogeyclub.com/meet-our-pro/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Where can I take golf lessons in Newmarket?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At The Bogey Club, 17705 Leslie Street, Unit 5, in Newmarket, Ontario. Private lessons are one-on-one with Andrew McDonald, Associate Professional with the PGA of Canada, on our indoor Golfzon simulators. We're a short drive from Aurora and East Gwillimbury."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are private golf lessons good for beginners?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Andrew has taught golf at every level for more than eight years, from players picking up a club for the first time to advanced golfers chasing a lower handicap. Every lesson is built around your goals."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What will I work on in a golf lesson?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Andrew's personalized lessons focus on technique, strategy and the mental game: your grip, setup and swing, smarter club choice and course management, and the routines that hold up under pressure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why take golf lessons on a simulator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our Golfzon simulators measure every shot, including ball speed, launch angle, spin and carry, so you and your coach see exactly what the ball did. Lessons are indoors, so you can keep improving all year, rain or shine."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much do private golf lessons cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Call the club at (905) 235-4653 or email Andrew at amcdonald@magnagolf.com for current lesson rates."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I book a golf lesson?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Call (905) 235-4653 or email Andrew at amcdonald@magnagolf.com and let him know what part of your game you want to work on."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I practise between lessons?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Book a simulator bay online at The Bogey Club to practise what you worked on with Andrew."
+          }
+        }
+      ]
     }
   ]
 }
@@ -732,10 +901,10 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
     <p class="ls-tag"><span class="data">Your coach</span>Andrew McDonald<small>Associate Professional, PGA of Canada</small></p>
   </div>
   <div class="ls-pro-copy">
-    <h1 id="tt-ls-h1" class="h-xl"><small>Private golf lessons · Newmarket, ON</small>Meet Our Pro</h1>
+    <h1 id="tt-ls-h1" class="h-xl"><small>Private golf lessons · Newmarket, ON</small> Meet Our Pro</h1>
     <h2 class="ls-name">Andrew McDonald <span>Associate Professional, PGA of Canada</span></h2>
     <p class="lede">A certified PGA of Canada golf professional, Andrew has taught golf at every level for more than eight years, with personalized lessons built on technique, strategy and the mental game.</p>
-    <p>Known for his patient, supportive teaching style, he helps players build confidence and lower their scores. Beginner or advanced, every lesson is one-on-one on our Golfzon simulators, so you see exactly what the ball did.</p>
+    <p>Known for his patient, supportive teaching style, he helps players build confidence and lower their scores. Beginner or advanced, every private golf lesson is one-on-one on our indoor Golfzon simulators in Newmarket, so you see exactly what the ball did.</p>
     <div class="acts">
       <a class="btn btn-red" href="#book" data-tt-cta="lessons-hero-book">Book a lesson</a>
       <a class="btn btn-line dark" href="tel:+19052354653" data-tt-cta="lessons-hero-call">(905) 235-4653</a>
@@ -752,7 +921,7 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
      Screenshots are Golfzon's own displays; the numbers beside them are read off each one. -->
 <section class="ls-sim" aria-labelledby="tt-ls-sim-h">
   <div class="ls-sim-head">
-    <p class="data">The tech behind your lesson</p>
+    <p class="data">Indoor golf lessons, all year</p>
     <h2 id="tt-ls-sim-h" class="h-l">Every swing, measured.</h2>
     <p class="lede">Our Golfzon simulators read every shot, so you and Andrew see the numbers behind it, not just where it went. Pick a mode and see what you'll be working with.</p>
   </div>
@@ -792,11 +961,29 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
   <p class="ls-sim-note">Screens shown are from our Golfzon simulators; the numbers are sample shots. Rain or shine, the weather never cancels a lesson.</p>
 </section>
 
+<!-- 5. FAQ: generated at build time from src/lessons-faq.json (same text feeds the FAQPage schema) -->
+<section class="ls-faq" aria-labelledby="tt-ls-faq-h">
+  <div class="ls-faq-head">
+    <p class="data">Golf lessons FAQ</p>
+    <h2 id="tt-ls-faq-h" class="h-l">Golf lessons in Newmarket, answered.</h2>
+    <p class="lede">Everything you need to know before your first private lesson with Andrew.</p>
+  </div>
+  <div class="ls-faq-list">
+    <details open><summary>Where can I take golf lessons in Newmarket?</summary><p>At The Bogey Club, 17705 Leslie Street, Unit 5, in Newmarket, Ontario. Private lessons are one-on-one with Andrew McDonald, Associate Professional with the PGA of Canada, on our indoor Golfzon simulators. We're a short drive from Aurora and East Gwillimbury.</p></details>
+    <details><summary>Are private golf lessons good for beginners?</summary><p>Yes. Andrew has taught golf at every level for more than eight years, from players picking up a club for the first time to advanced golfers chasing a lower handicap. Every lesson is built around your goals.</p></details>
+    <details><summary>What will I work on in a golf lesson?</summary><p>Andrew's personalized lessons focus on technique, strategy and the mental game: your grip, setup and swing, smarter club choice and course management, and the routines that hold up under pressure.</p></details>
+    <details><summary>Why take golf lessons on a simulator?</summary><p>Our Golfzon simulators measure every shot, including ball speed, launch angle, spin and carry, so you and your coach see exactly what the ball did. Lessons are indoors, so you can keep improving all year, rain or shine.</p></details>
+    <details><summary>How much do private golf lessons cost?</summary><p>Call the club at <a href="tel:+19052354653">(905) 235-4653</a> or email Andrew at <a href="mailto:amcdonald@magnagolf.com">amcdonald@magnagolf.com</a> for current lesson rates.</p></details>
+    <details><summary>How do I book a golf lesson?</summary><p>Call <a href="tel:+19052354653">(905) 235-4653</a> or email Andrew at <a href="mailto:amcdonald@magnagolf.com">amcdonald@magnagolf.com</a> and let him know what part of your game you want to work on.</p></details>
+    <details><summary>Can I practise between lessons?</summary><p>Yes. <a href="https://thebogeyclub.golfbooking.ca/calendar.php">Book a simulator bay online</a> at The Bogey Club to practise what you worked on with Andrew.</p></details>
+  </div>
+</section>
+
 <!-- 6. BOOK -->
 <section class="ls-book" id="book" aria-labelledby="tt-ls-book-h">
   <div class="ls-book-card">
     <div>
-      <p class="data">Book a lesson</p>
+      <p class="data">Book a golf lesson in Newmarket</p>
       <h2 id="tt-ls-book-h" class="h-l">Ready when you are.</h2>
       <p class="lede">Call or email Andrew, tell him what part of your game you want to work on, and start seeing real results.</p>
       <div class="acts">

@@ -178,14 +178,48 @@ sc = re.sub(r'<link rel="preload"[^>]*>\n', '', sc)
 (dist / 'bogey-club-homepage-standalone.html').write_text(embed(sc))
 # Meet our pro (/meet-our-pro/) ---------------------------------------------
 lessons = src('lessons.html')
+# FAQ: one source for the visible questions and the FAQPage schema
+import html as _html
+_faq = json.loads(src('lessons-faq.json'))
+def _linkify(t):
+    t = _html.escape(t, quote=False)
+    t = t.replace('(905) 235-4653', '<a href="tel:+19052354653">(905) 235-4653</a>')
+    t = t.replace('amcdonald@magnagolf.com', '<a href="mailto:amcdonald@magnagolf.com">amcdonald@magnagolf.com</a>')
+    t = t.replace('Book a simulator bay online', '<a href="https://thebogeyclub.golfbooking.ca/calendar.php">Book a simulator bay online</a>')
+    return t
+_faq_html = ('<section class="ls-faq" aria-labelledby="tt-ls-faq-h">\n  <div class="ls-faq-head">\n    <p class="data">Golf lessons FAQ</p>\n'
+    '    <h2 id="tt-ls-faq-h" class="h-l">Golf lessons in Newmarket, answered.</h2>\n'
+    '    <p class="lede">Everything you need to know before your first private lesson with Andrew.</p>\n  </div>\n  <div class="ls-faq-list">\n'
+    + ''.join(f'    <details{" open" if i == 0 else ""}><summary>{_html.escape(f["q"])}</summary><p>{_linkify(f["a"])}</p></details>\n' for i, f in enumerate(_faq))
+    + '  </div>\n</section>')
+assert lessons.count('<!--LS:FAQ-->') == 1
+lessons = lessons.replace('<!--LS:FAQ-->', _faq_html)
+_biz = next(n for n in schema['@graph'] if n.get('@id') == 'https://thebogeyclub.com/#business')
+_P = 'https://thebogeyclub.com/meet-our-pro/'
 _ls_schema = {"@context": "https://schema.org", "@graph": [
-  {"@type": "Person", "@id": "https://thebogeyclub.com/meet-our-pro/#andrew", "name": "Andrew McDonald",
-   "jobTitle": "Associate Professional, PGA of Canada", "image": "https://thebogeyclub.com/wp-content/uploads/2024/12/1000004121-scaled.jpg", "email": "mailto:amcdonald@magnagolf.com",
-   "worksFor": {"@id": "https://thebogeyclub.com/#business"}},
-  {"@type": "Service", "name": "Private golf lessons", "serviceType": "Golf instruction",
-   "url": "https://thebogeyclub.com/meet-our-pro/", "areaServed": "Newmarket, Ontario",
-   "provider": {"@id": "https://thebogeyclub.com/meet-our-pro/#andrew"},
-   "description": "One-on-one golf lessons on Golfzon simulators with Andrew McDonald, PGA of Canada, covering technique, strategy and the mental game."}]}
+  {"@type": "WebPage", "@id": _P + "#webpage", "url": _P,
+   "name": "Private Golf Lessons in Newmarket | Andrew McDonald, PGA of Canada | The Bogey Club",
+   "description": "Private golf lessons in Newmarket, Ontario with Andrew McDonald, Associate Professional, PGA of Canada. One-on-one indoor lessons on Golfzon simulators for every level.",
+   "inLanguage": "en-CA",
+   "about": {"@id": _P + "#lessons"}, "mainEntity": {"@id": _P + "#andrew"},
+   "primaryImageOfPage": "https://thebogeyclub.com/wp-content/uploads/2024/12/1000004121-scaled.jpg",
+   "breadcrumb": {"@id": _P + "#breadcrumb"}},
+  {"@type": "BreadcrumbList", "@id": _P + "#breadcrumb", "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://thebogeyclub.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Meet Our Pro", "item": _P}]},
+  {"@type": _biz["@type"], "@id": _biz["@id"], "name": _biz["name"], "url": "https://thebogeyclub.com/",
+   "telephone": _biz["telephone"], "email": _biz["email"], "address": _biz["address"]},
+  {"@type": "Person", "@id": _P + "#andrew", "name": "Andrew McDonald",
+   "jobTitle": "Associate Professional, PGA of Canada", "image": "https://thebogeyclub.com/wp-content/uploads/2024/12/1000004121-scaled.jpg",
+   "email": "mailto:amcdonald@magnagolf.com", "knowsAbout": ["Golf instruction", "Golf swing technique", "Golf course strategy", "Mental game of golf"],
+   "memberOf": {"@type": "Organization", "name": "PGA of Canada"}, "worksFor": {"@id": _biz["@id"]}},
+  {"@type": "Service", "@id": _P + "#lessons", "name": "Private golf lessons", "serviceType": "Golf lessons",
+   "url": _P, "provider": [{"@id": _P + "#andrew"}, {"@id": _biz["@id"]}],
+   "areaServed": [{"@type": "City", "name": n} for n in ("Newmarket", "Aurora", "East Gwillimbury")],
+   "audience": {"@type": "Audience", "audienceType": "Golfers of every level, beginner to advanced"},
+   "description": "One-on-one indoor golf lessons on Golfzon simulators with Andrew McDonald, PGA of Canada, covering technique, strategy and the mental game."},
+  {"@type": "FAQPage", "@id": _P + "#faq", "mainEntity": [
+    {"@type": "Question", "name": f["q"], "acceptedAnswer": {"@type": "Answer", "text": f["a"]}} for f in _faq]}]}
 _ls_tag = '<script type="application/ld+json">\n' + json.dumps(_ls_schema, indent=2, ensure_ascii=False) + '\n</script>\n'
 # Lessons page: the phone booking bar is a single "Book a lesson" button
 _dock0 = footer.index('<nav class="dock"'); _dock1 = footer.index('</nav>', _dock0) + len('</nav>')
