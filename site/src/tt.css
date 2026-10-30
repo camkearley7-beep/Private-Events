@@ -596,6 +596,10 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
 .tt .ls-book-info dt { color: rgba(255,255,255,.7); }
 .tt .ls-book-info dd { text-align: right; font-weight: 500; }
 .tt .ls-book-info a { border-bottom: 1px solid var(--sand); }
+.tt .ls-mailhelp { margin-top: 14px; font-size: 14px; color: var(--soft); }
+.tt .ls-mailhelp a { color: var(--green); font-weight: 600; border-bottom: 1.5px solid var(--sand); }
+.tt .ls-book-card .ls-mailhelp { color: rgba(255,255,255,.85); }
+.tt .ls-book-card .ls-mailhelp a { color: var(--white); }
 .tt .ls-more { margin-top: 26px; text-align: center; color: var(--soft); }
 .tt .ls-more a { color: var(--green); font-weight: 600; border-bottom: 1.5px solid var(--sand); padding-bottom: 2px; }
 

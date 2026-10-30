@@ -178,6 +178,19 @@ sc = re.sub(r'<link rel="preload"[^>]*>\n', '', sc)
 (dist / 'bogey-club-homepage-standalone.html').write_text(embed(sc))
 # Meet our pro (/meet-our-pro/) ---------------------------------------------
 lessons = src('lessons.html')
+# "Book a lesson" opens a ready-to-send email to Andrew (email app, or Gmail / Outlook on the web)
+from urllib.parse import quote as _q
+_TO, _SUBJ = 'amcdonald@magnagolf.com', 'Private golf lesson at The Bogey Club'
+_BODY = ("Hi Andrew,\n\nI'd like to book a private golf lesson at The Bogey Club.\n\n"
+         "Name:\nPhone:\nExperience level (beginner / intermediate / advanced):\n"
+         "What I'd like to work on:\nDays and times that work for me:\n\nThanks!")
+_mail = {
+  '{{LESSON_MAILTO}}': f'mailto:{_TO}?subject={_q(_SUBJ)}&amp;body={_q(_BODY)}',
+  '{{LESSON_GMAIL}}': f'https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to={_q(_TO)}&amp;su={_q(_SUBJ)}&amp;body={_q(_BODY)}',
+  '{{LESSON_OUTLOOK}}': f'https://outlook.live.com/mail/0/deeplink/compose?to={_q(_TO)}&amp;subject={_q(_SUBJ)}&amp;body={_q(_BODY)}',
+}
+for _k, _v in _mail.items(): lessons = lessons.replace(_k, _v)
+assert '{{LESSON_' not in lessons
 # FAQ: one source for the visible questions and the FAQPage schema
 import html as _html
 _faq = json.loads(src('lessons-faq.json'))
@@ -224,7 +237,7 @@ _ls_tag = '<script type="application/ld+json">\n' + json.dumps(_ls_schema, inden
 # Lessons page: the phone booking bar is a single "Book a lesson" button
 _dock0 = footer.index('<nav class="dock"'); _dock1 = footer.index('</nav>', _dock0) + len('</nav>')
 footer_ls = footer[:_dock0] + ('<nav class="dock solo" aria-label="Quick booking">\n'
-    '  <a href="#book" data-tt-cta="dock-book-lesson">Book a lesson<small>With Andrew</small></a>\n</nav>') + footer[_dock1:]
+    '  <a href="' + _mail['{{LESSON_MAILTO}}'] + '" data-tt-cta="dock-book-lesson">Book a lesson<small>Email Andrew</small></a>\n</nav>') + footer[_dock1:]
 _foot = lambda f: f(footer_ls).replace('<!--BCH:NEWSLETTER-->', '<!-- Existing newsletter signup form goes here -->')
 one_ls = ("<!-- THE BOGEY CLUB: MEET OUR PRO page. Paste this whole file into ONE Elementor HTML widget.\n"
           "     Page Settings > Page Layout = Elementor Canvas. Container: Full Width, padding 0. -->\n"
