@@ -179,7 +179,7 @@ sc = re.sub(r'<link rel="preload"[^>]*>\n', '', sc)
 # Meet our pro (/meet-our-pro/) ---------------------------------------------
 lessons = src('lessons.html')
 # Lesson request form: the WPForms form ID (set it once the form exists in WordPress).
-LESSON_FORM_ID = None
+LESSON_FORM_ID = "3369"
 _ls_fallback = ('<p class="ls-form-wait">Send Andrew your request by email or phone:</p><div class="acts">'
     '<a class="btn btn-red" href="{{LESSON_MAILTO}}" data-tt-mail>Email Andrew</a>'
     '<a class="btn btn-line dark" href="tel:+19052354653">(905) 235-4653</a></div>')
@@ -208,6 +208,7 @@ _mail = {
   '{{LESSON_OUTLOOK}}': f'https://outlook.live.com/mail/0/deeplink/compose?to={_q(_TO)}&amp;subject={_q(_SUBJ)}&amp;body={_q(_BODY)}',
 }
 lessons_preview = lessons.replace('<!--LS:FORM-->', _ls_form_preview)
+assert lessons.count('<!--LS:FORM-->') == 1
 lessons = lessons.replace('<!--LS:FORM-->', _ls_form_live)
 for _k, _v in _mail.items(): lessons = lessons.replace(_k, _v)
 for _k, _v in _mail.items(): lessons_preview = lessons_preview.replace(_k, _v)
@@ -271,7 +272,11 @@ if 'Satoshi-Variable.woff2' in have:
     one_ls = re.sub(r'<link rel="preload"[^>]*>\n', '', one_ls)
     one_ls = re.sub(r"src: url\('[^']*Satoshi-Variable\.woff2'\) format\('woff2-variations'\), url\('[^']*Satoshi-Variable\.woff2'\) format\('woff2'\)",
                     lambda m: "src: url('" + _font + "') format('woff2')", one_ls)
-assert '[wpforms' not in one_ls
+# exactly one shortcode (the lesson form), inside the form card and never inside the script
+assert one_ls.count('[wpforms') == (1 if LESSON_FORM_ID else 0)
+if LESSON_FORM_ID:
+    _sc = one_ls.index('[wpforms')
+    assert one_ls.rfind('id="tt-lesson-form"', 0, _sc) > one_ls.rfind('</section>', 0, _sc) and _sc < one_ls.index('<script>\n')
 (dist / 'ELEMENTOR-PASTE-LESSONS.html').write_text(one_ls)
 (dist / 'ELEMENTOR-PASTE-LESSONS.txt').write_text(one_ls)
 (ROOT / 'preview-lessons.html').write_text(f'''<!doctype html>

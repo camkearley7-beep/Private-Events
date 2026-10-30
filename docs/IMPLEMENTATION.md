@@ -50,7 +50,7 @@ Same setup as the homepage: on the Meet Our Pro page, set Page Layout to **Eleme
   | Paragraph Text | What do you want to work on? | Optional |
   | Single Line Text | Best days and times | Optional |
 
-  Settings: Submit button text "Request a lesson"; Notifications → Send To `amcdonald@magnagolf.com` (add `golf@thebogeyclub.com` to copy the club), Subject "New lesson request from {field_id="1"}", Reply-To the Email field; Confirmations → Message "Thanks! Andrew will be in touch soon to set up your lesson."; anti-spam on. Then put the form's ID in `LESSON_FORM_ID` in `site/build.sh` and rebuild. Until then the card shows Email and Call buttons.
+  Settings: Submit button text "Request a lesson"; Notifications → Send To `amcdonald@magnagolf.com` (add `golf@thebogeyclub.com` to copy the club), Subject "New lesson request from {field_id="1"}", Reply-To the Email field; Confirmations → Message "Thanks! Andrew will be in touch soon to set up your lesson."; anti-spam on. The live form is **WPForms 3369** (`LESSON_FORM_ID` in `site/build.sh`); the build places its shortcode in the card and checks it appears exactly once, outside the script.
 - **Andrew's photo:** `/wp-content/uploads/2024/12/1000004121-scaled.jpg`, cropped toward his face; the name tag sits over the bottom of the photo.
 - **Simulator screenshots** ("Every swing, measured"): `sw_my_practice_img02.png` and `img03`–`img05.jpg` in the October 2026 uploads folder. The numbers beside each are labelled as sample shots.
 - **SEO (Yoast or Rank Math, on the Meet Our Pro page):**
