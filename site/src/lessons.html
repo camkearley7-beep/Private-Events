@@ -18,7 +18,7 @@
     <p class="lede">A certified PGA of Canada golf professional, Andrew has taught golf at every level for more than eight years, with personalized lessons built on technique, strategy and the mental game.</p>
     <p>Known for his patient, supportive teaching style, he helps players build confidence and lower their scores. Beginner or advanced, every private golf lesson is one-on-one on our indoor Golfzon simulators in Newmarket, so you see exactly what the ball did.</p>
     <div class="acts">
-      <a class="btn btn-red" href="{{LESSON_MAILTO}}" data-tt-mail data-tt-cta="lessons-hero-email">Book a lesson</a>
+      <a class="btn btn-red" href="#tt-lesson-form" data-tt-focus="#tt-lesson-form" data-tt-cta="lessons-hero-book">Book a lesson</a>
       <a class="btn btn-line dark" href="tel:+19052354653" data-tt-cta="lessons-hero-call">(905) 235-4653</a>
     </div>
     <dl class="ls-stats">
@@ -73,23 +73,25 @@
   <p class="ls-sim-note">Screens shown are from our Golfzon simulators; the numbers are sample shots. Rain or shine, the weather never cancels a lesson.</p>
 </section>
 
-<!-- 6. BOOK -->
+<!-- 6. BOOK: lesson request form (WPForms, rendered by WordPress from the shortcode the build puts in <!--LS:FORM-->) -->
 <section class="ls-book" id="book" aria-labelledby="tt-ls-book-h">
   <div class="ls-book-card">
-    <div>
+    <div class="ls-book-copy">
       <p class="data">Book a golf lesson in Newmarket</p>
-      <h2 id="tt-ls-book-h" class="h-l">Ready when you are.</h2>
-      <p class="lede">Call or email Andrew, tell him what part of your game you want to work on, and start seeing real results.</p>
-      <div class="acts">
-        <a class="btn btn-white" href="{{LESSON_MAILTO}}" data-tt-mail data-tt-cta="lessons-book-email">Email Andrew</a>
-        <a class="btn btn-line" href="tel:+19052354653" data-tt-cta="lessons-book-call">(905) 235-4653</a>
-      </div>
+      <h2 id="tt-ls-book-h" class="h-l">Request a lesson.</h2>
+      <p class="lede">Tell Andrew a little about your game and when you're free. He'll get back to you to set up a time that works.</p>
+      <ul class="ls-book-steps">
+        <li><b>1</b>Send your request</li><li><b>2</b>Andrew reaches out</li><li><b>3</b>Tee it up at the club</li>
+      </ul>
+      <dl class="ls-book-info">
+        <div><dt>Rather call?</dt><dd><a href="tel:+19052354653" data-tt-cta="lessons-book-call">(905) 235-4653</a></dd></div>
+        <div><dt>Email</dt><dd><a href="{{LESSON_MAILTO}}" data-tt-mail>amcdonald@magnagolf.com</a></dd></div>
+        <div><dt>Where</dt><dd>17705 Leslie Street, Unit 5, Newmarket</dd></div>
+      </dl>
     </div>
-    <dl class="ls-book-info">
-      <div><dt>Email</dt><dd><a href="{{LESSON_MAILTO}}" data-tt-mail>amcdonald@magnagolf.com</a></dd></div>
-      <div><dt>Phone</dt><dd><a href="tel:+19052354653">(905) 235-4653</a></dd></div>
-      <div><dt>Where</dt><dd>17705 Leslie Street, Unit 5<br>Newmarket, ON L3Y 3E3</dd></div>
-    </dl>
+    <div class="ls-form" id="tt-lesson-form">
+      <div class="cform-slot"><!--LS:FORM--></div>
+    </div>
   </div>
   <p class="ls-more">Practising between lessons? <a href="https://thebogeyclub.golfbooking.ca/calendar.php" data-tt-cta="lessons-book-bay">Book a bay</a> or <a href="https://thebogeyclub.com/leagues-and-events/">join a league</a>.</p>
 </section>

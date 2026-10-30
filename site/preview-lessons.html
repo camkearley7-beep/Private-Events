@@ -345,6 +345,8 @@ html.tt-js .tt .cform-nojs, .tt .cform-card.has-wpf .cform-nojs { display: none;
   .tt .dock a:first-child small { color: rgba(255,255,255,.75); }
   .tt .dock a + a { background: var(--mist); }
   .tt .dock.solo { grid-template-columns: 1fr; }
+  .tt .dock { transition: transform .35s cubic-bezier(.2,.8,.2,1), opacity .35s; }
+  html.tt-dock-off .tt .dock { transform: translateY(140%); opacity: 0; pointer-events: none; }
 
   .tt .walk-pin { padding: 64px 0 48px; }
   .tt .walk-head { padding: 0 18px 22px; flex-direction: column; align-items: start; gap: 8px; }
@@ -607,21 +609,28 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
 .tt .ls-faq-list details p { padding: 0 32px 16px 0; font-size: 14px; line-height: 1.6; color: var(--soft); }
 .tt .ls-faq-list details p a { color: var(--green); font-weight: 600; border-bottom: 1px solid var(--sand); }
 .tt .ls-book { background: var(--white); padding: 96px var(--g) 72px; scroll-margin-top: 78px; }
-.tt .ls-book-card { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; padding: 56px; border-radius: 22px; color: var(--white);
+.tt .ls-book-card { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: start; padding: 56px; border-radius: 22px; color: var(--white);
   background: var(--green); }
 .tt .ls-book-card .data { color: var(--sand); margin-bottom: 16px; }
-.tt .ls-book-card .lede { margin-top: 16px; color: rgba(255,255,255,.85); }
-.tt .ls-book-info { display: grid; border-top: 1px solid rgba(255,255,255,.18); }
-.tt .ls-book-info div { display: flex; justify-content: space-between; gap: 20px; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.18); }
-.tt .ls-book-info dt { color: rgba(255,255,255,.7); }
+.tt .ls-book-card .lede { margin-top: 16px; color: rgba(255,255,255,.88); }
+.tt .ls-book-steps { list-style: none; display: grid; gap: 12px; margin-top: 28px; }
+.tt .ls-book-steps li { display: flex; align-items: center; gap: 12px; font-weight: 500; }
+.tt .ls-book-steps b { display: grid; place-items: center; flex: none; width: 30px; height: 30px; border-radius: 50%; background: rgba(0,0,0,.2); color: var(--sand); font-size: 13px; font-weight: 600; }
+.tt .ls-book-info { display: grid; margin-top: 32px; border-top: 1px solid rgba(255,255,255,.2); font-size: 15px; }
+.tt .ls-book-info div { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.2); }
+.tt .ls-book-info dt { color: rgba(255,255,255,.82); }
 .tt .ls-book-info dd { text-align: right; font-weight: 500; }
 .tt .ls-book-info a { border-bottom: 1px solid var(--sand); }
+.tt .ls-form { padding: 32px; border-radius: 16px; background: var(--white); color: var(--ink); box-shadow: 0 24px 50px rgba(0,0,0,.18); scroll-margin-top: 100px; }
+.tt .ls-form .cform-slot .wpforms-confirmation-container-full { margin: 0 !important; }
+.tt .ls-form-wait { margin-bottom: 14px; color: var(--soft); }
+.tt .ls-form .acts { display: flex; flex-wrap: wrap; gap: 10px; }
 .tt .ls-more { margin-top: 26px; text-align: center; color: var(--soft); }
 .tt .ls-more a { color: var(--green); font-weight: 600; border-bottom: 1.5px solid var(--sand); padding-bottom: 2px; }
 
 @media (max-width: 1100px) and (min-width: 861px) {
   .tt .ls-panel figcaption { grid-template-columns: 1fr; }
-  .tt .ls-book-card { padding: 44px; gap: 36px; }
+  .tt .ls-book-card { padding: 40px; gap: 32px; grid-template-columns: 1fr 1.15fr; }
 }
 @media (max-width: 860px) {
   .tt .ls-pro { grid-template-columns: 1fr; gap: 28px; padding: 18px 18px 64px; }
@@ -649,7 +658,8 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
   .tt .ls-faq { padding: 0 18px 64px; }
   .tt .ls-faq-list details p { padding-right: 0; }
   .tt .ls-book { padding: 56px 18px 72px; scroll-margin-top: 64px; }
-  .tt .ls-book-card { grid-template-columns: 1fr; gap: 32px; padding: 32px 22px; border-radius: 18px; }
+  .tt .ls-book-card { grid-template-columns: 1fr; gap: 28px; padding: 28px 18px 18px; border-radius: 18px; }
+  .tt .ls-form { padding: 22px 16px; scroll-margin-top: 80px; }
   .tt .ls-book-info div { flex-direction: column; gap: 4px; }
   .tt .ls-book-info dd { text-align: left; }
 }
@@ -918,7 +928,7 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
     <p class="lede">A certified PGA of Canada golf professional, Andrew has taught golf at every level for more than eight years, with personalized lessons built on technique, strategy and the mental game.</p>
     <p>Known for his patient, supportive teaching style, he helps players build confidence and lower their scores. Beginner or advanced, every private golf lesson is one-on-one on our indoor Golfzon simulators in Newmarket, so you see exactly what the ball did.</p>
     <div class="acts">
-      <a class="btn btn-red" href="mailto:amcdonald@magnagolf.com?subject=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" data-tt-mail data-gmail="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=amcdonald%40magnagolf.com&amp;su=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" data-outlook="https://outlook.live.com/mail/0/deeplink/compose?to=amcdonald%40magnagolf.com&amp;subject=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" data-tt-cta="lessons-hero-email">Book a lesson</a>
+      <a class="btn btn-red" href="#tt-lesson-form" data-tt-focus="#tt-lesson-form" data-tt-cta="lessons-hero-book">Book a lesson</a>
       <a class="btn btn-line dark" href="tel:+19052354653" data-tt-cta="lessons-hero-call">(905) 235-4653</a>
     </div>
     <dl class="ls-stats">
@@ -973,23 +983,25 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
   <p class="ls-sim-note">Screens shown are from our Golfzon simulators; the numbers are sample shots. Rain or shine, the weather never cancels a lesson.</p>
 </section>
 
-<!-- 6. BOOK -->
+<!-- 6. BOOK: lesson request form (WPForms, rendered by WordPress from the shortcode the build puts in <div class="wpforms-container wpforms-container-full"><form class="wpforms-form" onsubmit="return false"><div class="wpforms-field-container"><div class="wpforms-field wpforms-one-half wpforms-first"><label class="wpforms-field-label" for="ls-mock-1">Name <span class="wpforms-required-label">*</span></label><input id="ls-mock-1" type="text"></div><div class="wpforms-field wpforms-one-half"><label class="wpforms-field-label" for="ls-mock-2">Phone <span class="wpforms-required-label">*</span></label><input id="ls-mock-2" type="tel"></div><div class="wpforms-field wpforms-one-half wpforms-first"><label class="wpforms-field-label" for="ls-mock-3">Email <span class="wpforms-required-label">*</span></label><input id="ls-mock-3" type="email"></div><div class="wpforms-field wpforms-one-half"><label class="wpforms-field-label" for="ls-mock-4">Experience level</label><select id="ls-mock-4"><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></div><div class="wpforms-field "><label class="wpforms-field-label" for="ls-mock-5">What do you want to work on?</label><textarea id="ls-mock-5"></textarea></div><div class="wpforms-field "><label class="wpforms-field-label" for="ls-mock-6">Best days and times</label><input id="ls-mock-6" type="text"></div></div><div class="wpforms-submit-container"><button type="submit" class="wpforms-submit">Request a lesson</button></div></form></div>) -->
 <section class="ls-book" id="book" aria-labelledby="tt-ls-book-h">
   <div class="ls-book-card">
-    <div>
+    <div class="ls-book-copy">
       <p class="data">Book a golf lesson in Newmarket</p>
-      <h2 id="tt-ls-book-h" class="h-l">Ready when you are.</h2>
-      <p class="lede">Call or email Andrew, tell him what part of your game you want to work on, and start seeing real results.</p>
-      <div class="acts">
-        <a class="btn btn-white" href="mailto:amcdonald@magnagolf.com?subject=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" data-tt-mail data-gmail="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=amcdonald%40magnagolf.com&amp;su=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" data-outlook="https://outlook.live.com/mail/0/deeplink/compose?to=amcdonald%40magnagolf.com&amp;subject=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" data-tt-cta="lessons-book-email">Email Andrew</a>
-        <a class="btn btn-line" href="tel:+19052354653" data-tt-cta="lessons-book-call">(905) 235-4653</a>
-      </div>
+      <h2 id="tt-ls-book-h" class="h-l">Request a lesson.</h2>
+      <p class="lede">Tell Andrew a little about your game and when you're free. He'll get back to you to set up a time that works.</p>
+      <ul class="ls-book-steps">
+        <li><b>1</b>Send your request</li><li><b>2</b>Andrew reaches out</li><li><b>3</b>Tee it up at the club</li>
+      </ul>
+      <dl class="ls-book-info">
+        <div><dt>Rather call?</dt><dd><a href="tel:+19052354653" data-tt-cta="lessons-book-call">(905) 235-4653</a></dd></div>
+        <div><dt>Email</dt><dd><a href="mailto:amcdonald@magnagolf.com?subject=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" data-tt-mail data-gmail="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=amcdonald%40magnagolf.com&amp;su=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" data-outlook="https://outlook.live.com/mail/0/deeplink/compose?to=amcdonald%40magnagolf.com&amp;subject=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21">amcdonald@magnagolf.com</a></dd></div>
+        <div><dt>Where</dt><dd>17705 Leslie Street, Unit 5, Newmarket</dd></div>
+      </dl>
     </div>
-    <dl class="ls-book-info">
-      <div><dt>Email</dt><dd><a href="mailto:amcdonald@magnagolf.com?subject=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" data-tt-mail data-gmail="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=amcdonald%40magnagolf.com&amp;su=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" data-outlook="https://outlook.live.com/mail/0/deeplink/compose?to=amcdonald%40magnagolf.com&amp;subject=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21">amcdonald@magnagolf.com</a></dd></div>
-      <div><dt>Phone</dt><dd><a href="tel:+19052354653">(905) 235-4653</a></dd></div>
-      <div><dt>Where</dt><dd>17705 Leslie Street, Unit 5<br>Newmarket, ON L3Y 3E3</dd></div>
-    </dl>
+    <div class="ls-form" id="tt-lesson-form">
+      <div class="cform-slot"><div class="wpforms-container wpforms-container-full"><form class="wpforms-form" onsubmit="return false"><div class="wpforms-field-container"><div class="wpforms-field wpforms-one-half wpforms-first"><label class="wpforms-field-label" for="ls-mock-1">Name <span class="wpforms-required-label">*</span></label><input id="ls-mock-1" type="text"></div><div class="wpforms-field wpforms-one-half"><label class="wpforms-field-label" for="ls-mock-2">Phone <span class="wpforms-required-label">*</span></label><input id="ls-mock-2" type="tel"></div><div class="wpforms-field wpforms-one-half wpforms-first"><label class="wpforms-field-label" for="ls-mock-3">Email <span class="wpforms-required-label">*</span></label><input id="ls-mock-3" type="email"></div><div class="wpforms-field wpforms-one-half"><label class="wpforms-field-label" for="ls-mock-4">Experience level</label><select id="ls-mock-4"><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></div><div class="wpforms-field "><label class="wpforms-field-label" for="ls-mock-5">What do you want to work on?</label><textarea id="ls-mock-5"></textarea></div><div class="wpforms-field "><label class="wpforms-field-label" for="ls-mock-6">Best days and times</label><input id="ls-mock-6" type="text"></div></div><div class="wpforms-submit-container"><button type="submit" class="wpforms-submit">Request a lesson</button></div></form></div></div>
+    </div>
   </div>
   <p class="ls-more">Practising between lessons? <a href="https://thebogeyclub.golfbooking.ca/calendar.php" data-tt-cta="lessons-book-bay">Book a bay</a> or <a href="https://thebogeyclub.com/leagues-and-events/">join a league</a>.</p>
 </section>
@@ -1048,7 +1060,7 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
 </footer>
 
 <nav class="dock solo" aria-label="Quick booking">
-  <a href="mailto:amcdonald@magnagolf.com?subject=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" data-tt-mail data-gmail="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=amcdonald%40magnagolf.com&amp;su=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" data-outlook="https://outlook.live.com/mail/0/deeplink/compose?to=amcdonald%40magnagolf.com&amp;subject=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" data-tt-cta="dock-book-lesson">Book a lesson<small>Email Andrew</small></a>
+  <a href="#tt-lesson-form" data-tt-focus="#tt-lesson-form" data-tt-cta="dock-book-lesson">Book a lesson<small>Request a time</small></a>
 </nav>
 </div>
 
@@ -1357,6 +1369,20 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
         a.addEventListener("click", function () { setTimeout(function () { openMail(a); }, 500); });
       });
     }
+    } catch (err) { fail(err); }
+    try {
+    /* "Book a lesson" buttons: scroll to the request form, then put the cursor in its first field */
+    var lform = document.getElementById("tt-lesson-form");
+    if (lform && "IntersectionObserver" in window) {   /* the phone "Book a lesson" bar steps aside while the form is on screen */
+      new IntersectionObserver(function (es) { html.classList.toggle("tt-dock-off", es[0].isIntersecting); }, { threshold: .15 }).observe(lform);
+    }
+    document.querySelectorAll("[data-tt-focus]").forEach(function (a) {
+      a.addEventListener("click", function () {
+        var box = document.querySelector(a.getAttribute("data-tt-focus"));
+        var first = box && box.querySelector("input:not([type=hidden]), select, textarea");
+        if (first) setTimeout(function () { first.focus({ preventScroll: true }); }, reduce ? 0 : 700);
+      });
+    });
     } catch (err) { fail(err); }
     try {
     /* Mobile menu */

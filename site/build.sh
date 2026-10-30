@@ -178,6 +178,24 @@ sc = re.sub(r'<link rel="preload"[^>]*>\n', '', sc)
 (dist / 'bogey-club-homepage-standalone.html').write_text(embed(sc))
 # Meet our pro (/meet-our-pro/) ---------------------------------------------
 lessons = src('lessons.html')
+# Lesson request form: the WPForms form ID (set it once the form exists in WordPress).
+LESSON_FORM_ID = None
+_ls_fallback = ('<p class="ls-form-wait">Send Andrew your request by email or phone:</p><div class="acts">'
+    '<a class="btn btn-red" href="{{LESSON_MAILTO}}" data-tt-mail>Email Andrew</a>'
+    '<a class="btn btn-line dark" href="tel:+19052354653">(905) 235-4653</a></div>')
+_ls_form_live = ('[' + f'wpforms id="{LESSON_FORM_ID}" title="false" description="false"' + ']') if LESSON_FORM_ID else _ls_fallback
+_mid = iter(range(1, 20))
+def _mock(lab, inp, half=''):
+    i = next(_mid); inp = inp.replace('<input ', f'<input id="ls-mock-{i}" ', 1).replace('<select>', f'<select id="ls-mock-{i}">').replace('<textarea>', f'<textarea id="ls-mock-{i}">')
+    return f'<div class="wpforms-field {half}"><label class="wpforms-field-label" for="ls-mock-{i}">{lab}</label>{inp}</div>'
+_ls_form_preview = ('<div class="wpforms-container wpforms-container-full"><form class="wpforms-form" onsubmit="return false"><div class="wpforms-field-container">'
+    + _mock('Name <span class="wpforms-required-label">*</span>', '<input type="text">', 'wpforms-one-half wpforms-first')
+    + _mock('Phone <span class="wpforms-required-label">*</span>', '<input type="tel">', 'wpforms-one-half')
+    + _mock('Email <span class="wpforms-required-label">*</span>', '<input type="email">', 'wpforms-one-half wpforms-first')
+    + _mock('Experience level', '<select><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select>', 'wpforms-one-half')
+    + _mock('What do you want to work on?', '<textarea></textarea>')
+    + _mock('Best days and times', '<input type="text">')
+    + '</div><div class="wpforms-submit-container"><button type="submit" class="wpforms-submit">Request a lesson</button></div></form></div>')
 # "Book a lesson" opens a ready-to-send email to Andrew (email app, or Gmail / Outlook on the web)
 from urllib.parse import quote as _q
 _TO, _SUBJ = 'amcdonald@magnagolf.com', 'Private golf lesson at The Bogey Club'
@@ -189,9 +207,14 @@ _mail = {
   '{{LESSON_GMAIL}}': f'https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to={_q(_TO)}&amp;su={_q(_SUBJ)}&amp;body={_q(_BODY)}',
   '{{LESSON_OUTLOOK}}': f'https://outlook.live.com/mail/0/deeplink/compose?to={_q(_TO)}&amp;subject={_q(_SUBJ)}&amp;body={_q(_BODY)}',
 }
-lessons = lessons.replace('data-tt-mail', 'data-tt-mail data-gmail="' + _mail['{{LESSON_GMAIL}}'] + '" data-outlook="' + _mail['{{LESSON_OUTLOOK}}'] + '"')
+lessons_preview = lessons.replace('<!--LS:FORM-->', _ls_form_preview)
+lessons = lessons.replace('<!--LS:FORM-->', _ls_form_live)
 for _k, _v in _mail.items(): lessons = lessons.replace(_k, _v)
-assert '{{LESSON_' not in lessons
+for _k, _v in _mail.items(): lessons_preview = lessons_preview.replace(_k, _v)
+_mattr = 'data-tt-mail data-gmail="' + _mail['{{LESSON_GMAIL}}'] + '" data-outlook="' + _mail['{{LESSON_OUTLOOK}}'] + '"'
+lessons, lessons_preview = (x.replace('data-tt-mail', _mattr) for x in (lessons, lessons_preview))
+assert '{{LESSON_' not in lessons and '{{LESSON_' not in lessons_preview
+if not LESSON_FORM_ID: print('NOTE: LESSON_FORM_ID not set: the lessons paste shows email/phone buttons in the form panel')
 # FAQ: one source for the visible questions and the FAQPage schema
 import html as _html
 _faq = json.loads(src('lessons-faq.json'))
@@ -206,7 +229,7 @@ _faq_html = ('<section class="ls-faq" aria-labelledby="tt-ls-faq-h">\n  <div cla
     + ''.join(f'      <details><summary>{_html.escape(f["q"])}</summary><p>{_linkify(f["a"])}</p></details>\n' for f in _faq)
     + '    </div>\n  </div>\n</section>')
 assert lessons.count('<!--LS:FAQ-->') == 1
-lessons = lessons.replace('<!--LS:FAQ-->', _faq_html)
+lessons, lessons_preview = (x.replace('<!--LS:FAQ-->', _faq_html) for x in (lessons, lessons_preview))
 _biz = next(n for n in schema['@graph'] if n.get('@id') == 'https://thebogeyclub.com/#business')
 _P = 'https://thebogeyclub.com/meet-our-pro/'
 _ls_schema = {"@context": "https://schema.org", "@graph": [
@@ -237,7 +260,7 @@ _ls_tag = '<script type="application/ld+json">\n' + json.dumps(_ls_schema, inden
 # Lessons page: the phone booking bar is a single "Book a lesson" button
 _dock0 = footer.index('<nav class="dock"'); _dock1 = footer.index('</nav>', _dock0) + len('</nav>')
 footer_ls = footer[:_dock0] + ('<nav class="dock solo" aria-label="Quick booking">\n'
-    '  <a href="' + _mail['{{LESSON_MAILTO}}'] + '" data-tt-mail data-gmail="' + _mail['{{LESSON_GMAIL}}'] + '" data-outlook="' + _mail['{{LESSON_OUTLOOK}}'] + '" data-tt-cta="dock-book-lesson">Book a lesson<small>Email Andrew</small></a>\n</nav>') + footer[_dock1:]
+    '  <a href="#tt-lesson-form" data-tt-focus="#tt-lesson-form" data-tt-cta="dock-book-lesson">Book a lesson<small>Request a time</small></a>\n</nav>') + footer[_dock1:]
 _foot = lambda f: f(footer_ls).replace('<!--BCH:NEWSLETTER-->', '<!-- Existing newsletter signup form goes here -->')
 one_ls = ("<!-- THE BOGEY CLUB: MEET OUR PRO page. Paste this whole file into ONE Elementor HTML widget.\n"
           "     Page Settings > Page Layout = Elementor Canvas. Container: Full Width, padding 0. -->\n"
@@ -267,7 +290,7 @@ body {{ margin: 0; background: #FFFFFF; }}
 <body>
 {prev(header)}
 <main>
-{prev(lessons)}
+{prev(lessons_preview)}
 </main>
 {prev(footer_ls).replace('<!--BCH:NEWSLETTER-->', news_demo)}
 <script>

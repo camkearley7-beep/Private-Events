@@ -304,6 +304,20 @@
     }
     } catch (err) { fail(err); }
     try {
+    /* "Book a lesson" buttons: scroll to the request form, then put the cursor in its first field */
+    var lform = document.getElementById("tt-lesson-form");
+    if (lform && "IntersectionObserver" in window) {   /* the phone "Book a lesson" bar steps aside while the form is on screen */
+      new IntersectionObserver(function (es) { html.classList.toggle("tt-dock-off", es[0].isIntersecting); }, { threshold: .15 }).observe(lform);
+    }
+    document.querySelectorAll("[data-tt-focus]").forEach(function (a) {
+      a.addEventListener("click", function () {
+        var box = document.querySelector(a.getAttribute("data-tt-focus"));
+        var first = box && box.querySelector("input:not([type=hidden]), select, textarea");
+        if (first) setTimeout(function () { first.focus({ preventScroll: true }); }, reduce ? 0 : 700);
+      });
+    });
+    } catch (err) { fail(err); }
+    try {
     /* Mobile menu */
     var btn = document.querySelector(".tt .menu"), sheet = document.getElementById("tt-mnav");
     if (btn && sheet) {

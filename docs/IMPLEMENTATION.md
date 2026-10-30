@@ -39,7 +39,18 @@ The rest of this guide is the full site-wide setup: header and footer on every p
 Same setup as the homepage: on the Meet Our Pro page, set Page Layout to **Elementor Canvas**, add one Full Width container with padding 0, add one **HTML** widget, and paste `site/dist/ELEMENTOR-PASTE-LESSONS.txt`. Header, footer, fonts and script are included.
 
 - **Facts used** (from the current page): Andrew McDonald, PGA of Canada, teaching all levels for 8+ years; technique, strategy and the mental game; book on (905) 235-4653 or amcdonald@magnagolf.com. No lesson prices are shown, because none are published.
-- **Book a lesson:** opens a ready-to-send email to Andrew (subject and booking template filled in). A small card also pops up with Gmail, Outlook and Copy email, for visitors whose computer has no email app set up (the email link then does nothing on its own).
+- **Book a lesson → request form:** every Book a lesson button scrolls to the "Request a lesson" card and puts the cursor in the first field (on phones the bottom bar steps aside while the form is on screen). The form is a WPForms form rendered from its shortcode inside the card. Build it in **WPForms → Add New** ("Lesson request"):
+
+  | Field | Label | Settings |
+  |---|---|---|
+  | Name (Simple) | Name | Required · CSS class `wpforms-one-half wpforms-first` |
+  | Phone | Phone | Required · CSS class `wpforms-one-half` |
+  | Email | Email | Required · CSS class `wpforms-one-half wpforms-first` |
+  | Dropdown | Experience level | Beginner, Intermediate, Advanced · CSS class `wpforms-one-half` |
+  | Paragraph Text | What do you want to work on? | Optional |
+  | Single Line Text | Best days and times | Optional |
+
+  Settings: Submit button text "Request a lesson"; Notifications → Send To `amcdonald@magnagolf.com` (add `golf@thebogeyclub.com` to copy the club), Subject "New lesson request from {field_id="1"}", Reply-To the Email field; Confirmations → Message "Thanks! Andrew will be in touch soon to set up your lesson."; anti-spam on. Then put the form's ID in `LESSON_FORM_ID` in `site/build.sh` and rebuild. Until then the card shows Email and Call buttons.
 - **Andrew's photo:** `/wp-content/uploads/2024/12/1000004121-scaled.jpg`, cropped toward his face; the name tag sits over the bottom of the photo.
 - **Simulator screenshots** ("Every swing, measured"): `sw_my_practice_img02.png` and `img03`–`img05.jpg` in the October 2026 uploads folder. The numbers beside each are labelled as sample shots.
 - **SEO (Yoast or Rank Math, on the Meet Our Pro page):**
