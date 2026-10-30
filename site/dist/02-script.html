@@ -226,6 +226,7 @@
     var sim = document.getElementById("tt-sim");
     if (sim) {
       var tabs = sim.querySelectorAll(".ls-tab"), panels = sim.querySelectorAll(".ls-panel");
+      var hoverOK = window.matchMedia("(hover: hover) and (pointer: fine)");
       var CYCLE = 6000, si = 0, stimer = null, inView = false, held = false;
       var count = function (panel) {
         panel.querySelectorAll("[data-to]").forEach(function (el) {
@@ -252,6 +253,8 @@
       };
       tabs.forEach(function (t, k) {
         t.addEventListener("click", function () { held = true; show(k); });
+        /* desktop: hovering a mode shows it */
+        t.addEventListener("mouseenter", function () { if (hoverOK.matches && k !== si) { held = true; show(k); } });
         t.addEventListener("keydown", function (e) {
           var d = e.key === "ArrowRight" || e.key === "ArrowDown" ? 1 : e.key === "ArrowLeft" || e.key === "ArrowUp" ? -1 : 0;
           if (d) { e.preventDefault(); held = true; show(si + d, true); }

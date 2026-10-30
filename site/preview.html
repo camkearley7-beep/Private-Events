@@ -346,6 +346,7 @@ html.tt-js .tt .cform-nojs, .tt .cform-card.has-wpf .cform-nojs { display: none;
   .tt .dock a:first-child { background: var(--green); color: var(--white); font-size: 16px; }
   .tt .dock a:first-child small { color: rgba(255,255,255,.75); }
   .tt .dock a + a { background: var(--mist); }
+  .tt .dock.solo { grid-template-columns: 1fr; }
 
   .tt .walk-pin { padding: 64px 0 48px; }
   .tt .walk-head { padding: 0 18px 22px; flex-direction: column; align-items: start; gap: 8px; }
@@ -537,7 +538,7 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
 .tt .ls-name span { display: block; margin-top: 4px; font-weight: 500; font-size: 16px; letter-spacing: 0; color: var(--green); }
 .tt .ls-pro .acts, .tt .ls-book .acts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
 .tt .ls-portrait { position: relative; aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden; isolation: isolate;
-  background: radial-gradient(80% 70% at 30% 20%, rgba(255,255,255,.08), transparent 60%), var(--green); }
+  background: var(--green); }
 .tt .ls-portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; z-index: -1; transform: scale(1.02); transition: transform 1.4s cubic-bezier(.2,.8,.2,1); }
 .tt .ls-portrait:hover img { transform: scale(1.06); }
 .tt .ls-portrait:has(img)::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, transparent 55%, rgba(35,62,49,.85)); }
@@ -554,7 +555,7 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
 
 
 .tt .ls-sim { padding: 104px var(--g) 96px; color: var(--white);
-  background: radial-gradient(60% 70% at 90% 0%, rgba(255,255,255,.07), transparent 60%), var(--green); }
+  background: var(--green); }
 .tt .ls-sim .data { color: var(--sand); margin-bottom: 18px; }
 .tt .ls-sim .lede { margin-top: 18px; color: rgba(255,255,255,.85); max-width: 58ch; }
 .tt .ls-sim-head { margin-bottom: 44px; }
@@ -564,11 +565,11 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
   background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.14); color: var(--white); transition: background .3s, border-color .3s, transform .3s; }
 .tt .ls-tab:hover { background: rgba(255,255,255,.1); }
 .tt .ls-tab.on { background: var(--white); border-color: var(--white); color: var(--pine); transform: translateX(6px); }
-.tt .ls-tab-no { display: grid; place-items: center; flex: none; width: 40px; height: 40px; border-radius: 50%; background: rgba(215,201,164,.16); color: var(--sand); font-weight: 600; font-size: 14px; letter-spacing: .02em; font-variant-numeric: tabular-nums; transition: background .3s, color .3s; }
+.tt .ls-tab-no { display: grid; place-items: center; flex: none; width: 40px; height: 40px; border-radius: 50%; background: rgba(0,0,0,.2); color: var(--sand); font-weight: 600; font-size: 14px; letter-spacing: .02em; font-variant-numeric: tabular-nums; transition: background .3s, color .3s; }
 .tt .ls-tab.on .ls-tab-no { background: var(--green); color: var(--white); }
 .tt .ls-tab-t { display: grid; gap: 2px; }
 .tt .ls-tab-t b { font-weight: 600; font-size: 17px; }
-.tt .ls-tab-t small { font-size: 13px; color: rgba(255,255,255,.7); }
+.tt .ls-tab-t small { font-size: 13px; color: rgba(255,255,255,.85); }
 .tt .ls-tab.on .ls-tab-t small { color: var(--soft); }
 .tt .ls-tab-bar { position: absolute; left: 0; bottom: 0; height: 3px; width: 0; background: var(--sand); }
 .tt .ls-sim-body.cycling .ls-tab.on .ls-tab-bar { animation: tt-simbar var(--cycle, 6000ms) linear forwards; }
@@ -590,12 +591,12 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
 .tt .ls-chips li { display: grid; gap: 2px; min-width: 92px; padding: 10px 12px; border-radius: 10px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); }
 .tt .ls-chips b { font-weight: 700; font-size: 20px; letter-spacing: -.02em; line-height: 1.1; color: var(--sand); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .tt .ls-chips span { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: rgba(255,255,255,.6); }
-.tt .ls-sim-note { margin-top: 26px; font-size: 13px; color: rgba(255,255,255,.6); }
+.tt .ls-sim-note { margin-top: 26px; font-size: 13px; color: rgba(255,255,255,.82); }
 
 
 .tt .ls-book { background: var(--white); padding: 96px var(--g) 110px; scroll-margin-top: 78px; }
 .tt .ls-book-card { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; padding: 56px; border-radius: 22px; color: var(--white);
-  background: radial-gradient(60% 90% at 0% 0%, rgba(255,255,255,.08), transparent 60%), var(--pine); }
+  background: var(--green); }
 .tt .ls-book-card .data { color: var(--sand); margin-bottom: 16px; }
 .tt .ls-book-card .lede { margin-top: 16px; color: rgba(255,255,255,.85); }
 .tt .ls-book-info { display: grid; border-top: 1px solid rgba(255,255,255,.18); }
@@ -1380,6 +1381,7 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
     var sim = document.getElementById("tt-sim");
     if (sim) {
       var tabs = sim.querySelectorAll(".ls-tab"), panels = sim.querySelectorAll(".ls-panel");
+      var hoverOK = window.matchMedia("(hover: hover) and (pointer: fine)");
       var CYCLE = 6000, si = 0, stimer = null, inView = false, held = false;
       var count = function (panel) {
         panel.querySelectorAll("[data-to]").forEach(function (el) {
@@ -1406,6 +1408,8 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
       };
       tabs.forEach(function (t, k) {
         t.addEventListener("click", function () { held = true; show(k); });
+        /* desktop: hovering a mode shows it */
+        t.addEventListener("mouseenter", function () { if (hoverOK.matches && k !== si) { held = true; show(k); } });
         t.addEventListener("keydown", function (e) {
           var d = e.key === "ArrowRight" || e.key === "ArrowDown" ? 1 : e.key === "ArrowLeft" || e.key === "ArrowUp" ? -1 : 0;
           if (d) { e.preventDefault(); held = true; show(si + d, true); }

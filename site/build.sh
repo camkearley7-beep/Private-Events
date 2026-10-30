@@ -187,7 +187,11 @@ _ls_schema = {"@context": "https://schema.org", "@graph": [
    "provider": {"@id": "https://thebogeyclub.com/meet-our-pro/#andrew"},
    "description": "One-on-one golf lessons on Golfzon simulators with Andrew McDonald, PGA of Canada, covering technique, strategy and the mental game."}]}
 _ls_tag = '<script type="application/ld+json">\n' + json.dumps(_ls_schema, indent=2, ensure_ascii=False) + '\n</script>\n'
-_foot = lambda f: f(footer).replace('<!--BCH:NEWSLETTER-->', '<!-- Existing newsletter signup form goes here -->')
+# Lessons page: the phone booking bar is a single "Book a lesson" button
+_dock0 = footer.index('<nav class="dock"'); _dock1 = footer.index('</nav>', _dock0) + len('</nav>')
+footer_ls = footer[:_dock0] + ('<nav class="dock solo" aria-label="Quick booking">\n'
+    '  <a href="#book" data-tt-cta="dock-book-lesson">Book a lesson<small>With Andrew</small></a>\n</nav>') + footer[_dock1:]
+_foot = lambda f: f(footer_ls).replace('<!--BCH:NEWSLETTER-->', '<!-- Existing newsletter signup form goes here -->')
 one_ls = ("<!-- THE BOGEY CLUB: MEET OUR PRO page. Paste this whole file into ONE Elementor HTML widget.\n"
           "     Page Settings > Page Layout = Elementor Canvas. Container: Full Width, padding 0. -->\n"
           "<div class=\"tt-one\">\n" + live(head).split('-->', 1)[1].strip() + "\n<style>\n" + css + elementor_fix + "</style>\n"
@@ -218,7 +222,7 @@ body {{ margin: 0; background: #FFFFFF; }}
 <main>
 {prev(lessons)}
 </main>
-{prev(footer).replace('<!--BCH:NEWSLETTER-->', news_demo)}
+{prev(footer_ls).replace('<!--BCH:NEWSLETTER-->', news_demo)}
 <script>
 {js}</script>
 </body>
