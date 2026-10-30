@@ -46,7 +46,7 @@ Same setup as the homepage: on the Meet Our Pro page, set Page Layout to **Eleme
   | Name (Simple) | Name | Required · CSS class `wpforms-one-half wpforms-first` |
   | Phone | Phone | Required · CSS class `wpforms-one-half` |
   | Email | Email | Required · CSS class `wpforms-one-half wpforms-first` |
-  | Dropdown | Experience level | Beginner, Intermediate, Advanced · CSS class `wpforms-one-half` |
+  | Dropdown | Experience level | New to golf (no handicap yet); Beginner: usually shoot 100+ (handicap 28+); Intermediate: usually shoot 85–100 (handicap 13–28); Advanced: usually shoot under 85 (handicap 12 or lower); Not sure · CSS class `wpforms-one-half` |
   | Paragraph Text | What do you want to work on? | Optional |
   | Single Line Text | Best days and times | Optional |
 

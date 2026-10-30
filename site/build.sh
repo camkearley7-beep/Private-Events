@@ -192,7 +192,7 @@ _ls_form_preview = ('<div class="wpforms-container wpforms-container-full"><form
     + _mock('Name <span class="wpforms-required-label">*</span>', '<input type="text">', 'wpforms-one-half wpforms-first')
     + _mock('Phone <span class="wpforms-required-label">*</span>', '<input type="tel">', 'wpforms-one-half')
     + _mock('Email <span class="wpforms-required-label">*</span>', '<input type="email">', 'wpforms-one-half wpforms-first')
-    + _mock('Experience level', '<select><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select>', 'wpforms-one-half')
+    + _mock('Experience level', '<select><option>New to golf (no handicap yet)</option><option>Beginner: usually shoot 100+ (handicap 28+)</option><option>Intermediate: usually shoot 85–100 (handicap 13–28)</option><option>Advanced: usually shoot under 85 (handicap 12 or lower)</option><option>Not sure</option></select>', 'wpforms-one-half')
     + _mock('What do you want to work on?', '<textarea></textarea>')
     + _mock('Best days and times', '<input type="text">')
     + '</div><div class="wpforms-submit-container"><button type="submit" class="wpforms-submit">Request a lesson</button></div></form></div>')
