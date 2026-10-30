@@ -178,6 +178,8 @@ sc = re.sub(r'<link rel="preload"[^>]*>\n', '', sc)
 (dist / 'bogey-club-homepage-standalone.html').write_text(embed(sc))
 # Meet our pro (/meet-our-pro/) ---------------------------------------------
 lessons = src('lessons.html')
+import base64 as _b64l
+_lsimg = lambda t: re.sub(r'\{\{LSIMG\}\}/([\w.-]+\.webp)', lambda m: 'data:image/webp;base64,' + _b64l.b64encode((ROOT / 'img' / m.group(1)).read_bytes()).decode(), t)
 _ls_schema = {"@context": "https://schema.org", "@graph": [
   {"@type": "Person", "@id": "https://thebogeyclub.com/meet-our-pro/#andrew", "name": "Andrew McDonald",
    "jobTitle": "Associate Professional, PGA of Canada", "image": "https://thebogeyclub.com/wp-content/uploads/2024/12/1000004121-scaled.jpg", "email": "mailto:amcdonald@magnagolf.com",
@@ -191,7 +193,7 @@ _foot = lambda f: f(footer).replace('<!--BCH:NEWSLETTER-->', '<!-- Existing news
 one_ls = ("<!-- THE BOGEY CLUB: MEET OUR PRO page. Paste this whole file into ONE Elementor HTML widget.\n"
           "     Page Settings > Page Layout = Elementor Canvas. Container: Full Width, padding 0. -->\n"
           "<div class=\"tt-one\">\n" + live(head).split('-->', 1)[1].strip() + "\n<style>\n" + css + elementor_fix + "</style>\n"
-          + live(header) + "\n" + live(lessons) + "\n" + _foot(live) + "\n" + _ls_tag + "<script>\n" + js + "</script>\n</div>\n")
+          + live(header) + "\n" + _lsimg(live(lessons)) + "\n" + _foot(live) + "\n" + _ls_tag + "<script>\n" + js + "</script>\n</div>\n")
 one_ls = one_ls.replace(IMG_LIVE + '/bogey-club-logo.png', _logo)
 if 'Satoshi-Variable.woff2' in have:
     one_ls = re.sub(r'<link rel="preload"[^>]*>\n', '', one_ls)
@@ -216,7 +218,7 @@ body {{ margin: 0; background: #FFFFFF; }}
 <body>
 {prev(header)}
 <main>
-{prev(lessons)}
+{prev(lessons).replace('{{LSIMG}}', 'img')}
 </main>
 {prev(footer).replace('<!--BCH:NEWSLETTER-->', news_demo)}
 <script>

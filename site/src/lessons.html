@@ -29,19 +29,48 @@
   </div>
 </section>
 
-<!-- 4. WHY LEARN ON A SIMULATOR -->
+<!-- 4. THE TECH: a simulator "screen" with four modes (auto-cycles; tap a tab to choose).
+     Screenshots are Golfzon's own displays; the numbers beside them are read off each one. -->
 <section class="ls-sim" aria-labelledby="tt-ls-sim-h">
-  <div>
-    <p class="data">Why learn indoors</p>
+  <div class="ls-sim-head">
+    <p class="data">The tech behind your lesson</p>
     <h2 id="tt-ls-sim-h" class="h-l">Every swing, measured.</h2>
-    <p class="lede">Our Golfzon simulators read every shot, so you and Andrew see the numbers behind it, not just where it went. And the weather never cancels a lesson.</p>
+    <p class="lede">Our Golfzon simulators read every shot, so you and Andrew see the numbers behind it, not just where it went. Pick a mode and see what you'll be working with.</p>
   </div>
-  <ul class="ls-readout">
-    <li><span class="data">Ball speed</span><b>How hard</b></li>
-    <li><span class="data">Launch angle</span><b>How high</b></li>
-    <li><span class="data">Spin</span><b>How it curves</b></li>
-    <li><span class="data">Carry</span><b>How far</b></li>
-  </ul>
+  <div class="ls-sim-body" id="tt-sim">
+    <div class="ls-tabs" role="tablist" aria-label="Simulator modes">
+      <button class="ls-tab on" role="tab" id="tt-simtab-0" aria-controls="tt-simpanel-0" aria-selected="true" data-i="0"><span class="ls-tab-no">01</span><span class="ls-tab-t"><b>Pick your practice</b><small>Range, approach or putting green</small></span><i class="ls-tab-bar" aria-hidden="true"></i></button>
+      <button class="ls-tab" role="tab" id="tt-simtab-1" aria-controls="tt-simpanel-1" aria-selected="false" tabindex="-1" data-i="1"><span class="ls-tab-no">02</span><span class="ls-tab-t"><b>Break down the swing</b><small>Launch, spin, path and face</small></span><i class="ls-tab-bar" aria-hidden="true"></i></button>
+      <button class="ls-tab" role="tab" id="tt-simtab-2" aria-controls="tt-simpanel-2" aria-selected="false" tabindex="-1" data-i="2"><span class="ls-tab-no">03</span><span class="ls-tab-t"><b>Track your progress</b><small>Shot history and accuracy</small></span><i class="ls-tab-bar" aria-hidden="true"></i></button>
+      <button class="ls-tab" role="tab" id="tt-simtab-3" aria-controls="tt-simpanel-3" aria-selected="false" tabindex="-1" data-i="3"><span class="ls-tab-no">04</span><span class="ls-tab-t"><b>Take it to the course</b><small>Live numbers on every shot</small></span><i class="ls-tab-bar" aria-hidden="true"></i></button>
+    </div>
+    <div class="ls-screen">
+      <div class="ls-screen-top" aria-hidden="true"><span></span><span></span><span></span><em>Golfzon</em></div>
+      <div class="ls-panels">
+        <figure class="ls-panel on" role="tabpanel" id="tt-simpanel-0" aria-labelledby="tt-simtab-0">
+          <img src="{{LSIMG}}/sim-practice-areas.webp" width="962" height="585" loading="lazy" decoding="async" alt="Golfzon practice menu: driving range, flat and uphill approach areas, and putting green">
+          <figcaption><p>Warm up on the <b>driving range</b>, dial in wedges on a <b>flat or uphill approach</b>, or roll putts on the <b>practice green</b>.</p>
+            <ul class="ls-chips"><li><b>4</b><span>practice areas</span></li><li><b>Flat + uphill</b><span>approach lies</span></li><li><b>Target</b><span>zones on every shot</span></li></ul></figcaption>
+        </figure>
+        <figure class="ls-panel" role="tabpanel" id="tt-simpanel-1" aria-labelledby="tt-simtab-1" hidden>
+          <img src="{{LSIMG}}/sim-swing-analysis.webp" width="1199" height="642" loading="lazy" decoding="async" alt="Golfzon swing analysis screen showing launch angle, spin rate, club path, face angle and ball data">
+          <figcaption><p>See what the club did at impact: <b>launch, spin, attack angle, club path and face angle</b>, so the fix is obvious.</p>
+            <ul class="ls-chips"><li><b data-to="21" data-unit="°">21°</b><span>launch angle</span></li><li><b data-to="5732">5732</b><span>rpm spin</span></li><li><b data-to="1.53" data-dec="2">1.53</b><span>smash factor</span></li></ul></figcaption>
+        </figure>
+        <figure class="ls-panel" role="tabpanel" id="tt-simpanel-2" aria-labelledby="tt-simtab-2" hidden>
+          <img src="{{LSIMG}}/sim-statistics.webp" width="1200" height="632" loading="lazy" decoding="async" alt="Golfzon statistics screen with shot history, shot accuracy and max and average distance">
+          <figcaption><p>Every shot is saved: <b>shot history, accuracy, max and average</b>, plus swing video to watch back with Andrew.</p>
+            <ul class="ls-chips"><li><b data-to="76" data-unit=" m/s">76 m/s</b><span>ball speed</span></li><li><b data-to="262.2" data-dec="1" data-unit=" m">262.2 m</b><span>carry</span></li><li><b data-to="276.1" data-dec="1" data-unit=" m">276.1 m</b><span>total</span></li></ul></figcaption>
+        </figure>
+        <figure class="ls-panel" role="tabpanel" id="tt-simpanel-3" aria-labelledby="tt-simtab-3" hidden>
+          <img src="{{LSIMG}}/sim-on-course.webp" width="1042" height="588" loading="lazy" decoding="async" alt="Golfzon approach practice with carry, distance, ball speed, spin and launch shown beside the shot">
+          <figcaption><p>Hit real targets on real holes, with <b>carry, spin and launch</b> beside every shot as it lands.</p>
+            <ul class="ls-chips"><li><b data-to="44.5" data-dec="1" data-unit=" m">44.5 m</b><span>carry</span></li><li><b data-to="4941">4941</b><span>rpm backspin</span></li><li><b data-to="38.7" data-dec="1" data-unit="°">38.7°</b><span>launch</span></li></ul></figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+  <p class="ls-sim-note">Screens shown are from our Golfzon simulators; the numbers are sample shots. Rain or shine, the weather never cancels a lesson.</p>
 </section>
 
 <!-- 5. HOW IT WORKS -->

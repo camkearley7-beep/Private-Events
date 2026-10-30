@@ -558,15 +558,44 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
 .tt .ls-no { font-weight: 700; font-size: 56px; line-height: 1; letter-spacing: -.04em; color: transparent; -webkit-text-stroke: 1.5px rgba(13,91,59,.45); transition: -webkit-text-stroke-color .35s; }
 .tt .ls-steplist p { color: var(--soft); transition: color .35s; }
 
-.tt .ls-sim { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; padding: 104px var(--g); color: var(--white);
-  background: radial-gradient(70% 80% at 85% 20%, rgba(255,255,255,.07), transparent 60%), var(--green); }
+.tt .ls-sim { padding: 104px var(--g) 96px; color: var(--white);
+  background: radial-gradient(60% 70% at 90% 0%, rgba(255,255,255,.07), transparent 60%), var(--green); }
 .tt .ls-sim .data { color: var(--sand); margin-bottom: 18px; }
-.tt .ls-sim .lede { margin-top: 18px; color: rgba(255,255,255,.85); }
-.tt .ls-readout { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.tt .ls-readout li { display: grid; gap: 10px; padding: 24px 22px; border-radius: 14px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.16); transition: background .35s, border-color .35s; }
-.tt .ls-readout li:hover { background: rgba(255,255,255,.12); border-color: var(--sand); }
-.tt .ls-readout .data { margin: 0; }
-.tt .ls-readout b { font-weight: 700; font-size: clamp(22px, 2.1vw, 30px); letter-spacing: -.02em; line-height: 1.1; }
+.tt .ls-sim .lede { margin-top: 18px; color: rgba(255,255,255,.85); max-width: 58ch; }
+.tt .ls-sim-head { margin-bottom: 44px; }
+.tt .ls-sim-body { display: grid; grid-template-columns: minmax(250px, .62fr) 1.38fr; gap: 28px; align-items: start; }
+.tt .ls-tabs { display: grid; gap: 10px; }
+.tt .ls-tab { position: relative; display: flex; gap: 16px; align-items: center; text-align: left; padding: 18px 18px; border-radius: 14px; overflow: hidden;
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.14); color: var(--white); transition: background .3s, border-color .3s, transform .3s; }
+.tt .ls-tab:hover { background: rgba(255,255,255,.1); }
+.tt .ls-tab.on { background: var(--white); border-color: var(--white); color: var(--pine); transform: translateX(6px); }
+.tt .ls-tab-no { font-weight: 700; font-size: 26px; letter-spacing: -.03em; line-height: 1; color: transparent; -webkit-text-stroke: 1.2px rgba(215,201,164,.8); min-width: 36px; }
+.tt .ls-tab.on .ls-tab-no { -webkit-text-stroke-color: var(--green); }
+.tt .ls-tab-t { display: grid; gap: 2px; }
+.tt .ls-tab-t b { font-weight: 600; font-size: 17px; }
+.tt .ls-tab-t small { font-size: 13px; color: rgba(255,255,255,.7); }
+.tt .ls-tab.on .ls-tab-t small { color: var(--soft); }
+.tt .ls-tab-bar { position: absolute; left: 0; bottom: 0; height: 3px; width: 0; background: var(--sand); }
+.tt .ls-sim-body.cycling .ls-tab.on .ls-tab-bar { animation: tt-simbar var(--cycle, 6000ms) linear forwards; }
+@keyframes tt-simbar { from { width: 0; } to { width: 100%; } }
+.tt .ls-screen { border-radius: 18px; padding: 10px; background: #0E1418; border: 1px solid rgba(255,255,255,.12); box-shadow: 0 30px 60px rgba(0,0,0,.28); }
+.tt .ls-screen-top { display: flex; align-items: center; gap: 6px; padding: 2px 6px 10px; }
+.tt .ls-screen-top span { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,.18); }
+.tt .ls-screen-top em { margin-left: auto; font-style: normal; font-size: 11px; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; color: rgba(255,255,255,.45); }
+.tt .ls-panels { position: relative; }
+.tt .ls-panel { margin: 0; }
+.tt .ls-panel[hidden] { display: none; }
+.tt .ls-panel img { width: 100%; aspect-ratio: 16 / 9; object-fit: contain; background: #121A20; border-radius: 10px; }
+.tt .ls-panel.on img { animation: tt-simin .6s cubic-bezier(.2,.8,.2,1); }
+@keyframes tt-simin { from { opacity: 0; transform: scale(.985); } to { opacity: 1; transform: none; } }
+.tt .ls-panel figcaption { display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: center; padding: 16px 8px 6px; }
+.tt .ls-panel figcaption p { font-size: 15px; line-height: 1.5; color: rgba(255,255,255,.78); }
+.tt .ls-panel figcaption p b { color: var(--white); font-weight: 600; }
+.tt .ls-chips { list-style: none; display: flex; gap: 8px; }
+.tt .ls-chips li { display: grid; gap: 2px; min-width: 92px; padding: 10px 12px; border-radius: 10px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); }
+.tt .ls-chips b { font-weight: 700; font-size: 20px; letter-spacing: -.02em; line-height: 1.1; color: var(--sand); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.tt .ls-chips span { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: rgba(255,255,255,.6); }
+.tt .ls-sim-note { margin-top: 26px; font-size: 13px; color: rgba(255,255,255,.6); }
 
 .tt .ls-steps { background: var(--white); padding: 110px var(--g) 90px; }
 .tt .ls-steplist li { display: grid; gap: 12px; align-content: start; padding-top: 26px; border-top: 2px solid var(--pine); }
@@ -585,6 +614,7 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
 .tt .ls-more a { color: var(--green); font-weight: 600; border-bottom: 1.5px solid var(--sand); padding-bottom: 2px; }
 
 @media (max-width: 1100px) and (min-width: 861px) {
+  .tt .ls-panel figcaption { grid-template-columns: 1fr; }
   .tt .ls-steplist { gap: 14px; }
   .tt .ls-book-card { padding: 44px; gap: 36px; }
 }
@@ -601,8 +631,20 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
   .tt .ls-steps { padding: 72px 18px; }
   .tt .ls-steplist { grid-template-columns: 1fr; }
   .tt .ls-steplist { gap: 26px; }
-  .tt .ls-sim { grid-template-columns: 1fr; gap: 32px; padding: 72px 18px; }
-  .tt .ls-readout li { padding: 18px 16px; }
+  .tt .ls-sim { padding: 72px 18px; }
+  .tt .ls-sim-head { margin-bottom: 28px; }
+  .tt .ls-sim-body { grid-template-columns: 1fr; gap: 16px; }
+  .tt .ls-tabs { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .tt .ls-tab { padding: 12px; gap: 10px; align-items: flex-start; }
+  .tt .ls-tab.on { transform: none; }
+  .tt .ls-tab-no { font-size: 20px; min-width: 26px; }
+  .tt .ls-tab-t b { font-size: 14px; line-height: 1.3; }
+  .tt .ls-tab-t small { display: none; }
+  .tt .ls-screen { padding: 6px; border-radius: 14px; }
+  .tt .ls-screen-top { display: none; }
+  .tt .ls-panel figcaption { grid-template-columns: 1fr; gap: 12px; padding: 14px 6px 6px; }
+  .tt .ls-chips li { flex: 1; min-width: 0; }
+  .tt .ls-chips b { font-size: 17px; }
   .tt .ls-book { padding: 0 18px 72px; scroll-margin-top: 64px; }
   .tt .ls-book-card { grid-template-columns: 1fr; gap: 32px; padding: 32px 22px; border-radius: 18px; }
   .tt .ls-book-info div { flex-direction: column; gap: 4px; }
@@ -1343,6 +1385,50 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
       cform.addEventListener("input", function (e) { var f = e.target.closest(".cfield"); if (f) f.classList.remove("bad"); });
     }
 
+    } catch (err) { fail(err); }
+    try {
+    /* Lessons page: the simulator "screen". Tabs switch modes, the numbers count up,
+       and it cycles on its own while in view (paused on hover, focus or reduced motion). */
+    var sim = document.getElementById("tt-sim");
+    if (sim) {
+      var tabs = sim.querySelectorAll(".ls-tab"), panels = sim.querySelectorAll(".ls-panel");
+      var CYCLE = 6000, si = 0, stimer = null, inView = false, held = false;
+      var count = function (panel) {
+        panel.querySelectorAll("[data-to]").forEach(function (el) {
+          var end = Number(el.dataset.to), dec = Number(el.dataset.dec || 0), unit = el.dataset.unit || "";
+          if (reduce) { el.textContent = end.toFixed(dec) + unit; return; }
+          var t0 = performance.now();
+          (function tick(t) { var k = Math.min(1, (t - t0) / 900), v = end * (1 - Math.pow(1 - k, 3));
+            el.textContent = v.toFixed(dec) + unit; if (k < 1) requestAnimationFrame(tick); })(t0);
+        });
+      };
+      var show = function (i, focus) {
+        si = (i + tabs.length) % tabs.length;
+        tabs.forEach(function (t, k) { var on = k === si; t.classList.toggle("on", on); t.setAttribute("aria-selected", on); t.tabIndex = on ? 0 : -1; });
+        panels.forEach(function (p, k) { var on = k === si; p.classList.toggle("on", on); p.hidden = !on; });
+        if (focus) tabs[si].focus();
+        count(panels[si]);
+        restart();
+      };
+      var restart = function () {
+        clearTimeout(stimer); sim.classList.remove("cycling");
+        if (reduce || held || !inView) return;
+        void sim.offsetWidth; sim.classList.add("cycling"); sim.style.setProperty("--cycle", CYCLE + "ms");
+        stimer = setTimeout(function () { show(si + 1); }, CYCLE);
+      };
+      tabs.forEach(function (t, k) {
+        t.addEventListener("click", function () { held = true; show(k); });
+        t.addEventListener("keydown", function (e) {
+          var d = e.key === "ArrowRight" || e.key === "ArrowDown" ? 1 : e.key === "ArrowLeft" || e.key === "ArrowUp" ? -1 : 0;
+          if (d) { e.preventDefault(); held = true; show(si + d, true); }
+        });
+      });
+      sim.addEventListener("mouseenter", function () { held = true; restart(); });
+      sim.addEventListener("mouseleave", function () { held = false; restart(); });
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (es) { inView = es[0].isIntersecting; if (inView) count(panels[si]); restart(); }, { threshold: .35 }).observe(sim);
+      }
+    }
     } catch (err) { fail(err); }
     try {
     /* Mobile menu */
