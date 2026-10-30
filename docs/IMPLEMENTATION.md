@@ -39,6 +39,7 @@ The rest of this guide is the full site-wide setup: header and footer on every p
 Same setup as the homepage: on the Meet Our Pro page, set Page Layout to **Elementor Canvas**, add one Full Width container with padding 0, add one **HTML** widget, and paste `site/dist/ELEMENTOR-PASTE-LESSONS.txt`. Header, footer, fonts and script are included.
 
 - **Facts used** (from the current page): Andrew McDonald, PGA of Canada, teaching all levels for 8+ years; technique, strategy and the mental game; book on (905) 235-4653 or amcdonald@magnagolf.com. No lesson prices are shown, because none are published.
+- **Book a lesson:** opens a ready-to-send email to Andrew (subject and booking template filled in). A small card also pops up with Gmail, Outlook and Copy email, for visitors whose computer has no email app set up (the email link then does nothing on its own).
 - **Andrew's photo:** `/wp-content/uploads/2024/12/1000004121-scaled.jpg`, cropped toward his face; the name tag sits over the bottom of the photo.
 - **Simulator screenshots** ("Every swing, measured"): `sw_my_practice_img02.png` and `img03`–`img05.jpg` in the October 2026 uploads folder. The numbers beside each are labelled as sample shots.
 - **SEO (Yoast or Rank Math, on the Meet Our Pro page):**
@@ -46,7 +47,7 @@ Same setup as the homepage: on the Meet Our Pro page, set Page Layout to **Eleme
   - Meta description: `Private golf lessons in Newmarket with Andrew McDonald, Associate Professional, PGA of Canada. One-on-one indoor lessons on Golfzon simulators for every level. Book today.`
   - Focus keyphrase: `golf lessons Newmarket` (related: private golf lessons, indoor golf lessons, golf instruction).
   - Keep the URL `/meet-our-pro/` (it already has links pointing to it). Leave Yoast's own schema on; the page's JSON-LD adds the Person, Service and FAQ details.
-- **On the page for Google:** keyword H1 text ("Private golf lessons · Newmarket, ON — Meet Our Pro"), a 7-question golf lessons FAQ (from `site/src/lessons-faq.json`, which also builds the FAQPage schema), and JSON-LD for WebPage, BreadcrumbList, the business, Andrew (Person), the lessons (Service, serving Newmarket, Aurora and East Gwillimbury) and the FAQ.
+- **On the page for Google:** keyword H1 text ("Private golf lessons · Newmarket, ON — Meet Our Pro"), a compact 7-question golf lessons FAQ at the bottom of the page (all closed; Google still reads it) (from `site/src/lessons-faq.json`, which also builds the FAQPage schema), and JSON-LD for WebPage, BreadcrumbList, the business, Andrew (Person), the lessons (Service, serving Newmarket, Aurora and East Gwillimbury) and the FAQ.
 - **Off the page (biggest wins):** in Google Business Profile add "Golf lessons" / "Private golf lessons" as services with this page's URL, and post a photo of a lesson; ask lesson students for Google reviews that mention lessons; then in Google Search Console, inspect `https://thebogeyclub.com/meet-our-pro/` and click Request indexing.
 
 ## 1. Upload files

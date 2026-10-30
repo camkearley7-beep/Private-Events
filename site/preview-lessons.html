@@ -592,22 +592,21 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
 .tt .ls-sim-note { margin-top: 26px; font-size: 13px; color: rgba(255,255,255,.82); }
 
 
-.tt .ls-faq { display: grid; grid-template-columns: .8fr 1.2fr; gap: 64px; align-items: start; padding: 104px var(--g) 0; background: var(--white); }
-.tt .ls-faq-head { position: sticky; top: 110px; }
-.tt .ls-faq-head .data { margin-bottom: 16px; }
-.tt .ls-faq-head .lede { margin-top: 16px; }
+.tt .ls-faq { padding: 0 var(--g) 96px; background: var(--white); }
+.tt .ls-faq-in { max-width: 820px; margin: 0 auto; }
+.tt .ls-faq-t { display: flex; align-items: baseline; gap: 14px; margin-bottom: 10px; font-weight: 600; font-size: 18px; letter-spacing: -.01em; color: var(--ink); }
+.tt .ls-faq-t .data { font-size: 11px; }
 .tt .ls-faq-list { border-top: 1px solid var(--line); }
 .tt .ls-faq-list details { border-bottom: 1px solid var(--line); }
-.tt .ls-faq-list summary { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 22px 0; cursor: pointer; list-style: none;
-  font-weight: 600; font-size: clamp(17px, 1.4vw, 20px); letter-spacing: -.01em; color: var(--ink); transition: color .25s; }
+.tt .ls-faq-list summary { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 13px 0; cursor: pointer; list-style: none;
+  font-weight: 500; font-size: 15px; color: var(--ink); transition: color .2s; }
 .tt .ls-faq-list summary::-webkit-details-marker { display: none; }
-.tt .ls-faq-list summary::after { content: '+'; flex: none; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid var(--line);
-  font-weight: 500; font-size: 20px; line-height: 1; color: var(--green); transition: transform .3s, background .3s, color .3s, border-color .3s; }
+.tt .ls-faq-list summary::after { content: '+'; flex: none; font-weight: 400; font-size: 20px; line-height: 1; color: var(--green); transition: transform .25s; }
 .tt .ls-faq-list summary:hover { color: var(--green); }
-.tt .ls-faq-list details[open] summary::after { transform: rotate(45deg); background: var(--green); border-color: var(--green); color: var(--white); }
-.tt .ls-faq-list details p { padding: 0 54px 22px 0; color: var(--soft); max-width: 62ch; }
-.tt .ls-faq-list details p a { color: var(--green); font-weight: 600; border-bottom: 1.5px solid var(--sand); }
-.tt .ls-book { background: var(--white); padding: 96px var(--g) 110px; scroll-margin-top: 78px; }
+.tt .ls-faq-list details[open] summary::after { transform: rotate(45deg); }
+.tt .ls-faq-list details p { padding: 0 32px 16px 0; font-size: 14px; line-height: 1.6; color: var(--soft); }
+.tt .ls-faq-list details p a { color: var(--green); font-weight: 600; border-bottom: 1px solid var(--sand); }
+.tt .ls-book { background: var(--white); padding: 96px var(--g) 72px; scroll-margin-top: 78px; }
 .tt .ls-book-card { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; padding: 56px; border-radius: 22px; color: var(--white);
   background: var(--green); }
 .tt .ls-book-card .data { color: var(--sand); margin-bottom: 16px; }
@@ -617,10 +616,6 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
 .tt .ls-book-info dt { color: rgba(255,255,255,.7); }
 .tt .ls-book-info dd { text-align: right; font-weight: 500; }
 .tt .ls-book-info a { border-bottom: 1px solid var(--sand); }
-.tt .ls-mailhelp { margin-top: 14px; font-size: 14px; color: var(--soft); }
-.tt .ls-mailhelp a { color: var(--green); font-weight: 600; border-bottom: 1.5px solid var(--sand); }
-.tt .ls-book-card .ls-mailhelp { color: rgba(255,255,255,.85); }
-.tt .ls-book-card .ls-mailhelp a { color: var(--white); }
 .tt .ls-more { margin-top: 26px; text-align: center; color: var(--soft); }
 .tt .ls-more a { color: var(--green); font-weight: 600; border-bottom: 1.5px solid var(--sand); padding-bottom: 2px; }
 
@@ -651,14 +646,27 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
   .tt .ls-panel figcaption { grid-template-columns: 1fr; gap: 12px; padding: 14px 6px 6px; }
   .tt .ls-chips li { flex: 1; min-width: 0; }
   .tt .ls-chips b { font-size: 17px; }
-  .tt .ls-faq { grid-template-columns: 1fr; gap: 24px; padding: 72px 18px 0; }
-  .tt .ls-faq-head { position: static; }
+  .tt .ls-faq { padding: 0 18px 64px; }
   .tt .ls-faq-list details p { padding-right: 0; }
   .tt .ls-book { padding: 56px 18px 72px; scroll-margin-top: 64px; }
   .tt .ls-book-card { grid-template-columns: 1fr; gap: 32px; padding: 32px 22px; border-radius: 18px; }
   .tt .ls-book-info div { flex-direction: column; gap: 4px; }
   .tt .ls-book-info dd { text-align: left; }
 }
+
+/* "Not opening?" card for the ready-to-send email links */
+.tt-mailsheet { position: fixed; z-index: 60; left: 50%; bottom: 24px; transform: translate(-50%, 20px); opacity: 0; pointer-events: none;
+  width: min(440px, calc(100vw - 24px)); padding: 16px 18px; border-radius: 14px; background: #FFFFFF; color: #233E31; border: 1px solid rgba(35,62,49,.14);
+  box-shadow: 0 18px 40px rgba(35,62,49,.22); font: 400 14px/1.45 'Satoshi', system-ui, sans-serif; transition: opacity .25s, transform .25s; }
+.tt-mailsheet.on { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+.tt-mailsheet b { display: block; font-weight: 600; font-size: 15px; margin-bottom: 2px; padding-right: 28px; }
+.tt-mailsheet .acts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.tt-mailsheet .acts a, .tt-mailsheet .acts button { all: unset; box-sizing: border-box; cursor: pointer; padding: 9px 14px; border-radius: 8px; font-weight: 600; font-size: 14px;
+  background: #F3F6EF; color: #0D5B3B; border: 1px solid rgba(35,62,49,.14); }
+.tt-mailsheet .acts a:hover, .tt-mailsheet .acts button:hover { background: #0D5B3B; color: #FFFFFF; }
+.tt-mailsheet .acts :focus-visible, .tt-mailsheet .x:focus-visible { outline: 2px solid #0D5B3B; outline-offset: 2px; }
+.tt-mailsheet .x { all: unset; cursor: pointer; position: absolute; top: 10px; right: 12px; width: 28px; height: 28px; display: grid; place-items: center; font-size: 20px; color: rgba(35,62,49,.6); border-radius: 50%; }
+@media (max-width: 860px) { .tt-mailsheet { bottom: calc(96px + env(safe-area-inset-bottom)); } }
 
 </style>
 <script type="application/ld+json">
@@ -910,10 +918,9 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
     <p class="lede">A certified PGA of Canada golf professional, Andrew has taught golf at every level for more than eight years, with personalized lessons built on technique, strategy and the mental game.</p>
     <p>Known for his patient, supportive teaching style, he helps players build confidence and lower their scores. Beginner or advanced, every private golf lesson is one-on-one on our indoor Golfzon simulators in Newmarket, so you see exactly what the ball did.</p>
     <div class="acts">
-      <a class="btn btn-red" href="mailto:amcdonald@magnagolf.com?subject=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" data-tt-cta="lessons-hero-email">Book a lesson</a>
+      <a class="btn btn-red" href="mailto:amcdonald@magnagolf.com?subject=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" data-tt-mail data-gmail="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=amcdonald%40magnagolf.com&amp;su=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" data-outlook="https://outlook.live.com/mail/0/deeplink/compose?to=amcdonald%40magnagolf.com&amp;subject=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" data-tt-cta="lessons-hero-email">Book a lesson</a>
       <a class="btn btn-line dark" href="tel:+19052354653" data-tt-cta="lessons-hero-call">(905) 235-4653</a>
     </div>
-    <p class="ls-mailhelp">Opens a ready-to-send email to Andrew. Use web mail? <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=amcdonald%40magnagolf.com&amp;su=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" target="_blank" rel="noopener" data-tt-cta="lessons-hero-gmail">Gmail</a> · <a href="https://outlook.live.com/mail/0/deeplink/compose?to=amcdonald%40magnagolf.com&amp;subject=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" target="_blank" rel="noopener" data-tt-cta="lessons-hero-outlook">Outlook</a></p>
     <dl class="ls-stats">
       <div><dt>Teaching</dt><dd>8+ yrs</dd></div>
       <div><dt>Certified</dt><dd>PGA of Canada</dd></div>
@@ -966,24 +973,6 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
   <p class="ls-sim-note">Screens shown are from our Golfzon simulators; the numbers are sample shots. Rain or shine, the weather never cancels a lesson.</p>
 </section>
 
-<!-- 5. FAQ: generated at build time from src/lessons-faq.json (same text feeds the FAQPage schema) -->
-<section class="ls-faq" aria-labelledby="tt-ls-faq-h">
-  <div class="ls-faq-head">
-    <p class="data">Golf lessons FAQ</p>
-    <h2 id="tt-ls-faq-h" class="h-l">Golf lessons in Newmarket, answered.</h2>
-    <p class="lede">Everything you need to know before your first private lesson with Andrew.</p>
-  </div>
-  <div class="ls-faq-list">
-    <details open><summary>Where can I take golf lessons in Newmarket?</summary><p>At The Bogey Club, 17705 Leslie Street, Unit 5, in Newmarket, Ontario. Private lessons are one-on-one with Andrew McDonald, Associate Professional with the PGA of Canada, on our indoor Golfzon simulators. We're a short drive from Aurora and East Gwillimbury.</p></details>
-    <details><summary>Are private golf lessons good for beginners?</summary><p>Yes. Andrew has taught golf at every level for more than eight years, from players picking up a club for the first time to advanced golfers chasing a lower handicap. Every lesson is built around your goals.</p></details>
-    <details><summary>What will I work on in a golf lesson?</summary><p>Andrew's personalized lessons focus on technique, strategy and the mental game: your grip, setup and swing, smarter club choice and course management, and the routines that hold up under pressure.</p></details>
-    <details><summary>Why take golf lessons on a simulator?</summary><p>Our Golfzon simulators measure every shot, including ball speed, launch angle, spin and carry, so you and your coach see exactly what the ball did. Lessons are indoors, so you can keep improving all year, rain or shine.</p></details>
-    <details><summary>How much do private golf lessons cost?</summary><p>Call the club at <a href="tel:+19052354653">(905) 235-4653</a> or email Andrew at <a href="mailto:amcdonald@magnagolf.com">amcdonald@magnagolf.com</a> for current lesson rates.</p></details>
-    <details><summary>How do I book a golf lesson?</summary><p>Call <a href="tel:+19052354653">(905) 235-4653</a> or email Andrew at <a href="mailto:amcdonald@magnagolf.com">amcdonald@magnagolf.com</a> and let him know what part of your game you want to work on.</p></details>
-    <details><summary>Can I practise between lessons?</summary><p>Yes. <a href="https://thebogeyclub.golfbooking.ca/calendar.php">Book a simulator bay online</a> at The Bogey Club to practise what you worked on with Andrew.</p></details>
-  </div>
-</section>
-
 <!-- 6. BOOK -->
 <section class="ls-book" id="book" aria-labelledby="tt-ls-book-h">
   <div class="ls-book-card">
@@ -992,18 +981,34 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
       <h2 id="tt-ls-book-h" class="h-l">Ready when you are.</h2>
       <p class="lede">Call or email Andrew, tell him what part of your game you want to work on, and start seeing real results.</p>
       <div class="acts">
-        <a class="btn btn-white" href="mailto:amcdonald@magnagolf.com?subject=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" data-tt-cta="lessons-book-email">Email Andrew</a>
+        <a class="btn btn-white" href="mailto:amcdonald@magnagolf.com?subject=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" data-tt-mail data-gmail="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=amcdonald%40magnagolf.com&amp;su=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" data-outlook="https://outlook.live.com/mail/0/deeplink/compose?to=amcdonald%40magnagolf.com&amp;subject=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" data-tt-cta="lessons-book-email">Email Andrew</a>
         <a class="btn btn-line" href="tel:+19052354653" data-tt-cta="lessons-book-call">(905) 235-4653</a>
       </div>
-      <p class="ls-mailhelp">Use web mail? <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=amcdonald%40magnagolf.com&amp;su=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" target="_blank" rel="noopener" data-tt-cta="lessons-book-gmail">Gmail</a> · <a href="https://outlook.live.com/mail/0/deeplink/compose?to=amcdonald%40magnagolf.com&amp;subject=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" target="_blank" rel="noopener" data-tt-cta="lessons-book-outlook">Outlook</a></p>
     </div>
     <dl class="ls-book-info">
-      <div><dt>Email</dt><dd><a href="mailto:amcdonald@magnagolf.com?subject=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21">amcdonald@magnagolf.com</a></dd></div>
+      <div><dt>Email</dt><dd><a href="mailto:amcdonald@magnagolf.com?subject=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" data-tt-mail data-gmail="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=amcdonald%40magnagolf.com&amp;su=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" data-outlook="https://outlook.live.com/mail/0/deeplink/compose?to=amcdonald%40magnagolf.com&amp;subject=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21">amcdonald@magnagolf.com</a></dd></div>
       <div><dt>Phone</dt><dd><a href="tel:+19052354653">(905) 235-4653</a></dd></div>
       <div><dt>Where</dt><dd>17705 Leslie Street, Unit 5<br>Newmarket, ON L3Y 3E3</dd></div>
     </dl>
   </div>
   <p class="ls-more">Practising between lessons? <a href="https://thebogeyclub.golfbooking.ca/calendar.php" data-tt-cta="lessons-book-bay">Book a bay</a> or <a href="https://thebogeyclub.com/leagues-and-events/">join a league</a>.</p>
+</section>
+
+
+<!-- 6. FAQ (compact, all closed): built from src/lessons-faq.json, which also feeds the FAQPage schema -->
+<section class="ls-faq" aria-labelledby="tt-ls-faq-h">
+  <div class="ls-faq-in">
+    <h2 id="tt-ls-faq-h" class="ls-faq-t"><span class="data">FAQ</span>Golf lessons in Newmarket</h2>
+    <div class="ls-faq-list">
+      <details><summary>Where can I take golf lessons in Newmarket?</summary><p>At The Bogey Club, 17705 Leslie Street, Unit 5, in Newmarket, Ontario. Private lessons are one-on-one with Andrew McDonald, Associate Professional with the PGA of Canada, on our indoor Golfzon simulators. We're a short drive from Aurora and East Gwillimbury.</p></details>
+      <details><summary>Are private golf lessons good for beginners?</summary><p>Yes. Andrew has taught golf at every level for more than eight years, from players picking up a club for the first time to advanced golfers chasing a lower handicap. Every lesson is built around your goals.</p></details>
+      <details><summary>What will I work on in a golf lesson?</summary><p>Andrew's personalized lessons focus on technique, strategy and the mental game: your grip, setup and swing, smarter club choice and course management, and the routines that hold up under pressure.</p></details>
+      <details><summary>Why take golf lessons on a simulator?</summary><p>Our Golfzon simulators measure every shot, including ball speed, launch angle, spin and carry, so you and your coach see exactly what the ball did. Lessons are indoors, so you can keep improving all year, rain or shine.</p></details>
+      <details><summary>How much do private golf lessons cost?</summary><p>Call the club at <a href="tel:+19052354653">(905) 235-4653</a> or email Andrew at <a href="mailto:amcdonald@magnagolf.com">amcdonald@magnagolf.com</a> for current lesson rates.</p></details>
+      <details><summary>How do I book a golf lesson?</summary><p>Call <a href="tel:+19052354653">(905) 235-4653</a> or email Andrew at <a href="mailto:amcdonald@magnagolf.com">amcdonald@magnagolf.com</a> and let him know what part of your game you want to work on.</p></details>
+      <details><summary>Can I practise between lessons?</summary><p>Yes. <a href="https://thebogeyclub.golfbooking.ca/calendar.php">Book a simulator bay online</a> at The Bogey Club to practise what you worked on with Andrew.</p></details>
+    </div>
+  </div>
 </section>
 
 </div>
@@ -1043,7 +1048,7 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
 </footer>
 
 <nav class="dock solo" aria-label="Quick booking">
-  <a href="mailto:amcdonald@magnagolf.com?subject=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" data-tt-cta="dock-book-lesson">Book a lesson<small>Email Andrew</small></a>
+  <a href="mailto:amcdonald@magnagolf.com?subject=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" data-tt-mail data-gmail="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=amcdonald%40magnagolf.com&amp;su=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" data-outlook="https://outlook.live.com/mail/0/deeplink/compose?to=amcdonald%40magnagolf.com&amp;subject=Private%20golf%20lesson%20at%20The%20Bogey%20Club&amp;body=Hi%20Andrew%2C%0A%0AI%27d%20like%20to%20book%20a%20private%20golf%20lesson%20at%20The%20Bogey%20Club.%0A%0AName%3A%0APhone%3A%0AExperience%20level%20%28beginner%20/%20intermediate%20/%20advanced%29%3A%0AWhat%20I%27d%20like%20to%20work%20on%3A%0ADays%20and%20times%20that%20work%20for%20me%3A%0A%0AThanks%21" data-tt-cta="dock-book-lesson">Book a lesson<small>Email Andrew</small></a>
 </nav>
 </div>
 
@@ -1314,6 +1319,43 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
       if ("IntersectionObserver" in window) {
         new IntersectionObserver(function (es) { inView = es[0].isIntersecting; if (inView) count(panels[si]); restart(); }, { threshold: .35 }).observe(sim);
       }
+    }
+    } catch (err) { fail(err); }
+    try {
+    /* Ready-to-send email links (Book a lesson): the email app opens as normal, and a small
+       card offers Gmail, Outlook or copying the address for anyone without an email app set up. */
+    var mailLinks = document.querySelectorAll("[data-tt-mail]");
+    if (mailLinks.length) {
+      var mailSheet = null, mailHide = null;
+      var closeMail = function () { if (mailSheet) mailSheet.classList.remove("on"); clearTimeout(mailHide); };
+      var openMail = function (a) {
+        var addr = decodeURIComponent(a.getAttribute("href").replace(/^mailto:/, "").split("?")[0]);
+        if (!mailSheet) {
+          mailSheet = document.createElement("div");
+          mailSheet.className = "tt-mailsheet"; mailSheet.setAttribute("role", "status"); mailSheet.setAttribute("aria-live", "polite");
+          document.body.appendChild(mailSheet);
+          document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeMail(); });
+        }
+        mailSheet.innerHTML = '<button class="x" type="button" aria-label="Close">\u00d7</button>' +
+          "<b>Opening your email app\u2026</b>Not opening? Send it another way:" +
+          '<div class="acts"><a target="_blank" rel="noopener" data-k="gmail">Gmail</a><a target="_blank" rel="noopener" data-k="outlook">Outlook</a>' +
+          '<button type="button" data-k="copy">Copy email</button></div>';
+        mailSheet.querySelector('[data-k="gmail"]').href = a.getAttribute("data-gmail") || ("https://mail.google.com/mail/?view=cm&to=" + encodeURIComponent(addr));
+        mailSheet.querySelector('[data-k="outlook"]').href = a.getAttribute("data-outlook") || ("https://outlook.live.com/mail/0/deeplink/compose?to=" + encodeURIComponent(addr));
+        mailSheet.querySelector(".x").addEventListener("click", closeMail);
+        mailSheet.querySelectorAll(".acts a").forEach(function (l) { l.addEventListener("click", function () { setTimeout(closeMail, 300); }); });
+        var copy = mailSheet.querySelector('[data-k="copy"]');
+        copy.addEventListener("click", function () {
+          var done = function () { copy.textContent = "Copied: " + addr; };
+          if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(addr).then(done, function () { copy.textContent = addr; });
+          else copy.textContent = addr;
+        });
+        requestAnimationFrame(function () { mailSheet.classList.add("on"); });
+        clearTimeout(mailHide); mailHide = setTimeout(closeMail, 15000);
+      };
+      mailLinks.forEach(function (a) {
+        a.addEventListener("click", function () { setTimeout(function () { openMail(a); }, 500); });
+      });
     }
     } catch (err) { fail(err); }
     try {
