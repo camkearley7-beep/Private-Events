@@ -826,3 +826,9 @@ html.tt-drawer-on .tt .tt-drawer { transform: none; }
 .tt .tt-drawer-sum ul { margin-bottom: 0; color: var(--ink); }
 .tt .tt-drawer-card { padding: 14px 16px; border-left: 3px solid var(--green); background: var(--mist); border-radius: 0 10px 10px 0; color: var(--ink); }
 .tt .tt-drawer-body strong { color: var(--ink); font-weight: 600; }
+
+/* FAQ panel: the accordion reuses the page FAQ list */
+.tt .tt-drawer .ls-faq-list { margin-top: 4px; }
+.tt .tt-drawer .ls-faq-list details p { padding-right: 8px; }
+.tt .tt-drawer-ask { margin-top: 32px; }
+.tt .tt-drawer-ask p { color: var(--ink); }

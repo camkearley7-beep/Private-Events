@@ -178,6 +178,7 @@ The "Send us a message" form asks for name, email, phone (optional), a topic (Ge
 
 ## 5. Footer, newsletter and mobile booking bar
 
+- **FAQs:** "FAQs & contact" in the footer and "FAQs" in the phone menu open a slide-out FAQ panel (3 groups, 14 questions) built from `site/src/faq.json`, with a "Still have a question?" box at the end. Without the script the links still go to `/faqs/`; `dist/FAQS.txt` is the same text for that WordPress page. **Confirm:** rental clubs (still offered? any price?), gift cards (online link?), food (current menu), and kids policy during bar hours.
 - **Privacy policy:** the footer link opens the policy in a panel that slides in from the left (text in `site/src/privacy.html`, built into every page's footer). It closes with the ×, the Escape key or a click on the dimmed page. Without the script the link still goes to `/privacy-policy/`, so keep that page published. To update the policy, edit `site/src/privacy.html` and rebuild.
 
 

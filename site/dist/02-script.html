@@ -351,7 +351,7 @@
         clearTimeout(closeT);
         closeT = setTimeout(function () { panel.hidden = true; if (shade) shade.hidden = true; }, reduce ? 0 : 450);
         document.removeEventListener("keydown", onKey);
-        link.focus();
+        if (link.offsetParent) link.focus(); else { var mb = document.querySelector(".tt .menu"); if (mb) mb.focus(); }
       };
       var onKey = function (e) {
         if (e.key === "Escape") { e.preventDefault(); shut(); return; }
@@ -369,7 +369,7 @@
         void panel.offsetWidth;
         html.classList.add("tt-drawer-on", "tt-lock");
         document.addEventListener("keydown", onKey);
-        setTimeout(function () { panel.focus(); }, 50);
+        setTimeout(function () { panel.focus(); }, 80);
       });
       panel.querySelectorAll("[data-tt-close]").forEach(function (b) { b.addEventListener("click", shut); });
       if (shade) shade.addEventListener("click", shut);
@@ -383,7 +383,7 @@
         btn.setAttribute("aria-expanded", String(open));
         btn.textContent = open ? "Close" : "Menu";
         sheet.classList.toggle("open", open);
-        html.classList.toggle("tt-lock", open);
+        html.classList.toggle("tt-lock", open || html.classList.contains("tt-drawer-on"));   /* a panel opened from the menu keeps the page locked */
         if (open) { var first = sheet.querySelector("a"); if (first) first.focus(); }
       };
       btn.addEventListener("click", function () { setOpen(btn.getAttribute("aria-expanded") !== "true"); });

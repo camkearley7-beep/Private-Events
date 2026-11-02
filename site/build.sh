@@ -28,6 +28,38 @@ schema_tag = '<script type="application/ld+json">\n' + json.dumps(schema, indent
 css, js = src('tt.css'), src('tt.js')
 header, home, footer = src('header.html'), src('home.html'), src('footer.html')
 footer = footer.replace('<!--BCH:PRIVACY-->', src('privacy.html').strip())  # slide-out privacy policy, on every page
+# slide-out FAQs (from src/faq.json), on every page
+import html as _hf
+def _faq_link(t):
+    t = _hf.escape(t, quote=False)
+    for k, v in [('Book online', '<a href="https://thebogeyclub.golfbooking.ca/calendar.php">Book online</a>'),
+                 ('(905) 235-GOLF (4653)', '<a href="tel:+19052354653">(905) 235-GOLF (4653)</a>'),
+                 ('book a private lesson', '<a href="https://thebogeyclub.com/meet-our-pro/">book a private lesson</a>'),
+                 ('See Leagues &amp; Events', 'See <a href="https://thebogeyclub.com/leagues-and-events/">Leagues &amp; Events</a>'),
+                 ('and Meet Our Pro.', 'and <a href="https://thebogeyclub.com/meet-our-pro/">Meet Our Pro</a>.'),
+                 ('See Private Events', 'See <a href="https://thebogeyclub.com/private-events/">Private Events</a>'),
+                 ('Book karaoke online', '<a href="https://thebogeyclub.golfbooking.ca/calendar.php?bayfilter=4&amp;templateId=50&amp;lang=en" data-tt-link="karaoke-booking">Book karaoke online</a>')]:
+        t = t.replace(k, v)
+    return t
+_fq = json.loads(src('faq.json'))
+_faq_drawer = ('<!-- FAQs, shown in a slide-out panel from "FAQs & contact" (built from src/faq.json; the link still goes to /faqs/ without the script) -->\n'
+  '<div class="tt-drawer-shade" data-tt-close hidden></div>\n'
+  '<aside class="tt-drawer" id="tt-faq" role="dialog" aria-modal="true" aria-labelledby="tt-faq-h" tabindex="-1" hidden>\n'
+  '  <div class="tt-drawer-top">\n    <h2 id="tt-faq-h">FAQs</h2>\n'
+  '    <button class="tt-drawer-x" type="button" data-tt-close aria-label="Close FAQs">&times;</button>\n  </div>\n'
+  '  <div class="tt-drawer-body">\n    <p class="tt-drawer-meta">Golf, food, events and everything in between</p>\n'
+  + ''.join('    <h3>' + _hf.escape(g['group']) + '</h3>\n    <div class="ls-faq-list">\n'
+            + ''.join(f'      <details><summary>{_hf.escape(i["q"])}</summary><p>{_faq_link(i["a"])}</p></details>\n' for i in g['items'])
+            + '    </div>\n' for g in _fq)
+  + '    <div class="tt-drawer-sum tt-drawer-ask">\n      <h3>Still have a question?</h3>\n'
+  '      <p>Call <a href="tel:+19052354653">(905) 235-4653</a>, email <a href="mailto:golf@thebogeyclub.com">golf@thebogeyclub.com</a>, '
+  'or <a href="https://thebogeyclub.com/#visit" data-tt-close>send us a message</a>. We\'re at 17705 Leslie Street, Unit 5, Newmarket.</p>\n    </div>\n'
+  '  </div>\n</aside>')
+assert footer.count('<!--BCH:FAQ-->') == 1
+footer = footer.replace('<!--BCH:FAQ-->', _faq_drawer)
+# plain-text copy for the WordPress /faqs/ page
+(ROOT / 'dist').mkdir(exist_ok=True)
+(ROOT / 'dist' / 'FAQS.txt').write_text('FAQS, THE BOGEY CLUB\n\n' + '\n\n'.join(g['group'].upper() + '\n\n' + '\n\n'.join(i['q'] + '\n' + i['a'] for i in g['items']) for g in _fq) + '\n')
 # plain-text copy of the policy (for review and for the WordPress /privacy-policy/ page)
 import html as _h0
 _pt = src('privacy.html'); _pt = _pt[_pt.index('<div class="tt-drawer-body">'):]
