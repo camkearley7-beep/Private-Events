@@ -319,7 +319,12 @@ def solo_dock(href, label, small, cta, extra=''):
     return footer[:_dock0] + ('<nav class="dock solo" aria-label="Quick booking">\n'
         f'  <a href="{href}"{extra} data-tt-cta="{cta}">{label}<small>{small}</small></a>\n</nav>') + footer[_dock1:]
 
-def build_page(key, label, body, graph, foot, title, form=None):
+def build_page(key, label, body, graph, foot, title, form=None, contact=None):
+    # contact = an in-page target: the header's Contact links jump there instead of the homepage form
+    hdr = header
+    if contact:
+        assert hdr.count('href="https://thebogeyclub.com/#visit"') == 2
+        hdr = hdr.replace('href="https://thebogeyclub.com/#visit"', f'href="{contact}" data-tt-focus="{contact}"')
     # form = (form id, form-box id, preview mock): the WPForms shortcode goes in the page's form slot
     body_prev = body
     if form:
@@ -331,7 +336,7 @@ def build_page(key, label, body, graph, foot, title, form=None):
     one = (f"<!-- THE BOGEY CLUB: {label} page. Paste this whole file into ONE Elementor HTML widget.\n"
            "     Page Settings > Page Layout = Elementor Canvas. Container: Full Width, padding 0. -->\n"
            "<div class=\"tt-one\">\n" + live(head).split('-->', 1)[1].strip() + "\n<style>\n" + css + elementor_fix + "</style>\n"
-           + live(header) + "\n" + live(body) + "\n" + _f(live) + "\n" + tag + "<script>\n" + js + "</script>\n</div>\n")
+           + live(hdr) + "\n" + live(body) + "\n" + _f(live) + "\n" + tag + "<script>\n" + js + "</script>\n</div>\n")
     one = one.replace(IMG_LIVE + '/bogey-club-logo.png', _logo)
     if 'Satoshi-Variable.woff2' in have:
         one = re.sub(r'<link rel="preload"[^>]*>\n', '', one)
@@ -358,7 +363,7 @@ body {{ margin: 0; background: #FFFFFF; }}
 </style>
 {tag}</head>
 <body>
-{prev(header)}
+{prev(hdr)}
 <main>
 {prev(body_prev)}
 </main>
@@ -406,6 +411,7 @@ build_page('LEAGUES', 'LEAGUES & EVENTS', leagues, [
   faq_schema(_lg_faq, _LP)],
   solo_dock('#mens-night', 'Join Men\'s Night', '32 roster spots', 'dock-leagues'),
   'Golf Leagues & Tournaments in Newmarket | The Bogey Club',
+  contact='#tt-lg-form',
   form=('3352', 'tt-lg-form', '<div class="wpforms-container wpforms-container-full"><form class="wpforms-form" onsubmit="return false"><div class="wpforms-field-container">'
     + _mock('Name <span class="wpforms-required-label">*</span>', '<input type="text">', 'wpforms-one-half wpforms-first')
     + _mock('Email <span class="wpforms-required-label">*</span>', '<input type="email">', 'wpforms-one-half')
