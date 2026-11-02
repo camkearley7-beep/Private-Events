@@ -259,7 +259,7 @@ Every CTA carries `data-tt-cta="…"`, so the site's existing Google Tag Manager
 | Real photos | 3 golf photos listed in §1 (bar, event and karaoke photos are in) |
 | Hours: bar side "Daily 9 AM – 12 AM", automated bays "Open 24/7" | Confirmed by owner. Update Google Business Profile to match. |
 | Staffed bar hours | Shown as "See posted hours". Add real hours when confirmed. |
-| $60/bay/hour + HST, up to 4 players | Confirm. Used in the structured data. |
+| Bay rates $49.99 / $49.99 / $59.99 / $69.99 per bay per hour + HST, up to 4 players | Confirmed by owner. Price range in the structured data. |
 | Second bar is upstairs in the event space | Confirm |
 | Men's Night | Confirm it's running |
 | Privacy policy URL | Confirm |

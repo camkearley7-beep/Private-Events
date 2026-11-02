@@ -414,7 +414,8 @@ html.tt-js .tt .cform-nojs, .tt .cform-card.has-wpf .cform-nojs { display: none;
 .tt .rates-list li { padding: 30px 28px 28px 0; display: grid; gap: 10px; align-content: start; }
 .tt .rates-list li + li { padding-left: 28px; border-left: 1px solid rgba(255,255,255,.22); }
 .tt .rates-list b { font-weight: 700; font-size: clamp(44px, 4.2vw, 64px); line-height: 1; letter-spacing: -.03em; }
-.tt .rates-list b::after { content: ' /hr'; font-size: 16px; font-weight: 500; letter-spacing: 0; opacity: .75; }
+.tt .rates-list b::after { content: '/hr'; margin-left: 4px; font-size: 16px; font-weight: 500; letter-spacing: 0; opacity: .75; }
+.tt .rates-list b small { font-size: .42em; font-weight: 700; letter-spacing: -.01em; vertical-align: top; position: relative; top: .14em; margin-left: .02em; }
 .tt .rates-list span:last-child { font-size: 15px; line-height: 1.5; color: rgba(255,255,255,.85); max-width: 30ch; }
 .tt .rates-note { margin-top: 20px; font-size: 14px; color: rgba(255,255,255,.8); }
 @media (max-width: 860px) {
@@ -990,7 +991,7 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
           }
         ]
       },
-      "priceRange": "$49.99–$70 per bay per hour + HST"
+      "priceRange": "$49.99–$69.99 per bay per hour + HST"
     },
     {
       "@type": "WebPage",
@@ -1132,10 +1133,10 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
     <a class="btn btn-white" href="https://thebogeyclub.golfbooking.ca/calendar.php" data-tt-cta="rates-book-golf">Book a bay</a>
   </div>
   <ul class="rates-list">
-    <li><span class="data">Overnight · Automated</span><b>$49.99</b><span>Every day, 12 AM to 9 AM, on our automated bays</span></li>
-    <li><span class="data">Off-peak</span><b>$50</b><span>Monday to Thursday, 9 AM to 5 PM</span></li>
-    <li><span class="data">Standard</span><b>$60</b><span>Monday to Thursday, 5 PM to close. Friday, 9 AM to 4 PM. All day Sunday</span></li>
-    <li><span class="data">Peak</span><b>$70</b><span>Friday, 4 PM to close. All day Saturday, plus holidays</span></li>
+    <li><span class="data">Overnight · Automated</span><b>$49<small>.99</small></b><span>Every day, 12 AM to 9 AM, on our automated bays</span></li>
+    <li><span class="data">Off-peak</span><b>$49<small>.99</small></b><span>Monday to Thursday, 9 AM to 5 PM</span></li>
+    <li><span class="data">Standard</span><b>$59<small>.99</small></b><span>Monday to Thursday, 5 PM to close. Friday, 9 AM to 4 PM. All day Sunday</span></li>
+    <li><span class="data">Peak</span><b>$69<small>.99</small></b><span>Friday, 4 PM to close. All day Saturday, plus holidays</span></li>
   </ul>
   <p class="rates-note">All prices are per bay, per hour, plus HST.</p>
 </section>

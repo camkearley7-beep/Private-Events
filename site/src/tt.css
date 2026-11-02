@@ -385,7 +385,8 @@ html.tt-js .tt .cform-nojs, .tt .cform-card.has-wpf .cform-nojs { display: none;
 .tt .rates-list li { padding: 30px 28px 28px 0; display: grid; gap: 10px; align-content: start; }
 .tt .rates-list li + li { padding-left: 28px; border-left: 1px solid rgba(255,255,255,.22); }
 .tt .rates-list b { font-weight: 700; font-size: clamp(44px, 4.2vw, 64px); line-height: 1; letter-spacing: -.03em; }
-.tt .rates-list b::after { content: ' /hr'; font-size: 16px; font-weight: 500; letter-spacing: 0; opacity: .75; }
+.tt .rates-list b::after { content: '/hr'; margin-left: 4px; font-size: 16px; font-weight: 500; letter-spacing: 0; opacity: .75; }
+.tt .rates-list b small { font-size: .42em; font-weight: 700; letter-spacing: -.01em; vertical-align: top; position: relative; top: .14em; margin-left: .02em; }
 .tt .rates-list span:last-child { font-size: 15px; line-height: 1.5; color: rgba(255,255,255,.85); max-width: 30ch; }
 .tt .rates-note { margin-top: 20px; font-size: 14px; color: rgba(255,255,255,.8); }
 @media (max-width: 860px) {
