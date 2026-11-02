@@ -863,6 +863,47 @@ html.tt-drawer-on .tt .tt-drawer { transform: none; }
 .tt .tt-drawer-ask { margin-top: 32px; }
 .tt .tt-drawer-ask p { color: var(--ink); }
 
+/* =====================================================================
+   ABOUT US (/about-us/) — header reuses .lg-hero, CTA reuses .ls-book
+   ===================================================================== */
+.tt .ab-story { display: grid; grid-template-columns: .95fr 1.05fr; gap: 64px; align-items: center; padding: 104px var(--g); background: var(--white); }
+.tt .ab-photo { position: relative; margin: 0; aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden; background: var(--pine); }
+.tt .ab-photo.small { aspect-ratio: 4 / 3; }
+.tt .ab-photo img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.02); transition: transform 1.4s cubic-bezier(.2,.8,.2,1); }
+.tt .ab-photo:hover img { transform: scale(1.06); }
+.tt .ab-photo figcaption { position: absolute; left: 18px; bottom: 18px; display: grid; gap: 2px; padding: 12px 16px; border-radius: 10px; background: rgba(255,255,255,.94); color: var(--pine); font-weight: 600; font-size: 17px; }
+.tt .ab-copy > .data, .tt .ab-com-copy > .data { margin-bottom: 14px; }
+.tt .ab-copy .lede { margin-top: 18px; color: var(--ink); max-width: 54ch; }
+.tt .ab-copy > p:not(.data):not(.lede) { margin-top: 16px; color: var(--soft); max-width: 58ch; }
+.tt .ab-quote { margin: 30px 0 0; padding: 20px 24px; border-radius: 14px; background: var(--mist); border-left: 3px solid var(--green); }
+.tt .ab-quote p { font-weight: 700; font-size: clamp(22px, 2.2vw, 30px); letter-spacing: -.02em; line-height: 1.15; color: var(--green); }
+.tt .ab-quote cite { display: block; margin-top: 10px; font-style: normal; font-size: 14px; }
+.tt .ab-quote cite a { color: var(--pine); font-weight: 600; border-bottom: 1.5px solid var(--sand); }
+
+.tt .ab-diff { padding: 96px var(--g); background: var(--mist); }
+.tt .ab-tiles { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.tt .ab-tiles li { display: grid; gap: 10px; align-content: start; padding: 28px 24px 30px; border-radius: 16px; background: var(--white); border: 1px solid var(--line);
+  transition: transform .45s cubic-bezier(.2,.8,.2,1), background .35s, color .35s, border-color .35s; }
+.tt .ab-tiles li:hover { transform: translateY(-6px); background: var(--green); border-color: var(--green); color: var(--white); }
+.tt .ab-tiles b { display: grid; place-items: center; justify-self: start; min-width: 52px; height: 52px; padding: 0 12px; border-radius: 999px; background: var(--mist); color: var(--green); font-weight: 700; font-size: 20px; letter-spacing: -.02em; transition: background .35s, color .35s; }
+.tt .ab-tiles li:hover b { background: var(--sand); color: var(--pine); }
+.tt .ab-tiles p { color: var(--soft); font-size: 15px; transition: color .35s; }
+.tt .ab-tiles li:hover p { color: rgba(255,255,255,.88); }
+
+.tt .ab-community { display: grid; grid-template-columns: 1.1fr .9fr; gap: 64px; align-items: center; padding: 104px var(--g) 8px; background: var(--white); }
+.tt .ab-com-copy .lede { margin-top: 18px; }
+.tt .ab-com-copy .acts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+
+@media (max-width: 1100px) and (min-width: 861px) { .tt .ab-tiles { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 860px) {
+  .tt .ab-story, .tt .ab-community { grid-template-columns: 1fr; gap: 28px; padding: 64px 18px; }
+  .tt .ab-community { padding-bottom: 0; }
+  .tt .ab-photo { aspect-ratio: 4 / 3; }
+  .tt .ab-diff { padding: 64px 18px; }
+  .tt .ab-tiles { grid-template-columns: 1fr; gap: 12px; }
+  .tt .ab-com-copy .acts .btn { flex: 1 1 100%; }
+}
+
 
 </style>
 <script type="application/ld+json">

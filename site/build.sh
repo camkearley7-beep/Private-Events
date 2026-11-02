@@ -463,5 +463,22 @@ build_page('LEAGUES', 'LEAGUES & EVENTS', leagues, [
     + _mock('Message <span class="wpforms-required-label">*</span>', '<textarea></textarea>')
     + '</div><div class="wpforms-submit-container"><button type="submit" class="wpforms-submit">Send message</button></div></form></div>'))
 
+# About us (/about-us/) -------------------------------------------------------
+_AP = 'https://thebogeyclub.com/about-us/'
+build_page('ABOUT', 'ABOUT US', src('about.html'), [
+  {"@type": "AboutPage", "@id": _AP + "#webpage", "url": _AP, "name": "About The Bogey Club | Newmarket's Indoor Golf Lounge",
+   "description": "The Bogey Club is a family-run indoor golf lounge in Newmarket, Ontario, started by four Kearley siblings: Golfzon simulators, two full bars, leagues, lessons and private events.",
+   "inLanguage": "en-CA", "breadcrumb": {"@id": _AP + "#breadcrumb"}, "about": {"@id": _biz["@id"]}},
+  {"@type": "BreadcrumbList", "@id": _AP + "#breadcrumb", "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://thebogeyclub.com/"},
+    {"@type": "ListItem", "position": 2, "name": "About us", "item": _AP}]},
+  {"@type": _biz["@type"], "@id": _biz["@id"], "name": _biz["name"], "url": "https://thebogeyclub.com/",
+   "telephone": _biz["telephone"], "email": _biz["email"], "address": _biz["address"],
+   "slogan": "Your handicap is welcome here.",
+   "subjectOf": {"@type": "NewsArticle", "headline": "'Everybody's hungry to golf': Kearley siblings bring virtual greens to Newmarket",
+                 "url": "https://www.newmarkettoday.ca/local-news/everybodys-hungry-to-golf-kearley-siblings-bring-virtual-greens-to-newmarket-5151221",
+                 "publisher": {"@type": "Organization", "name": "Newmarket Today"}}}],
+  footer, "About The Bogey Club | Newmarket's Indoor Golf Lounge")
+
 print('built dist/ (' + str(len(files)) + ' files + uploads/) and preview.html; fonts:', sorted(have))
 PY

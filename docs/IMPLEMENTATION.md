@@ -70,6 +70,14 @@ Same setup as the other pages: Elementor Canvas, one Full Width container (paddi
 - **Sign-up and questions:** Men's Night goes to Golf Genius. The "Get on the scorecard" card holds the homepage contact form (**WPForms 3352**, placed from its shortcode by the build), and the Bogey Cup, scramble and fitting buttons scroll to it with **Leagues & lessons** picked in the About dropdown. Messages go wherever form 3352 notifies (golf@thebogeyclub.com). The phone bar reads "Join Men's Night".
 - **SEO (Yoast/Rank Math):** title `Golf Leagues & Tournaments in Newmarket | The Bogey Club`; description `Indoor golf leagues in Newmarket: Men's Night every Tuesday, The Bogey Cup monthly tournament with weekly prizes, and The Bogey Club Classic. Join a league today.`; focus keyphrase `golf league Newmarket`. The page carries WebPage, BreadcrumbList, business and FAQPage JSON-LD, and a compact 5-question FAQ from `site/src/leagues-faq.json`.
 
+## About us page (/about-us/)
+
+Same setup: Elementor Canvas, one Full Width container (padding 0), one **HTML** widget with `site/dist/ELEMENTOR-PASTE-ABOUT.txt`.
+
+- **Story** (from the current About page and the Newmarket Today feature): four Kearley siblings, a "joking" idea about simulators in the space next to the family insurance office, opened January 31 a year later, "a bit of a passion project", Newmarket's first luxurious indoor golf and lounge bar, still family-run with a full-time crew.
+- **Confirm or send:** the opening year (only "January 31" is shown), the siblings' names if you'd like them listed, and a photo of the family/team to replace the bar photo in "Our story".
+- **SEO:** title `About The Bogey Club | Newmarket's Indoor Golf Lounge`; description `Meet The Bogey Club: a family-run indoor golf lounge in Newmarket started by four Kearley siblings. Golfzon simulators, two full bars, leagues, lessons and events.` The page carries AboutPage, BreadcrumbList and business JSON-LD, with the Newmarket Today article linked.
+
 ## 1. Upload files
 
 1. **Fonts.** Upload the contents of `site/dist/uploads/fonts/` to `/wp-content/uploads/fonts/`, using SFTP or the host's file manager.
