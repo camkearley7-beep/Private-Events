@@ -976,7 +976,7 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
     </div>
     <div class="track" id="tt-track">
       <article class="stop">
-        <img src="https://thebogeyclub.com/wp-content/uploads/2026/10/BogeyClubPhotoshoot_WordPress_1600px.jpg" loading="lazy" decoding="async" alt="The Bogey Club apparel: hats, polos and crewnecks from the club shop">
+        <img src="https://thebogeyclub.com/wp-content/uploads/2026/11/website-banner-heritage-hat.png" loading="lazy" decoding="async" alt="The Bogey Club heritage hat from the club shop">
         <div class="stop-body"><p class="stop-no data">01 <i>/</i> The shop</p><h3 class="h-m">Look good. Play average.</h3><p>Hats, polos, crewnecks and caddy towels, designed by the club. Wear the 19th hole home.</p><div class="acts"><a class="btn btn-red" href="https://shop.thebogeyclub.com/" data-tt-cta="walk-shop">Shop the club</a><a class="btn btn-line" href="https://shop.thebogeyclub.com/collections/hats">Hats</a></div></div>
       </article>
       <article class="stop">
