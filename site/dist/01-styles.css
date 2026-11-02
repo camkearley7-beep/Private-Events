@@ -816,3 +816,8 @@ html.tt-drawer-on .tt .tt-drawer { transform: none; }
 .tt .tt-drawer-meta { display: inline-block; padding: 6px 11px; border-radius: 999px; background: var(--mist); font-size: 13px; font-weight: 500; color: var(--pine); }
 @media (max-width: 600px) { .tt .tt-drawer-top { padding: 16px 18px; } .tt .tt-drawer-body { padding: 18px 18px 40px; } }
 @media (prefers-reduced-motion: reduce) { .tt .tt-drawer, .tt .tt-drawer-shade { transition: none; } }
+.tt .tt-drawer-sum { margin-top: 18px; padding: 18px 20px; border-radius: 14px; background: var(--mist); border: 1px solid var(--line); }
+.tt .tt-drawer-sum h3 { margin-top: 0; color: var(--green); }
+.tt .tt-drawer-sum ul { margin-bottom: 0; color: var(--ink); }
+.tt .tt-drawer-card { padding: 14px 16px; border-left: 3px solid var(--green); background: var(--mist); border-radius: 0 10px 10px 0; color: var(--ink); }
+.tt .tt-drawer-body strong { color: var(--ink); font-weight: 600; }

@@ -28,6 +28,16 @@ schema_tag = '<script type="application/ld+json">\n' + json.dumps(schema, indent
 css, js = src('tt.css'), src('tt.js')
 header, home, footer = src('header.html'), src('home.html'), src('footer.html')
 footer = footer.replace('<!--BCH:PRIVACY-->', src('privacy.html').strip())  # slide-out privacy policy, on every page
+# plain-text copy of the policy (for review and for the WordPress /privacy-policy/ page)
+import html as _h0
+_pt = src('privacy.html'); _pt = _pt[_pt.index('<div class="tt-drawer-body">'):]
+_pt = re.sub(r'<h3>(.*?)</h3>', lambda m: '\n\n' + m.group(1).upper() + '\n', _pt)
+_pt = re.sub(r'<h4>(.*?)</h4>', lambda m: '\n\n' + m.group(1) + '\n', _pt)
+_pt = re.sub(r'<li>', '\n  • ', _pt); _pt = re.sub(r'<br>', '\n', _pt); _pt = re.sub(r'</p>', '\n', _pt)
+_pt = _h0.unescape(re.sub(r'<[^>]+>', '', _pt)).replace('×', '')
+_pt = re.sub(r'[ \t]+\n', '\n', _pt); _pt = re.sub(r'\n{3,}', '\n\n', re.sub(r'^[ \t]+(?!•)', '', _pt, flags=re.M)).strip()
+(ROOT / 'dist').mkdir(exist_ok=True)
+(ROOT / 'dist' / 'PRIVACY-POLICY.txt').write_text('PRIVACY POLICY, THE BOGEY CLUB\n\n' + _pt + '\n')
 
 live = lambda s: s.replace('{{IMG}}', IMG_LIVE).replace('{{FONTS}}', FONTS_LIVE)
 dist = ROOT / 'dist'; dist.mkdir(exist_ok=True)

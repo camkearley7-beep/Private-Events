@@ -839,6 +839,11 @@ html.tt-drawer-on .tt .tt-drawer { transform: none; }
 .tt .tt-drawer-meta { display: inline-block; padding: 6px 11px; border-radius: 999px; background: var(--mist); font-size: 13px; font-weight: 500; color: var(--pine); }
 @media (max-width: 600px) { .tt .tt-drawer-top { padding: 16px 18px; } .tt .tt-drawer-body { padding: 18px 18px 40px; } }
 @media (prefers-reduced-motion: reduce) { .tt .tt-drawer, .tt .tt-drawer-shade { transition: none; } }
+.tt .tt-drawer-sum { margin-top: 18px; padding: 18px 20px; border-radius: 14px; background: var(--mist); border: 1px solid var(--line); }
+.tt .tt-drawer-sum h3 { margin-top: 0; color: var(--green); }
+.tt .tt-drawer-sum ul { margin-bottom: 0; color: var(--ink); }
+.tt .tt-drawer-card { padding: 14px 16px; border-left: 3px solid var(--green); background: var(--mist); border-radius: 0 10px 10px 0; color: var(--ink); }
+.tt .tt-drawer-body strong { color: var(--ink); font-weight: 600; }
 
 [data-photo]::before{content:attr(data-photo);position:absolute;z-index:6;top:14px;right:14px;font:500 11px/1 Satoshi,system-ui,sans-serif;letter-spacing:.04em;color:#fff;background:rgba(35,62,49,.85);padding:6px 9px;border-radius:4px}.tt .hero[data-photo]::before{top:14px}
 </style>
@@ -1347,7 +1352,8 @@ html.tt-drawer-on .tt .tt-drawer { transform: none; }
 </footer>
 
 <!-- Privacy Policy, shown in a slide-out panel from the footer's "Privacy policy" link
-     (the link still goes to /privacy-policy/ if the script can't run). Text as supplied by the club. -->
+     (the link still goes to /privacy-policy/ if the script can't run).
+     Updated draft (Nov 2026) for the club's review: have it checked before publishing. -->
 <div class="tt-drawer-shade" data-tt-close hidden></div>
 <aside class="tt-drawer" id="tt-privacy" role="dialog" aria-modal="true" aria-labelledby="tt-privacy-h" tabindex="-1" hidden>
   <div class="tt-drawer-top">
@@ -1355,89 +1361,104 @@ html.tt-drawer-on .tt .tt-drawer { transform: none; }
     <button class="tt-drawer-x" type="button" data-tt-close aria-label="Close privacy policy">&times;</button>
   </div>
   <div class="tt-drawer-body">
-    <p class="tt-drawer-meta">Last amended September 14, 2021</p>
+    <p class="tt-drawer-meta">Last updated November 2, 2026</p>
 
-    <h3>Introduction</h3>
-    <p>The Bogey Club (the “Company”) respects your (“You” and “Your”) privacy. This “Privacy Policy” describes how the Company collects, uses, maintains, discloses, and protects Personal Information (defined below), as well as the rights and choices You have regarding Your Personal Information, including how You can access and update Your Personal Information. This Privacy Policy was last amended September 14, 2021. “Personal Information” is information that identifies You or could be combined by the Company or the Company’s services providers or affiliates with other information to identify You.</p>
-    <p>By accessing or using the Company’s website located at https://thebogeyclub.com/ (the “Website”) or any content on or through the Website, You signify Your consent to the terms of this Privacy Policy and Your intent to be legally bound by them. If You do not agree with any terms of this Privacy Policy, please do not access or use the Website or any content on or through the Website, or otherwise submit any Personal Information to the Company.</p>
+    <div class="tt-drawer-sum">
+      <h3>The short version</h3>
+      <ul>
+        <li>We collect what you give us (like your name, email and phone when you fill in a form or book) and basic information about how you use our website.</li>
+        <li>We use it to answer you, run your bookings, leagues and lessons, improve our website and, if you agree, send you club news.</li>
+        <li>We never sell your personal information.</li>
+        <li>Some bookings and sign-ups happen on trusted partner platforms, which have their own privacy policies.</li>
+        <li>You can ask to see, correct or delete your information, or unsubscribe from emails, at any time. Email <a href="mailto:cam@thebogeyclub.com">cam@thebogeyclub.com</a>.</li>
+      </ul>
+    </div>
 
-    <h3>Types of Personal Information Collected</h3>
-    <p>The Personal Information the Company collects about You will depend on the manner in which You access or use the Website or any content on or through the Website and may include:</p>
+    <h3>1. Who we are and what this policy covers</h3>
+    <p>The Bogey Club (“the Club”, “we”, “us” or “our”) operates a golf simulator lounge and bar at 17705 Leslie Street, Unit 5, Newmarket, Ontario, and the website at https://thebogeyclub.com/ (the “Website”). This Privacy Policy explains how we collect, use, disclose and protect personal information when you use the Website, contact us, book with us, or take part in our leagues, lessons, events and programs. “Personal information” means information about an identifiable individual.</p>
+    <p>We handle personal information in line with Canada’s <em>Personal Information Protection and Electronic Documents Act</em> (PIPEDA) and other applicable laws. By using the Website or giving us your personal information, you agree to the practices described here.</p>
+
+    <h3>2. Information we collect</h3>
+    <h4>Information you give us</h4>
     <ul>
-      <li>Your name, age, or contact information, such as Your mailing address, telephone number, or email address, or other similar information associated with You;</li>
-      <li>Your location, time-zone setting, network information, device type, browser type and version, browser plug-in types and version, operating system and platform, language, standard web log data, and IP address used to connect Your computer to the Internet or other similar identifier, or the equipment You use to access or use the Website and usage details;</li>
-      <li>Data on the pages, services, or content You access or use on or through the Website, including the amount of time You spend on certain pages, products or services You viewed or searched for, clickstreams to, through, and from the Website, page response times, downloads and download errors, page interactions, or methods used to browse away from the Website;</li>
-      <li>Billing or account information, if applicable; and</li>
-      <li>Any other Personal Information that You choose to submit to us.</li>
+      <li><strong>Contact and enquiry forms:</strong> your name, email, phone number, the topic and your message.</li>
+      <li><strong>Lesson requests:</strong> your name, contact details, experience level, what you’d like to work on and when you’re available.</li>
+      <li><strong>Bookings, leagues and events:</strong> details needed to book a bay, karaoke, a private event or a league or tournament spot, such as your name, contact details, date and time, group size and payment status.</li>
+      <li><strong>Newsletter:</strong> your email address and, if you choose, your name.</li>
+      <li><strong>Anything else you send us,</strong> for example by email, phone or social media.</li>
     </ul>
-    <p>The Website and any content provided on or through the Website is not directed to any person who is not the legal age of majority under applicable law. The Company will not knowingly collect Personal Information from any person who is not the legal age of majority under applicable law.</p>
+    <h4>Information collected automatically</h4>
+    <p>When you visit the Website, we and our service providers may automatically collect technical information such as your IP address, browser and device type, operating system, pages viewed, time spent on pages, the page you came from, and general location (city or region). This is collected using cookies and similar technologies (see section 6).</p>
+    <h4>Information from partners</h4>
+    <p>When you book or register through one of our partner platforms (see section 5), that platform shares the details we need to deliver your booking or registration with us.</p>
+    <h4>At the Club</h4>
+    <p>Our golf simulators record shot data (such as ball speed, launch, spin and distance) and may record swing video while you play or take a lesson. We use this only to run the simulators, your lessons and our leagues and tournaments (for example, scores and leaderboards).</p>
 
-    <h3>Methods for Collecting Personal Information</h3>
-    <p>The Company takes steps to ensure that any Personal Information we collect about You is adequate for, relevant to, and not excessive for the uses of such Personal Information, as described by this Privacy Policy.</p>
-    <h4>Information Provided to the Company by You</h4>
-    <p>Personal Information the Company collects from You on or through the Website and as a result of Your access to or use of the Website or any content on or through the Website may include Personal Information You provide the Company directly, for example by:</p>
+    <h3>3. How we use your information</h3>
     <ul>
-      <li>Submitting, posting, publishing, displaying, or otherwise transmitting user generated content;</li>
-      <li>Filling in forms, making search queries, or corresponding with the Company on or through the Website, or otherwise communicating with the Company by any means including by phone, email, or other electronic messaging; or</li>
-      <li>If applicable or available through or on the Website: creating or registering for an account; subscribing, purchasing, or requesting information on a service or product; entering a contest or promotion; or otherwise engaging with the Company through interaction points that might exist from time-to-time between You and the Company.</li>
+      <li>To respond to your questions and requests.</li>
+      <li>To provide, confirm and manage bookings, lessons, leagues, tournaments, events and programs, including scores, results and prizes.</li>
+      <li>To process payments through our payment and booking providers.</li>
+      <li>To send service messages, such as confirmations, reminders, schedule changes and receipts.</li>
+      <li>With your consent, to send our newsletter and offers (see section 7).</li>
+      <li>To understand how the Website is used and improve it.</li>
+      <li>To keep the Website and the Club secure and prevent fraud or misuse.</li>
+      <li>To meet our legal obligations.</li>
     </ul>
-    <h4>Information Collected by the Company Through Technological Means</h4>
-    <p>The Company may also use cookies or other technological collection methods to collect information, some of which may be Personal Information, about:</p>
+    <p>We only use your information for the purposes we collected it for, or for purposes you consent to or that the law permits or requires.</p>
+
+    <h3>4. How we share your information</h3>
+    <p>We do not sell, rent or trade your personal information. We only share it:</p>
     <ul>
-      <li>The device or equipment You use, including information about Your computer or mobile device, internet connection, IP address, operating system, and browser type; or</li>
-      <li>Your browsing activities and patterns, including information about Your visits to the Website such as traffic data, location data, logs, and other similar communication data.</li>
+      <li><strong>With service providers</strong> who help us run the Club and the Website, such as website hosting, form and email delivery, booking and league management, payments, our online shop and our newsletter provider. They may only use your information to provide their service to us and must protect it.</li>
+      <li><strong>Where the law requires or permits it,</strong> for example to comply with a court order or legal process, collect a debt, or protect the rights, property or safety of the Club, our guests or others.</li>
+      <li><strong>In a business transaction,</strong> such as a sale, merger or reorganization of all or part of the Club, subject to confidentiality protections.</li>
     </ul>
-    <p>This information helps the Company improve the Website and the content available on or through the Website and otherwise improve the services of the Company by:</p>
+    <p>We may share aggregated information that does not identify anyone, for example general usage trends.</p>
+
+    <h3>5. Partner platforms and links</h3>
+    <p>Some features on the Website take you to, or are provided by, other companies, including:</p>
     <ul>
-      <li>Helping the Company understand audience sizes and usage patterns on the Website;</li>
-      <li>Allowing the Company to tailor the Website to Your preferences and interests; and recognizing You when You visit the Website multiple times.</li>
+      <li><strong>Golf Booking</strong> (thebogeyclub.golfbooking.ca) for bay and karaoke bookings;</li>
+      <li><strong>Golf Genius</strong> for league registration and scoring;</li>
+      <li><strong>Shopify</strong> for our online shop (shop.thebogeyclub.com);</li>
+      <li><strong>Google Maps</strong> for directions, and <strong>Instagram</strong> for our social media.</li>
     </ul>
-    <p>The technologies used by the Company to automatically collect the information described above may include cookies, which are small files placed on the hard drive of Your computer. You can turn off cookies using Your internet browser but doing so may limit or remove certain parts of the Website, certain content on the Website, or the functionality of the Website.</p>
-    <h4>Third-Party Features</h4>
-    <p>The Website may include, integrate, or rely on links, plug-ins, services, social networks, content, or applications of third parties. Your access or use of such links, plug-ins, services, social networks, content, or applications may allow the third-party provider to collect or share information about You, some of which may be Personal Information. The Company does not control such third parties’ use of cookies or similar technologies – if You would like to know more about how these third parties use such technologies, You should contact the responsible provider directly. The Company does not accept any responsibility or liability for the privacy policies of any such third parties or their compliance or non-compliance with such privacy policies.</p>
+    <p>When you use these services, the information you give them is handled under their own privacy policies, which we encourage you to read. We are not responsible for their practices.</p>
+    <p>Some of our service providers and partners store or process information outside Canada, including in the United States. When that happens, your information may be subject to the laws of that country and may be accessible to its courts, law enforcement and national security authorities.</p>
 
-    <h3>Using and Disclosing Personal Information</h3>
-    <h4>Use of Personal Information by the Company</h4>
-    <p>The Company collects Personal Information to provide You with a secure, smooth, efficient, and customized experience through or on the Website or any content on the Website. The Company may use Your Personal Information to:</p>
+    <h3>6. Cookies and analytics</h3>
+    <p>Cookies are small files stored on your device. We and our providers may use them to keep the Website working (for example, forms and security), remember your preferences, and understand how visitors use the Website through analytics tools such as Google Analytics. You can block or delete cookies in your browser settings, and you can opt out of Google Analytics with Google’s opt-out browser add-on. Blocking some cookies may affect how the Website works.</p>
+
+    <h3>7. Emails and your choices</h3>
+    <p>We only send our newsletter and promotional emails if you have agreed to receive them, in line with Canada’s Anti-Spam Legislation (CASL). Every marketing email includes an unsubscribe link, and you can also unsubscribe by emailing us. Even if you unsubscribe, we may still send service messages about your bookings, lessons or league registration.</p>
+
+    <h3>8. Children and youth programs</h3>
+    <p>The Website is intended for adults. Some of our programs, such as lessons and camps, are open to young players. For anyone under the age of majority, we collect information from a parent or guardian and use it only to run that program and keep participants safe. A parent or guardian can contact us at any time to see, correct or delete their child’s information. We do not knowingly collect personal information directly from children through the Website.</p>
+
+    <h3>9. How long we keep your information</h3>
+    <p>We keep personal information only as long as we need it for the purposes above, or as required by law (for example, tax and accounting records). We then securely delete it or make it anonymous. We may keep anonymous, aggregated information for any legitimate business purpose.</p>
+
+    <h3>10. How we protect your information</h3>
+    <p>We use reasonable physical, organizational and technical safeguards to protect personal information against loss, theft and unauthorized access, use or disclosure, and we limit access to people who need it to do their jobs. No website or system is completely secure, so please do not send us sensitive information (such as full payment card numbers) by email or through our forms.</p>
+
+    <h3>11. Your rights</h3>
+    <p>You can ask us to:</p>
     <ul>
-      <li>Provide You with content, services, or products on or though the Website;</li>
-      <li>Customize, measure, and improve the Website or content provided on or through the Website, or otherwise analyze or manage the Company’s business operations or Website performance;</li>
-      <li>Prevent prohibited or illegal activities, loss, or fraud, enforce the Company’s Terms of Use, or otherwise protect the security or integrity of the Website or the Company’s business;</li>
-      <li>Deliver targeted marketing, service update notices, or promotional offers based on Your communication preferences;</li>
-      <li>Send You things in the mail or through other channels, such as products or services that You have requested; register You for, or authenticate You when You sign into, an account or online services or when You purchase a product or service, or to provide You with notices about such accounts, subscriptions, or purchases;</li>
-      <li>Provide You notice about changes to the Website, this Privacy Policy, or the Company’s Terms of Use;</li>
-      <li>Otherwise fulfill the purposes for which You have provided Personal Information or that were described when such Personal Information was collected; or</li>
-      <li>Carry out other purposes that are disclosed to You and to which You consent, or which are otherwise permitted or required by law.</li>
+      <li>tell you what personal information we hold about you and how we use it, and give you access to it;</li>
+      <li>correct information that is inaccurate or incomplete;</li>
+      <li>delete your information, where we are not required to keep it; and</li>
+      <li>withdraw your consent, for example to marketing emails. Withdrawing consent may mean we can no longer provide some services.</li>
     </ul>
-    <p>The Company may combine all the Personal Information the Company collects, including Yours, in order to analyze and understand aggregate trends.</p>
-    <h4>Third-Party Transfers</h4>
-    <p>The Company may transfer Your Personal Information to third parties that assist the Company with the use of Personal Information described in “Use of Personal Information by the Company”, above. Such third parties may combine Personal Information provided by the Company with other information that they have independently collected from or about You. Some third parties may be located outside of Canada and may accordingly be subject to laws that are different from those in Canada.</p>
-    <p>The Company requires that all third parties that received any Personal Information from the Company use the same standards as the Company in using, maintaining, disclosing, and protecting such Personal Information.</p>
-    <p>The Company may share or sell aggregated, non-personally-identifiable information to third parties. For clarity, the Company does not sell Personal Information. The Company may also share aggregated, non-personally-identifiable information publicly to show trends about the general use of the Website, or any content, services, or products provided on or through the Website.</p>
-    <h4>Other Disclosures of Personal Information</h4>
-    <p>The Company may disclose Your Personal Information if necessary to collect a debt from You or where the Company has reason to believe that such Personal Information is relevant to the investigation or decision to investigate a breach of the laws of Canada, a province or territory of Canada, or a foreign jurisdiction, and the Company is legally permitted or required to do so, or to otherwise comply with any court order, law, or legal process, including in response to any government or regulatory request or process, in accordance with applicable law. The Company may also disclose Your Personal Information, if necessary, to enforce this Privacy Policy or the Company’s Terms of Use, or if the disclosure is necessary to protect the rights, property, or safety of the Company, the Website, users of the Website, or third parties.</p>
-    <p>The Company may transfer information about You, including Personal Information, in connection with a merger or sale (including any transfers made as part of an insolvency of bankruptcy proceedings) involving all or part of the Company’s business or as part of a corporate reorganization or stock sale or other changes in corporate control.</p>
+    <p>To make a request, email our privacy officer at <a href="mailto:cam@thebogeyclub.com">cam@thebogeyclub.com</a>. We may need to verify your identity. We will respond within 30 days, and access requests are free of charge in most cases. If a fee ever applies, we will tell you in advance. In limited cases the law allows us to refuse access, for example where information is subject to legal privilege or is part of a legal proceeding; if so, we will explain why.</p>
 
-    <h3>Access and Correction</h3>
-    <p>You have the right to access Your Personal Information and to request a correction to Your Personal Information if You believe it is inaccurate. If You would like to access Your Personal Information, or have Your Personal Information corrected or deleted, please contact the Company in the manner set out by this Privacy Policy. The Company may charge You a fee to access Your Personal Information and will notify You in advance of any such fee.</p>
-    <p>The Company will provide You with access to Your Personal Information in accordance with applicable privacy legislation, and may decline to provide You access to Your Personal Information on the basis that such Personal Information is:</p>
-    <ul>
-      <li>Protected by solicitor-client privilege; or</li>
-      <li>Part of a legal proceeding, government or regulatory investigation or process, or otherwise part of a formal dispute resolution process.</li>
-    </ul>
-    <p>Where the Company is unable to provide You with access to Your Personal Information, reasons will be provided subject to any legal or regulatory restriction. You may have the right to withdraw the consent You have provided under this Privacy Policy in certain circumstances. To withdraw Your consent, if applicable, please contact the Company in the manner set out by this Privacy Policy.</p>
+    <h3>12. Questions and complaints</h3>
+    <p>We have a privacy officer who is responsible for this policy. If you have a question or concern, please contact:</p>
+    <p class="tt-drawer-card"><strong>Privacy Officer, The Bogey Club</strong><br>17705 Leslie Street, Unit 5, Newmarket, ON L3Y 3E3<br><a href="mailto:cam@thebogeyclub.com">cam@thebogeyclub.com</a> · <a href="tel:+19052354653">(905) 235-4653</a></p>
+    <p>If you are not satisfied with our response, you can contact the Office of the Privacy Commissioner of Canada at <a href="https://www.priv.gc.ca" target="_blank" rel="noopener">www.priv.gc.ca</a> or 1-800-282-1376.</p>
 
-    <h3>Data Security</h3>
-    <p>The security of Your Personal Information is important to the Company. The Company protects Your Personal Information by maintaining physical, organizational, and technological safeguards against unauthorized access, unauthorized disclosure, theft, or misuse appropriate to the sensitivity of such Personal Information. Personal Information collected by the Company may only be accessed by persons within the Company who require access to provide You with access to, use of, or content, services, or products provided on or through the Website.</p>
-    <p>Although the Company takes measures to protect against data breaches and unauthorized access to Your Personal Information, no company can completely mitigate the risks of such breaches or unauthorized access and no website is fully secure. The Company cannot guarantee that hacking, data loss, breaches, or other unsanctioned access of the Company’s security systems will never occur. Accordingly, You should not submit or otherwise provide Personal Information to the Company by any means if You consider that Personal Information to be sensitive.</p>
-    <p>Except as otherwise permitted or required by applicable law or regulation, the Company retains Personal Information only for as long as necessary for the purposes for which such Personal Information was collected. The Company reserves the right to use anonymous and de-identified information, including anonymized or otherwise de-identified Personal Information, for any legitimate business purpose without further notice to You and without Your Consent.</p>
-
-    <h3>Changes to the Privacy Policy</h3>
-    <p>The Company reserves the right to amend this Privacy Policy for any or no reason, at any time, and from time to time in accordance with the terms of this Privacy Policy.</p>
-    <p>The Company will reflect any such amendments on the Website. Your continued access to or use of the Website or any content on or though the Website after any such amendment constitutes Your acceptance of the Privacy Policy as then amended. The Company includes the date this Privacy Policy was last amended at the top of this page.</p>
-
-    <h3>Contact Information and Challenging Compliance</h3>
-    <p>The Company has appointed a privacy officer responsible for ensuring compliance with this Privacy Policy. If You have any questions regarding this Privacy Policy or Your Personal Information, please contact the Company’s privacy officer at <a href="mailto:cam@thebogeyclub.com">cam@thebogeyclub.com</a>.</p>
+    <h3>13. Changes to this policy</h3>
+    <p>We may update this policy from time to time. The “Last updated” date at the top shows when it last changed. If we make significant changes, we will make that clear on the Website.</p>
   </div>
 </aside>
 
