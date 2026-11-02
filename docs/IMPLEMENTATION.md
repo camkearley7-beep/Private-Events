@@ -72,6 +72,8 @@ Same setup as the other pages: Elementor Canvas, one Full Width container (paddi
 
 ## About us page (/about-us/)
 
+**Not in use right now:** the "About us" links are removed from the footer and phone menu. In WordPress, set the About us page to Draft and redirect `/about-us/` to the homepage (Redirection plugin, or Rank Math/Yoast redirects). The redesigned page below is ready if you bring it back: paste the file and restore the two links in `site/src/footer.html` and `site/src/header.html`.
+
 Same setup: Elementor Canvas, one Full Width container (padding 0), one **HTML** widget with `site/dist/ELEMENTOR-PASTE-ABOUT.txt`.
 
 - **Story** (from the current About page and the Newmarket Today feature): four Kearley siblings, a "joking" idea about simulators in the space next to the family insurance office, opened January 31 a year later, "a bit of a passion project", Newmarket's first luxurious indoor golf and lounge bar, still family-run with a full-time crew.
@@ -225,7 +227,7 @@ The "Send us a message" form asks for name, email, phone (optional), a topic (Ge
 | Private lessons | `/meet-our-pro/` | Lessons | Club life | Footer |
 | Bogey Club Classic | `/the-bogey-club-classic-2026/` | – | Club life | Footer |
 | Shop | `shop.thebogeyclub.com` | Shop | Club life | Footer |
-| About us | `/about-us/` | Mobile menu | – | Footer |
+| About us | `/about-us/` | (removed for now) | – | (removed for now) |
 | Contact (Visit section) | `https://thebogeyclub.com/#visit` | Contact | – | – |
 | FAQs | `/faqs/` | Mobile menu | – | Footer |
 | Phone | `tel:+19052354653` | Mobile menu | Visit | Footer |

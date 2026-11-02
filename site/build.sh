@@ -463,6 +463,7 @@ build_page('LEAGUES', 'LEAGUES & EVENTS', leagues, [
     + _mock('Message <span class="wpforms-required-label">*</span>', '<textarea></textarea>')
     + '</div><div class="wpforms-submit-container"><button type="submit" class="wpforms-submit">Send message</button></div></form></div>'))
 
+# About us (/about-us/): built and kept ready, but not linked from the menus while the club has no About page.
 # About us (/about-us/) -------------------------------------------------------
 _AP = 'https://thebogeyclub.com/about-us/'
 build_page('ABOUT', 'ABOUT US', src('about.html'), [
