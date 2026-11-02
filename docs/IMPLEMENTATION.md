@@ -178,6 +178,9 @@ The "Send us a message" form asks for name, email, phone (optional), a topic (Ge
 
 ## 5. Footer, newsletter and mobile booking bar
 
+- **Privacy policy:** the footer link opens the policy in a panel that slides in from the left (text in `site/src/privacy.html`, built into every page's footer). It closes with the ×, the Escape key or a click on the dimmed page. Without the script the link still goes to `/privacy-policy/`, so keep that page published. To update the policy, edit `site/src/privacy.html` and rebuild.
+
+
 1. **Templates → Theme Builder → Footer** (Entire Site). Add a full-width container with padding 0.
 2. Split `05-footer.html` at the line `<!--BCH:NEWSLETTER-->` into two HTML widgets.
 3. Move your **existing newsletter signup widget** between those two widgets, so its provider and list keep working.

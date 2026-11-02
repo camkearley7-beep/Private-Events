@@ -340,6 +340,42 @@
     }
     } catch (err) { fail(err); }
     try {
+    /* Slide-out panels (Privacy policy): open from their link, close on ×, the shade or Escape */
+    document.querySelectorAll("[data-tt-drawer]").forEach(function (link) {
+      var panel = document.getElementById(link.getAttribute("data-tt-drawer"));
+      if (!panel) return;
+      var shade = panel.previousElementSibling && panel.previousElementSibling.matches(".tt-drawer-shade") ? panel.previousElementSibling : null;
+      var closeT = null;
+      var shut = function () {
+        html.classList.remove("tt-drawer-on", "tt-lock");
+        clearTimeout(closeT);
+        closeT = setTimeout(function () { panel.hidden = true; if (shade) shade.hidden = true; }, reduce ? 0 : 450);
+        document.removeEventListener("keydown", onKey);
+        link.focus();
+      };
+      var onKey = function (e) {
+        if (e.key === "Escape") { e.preventDefault(); shut(); return; }
+        if (e.key === "Tab") {   /* keep keyboard focus inside the panel */
+          var f = panel.querySelectorAll("button, a[href]"), first = f[0], last = f[f.length - 1];
+          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      };
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        clearTimeout(closeT);
+        panel.hidden = false; if (shade) shade.hidden = false;
+        panel.querySelector(".tt-drawer-body").scrollTop = 0;
+        void panel.offsetWidth;
+        html.classList.add("tt-drawer-on", "tt-lock");
+        document.addEventListener("keydown", onKey);
+        setTimeout(function () { panel.focus(); }, 50);
+      });
+      panel.querySelectorAll("[data-tt-close]").forEach(function (b) { b.addEventListener("click", shut); });
+      if (shade) shade.addEventListener("click", shut);
+    });
+    } catch (err) { fail(err); }
+    try {
     /* Mobile menu */
     var btn = document.querySelector(".tt .menu"), sheet = document.getElementById("tt-mnav");
     if (btn && sheet) {

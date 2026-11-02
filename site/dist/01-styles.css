@@ -795,3 +795,24 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
   .tt .lg-ticker li { font-size: 13px; padding: 13px 0 13px 18px; gap: 18px; }
   .tt .ls-pro.lg-first { padding-top: 40px; }
 }
+
+/* Slide-out panel (Privacy policy) */
+.tt .tt-drawer-shade { position: fixed; inset: 0; z-index: 1000; background: rgba(20,36,28,.6); opacity: 0; transition: opacity .35s; }
+.tt .tt-drawer { position: fixed; top: 0; bottom: 0; left: 0; z-index: 1001; width: min(680px, 100vw); display: flex; flex-direction: column;
+  background: var(--white); color: var(--ink); box-shadow: 24px 0 60px rgba(20,36,28,.28); transform: translateX(-102%); transition: transform .45s cubic-bezier(.2,.8,.2,1); outline: none; }
+.tt .tt-drawer-shade[hidden], .tt .tt-drawer[hidden] { display: none; }
+html.tt-drawer-on .tt .tt-drawer-shade { opacity: 1; }
+html.tt-drawer-on .tt .tt-drawer { transform: none; }
+.tt .tt-drawer-top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 22px 28px; border-bottom: 1px solid var(--line); background: var(--white); }
+.tt .tt-drawer-top h2 { font-weight: 700; font-size: clamp(24px, 2.4vw, 32px); letter-spacing: -.02em; color: var(--green); }
+.tt .tt-drawer-x { display: grid; place-items: center; flex: none; width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid var(--line); font-size: 24px; line-height: 1; color: var(--pine); transition: background .2s, color .2s, border-color .2s; }
+.tt .tt-drawer-x:hover { background: var(--green); border-color: var(--green); color: var(--white); }
+.tt .tt-drawer-body { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 22px 28px 48px; font-size: 15px; line-height: 1.65; color: var(--soft); }
+.tt .tt-drawer-body h3 { margin: 30px 0 10px; font-weight: 700; font-size: 17px; letter-spacing: -.005em; color: var(--ink); }
+.tt .tt-drawer-body h4 { margin: 20px 0 8px; font-weight: 600; font-size: 15px; color: var(--green); }
+.tt .tt-drawer-body p + p { margin-top: 10px; }
+.tt .tt-drawer-body ul { margin: 10px 0 12px; padding-left: 20px; display: grid; gap: 6px; }
+.tt .tt-drawer-body a { color: var(--green); font-weight: 600; border-bottom: 1px solid var(--sand); }
+.tt .tt-drawer-meta { display: inline-block; padding: 6px 11px; border-radius: 999px; background: var(--mist); font-size: 13px; font-weight: 500; color: var(--pine); }
+@media (max-width: 600px) { .tt .tt-drawer-top { padding: 16px 18px; } .tt .tt-drawer-body { padding: 18px 18px 40px; } }
+@media (prefers-reduced-motion: reduce) { .tt .tt-drawer, .tt .tt-drawer-shade { transition: none; } }

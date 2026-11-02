@@ -825,6 +825,27 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
   .tt .ls-pro.lg-first { padding-top: 40px; }
 }
 
+/* Slide-out panel (Privacy policy) */
+.tt .tt-drawer-shade { position: fixed; inset: 0; z-index: 1000; background: rgba(20,36,28,.6); opacity: 0; transition: opacity .35s; }
+.tt .tt-drawer { position: fixed; top: 0; bottom: 0; left: 0; z-index: 1001; width: min(680px, 100vw); display: flex; flex-direction: column;
+  background: var(--white); color: var(--ink); box-shadow: 24px 0 60px rgba(20,36,28,.28); transform: translateX(-102%); transition: transform .45s cubic-bezier(.2,.8,.2,1); outline: none; }
+.tt .tt-drawer-shade[hidden], .tt .tt-drawer[hidden] { display: none; }
+html.tt-drawer-on .tt .tt-drawer-shade { opacity: 1; }
+html.tt-drawer-on .tt .tt-drawer { transform: none; }
+.tt .tt-drawer-top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 22px 28px; border-bottom: 1px solid var(--line); background: var(--white); }
+.tt .tt-drawer-top h2 { font-weight: 700; font-size: clamp(24px, 2.4vw, 32px); letter-spacing: -.02em; color: var(--green); }
+.tt .tt-drawer-x { display: grid; place-items: center; flex: none; width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid var(--line); font-size: 24px; line-height: 1; color: var(--pine); transition: background .2s, color .2s, border-color .2s; }
+.tt .tt-drawer-x:hover { background: var(--green); border-color: var(--green); color: var(--white); }
+.tt .tt-drawer-body { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 22px 28px 48px; font-size: 15px; line-height: 1.65; color: var(--soft); }
+.tt .tt-drawer-body h3 { margin: 30px 0 10px; font-weight: 700; font-size: 17px; letter-spacing: -.005em; color: var(--ink); }
+.tt .tt-drawer-body h4 { margin: 20px 0 8px; font-weight: 600; font-size: 15px; color: var(--green); }
+.tt .tt-drawer-body p + p { margin-top: 10px; }
+.tt .tt-drawer-body ul { margin: 10px 0 12px; padding-left: 20px; display: grid; gap: 6px; }
+.tt .tt-drawer-body a { color: var(--green); font-weight: 600; border-bottom: 1px solid var(--sand); }
+.tt .tt-drawer-meta { display: inline-block; padding: 6px 11px; border-radius: 999px; background: var(--mist); font-size: 13px; font-weight: 500; color: var(--pine); }
+@media (max-width: 600px) { .tt .tt-drawer-top { padding: 16px 18px; } .tt .tt-drawer-body { padding: 18px 18px 40px; } }
+@media (prefers-reduced-motion: reduce) { .tt .tt-drawer, .tt .tt-drawer-shade { transition: none; } }
+
 [data-photo]::before{content:attr(data-photo);position:absolute;z-index:6;top:14px;right:14px;font:500 11px/1 Satoshi,system-ui,sans-serif;letter-spacing:.04em;color:#fff;background:rgba(35,62,49,.85);padding:6px 9px;border-radius:4px}.tt .hero[data-photo]::before{top:14px}
 </style>
 <script type="application/ld+json">
@@ -1327,8 +1348,103 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
   <div><h4>Newsletter</h4><p>Leagues, tournaments and club news.</p>
     <!-- Existing newsletter signup form goes here -->
   </div>
-  <div class="legal"><span>© <span data-tt-year>2026</span> The Bogey Club · 17705 Leslie St, Unit 5, Newmarket, ON L3Y 3E3</span><span><a href="https://thebogeyclub.com/privacy-policy/">Privacy policy</a> · <a href="https://www.instagram.com/the.bogeyclub/" target="_blank" rel="noopener">Instagram</a></span></div>
+  <div class="legal"><span>© <span data-tt-year>2026</span> The Bogey Club · 17705 Leslie St, Unit 5, Newmarket, ON L3Y 3E3</span><span><a href="https://thebogeyclub.com/privacy-policy/" data-tt-drawer="tt-privacy" aria-haspopup="dialog" aria-controls="tt-privacy">Privacy policy</a> · <a href="https://www.instagram.com/the.bogeyclub/" target="_blank" rel="noopener">Instagram</a></span></div>
 </footer>
+
+<!-- Privacy Policy, shown in a slide-out panel from the footer's "Privacy policy" link
+     (the link still goes to /privacy-policy/ if the script can't run). Text as supplied by the club. -->
+<div class="tt-drawer-shade" data-tt-close hidden></div>
+<aside class="tt-drawer" id="tt-privacy" role="dialog" aria-modal="true" aria-labelledby="tt-privacy-h" tabindex="-1" hidden>
+  <div class="tt-drawer-top">
+    <h2 id="tt-privacy-h">Privacy Policy</h2>
+    <button class="tt-drawer-x" type="button" data-tt-close aria-label="Close privacy policy">&times;</button>
+  </div>
+  <div class="tt-drawer-body">
+    <p class="tt-drawer-meta">Last amended September 14, 2021</p>
+
+    <h3>Introduction</h3>
+    <p>The Bogey Club (the “Company”) respects your (“You” and “Your”) privacy. This “Privacy Policy” describes how the Company collects, uses, maintains, discloses, and protects Personal Information (defined below), as well as the rights and choices You have regarding Your Personal Information, including how You can access and update Your Personal Information. This Privacy Policy was last amended September 14, 2021. “Personal Information” is information that identifies You or could be combined by the Company or the Company’s services providers or affiliates with other information to identify You.</p>
+    <p>By accessing or using the Company’s website located at https://thebogeyclub.com/ (the “Website”) or any content on or through the Website, You signify Your consent to the terms of this Privacy Policy and Your intent to be legally bound by them. If You do not agree with any terms of this Privacy Policy, please do not access or use the Website or any content on or through the Website, or otherwise submit any Personal Information to the Company.</p>
+
+    <h3>Types of Personal Information Collected</h3>
+    <p>The Personal Information the Company collects about You will depend on the manner in which You access or use the Website or any content on or through the Website and may include:</p>
+    <ul>
+      <li>Your name, age, or contact information, such as Your mailing address, telephone number, or email address, or other similar information associated with You;</li>
+      <li>Your location, time-zone setting, network information, device type, browser type and version, browser plug-in types and version, operating system and platform, language, standard web log data, and IP address used to connect Your computer to the Internet or other similar identifier, or the equipment You use to access or use the Website and usage details;</li>
+      <li>Data on the pages, services, or content You access or use on or through the Website, including the amount of time You spend on certain pages, products or services You viewed or searched for, clickstreams to, through, and from the Website, page response times, downloads and download errors, page interactions, or methods used to browse away from the Website;</li>
+      <li>Billing or account information, if applicable; and</li>
+      <li>Any other Personal Information that You choose to submit to us.</li>
+    </ul>
+    <p>The Website and any content provided on or through the Website is not directed to any person who is not the legal age of majority under applicable law. The Company will not knowingly collect Personal Information from any person who is not the legal age of majority under applicable law.</p>
+
+    <h3>Methods for Collecting Personal Information</h3>
+    <p>The Company takes steps to ensure that any Personal Information we collect about You is adequate for, relevant to, and not excessive for the uses of such Personal Information, as described by this Privacy Policy.</p>
+    <h4>Information Provided to the Company by You</h4>
+    <p>Personal Information the Company collects from You on or through the Website and as a result of Your access to or use of the Website or any content on or through the Website may include Personal Information You provide the Company directly, for example by:</p>
+    <ul>
+      <li>Submitting, posting, publishing, displaying, or otherwise transmitting user generated content;</li>
+      <li>Filling in forms, making search queries, or corresponding with the Company on or through the Website, or otherwise communicating with the Company by any means including by phone, email, or other electronic messaging; or</li>
+      <li>If applicable or available through or on the Website: creating or registering for an account; subscribing, purchasing, or requesting information on a service or product; entering a contest or promotion; or otherwise engaging with the Company through interaction points that might exist from time-to-time between You and the Company.</li>
+    </ul>
+    <h4>Information Collected by the Company Through Technological Means</h4>
+    <p>The Company may also use cookies or other technological collection methods to collect information, some of which may be Personal Information, about:</p>
+    <ul>
+      <li>The device or equipment You use, including information about Your computer or mobile device, internet connection, IP address, operating system, and browser type; or</li>
+      <li>Your browsing activities and patterns, including information about Your visits to the Website such as traffic data, location data, logs, and other similar communication data.</li>
+    </ul>
+    <p>This information helps the Company improve the Website and the content available on or through the Website and otherwise improve the services of the Company by:</p>
+    <ul>
+      <li>Helping the Company understand audience sizes and usage patterns on the Website;</li>
+      <li>Allowing the Company to tailor the Website to Your preferences and interests; and recognizing You when You visit the Website multiple times.</li>
+    </ul>
+    <p>The technologies used by the Company to automatically collect the information described above may include cookies, which are small files placed on the hard drive of Your computer. You can turn off cookies using Your internet browser but doing so may limit or remove certain parts of the Website, certain content on the Website, or the functionality of the Website.</p>
+    <h4>Third-Party Features</h4>
+    <p>The Website may include, integrate, or rely on links, plug-ins, services, social networks, content, or applications of third parties. Your access or use of such links, plug-ins, services, social networks, content, or applications may allow the third-party provider to collect or share information about You, some of which may be Personal Information. The Company does not control such third parties’ use of cookies or similar technologies – if You would like to know more about how these third parties use such technologies, You should contact the responsible provider directly. The Company does not accept any responsibility or liability for the privacy policies of any such third parties or their compliance or non-compliance with such privacy policies.</p>
+
+    <h3>Using and Disclosing Personal Information</h3>
+    <h4>Use of Personal Information by the Company</h4>
+    <p>The Company collects Personal Information to provide You with a secure, smooth, efficient, and customized experience through or on the Website or any content on the Website. The Company may use Your Personal Information to:</p>
+    <ul>
+      <li>Provide You with content, services, or products on or though the Website;</li>
+      <li>Customize, measure, and improve the Website or content provided on or through the Website, or otherwise analyze or manage the Company’s business operations or Website performance;</li>
+      <li>Prevent prohibited or illegal activities, loss, or fraud, enforce the Company’s Terms of Use, or otherwise protect the security or integrity of the Website or the Company’s business;</li>
+      <li>Deliver targeted marketing, service update notices, or promotional offers based on Your communication preferences;</li>
+      <li>Send You things in the mail or through other channels, such as products or services that You have requested; register You for, or authenticate You when You sign into, an account or online services or when You purchase a product or service, or to provide You with notices about such accounts, subscriptions, or purchases;</li>
+      <li>Provide You notice about changes to the Website, this Privacy Policy, or the Company’s Terms of Use;</li>
+      <li>Otherwise fulfill the purposes for which You have provided Personal Information or that were described when such Personal Information was collected; or</li>
+      <li>Carry out other purposes that are disclosed to You and to which You consent, or which are otherwise permitted or required by law.</li>
+    </ul>
+    <p>The Company may combine all the Personal Information the Company collects, including Yours, in order to analyze and understand aggregate trends.</p>
+    <h4>Third-Party Transfers</h4>
+    <p>The Company may transfer Your Personal Information to third parties that assist the Company with the use of Personal Information described in “Use of Personal Information by the Company”, above. Such third parties may combine Personal Information provided by the Company with other information that they have independently collected from or about You. Some third parties may be located outside of Canada and may accordingly be subject to laws that are different from those in Canada.</p>
+    <p>The Company requires that all third parties that received any Personal Information from the Company use the same standards as the Company in using, maintaining, disclosing, and protecting such Personal Information.</p>
+    <p>The Company may share or sell aggregated, non-personally-identifiable information to third parties. For clarity, the Company does not sell Personal Information. The Company may also share aggregated, non-personally-identifiable information publicly to show trends about the general use of the Website, or any content, services, or products provided on or through the Website.</p>
+    <h4>Other Disclosures of Personal Information</h4>
+    <p>The Company may disclose Your Personal Information if necessary to collect a debt from You or where the Company has reason to believe that such Personal Information is relevant to the investigation or decision to investigate a breach of the laws of Canada, a province or territory of Canada, or a foreign jurisdiction, and the Company is legally permitted or required to do so, or to otherwise comply with any court order, law, or legal process, including in response to any government or regulatory request or process, in accordance with applicable law. The Company may also disclose Your Personal Information, if necessary, to enforce this Privacy Policy or the Company’s Terms of Use, or if the disclosure is necessary to protect the rights, property, or safety of the Company, the Website, users of the Website, or third parties.</p>
+    <p>The Company may transfer information about You, including Personal Information, in connection with a merger or sale (including any transfers made as part of an insolvency of bankruptcy proceedings) involving all or part of the Company’s business or as part of a corporate reorganization or stock sale or other changes in corporate control.</p>
+
+    <h3>Access and Correction</h3>
+    <p>You have the right to access Your Personal Information and to request a correction to Your Personal Information if You believe it is inaccurate. If You would like to access Your Personal Information, or have Your Personal Information corrected or deleted, please contact the Company in the manner set out by this Privacy Policy. The Company may charge You a fee to access Your Personal Information and will notify You in advance of any such fee.</p>
+    <p>The Company will provide You with access to Your Personal Information in accordance with applicable privacy legislation, and may decline to provide You access to Your Personal Information on the basis that such Personal Information is:</p>
+    <ul>
+      <li>Protected by solicitor-client privilege; or</li>
+      <li>Part of a legal proceeding, government or regulatory investigation or process, or otherwise part of a formal dispute resolution process.</li>
+    </ul>
+    <p>Where the Company is unable to provide You with access to Your Personal Information, reasons will be provided subject to any legal or regulatory restriction. You may have the right to withdraw the consent You have provided under this Privacy Policy in certain circumstances. To withdraw Your consent, if applicable, please contact the Company in the manner set out by this Privacy Policy.</p>
+
+    <h3>Data Security</h3>
+    <p>The security of Your Personal Information is important to the Company. The Company protects Your Personal Information by maintaining physical, organizational, and technological safeguards against unauthorized access, unauthorized disclosure, theft, or misuse appropriate to the sensitivity of such Personal Information. Personal Information collected by the Company may only be accessed by persons within the Company who require access to provide You with access to, use of, or content, services, or products provided on or through the Website.</p>
+    <p>Although the Company takes measures to protect against data breaches and unauthorized access to Your Personal Information, no company can completely mitigate the risks of such breaches or unauthorized access and no website is fully secure. The Company cannot guarantee that hacking, data loss, breaches, or other unsanctioned access of the Company’s security systems will never occur. Accordingly, You should not submit or otherwise provide Personal Information to the Company by any means if You consider that Personal Information to be sensitive.</p>
+    <p>Except as otherwise permitted or required by applicable law or regulation, the Company retains Personal Information only for as long as necessary for the purposes for which such Personal Information was collected. The Company reserves the right to use anonymous and de-identified information, including anonymized or otherwise de-identified Personal Information, for any legitimate business purpose without further notice to You and without Your Consent.</p>
+
+    <h3>Changes to the Privacy Policy</h3>
+    <p>The Company reserves the right to amend this Privacy Policy for any or no reason, at any time, and from time to time in accordance with the terms of this Privacy Policy.</p>
+    <p>The Company will reflect any such amendments on the Website. Your continued access to or use of the Website or any content on or though the Website after any such amendment constitutes Your acceptance of the Privacy Policy as then amended. The Company includes the date this Privacy Policy was last amended at the top of this page.</p>
+
+    <h3>Contact Information and Challenging Compliance</h3>
+    <p>The Company has appointed a privacy officer responsible for ensuring compliance with this Privacy Policy. If You have any questions regarding this Privacy Policy or Your Personal Information, please contact the Company’s privacy officer at <a href="mailto:cam@thebogeyclub.com">cam@thebogeyclub.com</a>.</p>
+  </div>
+</aside>
 
 <nav class="dock" aria-label="Quick booking">
   <a href="https://thebogeyclub.golfbooking.ca/calendar.php" data-tt-cta="dock-book-golf">Book a bay<small>Golf</small></a>
@@ -1677,6 +1793,42 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
         window.addEventListener("load", function () { setTimeout(function () { if (!moved) hashEl.scrollIntoView(); }, 60); });
       }
     }
+    } catch (err) { fail(err); }
+    try {
+    /* Slide-out panels (Privacy policy): open from their link, close on ×, the shade or Escape */
+    document.querySelectorAll("[data-tt-drawer]").forEach(function (link) {
+      var panel = document.getElementById(link.getAttribute("data-tt-drawer"));
+      if (!panel) return;
+      var shade = panel.previousElementSibling && panel.previousElementSibling.matches(".tt-drawer-shade") ? panel.previousElementSibling : null;
+      var closeT = null;
+      var shut = function () {
+        html.classList.remove("tt-drawer-on", "tt-lock");
+        clearTimeout(closeT);
+        closeT = setTimeout(function () { panel.hidden = true; if (shade) shade.hidden = true; }, reduce ? 0 : 450);
+        document.removeEventListener("keydown", onKey);
+        link.focus();
+      };
+      var onKey = function (e) {
+        if (e.key === "Escape") { e.preventDefault(); shut(); return; }
+        if (e.key === "Tab") {   /* keep keyboard focus inside the panel */
+          var f = panel.querySelectorAll("button, a[href]"), first = f[0], last = f[f.length - 1];
+          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      };
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        clearTimeout(closeT);
+        panel.hidden = false; if (shade) shade.hidden = false;
+        panel.querySelector(".tt-drawer-body").scrollTop = 0;
+        void panel.offsetWidth;
+        html.classList.add("tt-drawer-on", "tt-lock");
+        document.addEventListener("keydown", onKey);
+        setTimeout(function () { panel.focus(); }, 50);
+      });
+      panel.querySelectorAll("[data-tt-close]").forEach(function (b) { b.addEventListener("click", shut); });
+      if (shade) shade.addEventListener("click", shut);
+    });
     } catch (err) { fail(err); }
     try {
     /* Mobile menu */

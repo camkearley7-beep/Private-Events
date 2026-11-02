@@ -27,6 +27,7 @@ schema = json.loads(src('schema.jsonld'))
 schema_tag = '<script type="application/ld+json">\n' + json.dumps(schema, indent=2, ensure_ascii=False) + '\n</script>\n'
 css, js = src('tt.css'), src('tt.js')
 header, home, footer = src('header.html'), src('home.html'), src('footer.html')
+footer = footer.replace('<!--BCH:PRIVACY-->', src('privacy.html').strip())  # slide-out privacy policy, on every page
 
 live = lambda s: s.replace('{{IMG}}', IMG_LIVE).replace('{{FONTS}}', FONTS_LIVE)
 dist = ROOT / 'dist'; dist.mkdir(exist_ok=True)
