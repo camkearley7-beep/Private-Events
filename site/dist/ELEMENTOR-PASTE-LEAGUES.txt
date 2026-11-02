@@ -873,12 +873,7 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
 </section>
 
 <!-- 2. WHAT'S ON: the three regulars -->
-<section class="lg-on" id="whats-on" aria-labelledby="tt-lg-on-h">
-  <div class="lg-head">
-    <p class="data">What's on</p>
-    <h2 id="tt-lg-on-h" class="h-l">More ways to compete.</h2>
-    <p class="lede">Monthly tournaments, an annual outdoor classic and one-off events. There's always a scorecard with your name on it.</p>
-  </div>
+<section class="lg-on" id="whats-on" aria-label="Tournaments">
 
   <article class="lg-row">
     <figure class="lg-photo"><img src="https://thebogeyclub.com/wp-content/uploads/2023/05/edit-size-2.png" loading="lazy" decoding="async" alt="The Bogey Cup simulator tournament at The Bogey Club"><figcaption class="data">Monthly</figcaption></figure>
