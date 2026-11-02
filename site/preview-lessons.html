@@ -457,8 +457,8 @@ html.tt-js .tt .cform-nojs, .tt .cform-card.has-wpf .cform-nojs { display: none;
 .tt .bay.lit, .tt .bay:hover, .tt .bay:focus-visible { transform: translateY(-10px); border-color: rgba(215,201,164,.35); box-shadow: 0 34px 60px rgba(0,0,0,.38); }
 .tt .bay-top { display: flex; justify-content: space-between; align-items: flex-start; }
 .tt .bay-top .data { color: var(--sand); padding-top: 6px; }
-.tt .bay-no { font-weight: 700; font-size: 64px; line-height: .8; letter-spacing: -.04em; color: transparent; -webkit-text-stroke: 1.5px rgba(215,201,164,.55); transition: color .5s, -webkit-text-stroke-color .5s; font-variant-numeric: tabular-nums; }
-.tt .bay.lit .bay-no, .tt .bay:hover .bay-no, .tt .bay:focus-visible .bay-no { color: var(--sand); -webkit-text-stroke-color: var(--sand); }
+.tt .bay-no { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: rgba(0,0,0,.22); color: var(--sand); font-weight: 600; font-size: 16px; line-height: 1; letter-spacing: .01em; font-variant-numeric: tabular-nums; transition: background .4s, color .4s, transform .4s cubic-bezier(.2,.8,.2,1); }
+.tt .bay.lit .bay-no, .tt .bay:hover .bay-no, .tt .bay:focus-visible .bay-no { background: var(--sand); color: var(--pine); transform: scale(1.06); }
 /* the logo panel */
 .tt .scr { position: relative; display: grid; place-items: center; aspect-ratio: 16 / 10; padding: 18px 20px; border-radius: 12px; overflow: hidden; background: var(--white);
   box-shadow: 0 14px 30px rgba(0,0,0,.28), inset 0 0 0 1px rgba(35,62,49,.06); transition: transform .55s cubic-bezier(.2,.8,.2,1); }
@@ -486,7 +486,7 @@ html.tt-js .tt .cform-nojs, .tt .cform-card.has-wpf .cform-nojs { display: none;
   .tt .bays-row { grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 40px; }
   .tt .bays-row li:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 7px); }
   .tt .bay { padding: 14px 12px 12px; gap: 12px; border-radius: 16px; }
-  .tt .bay-no { font-size: 40px; }
+  .tt .bay-no { width: 38px; height: 38px; font-size: 14px; }
   .tt .scr { padding: 10px; border-radius: 10px; }
   .tt .bay-foot { flex-direction: column; align-items: flex-start; gap: 8px; }
   .tt .bay-foot .nm { font-size: 14px; }
