@@ -1636,6 +1636,18 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
     });
     } catch (err) { fail(err); }
     try {
+    /* Arriving from another page with a #link (e.g. Contact → /#visit): photos above can load after the
+       browser's jump and push the target down, so land on it again once the page has finished loading. */
+    if (location.hash.length > 1) {
+      var hashEl = null; try { hashEl = document.querySelector(location.hash); } catch (e) {}
+      if (hashEl) {
+        var moved = false, mark0 = function () { moved = true; };
+        ["wheel", "touchstart", "keydown"].forEach(function (t) { window.addEventListener(t, mark0, { once: true, passive: true }); });
+        window.addEventListener("load", function () { setTimeout(function () { if (!moved) hashEl.scrollIntoView(); }, 60); });
+      }
+    }
+    } catch (err) { fail(err); }
+    try {
     /* Mobile menu */
     var btn = document.querySelector(".tt .menu"), sheet = document.getElementById("tt-mnav");
     if (btn && sheet) {
