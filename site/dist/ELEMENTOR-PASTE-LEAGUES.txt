@@ -24,7 +24,7 @@
 .tt *, .tt *::before, .tt *::after { box-sizing: border-box; margin: 0; padding: 0; }
 .tt a { color: inherit; text-decoration: none; }
 .tt img { display: block; max-width: 100%; height: auto; }
-.tt button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+.tt button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; min-width: 0; min-height: 0; height: auto; border-radius: 0; box-shadow: none; text-transform: none; letter-spacing: inherit; line-height: inherit; text-decoration: none; }
 .tt :focus-visible { outline: 2px solid var(--green); outline-offset: 4px; border-radius: 2px; }
 .tt .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
@@ -812,8 +812,13 @@ html.tt-drawer-on .tt .tt-drawer-shade { opacity: 1; }
 html.tt-drawer-on .tt .tt-drawer { transform: none; }
 .tt .tt-drawer-top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 22px 28px; border-bottom: 1px solid var(--line); background: var(--white); }
 .tt .tt-drawer-top h2 { font-weight: 700; font-size: clamp(24px, 2.4vw, 32px); letter-spacing: -.02em; color: var(--green); }
-.tt .tt-drawer-x { display: grid; place-items: center; flex: none; width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid var(--line); font-size: 24px; line-height: 1; color: var(--pine); transition: background .2s, color .2s, border-color .2s; }
-.tt .tt-drawer-x:hover { background: var(--green); border-color: var(--green); color: var(--white); }
+.tt .tt-drawer-x { all: unset; box-sizing: border-box !important; display: grid !important; place-items: center; flex: none !important;
+  width: 42px !important; height: 42px !important; min-width: 0 !important; min-height: 0 !important; max-width: 42px !important; padding: 0 !important; margin: 0 !important;
+  border-radius: 50% !important; border: 1.5px solid var(--line) !important; background: var(--white) !important; box-shadow: none !important;
+  font: 400 24px/1 var(--font) !important; letter-spacing: 0 !important; text-transform: none !important; color: var(--pine) !important; cursor: pointer;
+  transition: background .2s, color .2s, border-color .2s; }
+.tt .tt-drawer-x:hover, .tt .tt-drawer-x:focus-visible { background: var(--green) !important; border-color: var(--green) !important; color: var(--white) !important; }
+.tt .tt-drawer-x:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
 .tt .tt-drawer-body { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 22px 28px 48px; font-size: 15px; line-height: 1.65; color: var(--soft); }
 .tt .tt-drawer-body h3 { margin: 30px 0 10px; font-weight: 700; font-size: 17px; letter-spacing: -.005em; color: var(--ink); }
 .tt .tt-drawer-body h4 { margin: 20px 0 8px; font-weight: 600; font-size: 15px; color: var(--green); }
