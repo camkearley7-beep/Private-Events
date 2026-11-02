@@ -1647,6 +1647,15 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
       a.addEventListener("click", function () {
         var box = document.querySelector(a.getAttribute("data-tt-focus"));
         var first = box && box.querySelector("input:not([type=hidden]), select, textarea");
+        /* data-tt-topic: pick the matching option in the form's dropdown (e.g. "Leagues & lessons") */
+        var topic = a.getAttribute("data-tt-topic");
+        if (box && topic) box.querySelectorAll("select").forEach(function (sel) {
+          for (var i = 0; i < sel.options.length; i++) {
+            if (sel.options[i].text.toLowerCase().indexOf(topic.toLowerCase()) > -1) {
+              sel.selectedIndex = i; sel.dispatchEvent(new Event("change", { bubbles: true })); break;
+            }
+          }
+        });
         if (first) setTimeout(function () { first.focus({ preventScroll: true }); }, reduce ? 0 : 700);
       });
     });

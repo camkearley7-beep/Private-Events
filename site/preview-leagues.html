@@ -1125,7 +1125,7 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
         <li><b>Stableford</b><span>scoring</span></li>
         <li><b>Weekly</b><span>skins and closest to the pin</span></li>
       </ol>
-      <div class="acts"><a class="btn btn-red" href="mailto:golf@thebogeyclub.com?subject=Join%20the%20next%20Bogey%20Cup&amp;body=Hi%2C%0A%0AI'd%20like%20to%20join%20the%20next%20Bogey%20Cup.%0A%0AName%3A%0APhone%3A%0A%0AThanks!" data-tt-mail data-tt-cta="leagues-bogey-cup">Join the next Bogey Cup</a></div>
+      <div class="acts"><a class="btn btn-red" href="#tt-lg-form" data-tt-focus="#tt-lg-form" data-tt-topic="Leagues" data-tt-cta="leagues-bogey-cup">Join the next Bogey Cup</a></div>
     </div>
   </article>
 
@@ -1152,35 +1152,34 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
       <p class="data">Tournament</p>
       <h3 class="h-m">Two-man scramble</h3>
       <p>Grab a partner, play your best ball and chase the pot. Winner takes all.</p>
-      <a class="lg-link" href="mailto:golf@thebogeyclub.com?subject=Two-man%20scramble" data-tt-mail data-tt-cta="leagues-scramble">Ask about the next one</a>
+      <a class="lg-link" href="#tt-lg-form" data-tt-focus="#tt-lg-form" data-tt-topic="Leagues" data-tt-cta="leagues-scramble">Ask about the next one</a>
     </li>
     <li>
       <p class="data">Equipment</p>
       <h3 class="h-m">TaylorMade custom fitting</h3>
       <p>Get fitted for TaylorMade clubs at our custom fitting events, with every swing measured on the simulators.</p>
-      <a class="lg-link" href="mailto:golf@thebogeyclub.com?subject=TaylorMade%20custom%20fitting" data-tt-mail data-tt-cta="leagues-fitting">Ask about dates</a>
+      <a class="lg-link" href="#tt-lg-form" data-tt-focus="#tt-lg-form" data-tt-topic="Leagues" data-tt-cta="leagues-fitting">Ask about dates</a>
     </li>
   </ul>
 </section>
 
-<!-- 4. CONTACT -->
+<!-- 4. CONTACT: the club's contact form (the homepage "Send us a message" form); the build drops its shortcode into the form slot -->
 <section class="ls-book" id="contact" aria-labelledby="tt-lg-contact-h">
   <div class="ls-book-card">
     <div class="ls-book-copy">
       <p class="data">Golf leagues in Newmarket</p>
       <h2 id="tt-lg-contact-h" class="h-l">Get on the scorecard.</h2>
-      <p class="lede">Questions about a league or tournament? Call or email the club and we'll get you in the next one.</p>
-      <div class="acts">
-        <a class="btn btn-white" href="mailto:golf@thebogeyclub.com?subject=Leagues%20and%20events" data-tt-mail data-tt-cta="leagues-contact-email">Email the club</a>
-        <a class="btn btn-line" href="tel:+19052354653" data-tt-cta="leagues-contact-call">(905) 235-4653</a>
-      </div>
+      <p class="lede">Questions about a league, the next Bogey Cup or an event? Send us a message and we'll get back to you.</p>
+      <dl class="ls-book-info">
+        <div><dt>Rather call?</dt><dd><a href="tel:+19052354653" data-tt-cta="leagues-contact-call">(905) 235-4653</a></dd></div>
+        <div><dt>Email</dt><dd><a href="mailto:golf@thebogeyclub.com?subject=Leagues%20and%20events" data-tt-mail>golf@thebogeyclub.com</a></dd></div>
+        <div><dt>Where</dt><dd>17705 Leslie Street, Unit 5, Newmarket</dd></div>
+        <div><dt>Practise first?</dt><dd><a href="https://thebogeyclub.golfbooking.ca/calendar.php" data-tt-cta="leagues-book-bay">Book a bay</a></dd></div>
+      </dl>
     </div>
-    <dl class="ls-book-info">
-      <div><dt>Phone</dt><dd><a href="tel:+19052354653">(905) 235-4653</a></dd></div>
-      <div><dt>Email</dt><dd><a href="mailto:golf@thebogeyclub.com" data-tt-mail>golf@thebogeyclub.com</a></dd></div>
-      <div><dt>Where</dt><dd>17705 Leslie Street, Unit 5, Newmarket</dd></div>
-      <div><dt>Practise first?</dt><dd><a href="https://thebogeyclub.golfbooking.ca/calendar.php" data-tt-cta="leagues-book-bay">Book a bay</a></dd></div>
-    </dl>
+    <div class="ls-form" id="tt-lg-form">
+      <div class="cform-slot"><div class="wpforms-container wpforms-container-full"><form class="wpforms-form" onsubmit="return false"><div class="wpforms-field-container"><div class="wpforms-field wpforms-one-half wpforms-first"><label class="wpforms-field-label" for="ls-mock-7">Name <span class="wpforms-required-label">*</span></label><input id="ls-mock-7" type="text"></div><div class="wpforms-field wpforms-one-half"><label class="wpforms-field-label" for="ls-mock-8">Email <span class="wpforms-required-label">*</span></label><input id="ls-mock-8" type="email"></div><div class="wpforms-field wpforms-one-half wpforms-first"><label class="wpforms-field-label" for="ls-mock-9">Phone</label><input id="ls-mock-9" type="tel"></div><div class="wpforms-field wpforms-one-half"><label class="wpforms-field-label" for="ls-mock-10">About</label><select id="ls-mock-10"><option>General question</option><option>Golf booking</option><option>Karaoke</option><option>Private event</option><option>Leagues &amp; lessons</option><option>Sponsorship</option></select></div><div class="wpforms-field "><label class="wpforms-field-label" for="ls-mock-11">Message <span class="wpforms-required-label">*</span></label><textarea id="ls-mock-11"></textarea></div></div><div class="wpforms-submit-container"><button type="submit" class="wpforms-submit">Send message</button></div></form></div></div>
+    </div>
   </div>
 </section>
 
@@ -1556,6 +1555,15 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
       a.addEventListener("click", function () {
         var box = document.querySelector(a.getAttribute("data-tt-focus"));
         var first = box && box.querySelector("input:not([type=hidden]), select, textarea");
+        /* data-tt-topic: pick the matching option in the form's dropdown (e.g. "Leagues & lessons") */
+        var topic = a.getAttribute("data-tt-topic");
+        if (box && topic) box.querySelectorAll("select").forEach(function (sel) {
+          for (var i = 0; i < sel.options.length; i++) {
+            if (sel.options[i].text.toLowerCase().indexOf(topic.toLowerCase()) > -1) {
+              sel.selectedIndex = i; sel.dispatchEvent(new Event("change", { bubbles: true })); break;
+            }
+          }
+        });
         if (first) setTimeout(function () { first.focus({ preventScroll: true }); }, reduce ? 0 : 700);
       });
     });

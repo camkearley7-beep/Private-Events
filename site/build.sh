@@ -319,7 +319,13 @@ def solo_dock(href, label, small, cta, extra=''):
     return footer[:_dock0] + ('<nav class="dock solo" aria-label="Quick booking">\n'
         f'  <a href="{href}"{extra} data-tt-cta="{cta}">{label}<small>{small}</small></a>\n</nav>') + footer[_dock1:]
 
-def build_page(key, label, body, graph, foot, title):
+def build_page(key, label, body, graph, foot, title, form=None):
+    # form = (form id, form-box id, preview mock): the WPForms shortcode goes in the page's form slot
+    body_prev = body
+    if form:
+        assert body.count('<!--PG:FORM-->') == 1
+        body_prev = body.replace('<!--PG:FORM-->', form[2])
+        body = body.replace('<!--PG:FORM-->', '[' + f'wpforms id="{form[0]}" title="false" description="false"' + ']')
     tag = '<script type="application/ld+json">\n' + json.dumps({"@context": "https://schema.org", "@graph": graph}, indent=2, ensure_ascii=False) + '\n</script>\n'
     _f = lambda f: f(foot).replace('<!--BCH:NEWSLETTER-->', '<!-- Existing newsletter signup form goes here -->')
     one = (f"<!-- THE BOGEY CLUB: {label} page. Paste this whole file into ONE Elementor HTML widget.\n"
@@ -331,7 +337,11 @@ def build_page(key, label, body, graph, foot, title):
         one = re.sub(r'<link rel="preload"[^>]*>\n', '', one)
         one = re.sub(r"src: url\('[^']*Satoshi-Variable\.woff2'\) format\('woff2-variations'\), url\('[^']*Satoshi-Variable\.woff2'\) format\('woff2'\)",
                      lambda m: "src: url('" + _font + "') format('woff2')", one)
-    assert '[wpforms' not in one and '<!--LS:' not in one
+    assert '<!--LS:' not in one and '<!--PG:' not in one
+    assert one.count('[wpforms') == (1 if form else 0)
+    if form:
+        _i = one.index('[wpforms')
+        assert one.rfind(f'id="{form[1]}"', 0, _i) > one.rfind('</section>', 0, _i) and _i < one.index('<script>\n')
     (dist / f'ELEMENTOR-PASTE-{key}.html').write_text(one)
     (dist / f'ELEMENTOR-PASTE-{key}.txt').write_text(one)
     (ROOT / f'preview-{key.lower()}.html').write_text(f'''<!doctype html>
@@ -350,7 +360,7 @@ body {{ margin: 0; background: #FFFFFF; }}
 <body>
 {prev(header)}
 <main>
-{prev(body)}
+{prev(body_prev)}
 </main>
 {prev(foot).replace('<!--BCH:NEWSLETTER-->', news_demo)}
 <script>
@@ -395,7 +405,14 @@ build_page('LEAGUES', 'LEAGUES & EVENTS', leagues, [
               {"@type": "Offer", "name": "Both seasons", "price": "1799", "priceCurrency": "CAD", "url": _GG, "availability": "https://schema.org/InStock"}]},
   faq_schema(_lg_faq, _LP)],
   solo_dock('#mens-night', 'Join Men\'s Night', '32 roster spots', 'dock-leagues'),
-  'Golf Leagues & Tournaments in Newmarket | The Bogey Club')
+  'Golf Leagues & Tournaments in Newmarket | The Bogey Club',
+  form=('3352', 'tt-lg-form', '<div class="wpforms-container wpforms-container-full"><form class="wpforms-form" onsubmit="return false"><div class="wpforms-field-container">'
+    + _mock('Name <span class="wpforms-required-label">*</span>', '<input type="text">', 'wpforms-one-half wpforms-first')
+    + _mock('Email <span class="wpforms-required-label">*</span>', '<input type="email">', 'wpforms-one-half')
+    + _mock('Phone', '<input type="tel">', 'wpforms-one-half wpforms-first')
+    + _mock('About', '<select><option>General question</option><option>Golf booking</option><option>Karaoke</option><option>Private event</option><option>Leagues &amp; lessons</option><option>Sponsorship</option></select>', 'wpforms-one-half')
+    + _mock('Message <span class="wpforms-required-label">*</span>', '<textarea></textarea>')
+    + '</div><div class="wpforms-submit-container"><button type="submit" class="wpforms-submit">Send message</button></div></form></div>'))
 
 print('built dist/ (' + str(len(files)) + ' files + uploads/) and preview.html; fonts:', sorted(have))
 PY
