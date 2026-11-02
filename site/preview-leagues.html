@@ -729,6 +729,45 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
   .tt .lg-cards li { padding: 24px 20px; }
 }
 
+/* Men's Night '26–'27 season block (Leagues & Events) */
+.tt .mn { background: var(--green); color: var(--white); padding: 96px var(--g) 88px; scroll-margin-top: 78px; }
+.tt .mn .data { color: var(--sand); }
+.tt .mn-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; }
+.tt .mn-title { margin-top: 14px; font-weight: 700; font-size: clamp(44px, 6vw, 92px); line-height: .95; letter-spacing: -.035em; text-transform: uppercase; }
+.tt .mn-title span { display: block; color: transparent; -webkit-text-stroke: 2px var(--sand); }
+.tt .mn-tag { margin-top: 22px; font-weight: 700; font-size: clamp(20px, 2vw, 28px); line-height: 1.15; letter-spacing: -.01em; color: var(--sand); text-transform: uppercase; max-width: 22ch; }
+.tt .mn-rows { margin-top: 32px; border-top: 1px solid rgba(255,255,255,.2); }
+.tt .mn-rows div { display: grid; grid-template-columns: 120px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.2); }
+.tt .mn-rows dt { font-weight: 500; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--sand); padding-top: 3px; }
+.tt .mn-rows dd { font-weight: 500; color: rgba(255,255,255,.92); }
+.tt .mn-prices { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.tt .mn-prices li { position: relative; display: grid; gap: 4px; padding: 20px 16px; border-radius: 14px; background: rgba(0,0,0,.18); border: 1px solid rgba(255,255,255,.16); transition: transform .35s cubic-bezier(.2,.8,.2,1), border-color .3s; }
+.tt .mn-prices li:hover { transform: translateY(-4px); border-color: var(--sand); }
+.tt .mn-prices li.best { background: var(--white); color: var(--pine); border-color: var(--white); }
+.tt .mn-prices b { font-weight: 700; font-size: clamp(24px, 2.4vw, 34px); letter-spacing: -.03em; line-height: 1; }
+.tt .mn-prices li.best b { color: var(--green); }
+.tt .mn-prices span { font-size: 14px; color: rgba(255,255,255,.82); }
+.tt .mn-prices li.best span { color: var(--soft); }
+.tt .mn-prices em { position: absolute; top: -10px; right: 12px; padding: 4px 9px; border-radius: 999px; background: var(--sand); color: var(--pine); font-style: normal; font-weight: 600; font-size: 12px; }
+.tt .mn-roster { display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: center; margin-top: 16px; padding: 22px; border-radius: 14px; border: 1.5px solid var(--sand); }
+.tt .mn-32 { font-weight: 700; font-size: 84px; line-height: .85; letter-spacing: -.05em; color: transparent; -webkit-text-stroke: 2px var(--sand); }
+.tt .mn-roster p { font-size: 14px; color: rgba(255,255,255,.85); }
+.tt .mn-roster b { display: block; margin-bottom: 4px; font-weight: 700; font-size: 18px; text-transform: uppercase; letter-spacing: -.005em; color: var(--white); }
+.tt .mn-cta { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-top: 44px; padding: 18px 18px 18px 28px; border-radius: 14px; background: var(--sand); color: var(--pine); }
+.tt .mn-cta p { font-weight: 700; font-size: clamp(18px, 2vw, 26px); text-transform: uppercase; letter-spacing: -.01em; }
+@media (max-width: 860px) {
+  .tt .mn { padding: 72px 18px; scroll-margin-top: 64px; }
+  .tt .mn-grid { grid-template-columns: 1fr; gap: 32px; }
+  .tt .mn-rows div { grid-template-columns: 1fr; gap: 4px; }
+  .tt .mn-prices { gap: 8px; }
+  .tt .mn-prices li { padding: 16px 10px; }
+  .tt .mn-prices b { font-size: 22px; }
+  .tt .mn-prices span { font-size: 12px; }
+  .tt .mn-32 { font-size: 64px; }
+  .tt .mn-cta { flex-direction: column; align-items: stretch; text-align: center; padding: 20px; }
+  .tt .mn-cta .btn { justify-content: center; gap: 14px; }
+}
+
 </style>
 <script type="application/ld+json">
 {
@@ -739,7 +778,7 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
       "@id": "https://thebogeyclub.com/leagues-and-events/#webpage",
       "url": "https://thebogeyclub.com/leagues-and-events/",
       "name": "Golf Leagues & Tournaments in Newmarket | The Bogey Club",
-      "description": "Indoor golf leagues and tournaments in Newmarket: Men's Night every Tuesday, The Bogey Cup monthly tournament, and The Bogey Club Classic outdoor event.",
+      "description": "Indoor golf leagues and tournaments in Newmarket: Men's Night, a 24-week Tuesday league (November to April), The Bogey Cup monthly tournament, and The Bogey Club Classic outdoor event.",
       "inLanguage": "en-CA",
       "breadcrumb": {
         "@id": "https://thebogeyclub.com/leagues-and-events/#breadcrumb"
@@ -787,6 +826,52 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
       }
     },
     {
+      "@type": "SportsEvent",
+      "@id": "https://thebogeyclub.com/leagues-and-events/#mens-night",
+      "name": "Men's Night '26–'27: The Bogey Club Indoor Golf League",
+      "description": "A 24-week indoor golf league on Golfzon simulators: a different format every week, weekly prizes, two season titles and a Player of the Year race. 32 roster spots.",
+      "sport": "Golf",
+      "startDate": "2026-11-03T19:00:00-05:00",
+      "endDate": "2027-04-27",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventSchedule": {
+        "@type": "Schedule",
+        "repeatFrequency": "P1W",
+        "byDay": "https://schema.org/Tuesday",
+        "startTime": "19:00",
+        "startDate": "2026-11-03",
+        "endDate": "2027-04-27",
+        "scheduleTimezone": "America/Toronto"
+      },
+      "location": {
+        "@id": "https://thebogeyclub.com/#business"
+      },
+      "organizer": {
+        "@id": "https://thebogeyclub.com/#business"
+      },
+      "image": "https://thebogeyclub.com/wp-content/uploads/2026/08/Sim-People.jpg",
+      "maximumAttendeeCapacity": 32,
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "One season",
+          "price": "999",
+          "priceCurrency": "CAD",
+          "url": "https://www.golfgenius.com/register?league_id=13156352750042251586",
+          "availability": "https://schema.org/InStock"
+        },
+        {
+          "@type": "Offer",
+          "name": "Both seasons",
+          "price": "1799",
+          "priceCurrency": "CAD",
+          "url": "https://www.golfgenius.com/register?league_id=13156352750042251586",
+          "availability": "https://schema.org/InStock"
+        }
+      ]
+    },
+    {
       "@type": "FAQPage",
       "@id": "https://thebogeyclub.com/leagues-and-events/#faq",
       "mainEntity": [
@@ -795,7 +880,7 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
           "name": "What golf leagues are there at The Bogey Club in Newmarket?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Men's Night runs every Tuesday, and The Bogey Cup is a four-week, four-round tournament with a new one starting every month. Both are played on our Golfzon simulators at 17705 Leslie Street in Newmarket. We also host The Bogey Club Classic outdoor tournament and one-off events like two-man scrambles."
+            "text": "Men's Night is a 24-week indoor golf league that runs every Tuesday from November to April, and The Bogey Cup is a four-week, four-round tournament with a new one starting every month. Both are played on our Golfzon simulators at 17705 Leslie Street in Newmarket. We also host The Bogey Club Classic outdoor tournament and one-off events like two-man scrambles."
           }
         },
         {
@@ -811,7 +896,15 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
           "name": "When is Men's Night?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Every Tuesday. Register online through Golf Genius."
+            "text": "Every Tuesday from November 3, 2026 to April 27, 2027, with a standing 7 PM tee time. Can't make 7 PM? Play any time that Tuesday to get your score in. Register online through Golf Genius."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does Men's Night cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "$999 for one season or $1,799 for both seasons, and you can also pay weekly. There are only 32 official roster spots: the first 32 to register are on the roster, and after that you join the waitlist."
           }
         },
         {
@@ -898,22 +991,54 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
 <section class="ls-pro" aria-labelledby="tt-lg-h1">
   <div class="ls-portrait">
     <img src="https://thebogeyclub.com/wp-content/uploads/2026/08/Sim-People.jpg" fetchpriority="high" decoding="async" alt="Golfers playing Men's Night on the Golfzon simulators at The Bogey Club in Newmarket">
-    <p class="ls-tag"><span class="data">Every Tuesday</span>Men's Night<small>The Bogey Club, Newmarket</small></p>
+    <p class="ls-tag"><span class="data">Tuesdays · Nov 3 to Apr 27</span>Men's Night '26–'27<small>The Bogey Club indoor golf league</small></p>
   </div>
   <div class="ls-pro-copy">
     <h1 id="tt-lg-h1" class="h-xl"><small>Golf leagues &amp; tournaments · Newmarket, ON</small> Leagues &amp; Events</h1>
-    <h2 class="ls-name">Men's Night <span>Every Tuesday</span></h2>
-    <p class="lede">The boys. The beers. The bragging rights.</p>
-    <p>A standing Tuesday tee time on our Golfzon simulators with the same crew every week, and the bar a few steps away.</p>
+    <h2 class="ls-name">Men's Night '26–'27 <span>Tuesdays, November 3 to April 27</span></h2>
+    <p class="lede">24 weeks. Two seasons. One Player of the Year.</p>
+    <p>A 24-week indoor golf league on our Golfzon simulators: a different format every week, weekly prizes, two season titles and a Player of the Year race.</p>
     <div class="acts">
       <a class="btn btn-red" href="https://www.golfgenius.com/register?league_id=13156352750042251586" target="_blank" rel="noopener" data-tt-cta="leagues-hero-mens-night">Register on Golf Genius</a>
-      <a class="btn btn-line dark" href="#whats-on" data-tt-cta="leagues-hero-whats-on">More leagues &amp; events</a>
+      <a class="btn btn-line dark" href="#mens-night" data-tt-cta="leagues-hero-details">Season details</a>
     </div>
     <dl class="ls-stats">
-      <div><dt>When</dt><dd>Tuesdays</dd></div>
-      <div><dt>Where</dt><dd>Golfzon bays</dd></div>
-      <div><dt>Sign-up</dt><dd>Online</dd></div>
+      <div><dt>Tee time</dt><dd>7 PM</dd></div>
+      <div><dt>Season</dt><dd>24 weeks</dd></div>
+      <div><dt>Roster</dt><dd>32 spots</dd></div>
     </dl>
+  </div>
+</section>
+
+<!-- 1b. MEN'S NIGHT '26–'27: season details (from the club's flyer) -->
+<section class="mn" id="mens-night" aria-labelledby="tt-mn-h">
+  <div class="mn-grid">
+    <div class="mn-copy">
+      <p class="data">The Bogey Club indoor golf league</p>
+      <h2 id="tt-mn-h" class="mn-title">Men's Night <span>'26–'27</span></h2>
+      <p class="mn-tag">24 weeks. Two seasons. One Player of the Year.</p>
+      <dl class="mn-rows">
+        <div><dt>When</dt><dd>Tuesdays, November 3, 2026 to April 27, 2027</dd></div>
+        <div><dt>Tee time</dt><dd>7 PM every week. Can't make it? Play any time that Tuesday to get your score in.</dd></div>
+        <div><dt>Format</dt><dd>A different format every week, with weekly prizes</dd></div>
+        <div><dt>Titles</dt><dd>Two season champions and a Player of the Year</dd></div>
+      </dl>
+    </div>
+    <div class="mn-side">
+      <ul class="mn-prices" aria-label="Men's Night pricing">
+        <li><b>$999</b><span>One season</span></li>
+        <li class="best"><b>$1,799</b><span>Both seasons</span><em>Save $199</em></li>
+        <li><b>Weekly</b><span>Pay as you go</span></li>
+      </ul>
+      <div class="mn-roster">
+        <span class="mn-32" aria-hidden="true">32</span>
+        <p><b>Only 32 official roster spots</b>First 32 to register are on the roster. After that, you join the waitlist.</p>
+      </div>
+    </div>
+  </div>
+  <div class="mn-cta">
+    <p>32 roster spots. Don't miss yours.</p>
+    <a class="btn btn-red" href="https://www.golfgenius.com/register?league_id=13156352750042251586" target="_blank" rel="noopener" data-tt-cta="leagues-mn-register">Register on Golf Genius</a>
   </div>
 </section>
 
@@ -1001,9 +1126,10 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
   <div class="ls-faq-in">
     <h2 id="tt-faq-h" class="ls-faq-t"><span class="data">FAQ</span>Golf leagues in Newmarket</h2>
     <div class="ls-faq-list">
-      <details><summary>What golf leagues are there at The Bogey Club in Newmarket?</summary><p>Men's Night runs every Tuesday, and The Bogey Cup is a four-week, four-round tournament with a new one starting every month. Both are played on our Golfzon simulators at 17705 Leslie Street in Newmarket. We also host The Bogey Club Classic outdoor tournament and one-off events like two-man scrambles.</p></details>
+      <details><summary>What golf leagues are there at The Bogey Club in Newmarket?</summary><p>Men's Night is a 24-week indoor golf league that runs every Tuesday from November to April, and The Bogey Cup is a four-week, four-round tournament with a new one starting every month. Both are played on our Golfzon simulators at 17705 Leslie Street in Newmarket. We also host The Bogey Club Classic outdoor tournament and one-off events like two-man scrambles.</p></details>
       <details><summary>How does The Bogey Cup work?</summary><p>The Bogey Cup is four rounds over four weeks, with a full week to submit each round. It uses Stableford scoring, with weekly skins and closest-to-the-pin prizes awarded every week.</p></details>
-      <details><summary>When is Men&#x27;s Night?</summary><p>Every Tuesday. Register <a href="https://www.golfgenius.com/register?league_id=13156352750042251586" target="_blank" rel="noopener">online through Golf Genius</a>.</p></details>
+      <details><summary>When is Men&#x27;s Night?</summary><p>Every Tuesday from November 3, 2026 to April 27, 2027, with a standing 7 PM tee time. Can't make 7 PM? Play any time that Tuesday to get your score in. Register <a href="https://www.golfgenius.com/register?league_id=13156352750042251586" target="_blank" rel="noopener">online through Golf Genius</a>.</p></details>
+      <details><summary>How much does Men&#x27;s Night cost?</summary><p>$999 for one season or $1,799 for both seasons, and you can also pay weekly. There are only 32 official roster spots: the first 32 to register are on the roster, and after that you join the waitlist.</p></details>
       <details><summary>How do I join a golf league?</summary><p>Register for Men's Night <a href="https://www.golfgenius.com/register?league_id=13156352750042251586" target="_blank" rel="noopener">online through Golf Genius</a>. To join the next Bogey Cup or ask about an event, call <a href="tel:+19052354653">(905) 235-4653</a> or email <a href="mailto:golf@thebogeyclub.com" data-tt-mail>golf@thebogeyclub.com</a>.</p></details>
       <details><summary>Is The Bogey Club Classic played indoors?</summary><p>No. The Bogey Club Classic is our annual outdoor tournament, played over one round.</p></details>
     </div>
@@ -1047,7 +1173,7 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
 </footer>
 
 <nav class="dock solo" aria-label="Quick booking">
-  <a href="#whats-on" data-tt-cta="dock-leagues">Join a league<small>See what's on</small></a>
+  <a href="#mens-night" data-tt-cta="dock-leagues">Join Men's Night<small>32 roster spots</small></a>
 </nav>
 </div>
 

@@ -375,15 +375,26 @@ leagues = leagues.replace('<!--LS:FAQ-->', faq_section(_lg_faq, 'Golf leagues in
 build_page('LEAGUES', 'LEAGUES & EVENTS', leagues, [
   {"@type": "WebPage", "@id": _LP + "#webpage", "url": _LP,
    "name": "Golf Leagues & Tournaments in Newmarket | The Bogey Club",
-   "description": "Indoor golf leagues and tournaments in Newmarket: Men's Night every Tuesday, The Bogey Cup monthly tournament, and The Bogey Club Classic outdoor event.",
+   "description": "Indoor golf leagues and tournaments in Newmarket: Men's Night, a 24-week Tuesday league (November to April), The Bogey Cup monthly tournament, and The Bogey Club Classic outdoor event.",
    "inLanguage": "en-CA", "breadcrumb": {"@id": _LP + "#breadcrumb"}, "about": {"@id": "https://thebogeyclub.com/#business"}},
   {"@type": "BreadcrumbList", "@id": _LP + "#breadcrumb", "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://thebogeyclub.com/"},
     {"@type": "ListItem", "position": 2, "name": "Leagues & Events", "item": _LP}]},
   {"@type": _biz["@type"], "@id": _biz["@id"], "name": _biz["name"], "url": "https://thebogeyclub.com/",
    "telephone": _biz["telephone"], "email": _biz["email"], "address": _biz["address"]},
+  {"@type": "SportsEvent", "@id": _LP + "#mens-night", "name": "Men's Night '26–'27: The Bogey Club Indoor Golf League",
+   "description": "A 24-week indoor golf league on Golfzon simulators: a different format every week, weekly prizes, two season titles and a Player of the Year race. 32 roster spots.",
+   "sport": "Golf", "startDate": "2026-11-03T19:00:00-05:00", "endDate": "2027-04-27", "eventStatus": "https://schema.org/EventScheduled",
+   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+   "eventSchedule": {"@type": "Schedule", "repeatFrequency": "P1W", "byDay": "https://schema.org/Tuesday", "startTime": "19:00",
+                     "startDate": "2026-11-03", "endDate": "2027-04-27", "scheduleTimezone": "America/Toronto"},
+   "location": {"@id": _biz["@id"]}, "organizer": {"@id": _biz["@id"]},
+   "image": "https://thebogeyclub.com/wp-content/uploads/2026/08/Sim-People.jpg",
+   "maximumAttendeeCapacity": 32,
+   "offers": [{"@type": "Offer", "name": "One season", "price": "999", "priceCurrency": "CAD", "url": _GG, "availability": "https://schema.org/InStock"},
+              {"@type": "Offer", "name": "Both seasons", "price": "1799", "priceCurrency": "CAD", "url": _GG, "availability": "https://schema.org/InStock"}]},
   faq_schema(_lg_faq, _LP)],
-  solo_dock('#whats-on', 'Join a league', "See what's on", 'dock-leagues'),
+  solo_dock('#mens-night', 'Join Men\'s Night', '32 roster spots', 'dock-leagues'),
   'Golf Leagues & Tournaments in Newmarket | The Bogey Club')
 
 print('built dist/ (' + str(len(files)) + ' files + uploads/) and preview.html; fonts:', sorted(have))
