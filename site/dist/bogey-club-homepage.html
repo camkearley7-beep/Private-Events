@@ -777,6 +777,51 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
   .tt .mn-cta .btn { justify-content: center; gap: 14px; }
 }
 
+/* Leagues & Events page header */
+.tt .lg-hero { position: relative; overflow: hidden; isolation: isolate; background: var(--green); color: var(--white); padding: 96px var(--g) 0; }
+.tt .lg-hero-art { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; }
+.tt .lg-hero-art .rings circle { stroke: rgba(215,201,164,.16); stroke-width: 1; }
+.tt .lg-hero-art .arc { stroke: var(--sand); stroke-width: 2; stroke-dasharray: 1; stroke-dashoffset: 0; opacity: .85; }
+.tt .lg-hero-art .ball { fill: var(--white); }
+.tt .lg-hero-in { position: relative; max-width: 1100px; padding-bottom: 72px; }
+.tt .lg-hero .data { color: var(--sand); }
+.tt .lg-hero-h { margin-top: 18px; font-weight: 700; font-size: clamp(60px, 11vw, 168px); line-height: .86; letter-spacing: -.045em; text-transform: uppercase; }
+.tt .lg-hero-h span { display: block; }
+.tt .lg-hero-h span + span { color: var(--sand); }
+.tt .lg-hero .lede { margin-top: 26px; color: rgba(255,255,255,.88); max-width: 52ch; }
+.tt .lg-ticker { display: flex; overflow: hidden; margin: 0 calc(var(--g) * -1); background: var(--sand); color: var(--pine); }
+.tt .lg-ticker ul { list-style: none; display: flex; flex: none; animation: tt-tick 38s linear infinite; }
+.tt .lg-ticker li { display: flex; align-items: center; gap: 22px; padding: 16px 0 16px 22px; white-space: nowrap; font-weight: 700; font-size: 15px; letter-spacing: .06em; text-transform: uppercase; }
+.tt .lg-ticker li::after { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+.tt .lg-ticker:hover ul { animation-play-state: paused; }
+@keyframes tt-tick { to { transform: translateX(-100%); } }
+/* intro: the ball flight draws in and the ball lands */
+.tt .lg-hero-art .arc { animation: tt-arc 1.8s cubic-bezier(.3,.1,.2,1) .2s both; }
+.tt .lg-hero-art .ball { transform-box: fill-box; transform-origin: center; animation: tt-land .5s cubic-bezier(.3,1.6,.5,1) 1.85s both; }
+@keyframes tt-arc { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes tt-land { from { transform: scale(0); } to { transform: scale(1); } }
+.tt .lg-hero-in > * { animation: tt-rise .8s cubic-bezier(.2,.8,.2,1) both; }
+.tt .lg-hero-in > :nth-child(2) { animation-delay: .1s; } .tt .lg-hero-in > :nth-child(3) { animation-delay: .2s; }
+@keyframes tt-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .tt .lg-hero-art .arc, .tt .lg-hero-art .ball, .tt .lg-hero-in > * { animation: none; }
+  .tt .lg-ticker ul { animation: none; }
+  .tt .lg-ticker ul + ul { display: none; }
+  .tt .lg-ticker { flex-wrap: wrap; }
+}
+.tt .ls-pro.lg-first .ls-name { margin-top: 10px; padding-top: 0; border-top: 0; font-size: clamp(30px, 3vw, 44px); line-height: 1.05; letter-spacing: -.03em; }
+.tt .ls-pro.lg-first .ls-name span { margin-top: 8px; }
+.tt .ls-pro.lg-first { padding-top: 88px; }
+@media (max-width: 860px) {
+  .tt .lg-hero { padding: 64px 18px 0; }
+  .tt .lg-hero-in { padding-bottom: 48px; }
+  .tt .lg-hero-h { font-size: clamp(52px, 16vw, 84px); }
+  .tt .lg-hero-art .arc, .tt .lg-hero-art .ball { display: none; }
+  .tt .lg-ticker { margin: 0 -18px; }
+  .tt .lg-ticker li { font-size: 13px; padding: 13px 0 13px 18px; gap: 18px; }
+  .tt .ls-pro.lg-first { padding-top: 40px; }
+}
+
 
 </style>
 <script type="application/ld+json">

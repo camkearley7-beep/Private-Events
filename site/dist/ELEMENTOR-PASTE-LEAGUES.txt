@@ -754,6 +754,51 @@ html.tt-lock, html.tt-lock body { overflow: hidden; }
   .tt .mn-cta .btn { justify-content: center; gap: 14px; }
 }
 
+/* Leagues & Events page header */
+.tt .lg-hero { position: relative; overflow: hidden; isolation: isolate; background: var(--green); color: var(--white); padding: 96px var(--g) 0; }
+.tt .lg-hero-art { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; }
+.tt .lg-hero-art .rings circle { stroke: rgba(215,201,164,.16); stroke-width: 1; }
+.tt .lg-hero-art .arc { stroke: var(--sand); stroke-width: 2; stroke-dasharray: 1; stroke-dashoffset: 0; opacity: .85; }
+.tt .lg-hero-art .ball { fill: var(--white); }
+.tt .lg-hero-in { position: relative; max-width: 1100px; padding-bottom: 72px; }
+.tt .lg-hero .data { color: var(--sand); }
+.tt .lg-hero-h { margin-top: 18px; font-weight: 700; font-size: clamp(60px, 11vw, 168px); line-height: .86; letter-spacing: -.045em; text-transform: uppercase; }
+.tt .lg-hero-h span { display: block; }
+.tt .lg-hero-h span + span { color: var(--sand); }
+.tt .lg-hero .lede { margin-top: 26px; color: rgba(255,255,255,.88); max-width: 52ch; }
+.tt .lg-ticker { display: flex; overflow: hidden; margin: 0 calc(var(--g) * -1); background: var(--sand); color: var(--pine); }
+.tt .lg-ticker ul { list-style: none; display: flex; flex: none; animation: tt-tick 38s linear infinite; }
+.tt .lg-ticker li { display: flex; align-items: center; gap: 22px; padding: 16px 0 16px 22px; white-space: nowrap; font-weight: 700; font-size: 15px; letter-spacing: .06em; text-transform: uppercase; }
+.tt .lg-ticker li::after { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+.tt .lg-ticker:hover ul { animation-play-state: paused; }
+@keyframes tt-tick { to { transform: translateX(-100%); } }
+/* intro: the ball flight draws in and the ball lands */
+.tt .lg-hero-art .arc { animation: tt-arc 1.8s cubic-bezier(.3,.1,.2,1) .2s both; }
+.tt .lg-hero-art .ball { transform-box: fill-box; transform-origin: center; animation: tt-land .5s cubic-bezier(.3,1.6,.5,1) 1.85s both; }
+@keyframes tt-arc { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes tt-land { from { transform: scale(0); } to { transform: scale(1); } }
+.tt .lg-hero-in > * { animation: tt-rise .8s cubic-bezier(.2,.8,.2,1) both; }
+.tt .lg-hero-in > :nth-child(2) { animation-delay: .1s; } .tt .lg-hero-in > :nth-child(3) { animation-delay: .2s; }
+@keyframes tt-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .tt .lg-hero-art .arc, .tt .lg-hero-art .ball, .tt .lg-hero-in > * { animation: none; }
+  .tt .lg-ticker ul { animation: none; }
+  .tt .lg-ticker ul + ul { display: none; }
+  .tt .lg-ticker { flex-wrap: wrap; }
+}
+.tt .ls-pro.lg-first .ls-name { margin-top: 10px; padding-top: 0; border-top: 0; font-size: clamp(30px, 3vw, 44px); line-height: 1.05; letter-spacing: -.03em; }
+.tt .ls-pro.lg-first .ls-name span { margin-top: 8px; }
+.tt .ls-pro.lg-first { padding-top: 88px; }
+@media (max-width: 860px) {
+  .tt .lg-hero { padding: 64px 18px 0; }
+  .tt .lg-hero-in { padding-bottom: 48px; }
+  .tt .lg-hero-h { font-size: clamp(52px, 16vw, 84px); }
+  .tt .lg-hero-art .arc, .tt .lg-hero-art .ball { display: none; }
+  .tt .lg-ticker { margin: 0 -18px; }
+  .tt .lg-ticker li { font-size: 13px; padding: 13px 0 13px 18px; gap: 18px; }
+  .tt .ls-pro.lg-first { padding-top: 40px; }
+}
+
 /* Let the widget run edge to edge inside Elementor's container/section wrappers */
 .e-con:has(.tt-one), .elementor-section:has(.tt-one) .elementor-container, .elementor-column:has(.tt-one) > .elementor-widget-wrap {
   --padding-top: 0px; --padding-right: 0px; --padding-bottom: 0px; --padding-left: 0px; --gap: 0px; --content-width: 100%; --width: 100%;
@@ -817,15 +862,35 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
      ===================================================================== -->
 <div class="tt" id="tt-leagues">
 
-<!-- 1. HERO: page headline, with Men's Night as the first thing you see -->
-<section class="ls-pro" aria-labelledby="tt-lg-h1">
+<!-- 0. PAGE HEADER: rings and a ball flight (from the Men's Night flyer), big type, leaderboard ticker -->
+<header class="lg-hero" aria-labelledby="tt-lg-h1">
+  <svg class="lg-hero-art" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <g class="rings" fill="none">
+      <circle cx="930" cy="330" r="90"/><circle cx="930" cy="330" r="180"/><circle cx="930" cy="330" r="270"/>
+      <circle cx="930" cy="330" r="360"/><circle cx="930" cy="330" r="450"/><circle cx="930" cy="330" r="540"/>
+    </g>
+    <path class="arc" d="M690 720 C 700 300, 800 60, 930 330" fill="none" pathLength="1"/>
+    <circle class="ball" cx="930" cy="330" r="9"/>
+  </svg>
+  <div class="lg-hero-in">
+    <p class="data">Golf leagues &amp; tournaments · Newmarket, ON</p>
+    <h1 id="tt-lg-h1" class="lg-hero-h"><span>Leagues</span> <span>&amp; Events</span></h1>
+    <p class="lede">Weekly league nights, monthly tournaments and an annual outdoor classic, played on our Golfzon simulators with the bar a few steps away.</p>
+  </div>
+  <div class="lg-ticker" aria-hidden="true">
+    <ul><li>Men's Night · Tuesdays 7 PM</li><li>The Bogey Cup · Monthly</li><li>Weekly prizes</li><li>Player of the Year</li><li>Bogey Club Classic · Annual</li><li>32 roster spots</li><li>Two-man scramble</li></ul><ul><li>Men's Night · Tuesdays 7 PM</li><li>The Bogey Cup · Monthly</li><li>Weekly prizes</li><li>Player of the Year</li><li>Bogey Club Classic · Annual</li><li>32 roster spots</li><li>Two-man scramble</li></ul>
+  </div>
+</header>
+
+<!-- 1. MEN'S NIGHT: the first section under the page header -->
+<section class="ls-pro lg-first" aria-labelledby="tt-lg-mn-h">
   <div class="ls-portrait">
     <img src="https://thebogeyclub.com/wp-content/uploads/2026/08/Sim-People.jpg" fetchpriority="high" decoding="async" alt="Golfers playing Men's Night on the Golfzon simulators at The Bogey Club in Newmarket">
     <p class="ls-tag"><span class="data">Tuesdays · Nov 3 to Apr 27</span>Men's Night '26–'27<small>The Bogey Club indoor golf league</small></p>
   </div>
   <div class="ls-pro-copy">
-    <h1 id="tt-lg-h1" class="h-xl"><small>Golf leagues &amp; tournaments · Newmarket, ON</small> Leagues &amp; Events</h1>
-    <h2 class="ls-name">Men's Night '26–'27 <span>Tuesdays, November 3 to April 27</span></h2>
+    <p class="data">Now registering</p>
+    <h2 id="tt-lg-mn-h" class="ls-name">Men's Night '26–'27 <span>Tuesdays, November 3 to April 27</span></h2>
     <p class="lede">24 weeks. Two seasons. One Player of the Year.</p>
     <p>A 24-week indoor golf league on our Golfzon simulators: a different format every week, weekly prizes, two season titles and a Player of the Year race.</p>
     <div class="acts">
