@@ -61,6 +61,14 @@ Same setup as the homepage: on the Meet Our Pro page, set Page Layout to **Eleme
 - **On the page for Google:** keyword H1 text ("Private golf lessons · Newmarket, ON — Meet Our Pro"), a compact 7-question golf lessons FAQ at the bottom of the page (all closed; Google still reads it) (from `site/src/lessons-faq.json`, which also builds the FAQPage schema), and JSON-LD for WebPage, BreadcrumbList, the business, Andrew (Person), the lessons (Service, serving Newmarket, Aurora and East Gwillimbury) and the FAQ.
 - **Off the page (biggest wins):** in Google Business Profile add "Golf lessons" / "Private golf lessons" as services with this page's URL, and post a photo of a lesson; ask lesson students for Google reviews that mention lessons; then in Google Search Console, inspect `https://thebogeyclub.com/meet-our-pro/` and click Request indexing.
 
+## Leagues & Events page (/leagues-and-events/)
+
+Same setup as the other pages: Elementor Canvas, one Full Width container (padding 0), one **HTML** widget with `site/dist/ELEMENTOR-PASTE-LEAGUES.txt`.
+
+- **Content** (from the current page and the homepage): Men's Night every Tuesday (registers on Golf Genius), The Bogey Cup (4 rounds over 4 weeks, a week per round, Stableford, weekly skins and closest to the pin, new tournament monthly), The Bogey Club Classic (annual, outdoor, one round), two-man scramble (winner takes all) and TaylorMade custom fitting events. No dates, prices or entry fees are shown, because none were given.
+- **Sign-up:** Men's Night goes to Golf Genius; the Bogey Cup, scramble and fitting buttons open a pre-addressed email to golf@thebogeyclub.com (with the Gmail / Outlook / Copy card for visitors without an email app). The phone bar reads "Join a league" and jumps to What's on.
+- **SEO (Yoast/Rank Math):** title `Golf Leagues & Tournaments in Newmarket | The Bogey Club`; description `Indoor golf leagues in Newmarket: Men's Night every Tuesday, The Bogey Cup monthly tournament with weekly prizes, and The Bogey Club Classic. Join a league today.`; focus keyphrase `golf league Newmarket`. The page carries WebPage, BreadcrumbList, business and FAQPage JSON-LD, and a compact 5-question FAQ from `site/src/leagues-faq.json`.
+
 ## 1. Upload files
 
 1. **Fonts.** Upload the contents of `site/dist/uploads/fonts/` to `/wp-content/uploads/fonts/`, using SFTP or the host's file manager.

@@ -304,5 +304,87 @@ body {{ margin: 0; background: #FFFFFF; }}
 </html>
 ''')
 
+# Shared page builder for the inner pages ----------------------------------------
+def faq_section(items, title, linkify):
+    return ('<section class="ls-faq" aria-labelledby="tt-faq-h">\n  <div class="ls-faq-in">\n'
+        f'    <h2 id="tt-faq-h" class="ls-faq-t"><span class="data">FAQ</span>{title}</h2>\n    <div class="ls-faq-list">\n'
+        + ''.join(f'      <details><summary>{_html.escape(f["q"])}</summary><p>{linkify(f["a"])}</p></details>\n' for f in items)
+        + '    </div>\n  </div>\n</section>')
+
+def faq_schema(items, page):
+    return {"@type": "FAQPage", "@id": page + "#faq", "mainEntity": [
+        {"@type": "Question", "name": f["q"], "acceptedAnswer": {"@type": "Answer", "text": f["a"]}} for f in items]}
+
+def solo_dock(href, label, small, cta, extra=''):
+    return footer[:_dock0] + ('<nav class="dock solo" aria-label="Quick booking">\n'
+        f'  <a href="{href}"{extra} data-tt-cta="{cta}">{label}<small>{small}</small></a>\n</nav>') + footer[_dock1:]
+
+def build_page(key, label, body, graph, foot, title):
+    tag = '<script type="application/ld+json">\n' + json.dumps({"@context": "https://schema.org", "@graph": graph}, indent=2, ensure_ascii=False) + '\n</script>\n'
+    _f = lambda f: f(foot).replace('<!--BCH:NEWSLETTER-->', '<!-- Existing newsletter signup form goes here -->')
+    one = (f"<!-- THE BOGEY CLUB: {label} page. Paste this whole file into ONE Elementor HTML widget.\n"
+           "     Page Settings > Page Layout = Elementor Canvas. Container: Full Width, padding 0. -->\n"
+           "<div class=\"tt-one\">\n" + live(head).split('-->', 1)[1].strip() + "\n<style>\n" + css + elementor_fix + "</style>\n"
+           + live(header) + "\n" + live(body) + "\n" + _f(live) + "\n" + tag + "<script>\n" + js + "</script>\n</div>\n")
+    one = one.replace(IMG_LIVE + '/bogey-club-logo.png', _logo)
+    if 'Satoshi-Variable.woff2' in have:
+        one = re.sub(r'<link rel="preload"[^>]*>\n', '', one)
+        one = re.sub(r"src: url\('[^']*Satoshi-Variable\.woff2'\) format\('woff2-variations'\), url\('[^']*Satoshi-Variable\.woff2'\) format\('woff2'\)",
+                     lambda m: "src: url('" + _font + "') format('woff2')", one)
+    assert '[wpforms' not in one and '<!--LS:' not in one
+    (dist / f'ELEMENTOR-PASTE-{key}.html').write_text(one)
+    (dist / f'ELEMENTOR-PASTE-{key}.txt').write_text(one)
+    (ROOT / f'preview-{key.lower()}.html').write_text(f'''<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{title}</title>
+<meta name="robots" content="noindex">
+{prev(head)}<style>
+html {{ scroll-behavior: smooth; }}
+body {{ margin: 0; background: #FFFFFF; }}
+{css}
+</style>
+{tag}</head>
+<body>
+{prev(header)}
+<main>
+{prev(body)}
+</main>
+{prev(foot).replace('<!--BCH:NEWSLETTER-->', news_demo)}
+<script>
+{js}</script>
+</body>
+</html>
+''')
+
+# Leagues & events (/leagues-and-events/) -------------------------------------------
+_LP = 'https://thebogeyclub.com/leagues-and-events/'
+_GG = 'https://www.golfgenius.com/register?league_id=13156352750042251586'
+_lg_faq = json.loads(src('leagues-faq.json'))
+def _lg_link(t):
+    t = _html.escape(t, quote=False)
+    t = t.replace('(905) 235-4653', '<a href="tel:+19052354653">(905) 235-4653</a>')
+    t = t.replace('golf@thebogeyclub.com', '<a href="mailto:golf@thebogeyclub.com" data-tt-mail>golf@thebogeyclub.com</a>')
+    t = t.replace('online through Golf Genius', f'<a href="{_GG}" target="_blank" rel="noopener">online through Golf Genius</a>')
+    return t
+leagues = src('leagues.html')
+assert leagues.count('<!--LS:FAQ-->') == 1
+leagues = leagues.replace('<!--LS:FAQ-->', faq_section(_lg_faq, 'Golf leagues in Newmarket', _lg_link))
+build_page('LEAGUES', 'LEAGUES & EVENTS', leagues, [
+  {"@type": "WebPage", "@id": _LP + "#webpage", "url": _LP,
+   "name": "Golf Leagues & Tournaments in Newmarket | The Bogey Club",
+   "description": "Indoor golf leagues and tournaments in Newmarket: Men's Night every Tuesday, The Bogey Cup monthly tournament, and The Bogey Club Classic outdoor event.",
+   "inLanguage": "en-CA", "breadcrumb": {"@id": _LP + "#breadcrumb"}, "about": {"@id": "https://thebogeyclub.com/#business"}},
+  {"@type": "BreadcrumbList", "@id": _LP + "#breadcrumb", "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://thebogeyclub.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Leagues & Events", "item": _LP}]},
+  {"@type": _biz["@type"], "@id": _biz["@id"], "name": _biz["name"], "url": "https://thebogeyclub.com/",
+   "telephone": _biz["telephone"], "email": _biz["email"], "address": _biz["address"]},
+  faq_schema(_lg_faq, _LP)],
+  solo_dock('#whats-on', 'Join a league', "See what's on", 'dock-leagues'),
+  'Golf Leagues & Tournaments in Newmarket | The Bogey Club')
+
 print('built dist/ (' + str(len(files)) + ' files + uploads/) and preview.html; fonts:', sorted(have))
 PY
