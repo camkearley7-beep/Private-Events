@@ -483,7 +483,7 @@ body.admin-bar .tt .hdr { top: 32px; }
 .tt .hero picture, .tt .stop { background-color: var(--pine); }
 .tt img.tt-missing { visibility: hidden; }
 /* hero video: fades in over the still once it is actually playing */
-.tt .hero-video { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; transition: opacity .8s ease; pointer-events: none; }
+.tt .hero-video { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; transition: opacity .3s ease; pointer-events: none; }
 /* with the site script, fade in once playing; without it, the video simply plays over its poster */
 html.tt-js .tt .hero-video { opacity: 0; }
 html.tt-js .tt .hero.is-playing .hero-video { opacity: 1; }

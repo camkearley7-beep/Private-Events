@@ -37,18 +37,33 @@
 
     } catch (err) { fail(err); }
     try {
-    /* Hero video: reveal it only once frames are playing; otherwise keep the still. */
+    /* Hero video: reveal it as soon as frames are playing, keep it up once shown,
+       and keep nudging play() (first touch/scroll, tab return, after a stall). */
     var hero = document.querySelector(".tt .hero"), vid = hero && hero.querySelector(".hero-video");
     if (vid) {
       var drop = function () { vid.remove(); };
       if (reduce || window.matchMedia("(prefers-reduced-data: reduce)").matches) drop();
       else {
-        vid.addEventListener("playing", function () { hero.classList.add("is-playing"); }, { once: true });
+        vid.muted = true; vid.defaultMuted = true; vid.playsInline = true;
+        var show = function () { hero.classList.add("is-playing"); };
+        var kick = function () {
+          if (!vid.isConnected || !vid.paused) return;
+          var p = vid.play && vid.play();
+          if (p && p.catch) p.catch(function () { /* blocked for now: retried on touch/scroll */ });
+        };
+        vid.addEventListener("playing", show);
+        vid.addEventListener("timeupdate", function () { if (vid.currentTime > 0) show(); });
+        ["loadedmetadata", "loadeddata", "canplay", "stalled", "suspend"].forEach(function (ev) { vid.addEventListener(ev, kick); });
+        vid.addEventListener("pause", function () { if (!document.hidden) setTimeout(kick, 250); });
+        /* iPhone Low Power Mode blocks autoplay until the visitor interacts. */
+        ["touchstart", "pointerdown", "scroll", "keydown"].forEach(function (ev) {
+          window.addEventListener(ev, kick, { passive: true });
+        });
+        document.addEventListener("visibilitychange", function () { if (!document.hidden) kick(); });
         var srcs = vid.querySelectorAll("source");
         if (srcs.length) srcs[srcs.length - 1].addEventListener("error", drop);
         vid.addEventListener("error", drop);
-        var p = vid.play && vid.play();
-        if (p && p.catch) p.catch(function () { /* autoplay blocked: the still stays */ });
+        kick();
       }
     }
 

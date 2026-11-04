@@ -27,6 +27,10 @@ schema = json.loads(src('schema.jsonld'))
 schema_tag = '<script type="application/ld+json">\n' + json.dumps(schema, indent=2, ensure_ascii=False) + '\n</script>\n'
 css, js = src('tt.css'), src('tt.js')
 header, home, footer = src('header.html'), src('home.html'), src('footer.html')
+# Hero video: paste the Media Library URL of the small H.264 .mp4 here once it's uploaded.
+HERO_MP4 = ""
+home = home.replace('    <!--HERO:MP4-->\n', f'    <source src="{HERO_MP4}" type="video/mp4">\n' if HERO_MP4 else '')
+assert '<!--HERO:MP4-->' not in home
 footer = footer.replace('<!--BCH:PRIVACY-->', src('privacy.html').strip())  # slide-out privacy policy, on every page
 # slide-out FAQs (from src/faq.json), on every page
 import html as _hf
