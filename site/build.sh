@@ -28,7 +28,7 @@ schema_tag = '<script type="application/ld+json">\n' + json.dumps(schema, indent
 css, js = src('tt.css'), src('tt.js')
 header, home, footer = src('header.html'), src('home.html'), src('footer.html')
 # Hero video: paste the Media Library URL of the small H.264 .mp4 here once it's uploaded.
-HERO_MP4 = ""
+HERO_MP4 = "https://thebogeyclub.com/wp-content/uploads/2026/11/Website-hero.mp4"
 home = home.replace('    <!--HERO:MP4-->\n', f'    <source src="{HERO_MP4}" type="video/mp4">\n' if HERO_MP4 else '')
 assert '<!--HERO:MP4-->' not in home
 footer = footer.replace('<!--BCH:PRIVACY-->', src('privacy.html').strip())  # slide-out privacy policy, on every page
