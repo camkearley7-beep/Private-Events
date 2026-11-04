@@ -199,7 +199,7 @@ one = one.replace(IMG_LIVE + '/bogey-club-logo.png', _logo)
 # Satoshi: embedded in the page by default (works with no upload). Once
 # Satoshi-Variable.woff2 is uploaded to the Media Library, put its URL in FONT_URL:
 # the font is then preloaded as one cached file instead of 57 KB inside every page.
-FONT_URL = ""
+FONT_URL = "https://thebogeyclub.com/wp-content/uploads/2026/11/Satoshi-Variable.woff2"
 _font = 'data:font/woff2;base64,' + _b64.b64encode((ROOT / 'fonts' / 'Satoshi-Variable.woff2').read_bytes()).decode() if 'Satoshi-Variable.woff2' in have else ''
 def _fontify(x):
     if 'Satoshi-Variable.woff2' not in have: return x

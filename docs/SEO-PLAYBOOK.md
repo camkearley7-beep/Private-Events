@@ -92,7 +92,7 @@ Sitemap: https://thebogeyclub.com/sitemap.xml
 
 ## 5. Speed
 
-1. **Font (biggest code-side saving).** Every page currently carries the Satoshi font inside it (57 KB per page, re-downloaded on every page). Once it's uploaded, each page is about 25% smaller and the font is cached after the first visit.
+1. **Font (biggest code-side saving) — done Nov 4: uploaded to `/wp-content/uploads/2026/11/`, `FONT_URL` set.** Every page currently carries the Satoshi font inside it (57 KB per page, re-downloaded on every page). Once it's uploaded, each page is about 25% smaller and the font is cached after the first visit.
    - Upload `site/dist/uploads/fonts/Satoshi-Variable.woff2` via the host's File Manager to `/wp-content/uploads/2026/11/`. WordPress's media uploader usually refuses `.woff2` files.
    - Send me the URL, or set it as `FONT_URL` in `site/build.sh` and rebuild.
 2. **Images.** Several large images are PNGs, which are usually several times bigger than WebP for photos: `Main-Area.png`, `website-banner-heritage-hat.png` and `TaylorMade-P·790-Golf-Simulator-Setup.png`.
