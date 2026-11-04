@@ -24,6 +24,10 @@ if 'Satoshi-Variable.woff2' not in have:
     # Without Regular/Medium, keep body text on the system font rather than faking it with Bold.
     head = head.replace('</style>', "html .tt { --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; }\n</style>", 1)
 schema = json.loads(src('schema.jsonld'))
+# homepage FAQPage, from the same src/faq.json that feeds the visible FAQs panel
+schema['@graph'].append({"@type": "FAQPage", "@id": "https://thebogeyclub.com/#faq", "isPartOf": {"@id": "https://thebogeyclub.com/#website"},
+  "mainEntity": [{"@type": "Question", "name": i["q"], "acceptedAnswer": {"@type": "Answer", "text": i["a"]}}
+                 for g in json.loads(src('faq.json')) for i in g['items']]})
 schema_tag = '<script type="application/ld+json">\n' + json.dumps(schema, indent=2, ensure_ascii=False) + '\n</script>\n'
 css, js = src('tt.css'), src('tt.js')
 header, home, footer = src('header.html'), src('home.html'), src('footer.html')
@@ -192,11 +196,17 @@ _im = _I.open(A / 'bogey-club-logo.png'); _im = _im.resize((300, round(_im.heigh
 _buf = _io.BytesIO(); _im.convert('L').save(_buf, 'PNG', optimize=True)
 _logo = 'data:image/png;base64,' + _b64.b64encode(_buf.getvalue()).decode()
 one = one.replace(IMG_LIVE + '/bogey-club-logo.png', _logo)
-if 'Satoshi-Variable.woff2' in have:
-    _font = 'data:font/woff2;base64,' + _b64.b64encode((ROOT / 'fonts' / 'Satoshi-Variable.woff2').read_bytes()).decode()
-    one = re.sub(r'<link rel="preload"[^>]*>\n', '', one)
-    one = re.sub(r"src: url\('[^']*Satoshi-Variable\.woff2'\) format\('woff2-variations'\), url\('[^']*Satoshi-Variable\.woff2'\) format\('woff2'\)",
-                 lambda m: "src: url('" + _font + "') format('woff2')", one)
+# Satoshi: embedded in the page by default (works with no upload). Once
+# Satoshi-Variable.woff2 is uploaded to the Media Library, put its URL in FONT_URL:
+# the font is then preloaded as one cached file instead of 57 KB inside every page.
+FONT_URL = ""
+_font = 'data:font/woff2;base64,' + _b64.b64encode((ROOT / 'fonts' / 'Satoshi-Variable.woff2').read_bytes()).decode() if 'Satoshi-Variable.woff2' in have else ''
+def _fontify(x):
+    if 'Satoshi-Variable.woff2' not in have: return x
+    x = re.sub(r'<link rel="preload"[^>]*>\n', (f'<link rel="preload" href="{FONT_URL}" as="font" type="font/woff2" crossorigin>\n' if FONT_URL else ''), x)
+    return re.sub(r"src: url\('[^']*Satoshi-Variable\.woff2'\) format\('woff2-variations'\), url\('[^']*Satoshi-Variable\.woff2'\) format\('woff2'\)",
+                  lambda m: "src: url('" + (FONT_URL or _font) + "') format('woff2')", x)
+one = _fontify(one)
 # The WPForms contact form renders right in the card: WordPress runs shortcodes in
 # Elementor's HTML widget. (The shortcode is assembled here so it never appears in
 # tt.js, where WordPress would run it inside the script and break it.)
@@ -299,7 +309,7 @@ _ls_schema = {"@context": "https://schema.org", "@graph": [
    "memberOf": {"@type": "Organization", "name": "PGA of Canada"}, "worksFor": {"@id": _biz["@id"]}},
   {"@type": "Service", "@id": _P + "#lessons", "name": "Private golf lessons", "serviceType": "Golf lessons",
    "url": _P, "provider": [{"@id": _P + "#andrew"}, {"@id": _biz["@id"]}],
-   "areaServed": [{"@type": "City", "name": n} for n in ("Newmarket", "Aurora", "East Gwillimbury")],
+   "areaServed": [{"@type": "City", "name": n} for n in ("Newmarket", "Aurora", "East Gwillimbury", "Bradford West Gwillimbury")] + [{"@type": "AdministrativeArea", "name": "York Region"}],
    "audience": {"@type": "Audience", "audienceType": "Golfers of every level, beginner to advanced"},
    "description": "One-on-one indoor golf lessons on Golfzon simulators with Andrew McDonald, PGA of Canada, covering technique, strategy and the mental game."},
   {"@type": "FAQPage", "@id": _P + "#faq", "mainEntity": [
@@ -315,10 +325,7 @@ one_ls = ("<!-- THE BOGEY CLUB: MEET OUR PRO page. Paste this whole file into ON
           "<div class=\"tt-one\">\n" + live(head).split('-->', 1)[1].strip() + "\n<style>\n" + css + elementor_fix + "</style>\n"
           + live(header) + "\n" + live(lessons) + "\n" + _foot(live) + "\n" + _ls_tag + "<script>\n" + js + "</script>\n</div>\n")
 one_ls = one_ls.replace(IMG_LIVE + '/bogey-club-logo.png', _logo)
-if 'Satoshi-Variable.woff2' in have:
-    one_ls = re.sub(r'<link rel="preload"[^>]*>\n', '', one_ls)
-    one_ls = re.sub(r"src: url\('[^']*Satoshi-Variable\.woff2'\) format\('woff2-variations'\), url\('[^']*Satoshi-Variable\.woff2'\) format\('woff2'\)",
-                    lambda m: "src: url('" + _font + "') format('woff2')", one_ls)
+one_ls = _fontify(one_ls)
 # exactly one shortcode (the lesson form), inside the form card and never inside the script
 assert one_ls.count('[wpforms') == (1 if LESSON_FORM_ID else 0)
 if LESSON_FORM_ID:
@@ -385,10 +392,7 @@ def build_page(key, label, body, graph, foot, title, form=None, contact=None):
            "<div class=\"tt-one\">\n" + live(head).split('-->', 1)[1].strip() + "\n<style>\n" + css + elementor_fix + "</style>\n"
            + live(hdr) + "\n" + live(body) + "\n" + _f(live) + "\n" + tag + "<script>\n" + js + "</script>\n</div>\n")
     one = one.replace(IMG_LIVE + '/bogey-club-logo.png', _logo)
-    if 'Satoshi-Variable.woff2' in have:
-        one = re.sub(r'<link rel="preload"[^>]*>\n', '', one)
-        one = re.sub(r"src: url\('[^']*Satoshi-Variable\.woff2'\) format\('woff2-variations'\), url\('[^']*Satoshi-Variable\.woff2'\) format\('woff2'\)",
-                     lambda m: "src: url('" + _font + "') format('woff2')", one)
+    one = _fontify(one)
     assert '<!--LS:' not in one and '<!--PG:' not in one
     assert one.count('[wpforms') == (1 if form else 0)
     if form:

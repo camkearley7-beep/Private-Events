@@ -1,5 +1,5 @@
-/* The Bogey Club — site script (production). Vanilla, no dependencies,
-   no tracking (CTAs carry data-tt-cta for the site's existing GTM/GA).
+/* The Bogey Club — site script (production). Vanilla, no dependencies.
+   Loads no analytics itself: key clicks are reported to an existing GA4/GTM only (see "Click events").
    Install once, site-wide: WPCode footer snippet (see 02-script.html). */
 (function () {
   "use strict";
@@ -25,6 +25,26 @@
       a.href = "https://thebogeyclub.golfbooking.ca/calendar.php?date=" + month + "&bayfilter=4&templateId=50&lang=en";
     });
     document.querySelectorAll("[data-tt-year]").forEach(function (el) { el.textContent = now.getFullYear(); });
+
+    } catch (err) { fail(err); }
+    try {
+    /* Click events: report booking, league, call, email and directions clicks to GA4 (gtag)
+       and/or Google Tag Manager (dataLayer), if the site has them. These are clicks, not
+       completed bookings: bookings finish on the booking platform. */
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest && e.target.closest("a[href]");
+      if (!a) return;
+      var href = a.getAttribute("href") || "", kind =
+        /golfbooking\.ca/.test(href) ? (/bayfilter=4/.test(href) || a.getAttribute("data-tt-link") === "karaoke-booking" ? "karaoke_booking_click" : "booking_click") :
+        /golfgenius\.com/.test(href) ? "league_registration_click" :
+        /^tel:/.test(href) ? "phone_click" :
+        /^mailto:/.test(href) ? "email_click" :
+        /google\.[^/]+\/maps/.test(href) ? "directions_click" : "";
+      if (!kind) return;
+      var data = { cta: a.getAttribute("data-tt-cta") || "", link_url: a.href, page_path: location.pathname };
+      if (typeof window.gtag === "function") window.gtag("event", kind, data);
+      if (Array.isArray(window.dataLayer)) window.dataLayer.push(Object.assign({ event: kind }, data));
+    }, true);
 
     } catch (err) { fail(err); }
     try {

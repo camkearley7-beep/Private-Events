@@ -3,8 +3,12 @@
     "group": "Booking & pricing",
     "items": [
       {
+        "q": "Where is The Bogey Club?",
+        "a": "17705 Leslie Street, Unit 5, Newmarket, ON L3Y 3E3. We're the local spot for indoor golf for golfers from Newmarket, Aurora, East Gwillimbury, Bradford and across York Region."
+      },
+      {
         "q": "How do I book a bay?",
-        "a": "Book online any time, or call us at (905) 235-GOLF (4653). Walk-ins are welcome when a bay is free, but booking ahead is the best way to get the time you want."
+        "a": "Book online any time, or call us at (905) 235-GOLF (4653). All four of our Golfzon simulators can be booked online. Walk-ins are welcome when a bay is free, but booking ahead is the best way to get the time you want."
       },
       {
         "q": "How much does it cost?",
@@ -13,6 +17,10 @@
       {
         "q": "How many people can play, and for how long?",
         "a": "Up to four golfers per bay. Plan on about an hour per golfer for a full 18 holes, so a group of four usually books around four hours."
+      },
+      {
+        "q": "Is there a 24-hour golf simulator near Newmarket or Aurora?",
+        "a": "Yes. Our two automated Golfzon bays in Newmarket can be booked online and played 24/7, including overnight from 12 AM to 9 AM at $49.99 per bay per hour plus HST. The bar side and its two staffed bays are open daily from 9 AM to 12 AM."
       },
       {
         "q": "What are your hours?",
@@ -54,7 +62,7 @@
     "items": [
       {
         "q": "Do you serve food and drinks?",
-        "a": "Yes. We have two full bars with cold beer on tap, plus food and snacks. You must be 19 or older with valid ID to be served alcohol."
+        "a": "Yes. We're fully licensed, with two full bars serving draft beer and cocktails, plus food and snacks. You must be 19 or older with valid ID to be served alcohol."
       },
       {
         "q": "Are kids allowed?",

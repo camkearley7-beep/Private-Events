@@ -966,7 +966,7 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
   <div class="hero-copy">
     <div>
       <h1 id="tt-h1" class="h-xl"><small>Newmarket's Golf Simulator Sports Bar &amp; Event Space</small> <span class="ln">Your handicap</span> <span class="ln">is welcome here.</span></h1>
-      <p class="lede">Good golf, bad golf, and everything in between. Four premium Golfzon simulators, two full bars, cold beer on tap, karaoke, and private events.</p>
+      <p class="lede">Good golf, bad golf, and everything in between. Four premium Golfzon simulators, two full bars pouring draft beer and cocktails, karaoke, and private events.</p>
     </div>
     <div class="hero-actions">
       <a class="btn btn-red" href="https://thebogeyclub.golfbooking.ca/calendar.php" data-tt-cta="hero-book-golf">Book a simulator</a>
@@ -1143,7 +1143,7 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
       <div><span>Bar side · 2 bays</span><span>Daily · 9 AM – 12 AM</span></div>
       <div><span>Automated · 2 bays</span><span>Open 24/7</span></div>
       <div><span>Email</span><a href="mailto:golf@thebogeyclub.com">golf@thebogeyclub.com</a></div>
-      <div><span>Nearby</span><span>Aurora · East Gwillimbury</span></div>
+      <div><span>Serving</span><span>Newmarket · Aurora · East Gwillimbury · Bradford · York Region</span></div>
     </div>
   </div>
 
@@ -1225,9 +1225,11 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
     <p class="tt-drawer-meta">Golf, food, events and everything in between</p>
     <h3>Booking &amp; pricing</h3>
     <div class="ls-faq-list">
-      <details><summary>How do I book a bay?</summary><p><a href="https://thebogeyclub.golfbooking.ca/calendar.php">Book online</a> any time, or call us at <a href="tel:+19052354653">(905) 235-GOLF (4653)</a>. Walk-ins are welcome when a bay is free, but booking ahead is the best way to get the time you want.</p></details>
+      <details><summary>Where is The Bogey Club?</summary><p>17705 Leslie Street, Unit 5, Newmarket, ON L3Y 3E3. We're the local spot for indoor golf for golfers from Newmarket, Aurora, East Gwillimbury, Bradford and across York Region.</p></details>
+      <details><summary>How do I book a bay?</summary><p><a href="https://thebogeyclub.golfbooking.ca/calendar.php">Book online</a> any time, or call us at <a href="tel:+19052354653">(905) 235-GOLF (4653)</a>. All four of our Golfzon simulators can be booked online. Walk-ins are welcome when a bay is free, but booking ahead is the best way to get the time you want.</p></details>
       <details><summary>How much does it cost?</summary><p>We charge per bay, per hour, not per person, plus HST. Overnight on our automated bays (12 AM to 9 AM): $49.99. Monday to Thursday, 9 AM to 5 PM: $49.99. Monday to Thursday 5 PM to close, Friday 9 AM to 4 PM, and all day Sunday: $59.99. Friday 4 PM to close, all day Saturday and holidays: $69.99.</p></details>
       <details><summary>How many people can play, and for how long?</summary><p>Up to four golfers per bay. Plan on about an hour per golfer for a full 18 holes, so a group of four usually books around four hours.</p></details>
+      <details><summary>Is there a 24-hour golf simulator near Newmarket or Aurora?</summary><p>Yes. Our two automated Golfzon bays in Newmarket can be booked online and played 24/7, including overnight from 12 AM to 9 AM at $49.99 per bay per hour plus HST. The bar side and its two staffed bays are open daily from 9 AM to 12 AM.</p></details>
       <details><summary>What are your hours?</summary><p>The bar side and its two bays are staffed daily from 9 AM to 12 AM. Our two automated bays can be booked online and played 24/7.</p></details>
       <details><summary>Do you sell gift cards?</summary><p>Yes. Gift cards are available online and in store.</p></details>
     </div>
@@ -1241,7 +1243,7 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
     </div>
     <h3>Food, drinks &amp; groups</h3>
     <div class="ls-faq-list">
-      <details><summary>Do you serve food and drinks?</summary><p>Yes. We have two full bars with cold beer on tap, plus food and snacks. You must be 19 or older with valid ID to be served alcohol.</p></details>
+      <details><summary>Do you serve food and drinks?</summary><p>Yes. We're fully licensed, with two full bars serving draft beer and cocktails, plus food and snacks. You must be 19 or older with valid ID to be served alcohol.</p></details>
       <details><summary>Are kids allowed?</summary><p>Yes, kids are welcome with an adult.</p></details>
       <details><summary>Can I host a birthday, work party or private event?</summary><p>Yes. Our upstairs event space has its own full bar and is perfect for birthdays, corporate outings and celebrations. See <a href="https://thebogeyclub.com/private-events/">Private Events</a> to start planning.</p></details>
       <details><summary>Do you have karaoke?</summary><p>Yes. <a href="https://thebogeyclub.golfbooking.ca/calendar.php?bayfilter=4&amp;templateId=50&amp;lang=en" data-tt-link="karaoke-booking">Book karaoke online</a> and grab the mic. It is never just one song.</p></details>
@@ -1382,7 +1384,7 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
       ],
       "@id": "https://thebogeyclub.com/#business",
       "name": "The Bogey Club",
-      "description": "Golf simulator sports bar in Newmarket, Ontario with four Golfzon golf simulators (two TwoVision NX and two Vision Plus), including two automated bays open 24/7, two full bars with draft beer, karaoke, and a dedicated private event space for birthday parties, corporate events and group celebrations.",
+      "description": "Golf simulator sports bar in Newmarket, Ontario, serving Newmarket, Aurora, East Gwillimbury, Bradford and York Region. Four Golfzon golf simulators (two TwoVision NX and two Vision Plus): two bar-side bays staffed daily 9 AM to 12 AM and two automated bays bookable and playable 24/7. Fully licensed with two full bars, draft beer and cocktails, plus karaoke, golf leagues, private lessons and an upstairs private event space for birthdays and corporate events.",
       "url": "https://thebogeyclub.com/",
       "telephone": "+1-905-235-4653",
       "email": "golf@thebogeyclub.com",
@@ -1406,6 +1408,14 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
         {
           "@type": "City",
           "name": "East Gwillimbury"
+        },
+        {
+          "@type": "City",
+          "name": "Bradford West Gwillimbury"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "York Region"
         }
       ],
       "sameAs": [
@@ -1437,6 +1447,21 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
           "@type": "LocationFeatureSpecification",
           "name": "Private event space",
           "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Automated golf simulator bays open 24/7",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Cocktails",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Fully licensed",
+          "value": true
         }
       ],
       "potentialAction": [
@@ -1456,28 +1481,58 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
         "name": "The Bogey Club experiences",
         "itemListElement": [
           {
-            "@type": "Offer",
+            "@type": "AggregateOffer",
             "url": "https://thebogeyclub.golfbooking.ca/calendar.php",
-            "price": "60.00",
             "priceCurrency": "CAD",
-            "priceSpecification": {
-              "@type": "UnitPriceSpecification",
-              "price": "60.00",
-              "priceCurrency": "CAD",
-              "unitCode": "HUR",
-              "valueAddedTaxIncluded": false
-            },
+            "priceSpecification": [
+              {
+                "@type": "UnitPriceSpecification",
+                "name": "Overnight, every day 12 AM to 9 AM (automated bays)",
+                "price": "49.99",
+                "priceCurrency": "CAD",
+                "unitCode": "HUR",
+                "valueAddedTaxIncluded": false
+              },
+              {
+                "@type": "UnitPriceSpecification",
+                "name": "Off-peak, Monday to Thursday 9 AM to 5 PM",
+                "price": "49.99",
+                "priceCurrency": "CAD",
+                "unitCode": "HUR",
+                "valueAddedTaxIncluded": false
+              },
+              {
+                "@type": "UnitPriceSpecification",
+                "name": "Standard, Monday to Thursday 5 PM to close, Friday 9 AM to 4 PM, all day Sunday",
+                "price": "59.99",
+                "priceCurrency": "CAD",
+                "unitCode": "HUR",
+                "valueAddedTaxIncluded": false
+              },
+              {
+                "@type": "UnitPriceSpecification",
+                "name": "Peak, Friday 4 PM to close, all day Saturday and holidays",
+                "price": "69.99",
+                "priceCurrency": "CAD",
+                "unitCode": "HUR",
+                "valueAddedTaxIncluded": false
+              }
+            ],
             "itemOffered": {
               "@type": "Service",
               "@id": "https://thebogeyclub.com/our-simulators/#service",
               "name": "Indoor golf simulator rental",
               "serviceType": "Indoor golf simulator",
-              "description": "Hourly rental of a Golfzon TwoVision NX or Vision Plus simulator bay for up to four players.",
+              "description": "Hourly rental of a Golfzon TwoVision NX or Vision Plus simulator bay for up to four players, with more than 200 courses, a driving range and practice modes.",
               "url": "https://thebogeyclub.com/our-simulators/",
               "provider": {
                 "@id": "https://thebogeyclub.com/#business"
               }
-            }
+            },
+            "lowPrice": "49.99",
+            "highPrice": "69.99",
+            "offerCount": "4",
+            "description": "Per bay, per hour, up to 4 players a bay, plus HST."
           },
           {
             "@type": "Offer",
@@ -1534,14 +1589,92 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
           }
         ]
       },
-      "priceRange": "$49.99–$69.99 per bay per hour + HST"
+      "priceRange": "$49.99–$69.99 per bay per hour + HST",
+      "image": "https://thebogeyclub.com/wp-content/uploads/2026/08/Main-Area.png",
+      "logo": "https://thebogeyclub.com/wp-content/uploads/2026/10/Bogey-Club-Font-Logo-Green.png",
+      "hasMap": "https://www.google.com/maps/search/?api=1&query=The+Bogey+Club%2C+17705+Leslie+St+Unit+5%2C+Newmarket%2C+ON+L3Y+3E3",
+      "currenciesAccepted": "CAD",
+      "department": [
+        {
+          "@type": "BarOrPub",
+          "@id": "https://thebogeyclub.com/#bar-side",
+          "name": "The Bogey Club bar side and staffed simulator bays",
+          "description": "Bar with two staffed Golfzon simulator bays. Drinks are served by staff during these hours.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "17705 Leslie Street, Unit 5",
+            "addressLocality": "Newmarket",
+            "addressRegion": "ON",
+            "postalCode": "L3Y 3E3",
+            "addressCountry": "CA"
+          },
+          "telephone": "+1-905-235-4653",
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday"
+              ],
+              "opens": "09:00",
+              "closes": "23:59"
+            }
+          ]
+        },
+        {
+          "@type": "SportsActivityLocation",
+          "@id": "https://thebogeyclub.com/#automated-bays",
+          "name": "The Bogey Club automated simulator bays",
+          "description": "Two automated Golfzon simulator bays that can be booked online and played 24 hours a day, 7 days a week. Overnight rate (12 AM to 9 AM): $49.99 per bay per hour plus HST.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "17705 Leslie Street, Unit 5",
+            "addressLocality": "Newmarket",
+            "addressRegion": "ON",
+            "postalCode": "L3Y 3E3",
+            "addressCountry": "CA"
+          },
+          "telephone": "+1-905-235-4653",
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday"
+              ],
+              "opens": "00:00",
+              "closes": "23:59"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://thebogeyclub.com/#website",
+      "url": "https://thebogeyclub.com/",
+      "name": "The Bogey Club",
+      "inLanguage": "en-CA",
+      "publisher": {
+        "@id": "https://thebogeyclub.com/#business"
+      }
     },
     {
       "@type": "WebPage",
       "@id": "https://thebogeyclub.com/#webpage",
       "url": "https://thebogeyclub.com/",
-      "name": "The Bogey Club | Golf Simulator Sports Bar in Newmarket",
-      "description": "Four Golfzon simulators, two full bars, cold beer on tap, karaoke and private event space in Newmarket, Ontario. Book a bay or plan your party.",
+      "name": "Indoor Golf & Golf Simulator Bar in Newmarket | The Bogey Club",
+      "description": "Four Golfzon simulators with two automated bays open 24/7, plus draft beer, cocktails, karaoke and private events in Newmarket. From $49.99 per bay per hour.",
       "inLanguage": "en-CA",
       "about": {
         "@id": "https://thebogeyclub.com/#business"
@@ -1549,13 +1682,150 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
       "isPartOf": {
         "@id": "https://thebogeyclub.com/#website"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://thebogeyclub.com/#faq",
+      "isPartOf": {
+        "@id": "https://thebogeyclub.com/#website"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Where is The Bogey Club?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "17705 Leslie Street, Unit 5, Newmarket, ON L3Y 3E3. We're the local spot for indoor golf for golfers from Newmarket, Aurora, East Gwillimbury, Bradford and across York Region."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I book a bay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Book online any time, or call us at (905) 235-GOLF (4653). All four of our Golfzon simulators can be booked online. Walk-ins are welcome when a bay is free, but booking ahead is the best way to get the time you want."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does it cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We charge per bay, per hour, not per person, plus HST. Overnight on our automated bays (12 AM to 9 AM): $49.99. Monday to Thursday, 9 AM to 5 PM: $49.99. Monday to Thursday 5 PM to close, Friday 9 AM to 4 PM, and all day Sunday: $59.99. Friday 4 PM to close, all day Saturday and holidays: $69.99."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many people can play, and for how long?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Up to four golfers per bay. Plan on about an hour per golfer for a full 18 holes, so a group of four usually books around four hours."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a 24-hour golf simulator near Newmarket or Aurora?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Our two automated Golfzon bays in Newmarket can be booked online and played 24/7, including overnight from 12 AM to 9 AM at $49.99 per bay per hour plus HST. The bar side and its two staffed bays are open daily from 9 AM to 12 AM."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are your hours?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The bar side and its two bays are staffed daily from 9 AM to 12 AM. Our two automated bays can be booked online and played 24/7."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you sell gift cards?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Gift cards are available online and in store."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to bring my own clubs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You're welcome to bring your own, and rental clubs are available at the club."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "I've never played. Is that okay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. Your handicap is welcome here, whatever it is. If you'd like a few pointers, book a private lesson with our pro, Andrew McDonald."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What can we play?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Choose from more than 200 courses, or warm up on the driving range, approach areas and putting green. Play stroke play, match play, scramble or skins."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What simulators do you have?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Four Golfzon simulators: two TwoVision NX and two Vision Plus. They measure every shot, including ball speed, launch, spin and carry."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you have leagues and lessons?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Men's Night runs every Tuesday from November to April, The Bogey Cup is a new four-week tournament every month, and private lessons are one-on-one with Andrew McDonald, PGA of Canada. See Leagues & Events and Meet Our Pro."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you serve food and drinks?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We're fully licensed, with two full bars serving draft beer and cocktails, plus food and snacks. You must be 19 or older with valid ID to be served alcohol."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are kids allowed?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, kids are welcome with an adult."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I host a birthday, work party or private event?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Our upstairs event space has its own full bar and is perfect for birthdays, corporate outings and celebrations. See Private Events to start planning."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you have karaoke?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Book karaoke online and grab the mic. It is never just one song."
+          }
+        }
+      ]
     }
   ]
 }
 </script>
 <script>
-/* The Bogey Club — site script (production). Vanilla, no dependencies,
-   no tracking (CTAs carry data-tt-cta for the site's existing GTM/GA).
+/* The Bogey Club — site script (production). Vanilla, no dependencies.
+   Loads no analytics itself: key clicks are reported to an existing GA4/GTM only (see "Click events").
    Install once, site-wide: WPCode footer snippet (see 02-script.html). */
 (function () {
   "use strict";
@@ -1581,6 +1851,26 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
       a.href = "https://thebogeyclub.golfbooking.ca/calendar.php?date=" + month + "&bayfilter=4&templateId=50&lang=en";
     });
     document.querySelectorAll("[data-tt-year]").forEach(function (el) { el.textContent = now.getFullYear(); });
+
+    } catch (err) { fail(err); }
+    try {
+    /* Click events: report booking, league, call, email and directions clicks to GA4 (gtag)
+       and/or Google Tag Manager (dataLayer), if the site has them. These are clicks, not
+       completed bookings: bookings finish on the booking platform. */
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest && e.target.closest("a[href]");
+      if (!a) return;
+      var href = a.getAttribute("href") || "", kind =
+        /golfbooking\.ca/.test(href) ? (/bayfilter=4/.test(href) || a.getAttribute("data-tt-link") === "karaoke-booking" ? "karaoke_booking_click" : "booking_click") :
+        /golfgenius\.com/.test(href) ? "league_registration_click" :
+        /^tel:/.test(href) ? "phone_click" :
+        /^mailto:/.test(href) ? "email_click" :
+        /google\.[^/]+\/maps/.test(href) ? "directions_click" : "";
+      if (!kind) return;
+      var data = { cta: a.getAttribute("data-tt-cta") || "", link_url: a.href, page_path: location.pathname };
+      if (typeof window.gtag === "function") window.gtag("event", kind, data);
+      if (Array.isArray(window.dataLayer)) window.dataLayer.push(Object.assign({ event: kind }, data));
+    }, true);
 
     } catch (err) { fail(err); }
     try {
