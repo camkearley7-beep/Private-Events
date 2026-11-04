@@ -41,7 +41,9 @@
        and keep nudging play() (first touch/scroll, tab return, after a stall). */
     var hero = document.querySelector(".tt .hero"), vid = hero && hero.querySelector(".hero-video");
     if (vid) {
-      var drop = function () { vid.remove(); };
+      var drop = function () { hero.classList.remove("is-playing"); hero.classList.add("show-still"); vid.remove(); };
+      /* the photo only shows if the video is slow to start (e.g. iPhone Low Power Mode) */
+      setTimeout(function () { if (!hero.classList.contains("is-playing")) hero.classList.add("show-still"); }, 3500);
       if (reduce || window.matchMedia("(prefers-reduced-data: reduce)").matches) drop();
       else {
         vid.muted = true; vid.defaultMuted = true; vid.playsInline = true;

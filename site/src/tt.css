@@ -487,6 +487,12 @@ body.admin-bar .tt .hdr { top: 32px; }
 /* with the site script, fade in once playing; without it, the video simply plays over its poster */
 html.tt-js .tt .hero-video { opacity: 0; }
 html.tt-js .tt .hero.is-playing .hero-video { opacity: 1; }
+/* no photo flash before the video: keep the still hidden (dark panel) unless the video can't play or is slow */
+.tt .hero picture { overflow: hidden; }
+.tt .hero.has-video picture { background-color: #141a16; }
+.tt .hero.has-video picture img { opacity: 0; transition: opacity .4s ease; }
+.tt .hero.has-video.show-still picture img { opacity: 1; }
+.tt .hero.has-video.is-playing picture img { opacity: 0; animation: none; }
 .tt .hero.is-playing .aim { display: none; }
 @media (max-width: 860px) {
   .tt .hero-video { inset: 0 0 auto 0; height: 52svh; min-height: 360px; }

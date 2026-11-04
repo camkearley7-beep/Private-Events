@@ -494,6 +494,12 @@ body.admin-bar .tt .hdr { top: 32px; }
 /* with the site script, fade in once playing; without it, the video simply plays over its poster */
 html.tt-js .tt .hero-video { opacity: 0; }
 html.tt-js .tt .hero.is-playing .hero-video { opacity: 1; }
+/* no photo flash before the video: keep the still hidden (dark panel) unless the video can't play or is slow */
+.tt .hero picture { overflow: hidden; }
+.tt .hero.has-video picture { background-color: #141a16; }
+.tt .hero.has-video picture img { opacity: 0; transition: opacity .4s ease; }
+.tt .hero.has-video.show-still picture img { opacity: 1; }
+.tt .hero.has-video.is-playing picture img { opacity: 0; animation: none; }
 .tt .hero.is-playing .aim { display: none; }
 @media (max-width: 860px) {
   .tt .hero-video { inset: 0 0 auto 0; height: 52svh; min-height: 360px; }
@@ -948,13 +954,13 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
 <div class="tt" id="tt-home">
 
 <!-- 1. HERO -->
-<section class="hero" aria-labelledby="tt-h1">
-  <!-- Fallback still: shows until the video plays, and wherever it can't (reduced motion, unsupported format). -->
+<section class="hero has-video" aria-labelledby="tt-h1">
+  <!-- Fallback still: hidden while the video loads; shown only if the video can't play (reduced motion, blocked, error) or is slow. -->
   <picture>
     <img src="https://thebogeyclub.com/wp-content/uploads/2026/08/Main-Area.png" fetchpriority="high" decoding="async" alt="Inside The Bogey Club, a golf simulator sports bar in Newmarket">
   </picture>
   <!-- Hero video. Small H.264 .mp4 (set HERO_MP4 in build.sh). -->
-  <video class="hero-video" poster="https://thebogeyclub.com/wp-content/uploads/2026/08/Main-Area.png" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1" disablepictureinpicture>
+  <video class="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1" disablepictureinpicture>
     <source src="https://thebogeyclub.com/wp-content/uploads/2026/11/Website-hero.mp4" type="video/mp4">
   </video>
   <div class="hero-copy">
@@ -1591,7 +1597,9 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
        and keep nudging play() (first touch/scroll, tab return, after a stall). */
     var hero = document.querySelector(".tt .hero"), vid = hero && hero.querySelector(".hero-video");
     if (vid) {
-      var drop = function () { vid.remove(); };
+      var drop = function () { hero.classList.remove("is-playing"); hero.classList.add("show-still"); vid.remove(); };
+      /* the photo only shows if the video is slow to start (e.g. iPhone Low Power Mode) */
+      setTimeout(function () { if (!hero.classList.contains("is-playing")) hero.classList.add("show-still"); }, 3500);
       if (reduce || window.matchMedia("(prefers-reduced-data: reduce)").matches) drop();
       else {
         vid.muted = true; vid.defaultMuted = true; vid.playsInline = true;
