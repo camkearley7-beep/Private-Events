@@ -56,7 +56,7 @@ Activate it: **Plugins → All in One SEO → Activate**. Then:
 
 | Page | SEO title | Meta description |
 | --- | --- | --- |
-| Home | `Indoor Golf & Golf Simulator Bar in Newmarket \| Bogey Club` | `Four Golfzon simulators with two automated bays open 24/7, plus draft beer, cocktails, karaoke and private events in Newmarket. From $49.99 per bay per hour.` |
+| Home | `The Bogey Club \| Golf Simulator Bar in Newmarket` | `Four Golfzon simulators with two automated bays open 24/7, plus draft beer, cocktails, karaoke and private events in Newmarket. From $49.99 per bay per hour.` |
 | Our Simulators | `Golfzon Golf Simulators in Newmarket \| The Bogey Club` | `Play 200+ courses on Golfzon TwoVision NX and Vision Plus simulators in Newmarket. Up to 4 players a bay, two bays open 24/7. Book a bay online.` |
 | Private Events | `Party & Corporate Event Venue in Newmarket \| The Bogey Club` | `Birthdays, corporate events and team nights in our upstairs event space with its own full bar, golf simulators and karaoke. Newmarket, serving York Region.` |
 | Karaoke | `Karaoke in Newmarket \| The Bogey Club` | `Grab the mic at The Bogey Club in Newmarket. Book karaoke online and pair it with golf simulators, draft beer and cocktails.` |
