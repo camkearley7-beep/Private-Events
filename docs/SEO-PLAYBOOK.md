@@ -52,16 +52,16 @@ Activate it: **Plugins → All in One SEO → Activate**. Then:
    - the About Us page, while it's unpublished
    - attachment pages (Search Appearance → Media → Redirect attachment URLs → **Attachment Parent**)
 4. **Social Networks → Facebook:** set the default image to a photo of the club, so shared links show a picture.
-5. **Titles and descriptions:** for each page, open it in WordPress, scroll to the **AIOSEO Settings** box, and paste these:
+5. **Titles and descriptions** (done Nov 4; titles shortened to fit Google's 600-pixel limit): for each page, open it in WordPress, scroll to the **AIOSEO Settings** box, and paste these:
 
 | Page | SEO title | Meta description |
 | --- | --- | --- |
-| Home | `Indoor Golf & Golf Simulator Bar in Newmarket \| The Bogey Club` | `Four Golfzon simulators with two automated bays open 24/7, plus draft beer, cocktails, karaoke and private events in Newmarket. From $49.99 per bay per hour.` |
+| Home | `Indoor Golf & Golf Simulator Bar in Newmarket \| Bogey Club` | `Four Golfzon simulators with two automated bays open 24/7, plus draft beer, cocktails, karaoke and private events in Newmarket. From $49.99 per bay per hour.` |
 | Our Simulators | `Golfzon Golf Simulators in Newmarket \| The Bogey Club` | `Play 200+ courses on Golfzon TwoVision NX and Vision Plus simulators in Newmarket. Up to 4 players a bay, two bays open 24/7. Book a bay online.` |
-| Private Events | `Private Parties & Corporate Events in Newmarket \| The Bogey Club` | `Birthdays, corporate events and team nights in our upstairs event space with its own full bar, golf simulators and karaoke. Newmarket, serving York Region.` |
+| Private Events | `Party & Corporate Event Venue in Newmarket \| The Bogey Club` | `Birthdays, corporate events and team nights in our upstairs event space with its own full bar, golf simulators and karaoke. Newmarket, serving York Region.` |
 | Karaoke | `Karaoke in Newmarket \| The Bogey Club` | `Grab the mic at The Bogey Club in Newmarket. Book karaoke online and pair it with golf simulators, draft beer and cocktails.` |
-| Leagues & Events | `Golf Leagues in Newmarket: Men's Night & Bogey Cup \| The Bogey Club` | `Men's Night every Tuesday, The Bogey Cup monthly and The Bogey Club Classic. Indoor golf leagues on Golfzon simulators in Newmarket.` |
-| Meet Our Pro | `Private Golf Lessons in Newmarket \| PGA of Canada Pro \| The Bogey Club` | `Private golf lessons in Newmarket with Andrew McDonald, Associate Professional, PGA of Canada. One-on-one indoor lessons on Golfzon simulators for every level.` |
+| Leagues & Events | `Golf Leagues & Men's Night in Newmarket \| The Bogey Club` | `Men's Night every Tuesday, The Bogey Cup monthly and The Bogey Club Classic. Indoor golf leagues on Golfzon simulators in Newmarket.` |
+| Meet Our Pro | `Private Golf Lessons in Newmarket \| PGA Pro \| The Bogey Club` | `Private golf lessons in Newmarket with Andrew McDonald, Associate Professional, PGA of Canada. One-on-one indoor lessons on Golfzon simulators for every level.` |
 | FAQs | `FAQs: Hours, Pricing & Booking \| The Bogey Club Newmarket` | `Hours, bay rates, 24/7 automated bays, booking, food and drinks, kids and private events at The Bogey Club in Newmarket.` |
 
 The Karaoke description only says what is already on the site. Add specifics (rooms, group size, prices) once confirmed.
