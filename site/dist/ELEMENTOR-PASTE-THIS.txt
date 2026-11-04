@@ -1238,7 +1238,7 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
     <div class="ls-faq-list">
       <details><summary>Do I need to bring my own clubs?</summary><p>You're welcome to bring your own, and rental clubs are available at the club.</p></details>
       <details><summary>I&#x27;ve never played. Is that okay?</summary><p>Absolutely. Your handicap is welcome here, whatever it is. If you'd like a few pointers, <a href="https://thebogeyclub.com/meet-our-pro/">book a private lesson</a> with our pro, Andrew McDonald.</p></details>
-      <details><summary>What can we play?</summary><p>Choose from more than 200 courses, or warm up on the driving range, approach areas and putting green. Play stroke play, match play, scramble or skins.</p></details>
+      <details><summary>What can we play?</summary><p>Choose from more than 300 courses, or warm up on the driving range, approach areas and putting green. Play stroke play, match play, scramble or skins.</p></details>
       <details><summary>What simulators do you have?</summary><p>Four Golfzon simulators: two TwoVision NX and two Vision Plus. They measure every shot, including ball speed, launch, spin and carry.</p></details>
       <details><summary>Do you have leagues and lessons?</summary><p>Yes. Men's Night runs every Tuesday from November to April, The Bogey Cup is a new four-week tournament every month, and private lessons are one-on-one with Andrew McDonald, PGA of Canada. See <a href="https://thebogeyclub.com/leagues-and-events/">Leagues &amp; Events</a> and <a href="https://thebogeyclub.com/meet-our-pro/">Meet Our Pro</a>.</p></details>
     </div>
@@ -1524,7 +1524,7 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
               "@id": "https://thebogeyclub.com/our-simulators/#service",
               "name": "Indoor golf simulator rental",
               "serviceType": "Indoor golf simulator",
-              "description": "Hourly rental of a Golfzon TwoVision NX or Vision Plus simulator bay for up to four players, with more than 200 courses, a driving range and practice modes.",
+              "description": "Hourly rental of a Golfzon TwoVision NX or Vision Plus simulator bay for up to four players, with more than 300 courses, a driving range and practice modes.",
               "url": "https://thebogeyclub.com/our-simulators/",
               "provider": {
                 "@id": "https://thebogeyclub.com/#business"
@@ -1768,7 +1768,7 @@ body:has(.tt-one) { margin: 0; overflow-x: clip; }
           "name": "What can we play?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Choose from more than 200 courses, or warm up on the driving range, approach areas and putting green. Play stroke play, match play, scramble or skins."
+            "text": "Choose from more than 300 courses, or warm up on the driving range, approach areas and putting green. Play stroke play, match play, scramble or skins."
           }
         },
         {
