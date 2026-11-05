@@ -1,0 +1,65 @@
+---
+import type { Company } from '../../data/companies';
+import Figure from '../Figure.astro';
+import Folio from './Folio.astro';
+import Title from './Title.astro';
+import Logo from './Logo.astro';
+import Explore from './Explore.astro';
+interface Props { company: Company; index: number; total: number; }
+const { company: c, index, total } = Astro.props;
+---
+<article class="f-diptych" id={c.slug} aria-label={c.name} data-header-dark>
+  <div class="wrap">
+    <Folio index={index} total={total} sector={c.sector} />
+    <div class="f-diptych__grid grid">
+      <div class="f-diptych__a">
+        <Figure {...c.image} alt={c.image?.alt ?? ''} ratio="3 / 4" tone="#2b2722" sizes="(min-width: 960px) 40vw, 100vw" />
+      </div>
+      <div class="f-diptych__b">
+        <Title company={c} class="f-diptych__title" italic={0} />
+        {c.secondaryImage && (
+          <div data-parallax="-0.06">
+            <Figure {...c.secondaryImage} ratio="4 / 3" tone="#2b2722" sizes="(min-width: 960px) 46vw, 100vw" delay={0.1} />
+          </div>
+        )}
+        <div class="f-diptych__text" data-reveal>
+          <p class="f-diptych__desc">{c.description}</p>
+          <div class="f-diptych__links">
+            <Logo company={c} />
+            <Explore company={c} />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+<style>
+  .f-diptych {
+    --rule: rgb(245 242 235 / 0.16);
+    --muted: rgb(245 242 235 / 0.6);
+    background: var(--umber);
+    color: var(--ivory);
+    padding-block: clamp(4rem, 8vw, 8rem) var(--section);
+  }
+  .f-diptych :global(.fig__fallback) { color: rgb(245 242 235 / 0.35); }
+  .f-diptych__grid { margin-top: clamp(3rem, 6vw, 6rem); row-gap: 3rem; align-items: start; }
+  .f-diptych__a { grid-column: 1 / span 5; position: sticky; top: 6rem; }
+  .f-diptych__b { grid-column: 7 / -1; display: grid; gap: clamp(2.5rem, 4vw, 4rem); }
+  .f-diptych :global(.f-diptych__title) {
+    font-size: var(--fs-h2);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+
+  }
+  .f-diptych :global(.f-diptych__title .lines__line:first-child) { font-size: 0.42em; letter-spacing: 0; color: var(--champagne-soft); padding-left: 0.08em; }
+  .f-diptych__text { display: grid; gap: 2rem; max-width: 34rem; }
+  .f-diptych__desc { font-family: var(--serif); font-size: clamp(1.25rem, 1rem + 0.8vw, 1.75rem); line-height: 1.35; }
+  .f-diptych__links { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+  @media (max-width: 960px) {
+    .f-diptych__grid { display: flex; flex-direction: column; gap: 2.5rem; }
+    .f-diptych__b { display: contents; }
+    .f-diptych :global(.f-diptych__title) { order: -1; }
+    .f-diptych__a { width: 80%; position: relative; top: 0; }
+    .f-diptych__b > div[data-parallax] { width: 70%; align-self: flex-end; margin-top: -30%; position: relative; z-index: 1; }
+  }
+</style>

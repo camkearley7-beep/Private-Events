@@ -1,0 +1,132 @@
+---
+import Wordmark from './Wordmark.astro';
+import { site } from '../data/site';
+import { companies } from '../data/companies';
+const year = new Date().getFullYear();
+---
+<section class="close" id="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+    <div class="folio label">
+      <span class="kicker"><span class="kicker__num">04</span><span class="kicker__line"></span><span>Contact</span></span>
+      <span>Correspondence</span>
+    </div>
+
+    <div class="close__grid grid">
+      <h2 class="close__title serif" id="contact-title" data-reveal>
+        For enquiries regarding Kearley Group <em>or any of its companies.</em>
+      </h2>
+      <div class="close__details" data-reveal style="--delay:.1s">
+        <div>
+          <p class="label label--muted">Write to us</p>
+          <a class="close__mail serif" href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
+        </div>
+        {site.contact.location && (
+          <div>
+            <p class="label label--muted">Based in</p>
+            <p class="close__loc">{site.contact.location}</p>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+
+  <div class="close__mast serif" aria-hidden="true" data-reveal>
+    <span>Kearley</span><span class="close__mast-g">Group</span>
+  </div>
+
+  <footer class="foot wrap">
+    <div class="foot__grid">
+      <div class="foot__brand">
+        <Wordmark />
+        <p class="foot__note">A private holding group.</p>
+      </div>
+      <nav aria-label="Companies" class="foot__cos">
+        <p class="label label--muted">The Companies</p>
+        <ul>
+          {companies.map((c) => (
+            <li>{c.url ? <a href={c.url} target="_blank" rel="noopener">{c.name}<span class="sr-only"> (opens in a new tab)</span></a> : <a href={`#${c.slug}`}>{c.name}</a>}</li>
+          ))}
+        </ul>
+      </nav>
+      <nav aria-label="Footer" class="foot__nav">
+        <p class="label label--muted">Navigate</p>
+        <ul>
+          {site.nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+        </ul>
+      </nav>
+    </div>
+    <div class="foot__base label label--muted">
+      <span>© {year} Kearley Group. All rights reserved.</span>
+      <a href="#top" class="foot__top">Return to top ↑</a>
+    </div>
+  </footer>
+</section>
+<style>
+  .close { background: var(--ivory); padding-top: clamp(4rem, 8vw, 8rem); overflow: hidden; }
+  .close__grid { margin-top: clamp(4rem, 8vw, 8rem); row-gap: 3rem; align-items: end; }
+  .close__title {
+    grid-column: 1 / span 7;
+    font-size: clamp(2.25rem, 1rem + 4.2vw, 5.75rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+
+  }
+  .close__title em { color: var(--forest); }
+  .close__details { grid-column: 9 / -1; display: grid; gap: 2rem; }
+  .close__details > div { display: grid; gap: 0.6rem; border-top: 1px solid var(--rule); padding-top: 1rem; }
+  .close__mail {
+    font-size: clamp(1.25rem, 1rem + 1vw, 1.875rem);
+
+    overflow-wrap: anywhere;
+    background: linear-gradient(currentColor, currentColor) left bottom / 100% 1px no-repeat;
+    padding-bottom: 0.15rem;
+    justify-self: start;
+    transition: background-size 0.6s var(--ease);
+  }
+  .close__mail:hover { background-size: 0 1px; background-position: right bottom; }
+
+  .close__mast {
+    margin-top: clamp(6rem, 12vw, 12rem);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 0.06em;
+    font-size: 19.5vw;
+    line-height: 0.74;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+
+    color: var(--charcoal);
+    white-space: nowrap;
+    padding-inline: 1vw;
+  }
+  .close__mast-g {
+    font-family: var(--sans);
+    font-size: clamp(0.5625rem, 1.1vw, 1rem);
+    letter-spacing: 0.6em;
+    line-height: 1;
+    padding-bottom: 0.9em;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  .foot { padding-block: clamp(3rem, 5vw, 4.5rem) 2rem; border-top: 1px solid var(--charcoal); margin-top: clamp(1.5rem, 3vw, 3rem); }
+  .foot__grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .foot__grid ul { display: grid; gap: 0.4rem; margin-top: 1rem; font-size: 0.9375rem; }
+  .foot__grid a { transition: opacity 0.4s var(--ease); }
+  .foot__grid ul a:hover { opacity: 0.55; }
+  .foot__note { margin-top: 1rem; color: var(--muted); font-size: 0.875rem; }
+  .foot__base { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: clamp(3rem, 6vw, 5rem); padding-top: 1.25rem; border-top: 1px solid var(--rule); }
+  .foot__top:hover { color: var(--charcoal); }
+
+  @media (max-width: 960px) {
+    .close__title, .close__details { grid-column: 1 / -1; }
+    .foot__grid { grid-template-columns: 1fr 1fr; }
+    .foot__brand { grid-column: 1 / -1; }
+  }
+</style>

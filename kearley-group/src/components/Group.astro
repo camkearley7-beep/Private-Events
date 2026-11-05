@@ -1,0 +1,116 @@
+---
+import { companies } from '../data/companies';
+const count = String(companies.length).padStart(2, '0');
+---
+
+<section class="group" id="the-group" aria-labelledby="group-title">
+  <div class="wrap">
+    <div class="folio label">
+      <span class="kicker"><span class="kicker__num">01</span><span class="kicker__line"></span><span>The Group</span></span>
+      <span>Introduction</span>
+    </div>
+
+    <h2 class="group__lede serif" id="group-title" data-reveal>
+      A collection of independent businesses, held together by a single name{' '}
+      <em>and a shared standard.</em>
+    </h2>
+
+    <div class="group__body grid">
+      <dl class="group__facts" data-reveal style="--delay:.1s">
+        <div><dt class="label label--muted">Ownership</dt><dd class="serif">Private</dd></div>
+        <div><dt class="label label--muted">Companies</dt><dd class="serif">{count}</dd></div>
+        <div><dt class="label label--muted">Structure</dt><dd class="serif">Independently operated</dd></div>
+      </dl>
+
+      <div class="group__text" data-reveal style="--delay:.2s">
+        <p class="group__dropcap">
+          Kearley Group is a privately owned holding group. Its companies span insurance and
+          financial services, golf and hospitality, travel and more — each operating
+          independently, under its own name and with its own identity.
+        </p>
+        <p>
+          What they share is an owner’s perspective: a preference for quality over noise,
+          for steady progress over spectacle, and for businesses built to last.
+        </p>
+      </div>
+
+      <p class="group__signoff label" data-reveal style="--delay:.3s">
+        <span class="group__signoff-line" aria-hidden="true"></span>
+        Kearley Group
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .group {
+    padding-block: var(--section) calc(var(--section) * 0.8);
+    background: var(--ivory);
+  }
+  .group__lede {
+    margin-top: clamp(3rem, 6vw, 6rem);
+    max-width: 19ch;
+    font-size: clamp(2.25rem, 1rem + 5.4vw, 7.25rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+
+  }
+  .group__lede em { font-style: italic; color: var(--forest); }
+
+  .group__body {
+    margin-top: clamp(4rem, 8vw, 8rem);
+    row-gap: 3rem;
+    align-items: start;
+  }
+  .group__facts {
+    grid-column: 1 / span 3;
+    margin: 0;
+    border-top: 1px solid var(--charcoal);
+  }
+  .group__facts > div {
+    display: grid;
+    gap: 0.35rem;
+    padding-block: 1.1rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .group__facts dd { margin: 0; font-size: 1.5rem; line-height: 1.15; }
+
+  .group__text {
+    grid-column: 5 / span 5;
+    display: grid;
+    gap: 1.25rem;
+    font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+    line-height: 1.7;
+    color: var(--ink);
+  }
+  .group__dropcap::first-letter {
+    float: left;
+    font-family: var(--serif);
+
+    font-size: 4.6em;
+    line-height: 0.82;
+    padding: 0.06em 0.12em 0 0;
+    color: var(--charcoal);
+  }
+
+  .group__signoff {
+    grid-column: 11 / -1;
+    align-self: end;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--muted);
+  }
+  .group__signoff-line { width: 2rem; height: 1px; background: currentColor; }
+
+  @media (max-width: 960px) {
+    .group__facts { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 1rem; }
+    .group__facts dd { font-size: 1.125rem; }
+    .group__text { grid-column: 1 / -1; max-width: 38rem; }
+    .group__signoff { grid-column: 1 / -1; }
+  }
+  @media (max-width: 520px) {
+    .group__facts { grid-template-columns: 1fr; }
+    .group__facts > div { grid-template-columns: 7.5rem 1fr; align-items: baseline; }
+  }
+</style>

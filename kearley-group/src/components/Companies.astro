@@ -1,0 +1,150 @@
+---
+import { companies } from '../data/companies';
+import Cover from './features/Cover.astro';
+import Diptych from './features/Diptych.astro';
+import Minimal from './features/Minimal.astro';
+import Panorama from './features/Panorama.astro';
+import Typographic from './features/Typographic.astro';
+
+const layouts = { cover: Cover, diptych: Diptych, minimal: Minimal, panorama: Panorama, typographic: Typographic };
+const total = companies.length;
+const n = (v: number) => String(v).padStart(2, '0');
+const thumb = (src?: string) => (src?.includes('images.unsplash.com') ? `${src}?auto=format&fit=crop&w=720&q=70` : src);
+---
+
+<section class="cos" id="our-companies" aria-labelledby="companies-title">
+  <div class="cos__intro wrap">
+    <div class="folio label">
+      <span class="kicker"><span class="kicker__num">02</span><span class="kicker__line"></span><span>Our Companies</span></span>
+      <span>The Portfolio</span>
+    </div>
+
+    <div class="cos__head grid">
+      <h2 class="cos__title serif" id="companies-title" data-lines>
+        <span class="lines">
+          <span class="lines__line"><span class="lines__inner">The</span></span>
+          <span class="lines__line"><span class="lines__inner"><em>Companies</em></span></span>
+        </span>
+      </h2>
+      <p class="cos__standfirst" data-reveal>
+        Each business is presented on its own terms — a portfolio of distinct names, sectors and
+        ambitions, gathered under one group.
+      </p>
+    </div>
+
+    <ol class="index" data-index>
+      {companies.map((c, i) => (
+        <li class="index__item" data-reveal style={`--delay:${i * 0.06}s`}>
+          <a href={`#${c.slug}`} class="index__link" data-index-link={i}>
+            <span class="index__num label">{n(i + 1)}</span>
+            <span class="index__name serif">{c.name}</span>
+            <span class="index__sector label label--muted">{c.sector}</span>
+            <span class="index__arrow" aria-hidden="true"></span>
+          </a>
+        </li>
+      ))}
+    </ol>
+
+    <div class="index__preview" aria-hidden="true" data-index-preview>
+      {companies.map((c) => (
+        <div class="index__thumb">
+          {c.image ? (
+            <img src={thumb(c.image.src)} alt="" loading="lazy" decoding="async" style={c.image.focus ? `object-position:${c.image.focus}` : undefined} onerror="this.remove()" />
+          ) : null}
+          <span class="index__thumb-name serif">{c.name}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  {companies.map((c, i) => {
+    const Feature = layouts[c.layout] ?? Cover;
+    return <Feature company={c} index={i} total={total} />;
+  })}
+</section>
+
+<style>
+  .cos__intro { padding-block: var(--section) clamp(5rem, 9vw, 9rem); position: relative; }
+  .cos__head { margin-top: clamp(3rem, 6vw, 6rem); align-items: end; row-gap: 2rem; }
+  .cos__title {
+    grid-column: 1 / span 8;
+    font-size: var(--fs-h1);
+    line-height: 0.84;
+    letter-spacing: -0.04em;
+
+  }
+  .cos__title em { padding-left: 0.6em; }
+  .cos__standfirst { grid-column: 9 / -1; max-width: 30ch; color: var(--ink); padding-bottom: 1.2rem; }
+
+  .index { margin-top: clamp(4rem, 8vw, 7rem); border-top: 1px solid var(--charcoal); counter-reset: idx; }
+  .index__item { border-bottom: 1px solid var(--rule); }
+  .index__link {
+    display: grid;
+    grid-template-columns: 4rem minmax(0, 1fr) minmax(0, 18rem) 3rem;
+    align-items: center;
+    gap: 1.5rem;
+    padding-block: clamp(1.25rem, 2.2vw, 2rem);
+    position: relative;
+    transition: padding 0.7s var(--ease), color 0.5s var(--ease);
+  }
+  .index__name {
+    font-size: clamp(1.75rem, 1rem + 3vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+
+    transition: transform 0.8s var(--ease);
+  }
+  .index__arrow {
+    justify-self: end;
+    width: 1.75rem; height: 1px;
+    background: currentColor;
+    position: relative;
+    transition: width 0.6s var(--ease);
+  }
+  .index__arrow::after {
+    content: '';
+    position: absolute; right: 0; top: -3px;
+    width: 7px; height: 7px;
+    border-top: 1px solid currentColor; border-right: 1px solid currentColor;
+    transform: rotate(45deg);
+  }
+  .index__link:hover .index__arrow,
+  .index__link:focus-visible .index__arrow { width: 3rem; }
+  @media (hover: hover) {
+    .index:hover .index__link { color: rgb(25 25 25 / 0.35); }
+    .index:hover .index__link:hover { color: var(--charcoal); }
+    .index__link:hover .index__name { transform: translateX(1.25rem); font-style: italic; }
+  }
+
+  /* Floating preview — desktop pointers only */
+  .index__preview {
+    position: fixed;
+    left: 0; top: 0;
+    width: 17rem;
+    aspect-ratio: 4 / 5;
+    pointer-events: none;
+    z-index: 30;
+    opacity: 0;
+    transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(0.92);
+    transition: opacity 0.45s var(--ease), transform 0.9s var(--ease);
+    overflow: hidden;
+    background: var(--stone);
+    display: none;
+  }
+  .index__preview.is-on { opacity: 1; transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(1); }
+  @media (hover: hover) and (pointer: fine) and (min-width: 961px) {
+    .index__preview { display: block; }
+  }
+  .index__thumb { position: absolute; inset: 0; opacity: 0; transition: opacity 0.5s var(--ease); display: grid; place-items: center; }
+  .index__thumb.is-active { opacity: 1; }
+  .index__thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .index__thumb-name { font-size: 2rem; font-style: italic; padding: 1.5rem; text-align: center; color: rgb(25 25 25 / 0.5); }
+
+  @media (max-width: 720px) {
+    .cos__title, .cos__standfirst { grid-column: 1 / -1; }
+    .cos__title { font-size: clamp(4rem, 22vw, 7rem); }
+    .index__link { grid-template-columns: 2.25rem minmax(0, 1fr) 1.75rem; row-gap: 0.4rem; }
+    .index__sector { grid-column: 2; grid-row: 2; }
+    .index__arrow { grid-column: 3; grid-row: 1 / span 2; width: 1.25rem; }
+  }
+</style>

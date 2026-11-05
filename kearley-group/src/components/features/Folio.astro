@@ -1,0 +1,14 @@
+---
+/** The running header that opens every company spread. */
+interface Props { index: number; total: number; sector: string; }
+const { index, total, sector } = Astro.props;
+const n = (v: number) => String(v).padStart(2, '0');
+---
+<div class="folio label">
+  <span class="kicker">
+    <span class="kicker__num">No. {n(index + 1)}</span>
+    <span class="kicker__line"></span>
+    <span>{sector}</span>
+  </span>
+  <span class="folio__count">{n(index + 1)} / {n(total)}</span>
+</div>

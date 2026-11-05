@@ -1,0 +1,16 @@
+---
+import type { Company } from '../../data/companies';
+interface Props { company: Company; }
+const { company } = Astro.props;
+---
+{company.url ? (
+  <a class="explore" href={company.url} target="_blank" rel="noopener">
+    <span>Explore {company.name}</span>
+    <span class="explore__arrow" aria-hidden="true"></span>
+    <span class="sr-only">(opens in a new tab)</span>
+  </a>
+) : (
+  <span class="explore explore--pending">
+    <span>Website forthcoming</span>
+  </span>
+)}

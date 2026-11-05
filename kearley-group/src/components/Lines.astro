@@ -1,0 +1,12 @@
+---
+/** Splits a headline into masked lines that rise into place. */
+interface Props { lines: readonly string[]; italic?: number[]; }
+const { lines, italic = [] } = Astro.props;
+---
+<span class="lines">
+  {lines.map((line, i) => (
+    <span class="lines__line">
+      <span class="lines__inner" style={italic.includes(i) ? 'font-style:italic' : undefined}>{line}</span>
+    </span>
+  ))}
+</span>

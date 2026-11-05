@@ -1,0 +1,9 @@
+# If deploying from the repository root, set Netlify's "Base directory" to: kearley-group
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

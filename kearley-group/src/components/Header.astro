@@ -1,0 +1,183 @@
+---
+import Wordmark from './Wordmark.astro';
+import { site } from '../data/site';
+import { companies } from '../data/companies';
+---
+
+<header class="hdr" data-header>
+  <div class="hdr__bar wrap">
+    <a href="#top" class="hdr__brand" aria-label="Kearley Group — back to top">
+      <Wordmark />
+    </a>
+
+    <nav class="hdr__nav" aria-label="Primary">
+      <ul>
+        {site.nav.map((item) => (
+          <li><a href={item.href} class="hdr__link">{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <button
+      class="hdr__toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="menu"
+      data-menu-toggle
+    >
+      <span class="hdr__toggle-text" data-menu-label>Menu</span>
+      <span class="hdr__toggle-icon" aria-hidden="true"><i></i><i></i></span>
+    </button>
+  </div>
+</header>
+
+<div class="menu" id="menu" data-menu hidden>
+  <div class="menu__inner wrap">
+    <p class="label label--muted menu__eyebrow">Contents</p>
+    <nav aria-label="Mobile">
+      <ol class="menu__list">
+        {site.nav.map((item, i) => (
+          <li style={`--i:${i}`}>
+            <a href={item.href} class="menu__link" data-menu-link>
+              <span class="menu__num label">{String(i + 1).padStart(2, '0')}</span>
+              <span class="serif menu__text">{item.label}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+    <div class="menu__foot">
+      <p class="label label--muted">The Companies</p>
+      <ul class="menu__companies">
+        {companies.map((c) => (
+          <li><a href={`#${c.slug}`} data-menu-link>{c.name}</a></li>
+        ))}
+      </ul>
+      <a class="menu__mail" href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .hdr {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 50;
+    color: var(--charcoal);
+    transition: transform 0.7s var(--ease), background-color 0.5s var(--ease), color 0.5s var(--ease);
+  }
+  .hdr::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 1px;
+    background: var(--rule);
+    opacity: 0;
+    transition: opacity 0.5s var(--ease);
+  }
+  .hdr.is-solid { background: rgb(245 242 235 / 0.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+  .hdr.is-solid::after { opacity: 1; }
+  .hdr.is-hidden { transform: translateY(-100%); }
+  .hdr.is-dark:not(.is-solid) { color: var(--ivory); }
+
+  .hdr__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4.5rem;
+  }
+  .hdr__nav ul { display: flex; gap: clamp(1.5rem, 3vw, 3.25rem); }
+  .hdr__link {
+    position: relative;
+    font-size: var(--fs-micro);
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding-block: 0.5rem;
+  }
+  .hdr__link::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0.2rem;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.6s var(--ease);
+  }
+  .hdr__link:hover::after,
+  .hdr__link[aria-current='true']::after { transform: scaleX(1); transform-origin: left; }
+
+  .hdr__toggle {
+    display: none;
+    align-items: center;
+    gap: 0.85rem;
+    min-height: 44px;
+    font-size: var(--fs-micro);
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .hdr__toggle-icon { position: relative; width: 22px; height: 8px; }
+  .hdr__toggle-icon i {
+    position: absolute; left: 0; right: 0;
+    height: 1px; background: currentColor;
+    transition: transform 0.6s var(--ease), top 0.6s var(--ease);
+  }
+  .hdr__toggle-icon i:first-child { top: 0; }
+  .hdr__toggle-icon i:last-child { top: 7px; }
+  :global(.menu-open) .hdr__toggle-icon i:first-child { top: 4px; transform: rotate(20deg); }
+  :global(.menu-open) .hdr__toggle-icon i:last-child { top: 4px; transform: rotate(-20deg); }
+
+  @media (max-width: 860px) {
+    .hdr__nav { display: none; }
+    .hdr__toggle { display: inline-flex; }
+  }
+
+  /* ---- Full-screen menu ---- */
+  .menu {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    background: var(--ivory);
+    color: var(--charcoal);
+    overflow-y: auto;
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 0.9s var(--ease-in-out);
+  }
+  .menu.is-open { clip-path: inset(0 0 0 0); }
+  :global(.menu-open) .hdr { color: var(--charcoal); background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; transform: none; }
+  :global(.menu-open) .hdr::after { opacity: 0; }
+
+  .menu__inner {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 7rem;
+    padding-bottom: 2.5rem;
+  }
+  .menu__eyebrow { margin-bottom: 1.5rem; }
+  .menu__list { border-top: 1px solid var(--rule); }
+  .menu__list li {
+    border-bottom: 1px solid var(--rule);
+    opacity: 0;
+    transform: translateY(1.25rem);
+    transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+    transition-delay: calc(0.25s + var(--i) * 0.07s);
+  }
+  .menu.is-open .menu__list li { opacity: 1; transform: none; }
+  .menu__link {
+    display: flex;
+    align-items: baseline;
+    gap: 1.25rem;
+    padding-block: 1.1rem;
+  }
+  .menu__num { color: var(--muted); min-width: 1.75rem; }
+  .menu__text { font-size: clamp(2.5rem, 11vw, 4.5rem); line-height: 1; letter-spacing: -0.01em; }
+  .menu__link:active .menu__text { font-style: italic; }
+
+  .menu__foot { margin-top: auto; padding-top: 3rem; display: grid; gap: 1rem; }
+  .menu__companies { display: grid; gap: 0.35rem; font-size: 0.9375rem; }
+  .menu__companies a { color: var(--ink); }
+  .menu__mail { margin-top: 1rem; font-size: 0.9375rem; border-bottom: 1px solid var(--rule-strong); justify-self: start; padding-bottom: 0.2rem; }
+</style>

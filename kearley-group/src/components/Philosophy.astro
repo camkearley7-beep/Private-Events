@@ -1,0 +1,61 @@
+---
+const lines = ['Own with care.', 'Build with patience.', 'Measure in decades.'];
+---
+<section class="philo" id="philosophy" aria-labelledby="philo-title" data-header-dark>
+  <div class="wrap">
+    <div class="folio label">
+      <span class="kicker"><span class="kicker__num">03</span><span class="kicker__line"></span><span>Philosophy</span></span>
+      <span>On Ownership</span>
+    </div>
+
+    <h2 class="philo__title serif" id="philo-title">
+      {lines.map((l, i) => (
+        <span class="philo__line" data-lines style={`--indent:${i}`}>
+          <span class="lines__line"><span class="lines__inner">{i === 1 ? <em>{l}</em> : l}</span></span>
+        </span>
+      ))}
+    </h2>
+
+    <div class="philo__body grid">
+      <p class="philo__text" data-reveal>
+        Our businesses operate independently, led by the people who know them best. Our role is
+        to give them stability, high standards and the gift of time — and to let each one
+        remain entirely itself.
+      </p>
+      <ul class="philo__tenets" data-reveal style="--delay:.12s">
+        <li><span class="label">I</span><span>Independent businesses</span></li>
+        <li><span class="label">II</span><span>Patient ownership</span></li>
+        <li><span class="label">III</span><span>A long view</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+<style>
+  .philo {
+    --rule: rgb(245 242 235 / 0.18);
+    --muted: rgb(245 242 235 / 0.62);
+    background: var(--forest);
+    color: var(--ivory);
+    padding-block: clamp(4rem, 8vw, 8rem) var(--section);
+  }
+  .philo ::selection { background: var(--ivory); color: var(--forest); }
+  .philo__title {
+    margin-top: clamp(5rem, 10vw, 10rem);
+    font-size: clamp(3rem, 0.5rem + 8.2vw, 11.5rem);
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+
+  }
+  .philo__line { display: block; padding-left: calc(var(--indent) * 6vw); }
+  .philo__line em { color: var(--champagne-soft); }
+  .philo__body { margin-top: clamp(4rem, 8vw, 8rem); row-gap: 3rem; align-items: start; }
+  .philo__text { grid-column: 7 / span 4; font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem); line-height: 1.7; color: rgb(245 242 235 / 0.82); }
+  .philo__tenets { grid-column: 1 / span 4; grid-row: 1; border-top: 1px solid var(--ivory); }
+  .philo__tenets li { display: grid; grid-template-columns: 3rem 1fr; align-items: baseline; padding-block: 1rem; border-bottom: 1px solid var(--rule); font-family: var(--serif); font-size: 1.375rem; }
+  .philo__tenets .label { color: var(--muted); font-family: var(--sans); }
+  @media (max-width: 960px) {
+    .philo__title { font-size: clamp(2.75rem, 13vw, 4.5rem); line-height: 0.95; }
+    .philo__line { padding-left: 0; margin-bottom: 0.18em; }
+    .philo__text, .philo__tenets { grid-column: 1 / -1; grid-row: auto; }
+  }
+</style>

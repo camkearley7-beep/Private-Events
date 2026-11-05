@@ -1,0 +1,15 @@
+---
+/** Display name: two lines when `displayName` is set, the second in italics. */
+import type { Company } from '../../data/companies';
+interface Props { company: Company; class?: string; italic?: 0 | 1; }
+const { company, class: className = '', italic = 1 } = Astro.props;
+const lines = company.displayName ?? [company.name];
+---
+<h3 class:list={['ftitle serif', className]} data-lines>
+  <span class="sr-only">{company.name}</span>
+  <span class="lines" aria-hidden="true">
+    {lines.map((l, i) => (
+      <span class="lines__line"><span class="lines__inner" style={i === italic && lines.length > 1 ? 'font-style:italic' : undefined}>{l}</span></span>
+    ))}
+  </span>
+</h3>

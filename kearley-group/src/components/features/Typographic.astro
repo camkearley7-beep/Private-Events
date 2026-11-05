@@ -1,0 +1,54 @@
+---
+import type { Company } from '../../data/companies';
+import Folio from './Folio.astro';
+import Logo from './Logo.astro';
+import Explore from './Explore.astro';
+interface Props { company: Company; index: number; total: number; }
+const { company: c, index, total } = Astro.props;
+const reel = Array(4).fill(c.name);
+---
+<article class="f-type" id={c.slug} aria-label={c.name}>
+  <div class="wrap">
+    <Folio index={index} total={total} sector={c.sector} />
+  </div>
+  <h3 class="sr-only">{c.name}</h3>
+  <div class="f-type__reel serif" aria-hidden="true">
+    <div class="f-type__row" data-parallax-x="-0.18">
+      {reel.map((n) => <span>{n}</span>)}
+    </div>
+    <div class="f-type__row f-type__row--outline" data-parallax-x="0.18">
+      {reel.map((n) => <span><em>{n}</em></span>)}
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="f-type__grid grid" data-reveal>
+      <p class="f-type__note label label--muted">Profile forthcoming</p>
+      <p class="f-type__desc">{c.description}</p>
+      <div class="f-type__links">
+        <Logo company={c} />
+        <Explore company={c} />
+      </div>
+    </div>
+  </div>
+</article>
+<style>
+  .f-type { background: var(--ivory); padding-block: clamp(4rem, 8vw, 8rem) var(--section); overflow: hidden; }
+  .f-type__reel {
+    margin-block: clamp(3rem, 7vw, 7rem);
+    font-size: clamp(5rem, 2rem + 13vw, 17rem);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+
+    white-space: nowrap;
+  }
+  .f-type__row { display: flex; gap: 0.35em; margin-left: -0.6em; will-change: transform; }
+  .f-type__row--outline { margin-left: -2.2em; color: transparent; -webkit-text-stroke: 1px var(--charcoal); }
+  @supports not (-webkit-text-stroke: 1px black) { .f-type__row--outline { color: var(--rule-strong); } }
+  .f-type__grid { align-items: end; row-gap: 2rem; border-top: 1px solid var(--rule); padding-top: 2rem; }
+  .f-type__note { grid-column: 1 / span 3; }
+  .f-type__desc { grid-column: 4 / span 5; font-family: var(--serif); font-size: clamp(1.25rem, 1rem + 0.8vw, 1.75rem); line-height: 1.35; }
+  .f-type__links { grid-column: 10 / -1; display: flex; align-items: center; justify-content: flex-end; gap: 1.5rem; flex-wrap: wrap; }
+  @media (max-width: 960px) {
+    .f-type__note, .f-type__desc, .f-type__links { grid-column: 1 / -1; justify-content: flex-start; }
+  }
+</style>

@@ -1,0 +1,57 @@
+---
+import type { Company } from '../../data/companies';
+import Figure from '../Figure.astro';
+import Folio from './Folio.astro';
+import Title from './Title.astro';
+import Logo from './Logo.astro';
+import Explore from './Explore.astro';
+interface Props { company: Company; index: number; total: number; }
+const { company: c, index, total } = Astro.props;
+---
+<article class="f-cover" id={c.slug} aria-label={c.name}>
+  <div class="wrap">
+    <Folio index={index} total={total} sector={c.sector} />
+    <Title company={c} class="f-cover__title" />
+    <div class="f-cover__grid grid">
+      <div class="f-cover__main">
+        <Figure {...c.image} alt={c.image?.alt ?? ''} ratio="4 / 5" tone="#d9d4ca" sizes="(min-width: 960px) 58vw, 100vw" parallax={0.08} />
+      </div>
+      <div class="f-cover__aside">
+        <div class="f-cover__text" data-reveal>
+          <Logo company={c} />
+          <p class="f-cover__desc">{c.description}</p>
+          <Explore company={c} />
+        </div>
+        {c.secondaryImage && (
+          <Figure {...c.secondaryImage} ratio="3 / 4" tone="#e2ddd3" sizes="(min-width: 960px) 30vw, 70vw" delay={0.15} class="f-cover__inset" />
+        )}
+      </div>
+    </div>
+  </div>
+</article>
+<style>
+  .f-cover { background: var(--white); padding-block: clamp(4rem, 8vw, 8rem) var(--section); }
+  .f-cover :global(.f-cover__title) {
+    margin-top: clamp(2.5rem, 5vw, 5rem);
+    font-size: var(--fs-h2);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+
+  }
+  .f-cover__grid { margin-top: clamp(2.5rem, 5vw, 4.5rem); row-gap: 3rem; }
+  .f-cover__main { grid-column: 1 / span 7; }
+  .f-cover__aside {
+    grid-column: 9 / -1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+  .f-cover__text { display: grid; gap: 1.75rem; justify-items: start; padding-top: 0.5rem; }
+  .f-cover__desc { max-width: 30ch; font-family: var(--serif); font-size: clamp(1.25rem, 1rem + 0.8vw, 1.75rem); line-height: 1.35; }
+  .f-cover__aside :global(.f-cover__inset) { width: 78%; align-self: flex-end; }
+  @media (max-width: 960px) {
+    .f-cover__main, .f-cover__aside { grid-column: 1 / -1; }
+    .f-cover__aside :global(.f-cover__inset) { width: 62%; margin-top: -1rem; }
+  }
+</style>

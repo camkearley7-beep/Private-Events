@@ -1,0 +1,65 @@
+---
+import type { Company } from '../../data/companies';
+import Figure from '../Figure.astro';
+import Folio from './Folio.astro';
+import Title from './Title.astro';
+import Logo from './Logo.astro';
+import Explore from './Explore.astro';
+interface Props { company: Company; index: number; total: number; }
+const { company: c, index, total } = Astro.props;
+---
+<article class="f-pano" id={c.slug} aria-label={c.name}>
+  <div class="wrap">
+    <Folio index={index} total={total} sector={c.sector} />
+  </div>
+  <div class="f-pano__media">
+    <Figure {...c.image} alt={c.image?.alt ?? ''} tone="#cfd6d3" sizes="100vw" parallax={0.14} />
+  </div>
+  <div class="wrap">
+    <div class="f-pano__grid grid">
+      <div class="f-pano__head">
+        {c.location && <p class="label label--muted f-pano__loc">{c.location}</p>}
+        <Title company={c} class="f-pano__title" />
+      </div>
+      <div class="f-pano__aside">
+        {c.secondaryImage && (
+          <Figure {...c.secondaryImage} ratio="4 / 5" tone="#c9d1cf" sizes="(min-width: 960px) 26vw, 60vw" class="f-pano__inset" delay={0.2} />
+        )}
+        <div class="f-pano__text" data-reveal>
+          <p class="f-pano__desc">{c.description}</p>
+          <div class="f-pano__links">
+            <Logo company={c} />
+            <Explore company={c} />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+<style>
+  .f-pano { background: var(--white); padding-block: clamp(4rem, 8vw, 8rem) var(--section); }
+  .f-pano__media { position: relative; margin-top: clamp(2rem, 4vw, 3.5rem); height: min(78vh, 56vw); min-height: 22rem; }
+  .f-pano__media :global(.fig) { position: absolute; inset: 0; }
+  .f-pano__media :global(img) { height: 118%; margin-top: -9%; }
+  .f-pano__grid { row-gap: 2.5rem; }
+  .f-pano__head { grid-column: 1 / span 7; padding-top: clamp(2.5rem, 5vw, 4.5rem); }
+  .f-pano__loc { margin-bottom: 1.5rem; }
+  .f-pano :global(.f-pano__title) {
+    font-size: var(--fs-h2);
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+
+  }
+  .f-pano :global(.f-pano__title .lines__line:last-child) { font-size: 0.5em; letter-spacing: -0.01em; margin-top: 0.15em; color: var(--forest); }
+  .f-pano__aside { grid-column: 9 / -1; display: grid; gap: 2.5rem; align-content: start; }
+  .f-pano__aside :global(.f-pano__inset) { margin-top: clamp(-9rem, -10vw, -4rem); position: relative; z-index: 1; box-shadow: 0 0 0 clamp(0.5rem, 1vw, 0.9rem) var(--white); }
+  .f-pano__text { display: grid; gap: 2rem; }
+  .f-pano__desc { font-family: var(--serif); font-size: clamp(1.25rem, 1rem + 0.8vw, 1.75rem); line-height: 1.35; }
+  .f-pano__links { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+  @media (max-width: 960px) {
+    .f-pano__media { height: auto; aspect-ratio: 4 / 5; }
+    .f-pano__head { grid-column: 1 / -1; }
+    .f-pano__aside { grid-column: 1 / -1; }
+    .f-pano__aside :global(.f-pano__inset) { order: 2; width: 64%; margin-top: 0; justify-self: end; box-shadow: none; }
+  }
+</style>

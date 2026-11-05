@@ -1,0 +1,34 @@
+---
+/** Company logo, or a refined monogram plate until a logo is supplied. */
+import type { Company } from '../../data/companies';
+interface Props { company: Company; }
+const { company } = Astro.props;
+const initials = company.name
+  .replace(/^The\s+/i, '')
+  .split(/[\s&]+/)
+  .filter(Boolean)
+  .slice(0, 2)
+  .map((w) => w[0])
+  .join('');
+---
+{company.logo ? (
+  <img class="logo-img" src={company.logo.src} alt={company.logo.alt} loading="lazy" decoding="async" />
+) : (
+  <span class="logo-plate" role="img" aria-label={`${company.name} logo placeholder`}>
+    <span class="serif">{initials}</span>
+  </span>
+)}
+<style>
+  .logo-img { height: 2.75rem; width: auto; max-width: 11rem; object-fit: contain; object-position: left center; }
+  .logo-plate {
+    display: inline-grid;
+    place-items: center;
+    width: 3.5rem; height: 3.5rem;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    opacity: 0.7;
+    font-size: 1.05rem;
+    letter-spacing: 0.06em;
+
+  }
+</style>
